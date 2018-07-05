@@ -14,6 +14,13 @@ Inspiration:
 ============
 When you organise or manage sport event - football league, voleyball tournament or some sport games between more than two teams or contestants there is always one, main problem - how to fast, fairly and smart create plan of competition. Doing it with paper, pencil and table tenis balls for draw ;-) is unefficient and burdened with the risk of confusion. So this web app is yours Tournament_Must_Have!
 
+Technology stack:
+=============
+* HTML5,
+* CSS + SASS,
+* jQuery,
+* Gulp
+
 Demo:
 =====
 
