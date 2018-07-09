@@ -1,23 +1,24 @@
+    // import 'domElems' from 'elems';
+    // console.log(domElems.btnConfirm);
+
 $(document).ready(function(){
 
-    let btnConfirm = $('.nav__confirm');
-    let btnGenerate = $('.collector__generate');
+    function switchingScreens (toHide,toShow){
+        toHide.hide();
+        toShow.show();
+    };
 
-    //TO REFACTOR 
-    btnConfirm.on('click', function(e){
+    domElems.btnConfirm.on('click', function(e){
         e.preventDefault();
-        let collector = $('.collector');
-        let naviScreen = $('.nav');
-        naviScreen.hide();
-        collector.show();
+        switchingScreens(domElems.naviScreen,domElems.collector);
     });
-   
-    btnGenerate.on('click', function(e){
+    domElems.btnGenerate.on('click', function(e){
         e.preventDefault();
-        let result = $('.result');
-        let collector = $('.collector');
-        result.show();
-        collector.hide();
+        switchingScreens(domElems.collector,domElems.result);
     });
 
+  
+
+
+ 
 });
