@@ -9,22 +9,27 @@ $(document).ready(function(){
         btnAdd: $('.collector__add'),
         teamList: $('.collector__list'),
         teamInput: $('.collector__input'),
-        btnDel: $('.collector__del')
-    }
-
+        teamOnList: $('collector__listItem')
+    }    
+    
     function switchingScreens (toHide,toShow){
         toHide.hide();
         toShow.show();
     };
 
-    function getTeams() {
+
+    // TO DO - id for each li
+    function getTeams(count) {
+        console.log(count);
+        
         let newTeam = domElems.teamInput.val();
-        domElems.teamList.append(`<li> ${newTeam} </li>`);
-        // TODO
-        // button in each li for removing it from list
+        domElems.teamList.append(
+            `<li class="collector__listItem" data-nr="${count.lenght}"> ${newTeam} ${count.lenght}
+                <button class="collector__del" type="button">
+                X
+                </button> 
+            </li>`);     
     };
-
-
 
     domElems.btnConfirm.on('click', function(e){
         e.preventDefault();
@@ -35,13 +40,27 @@ $(document).ready(function(){
         switchingScreens(domElems.collector,domElems.result);
     });
 
-    domElems.btnAdd.on('click', function(e){
+    domElems.btnAdd.bind('click keypress', function(e){
         e.preventDefault();
-        getTeams();
+        let code = e.keyCode || e.which;
+        if (code === 13 || e.type === 'click') {
+            getTeams();
+        };  
     });
 
-  
+    domElems.teamInput.on('keypress', function(e){
+        let code = e.keyCode || e.which;
+        if (code === 13) {
+            e.preventDefault();
+            getTeams();
+        };  
+    });
 
+    domElems.teamList.on('click', 'li.collector__listItem>button.collector__del', function(e){
+        e.preventDefault();     
+        $(this).parent().remove();
+    });
+  
 
  
 });
