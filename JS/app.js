@@ -11,10 +11,8 @@ $(document).ready(function(){
             btnAdd: $('.collector__add'),
             teamList: $('.collector__list'),
             teamInput: $('.collector__input'),
-            teamOnList: $('collector__listItem'),
-            btnGenerate: $('.collector__generate'),
-            selectedTournamentType: $('#collector__select.children :selected').val()
-    }     
+            teamOnList: $('collector__listItem')
+    }                             
     
     //globalVariables store
     // 
@@ -30,14 +28,16 @@ $(document).ready(function(){
     };
 
     function gettingTeams() {
-        let counter = globalVariables.dataCounter ++;
         let newTeam = domElems.teamInput.val();
-        domElems.teamList.append(
-            `<li class="collector__listItem" data-nr="${counter}"> ${newTeam}
-                <button class="collector__del" type="button">
-                X
-                </button> 
-            </li>`);     
+        if (newTeam != "") {
+            let counter = globalVariables.dataCounter++;
+            
+            domElems.teamList.append(
+                `<li class="collector__listItem" data-nr="${counter}"> ${newTeam}<button class="collector__del" type="button">X</button></li>`);     
+        } else {
+            alert("Name a team");
+        }
+        
     };
 
     function choosingTournamentType(tournamentType) {
@@ -48,21 +48,21 @@ $(document).ready(function(){
         } else {
             mixGenerator();
         } 
-    }
+    };
 
     function leagueGenerator() {
         console.log("LIGA");
         
-    }
+    };
 
     function cupGenerator() {
         console.log("CUP");
         
-    }
+    };
     function mixGenerator() {
         console.log("MIX");
         
-    }
+    };
     
     //Removing teams from list
     //
@@ -77,9 +77,17 @@ $(document).ready(function(){
         e.preventDefault();
         switchingScreens(domElems.naviScreen,domElems.collector);
     });
+
     domElems.btnGenerate.on('click', function(e){
         e.preventDefault();
-        switchingScreens(domElems.collector,domElems.result);
+        if (domElems.teamList.children().length > 2) {
+            let selectedTeam = $('#collector__select :selected').val();
+            switchingScreens(domElems.collector,domElems.result);
+            choosingTournamentType(selectedTeam);
+        } else {
+            alert("You need at least 3 teams!");
+        }
+        
     });
 
     domElems.btnAdd.bind('click keypress', function(e){
@@ -97,11 +105,4 @@ $(document).ready(function(){
             gettingTeams();
         };  
     });
-    
-    domElems.btnGenerate.on('click', function(e){
-        e.preventDefault();     
-        console.log("na przycisku: ", domElems.selectedTournamentType);
-        
-        choosingTournamentType(domElems.selectedTournamentType);
-    })
 });

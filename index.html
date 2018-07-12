@@ -23,13 +23,13 @@
 			</button>
 		</nav>
 		<section class="collector">
-			<form class="collector__form" action="">
-				<select class="collector__select" name="Choose tournament type" id="collector__select">
+			<form class="collector__form">
+				<select class="collector__select" name="Choose tournament type" id="collector__select" required>
 					<option value="League">League (round-robin)</option>
 					<option value="Cup">Cup</option>
 					<option value="Mixed">Mixed (league + cup)</option>
 				</select>
-				<input class="collector__input" type="text">
+				<input class="collector__input" type="text" required></input>
 				<button class="collector__add" type="button">Add</button>
 				<button class="collector__generate" type="button">Generate</button>
 			</form>
