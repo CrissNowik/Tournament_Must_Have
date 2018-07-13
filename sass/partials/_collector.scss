@@ -1,3 +1,10 @@
 .collector {
     display: none;
 }
+
+.collector__show{
+
+    .collector__alert{
+        display: none;
+    }
+}
