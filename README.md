@@ -19,7 +19,8 @@ Technology stack:
 * HTML5,
 * CSS + SASS,
 * jQuery,
-* Gulp
+* Gulp,
+* Webpack
 
 Demo:
 =====

@@ -1,10 +1,9 @@
 const path = require("path");
 
-module.export = {
-    mode: "production", // "development" , "none"
+module.exports = {
     entry: "./js/app.js",
     output: {
-        path: path.resolve("dist"),
+        path: path.resolve(__dirname, "dist"),
         filename: "./out.js"
         },
     watch: true,
@@ -12,7 +11,7 @@ module.export = {
         loaders: [{
             test: /\.js$/,
             exclude: /node_modules/,
-            loader: 'babel',
+            loader: 'babel-loader',
             query: {
                 presets: ['es2015']
                 }
