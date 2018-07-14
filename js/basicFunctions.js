@@ -14,7 +14,6 @@ export let basicFunctions = {
                             toHide.hide();
                             toShow.show();
                         },
-            
     gettingTeams: function () {
                     let newTeam = domElems.teamInput.val();
                     if (domElems.teamList.children().length > 1){

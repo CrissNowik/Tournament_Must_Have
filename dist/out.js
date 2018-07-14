@@ -75,7 +75,6 @@ var _domElems = __webpack_require__(1);
 var _basicFunctions = __webpack_require__(5);
 
 $(document).ready(function () {
-
     //Removing teams from list
     //
     _domElems.domElems.teamList.on('click', 'li.collector__listItem>button.collector__del', function (e) {
@@ -90,6 +89,24 @@ $(document).ready(function () {
         _basicFunctions.basicFunctions.switchingVisibility(_domElems.domElems.naviScreen, _domElems.domElems.collector);
     });
 
+    _domElems.domElems.btnAdd.bind('click keypress', function (e) {
+        e.preventDefault();
+        var code = e.keyCode || e.which;
+        if (code === 13 || e.type === 'click') {
+            _basicFunctions.basicFunctions.gettingTeams();
+            _domElems.domElems.teamInput.val("");
+        };
+    });
+
+    _domElems.domElems.teamInput.on('keypress', function (e) {
+        var code = e.keyCode || e.which;
+        if (code === 13) {
+            e.preventDefault();
+            _basicFunctions.basicFunctions.gettingTeams();
+            _domElems.domElems.teamInput.val("");
+        };
+    });
+
     _domElems.domElems.btnGenerate.on('click', function (e) {
         e.preventDefault();
         if (_domElems.domElems.teamList.children().length > 2) {
@@ -100,22 +117,6 @@ $(document).ready(function () {
         } else {
             _domElems.domElems.collectorAlertB.show();
         }
-    });
-
-    _domElems.domElems.btnAdd.bind('click keypress', function (e) {
-        e.preventDefault();
-        var code = e.keyCode || e.which;
-        if (code === 13 || e.type === 'click') {
-            _basicFunctions.basicFunctions.gettingTeams();
-        };
-    });
-
-    _domElems.domElems.teamInput.on('keypress', function (e) {
-        var code = e.keyCode || e.which;
-        if (code === 13) {
-            e.preventDefault();
-            _basicFunctions.basicFunctions.gettingTeams();
-        };
     });
 });
 
@@ -238,7 +239,6 @@ var basicFunctions = exports.basicFunctions = {
         toHide.hide();
         toShow.show();
     },
-
     gettingTeams: function gettingTeams() {
         var newTeam = _domElems.domElems.teamInput.val();
         if (_domElems.domElems.teamList.children().length > 1) {
