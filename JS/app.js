@@ -47,9 +47,17 @@ $(document).ready(function () {
 
     };
 
+    function randomizer(teamList) {
+        teamList.sort(function(a, b){
+            return 0.5 - Math.random()
+        });     
+    }
+
     function choosingTournamentType(tournamentType) {
+        let teamList = domElems.teamList.children();
+       
         if (tournamentType === 'League') {
-            leagueGenerator();
+            leagueGenerator(teamList);
         } else if (tournamentType === 'Cup') {
             cupGenerator();
         } else {
@@ -57,9 +65,24 @@ $(document).ready(function () {
         }
     };
 
-    function leagueGenerator() {
+    function leagueGenerator(teamList) {
         console.log("LIGA");
+        let numberOfTeams = teamList.length;
+        randomizer(teamList);
 
+        if (numberOfTeams % 2 === 0) {
+            let matchesPerRound = numberOfTeams / 2;
+            let listMiddle = numberOfTeams / 2;
+            let hosts = teamList.slice(0,listMiddle);
+            let guests = teamList.slice(listMiddle);
+            
+            
+        } else {
+            let matchesPerRound = (numberOfTeams + 1) / 2;
+            console.log(matchesPerRound, "nieparzysta");
+            
+            
+        }
     };
 
     function cupGenerator() {
