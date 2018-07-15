@@ -60,7 +60,7 @@
 /******/ 	__webpack_require__.p = "";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 0);
+/******/ 	return __webpack_require__(__webpack_require__.s = 2);
 /******/ })
 /************************************************************************/
 /******/ ([
@@ -70,9 +70,106 @@
 "use strict";
 
 
-var _domElems = __webpack_require__(1);
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+//DOM elements store
+//
+var domElems = exports.domElems = {
+    btnGenerate: $('.collector__generate'),
+    btnConfirm: $('.nav__confirm'),
+    collector: $('.collector'),
+    naviScreen: $('.nav'),
+    result: $('.result'),
+    btnAdd: $('.collector__add'),
+    teamList: $('.collector__list'),
+    teamInput: $('.collector__input'),
+    teamOnList: $('.collector__listItem'),
+    collectorAlertA: $('#alertOne'),
+    collectorAlertB: $('#alertTwo')
+};
 
-var _basicFunctions = __webpack_require__(5);
+/***/ }),
+/* 1 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+exports.basicFunctions = undefined;
+
+var _domElems = __webpack_require__(0);
+
+var _globalVariables = __webpack_require__(3);
+
+var _leagueGenerator = __webpack_require__(4);
+
+var _cupGenerator = __webpack_require__(5);
+
+var _mixGenerator = __webpack_require__(6);
+
+var basicFunctions = exports.basicFunctions = {
+    shuffle: function shuffle(teamList) {
+        teamList.sort(function (a, b) {
+            return 0.5 - Math.random();
+        });
+    },
+    switchingVisibility: function switchingVisibility(toHide, toShow) {
+        toHide.hide();
+        toShow.show();
+    },
+    gettingTeams: function gettingTeams() {
+        var newTeam = _domElems.domElems.teamInput.val();
+        if (_domElems.domElems.teamList.children().length > 1) {
+            _domElems.domElems.collectorAlertB.hide();
+        }
+        if (newTeam != "") {
+            var counter = _globalVariables.globalVariables.dataCounter++;
+            this.switchingVisibility(_domElems.domElems.collectorAlertA, _domElems.domElems.teamList);
+            _domElems.domElems.teamList.append("<li class=\"collector__listItem\" data-nr=\"" + counter + "\"> " + newTeam + "<button class=\"collector__del\" type=\"button\">X</button></li>");
+        } else {
+            _domElems.domElems.collectorAlertA.show();
+        }
+    },
+    choosingTournamentType: function choosingTournamentType(tournamentType) {
+        var teamList = _domElems.domElems.teamList.children();
+        if (tournamentType === 'League') {
+            (0, _leagueGenerator.leagueGenerator)(teamList);
+        } else if (tournamentType === 'Cup') {
+            (0, _cupGenerator.cupGenerator)();
+        } else {
+            (0, _mixGenerator.mixGenerator)();
+        }
+    },
+    randomWithoutRepeat: function randomWithoutRepeat(howMuch, range) {
+        // wypełnienie tablicy
+        var numbers = new Array(range);
+        for (var i = 0; i < range; i++) {
+            numbers[i] = i + 1;
+        }
+        // losowanie howMuch liczb
+        for (var _i = 0; _i < howMuch; _i++) {
+            var rand = Math.floor(Math.random() * range);
+            console.log("wylosowano: ", numbers[rand]);
+            numbers[rand] = numbers[range - 1];
+            range--;
+        }
+    }
+};
+
+/***/ }),
+/* 2 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+var _domElems = __webpack_require__(0);
+
+var _basicFunctions = __webpack_require__(1);
 
 $(document).ready(function () {
     //Removing teams from list
@@ -121,7 +218,7 @@ $(document).ready(function () {
 });
 
 /***/ }),
-/* 1 */
+/* 3 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -130,24 +227,12 @@ $(document).ready(function () {
 Object.defineProperty(exports, "__esModule", {
     value: true
 });
-//DOM elements store
-//
-var domElems = exports.domElems = {
-    btnGenerate: $('.collector__generate'),
-    btnConfirm: $('.nav__confirm'),
-    collector: $('.collector'),
-    naviScreen: $('.nav'),
-    result: $('.result'),
-    btnAdd: $('.collector__add'),
-    teamList: $('.collector__list'),
-    teamInput: $('.collector__input'),
-    teamOnList: $('.collector__listItem'),
-    collectorAlertA: $('#alertOne'),
-    collectorAlertB: $('#alertTwo')
+var globalVariables = exports.globalVariables = {
+    dataCounter: 0
 };
 
 /***/ }),
-/* 2 */
+/* 4 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -158,19 +243,22 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.leagueGenerator = leagueGenerator;
 
-var _basicFunctions = __webpack_require__(5);
+var _basicFunctions = __webpack_require__(1);
 
 function leagueGenerator(teamList) {
     console.log("LIGA");
     var numberOfTeams = teamList.length;
-    _basicFunctions.basicFunctions.randomizer(teamList);
+    _basicFunctions.basicFunctions.shuffle(teamList);
 
     if (numberOfTeams % 2 === 0) {
         var matchesPerRound = numberOfTeams / 2;
-        var listMiddle = numberOfTeams / 2;
-        var hosts = teamList.slice(0, listMiddle);
-        var guests = teamList.slice(listMiddle);
-        console.log(hosts, guests);
+        // let listMiddle = numberOfTeams / 2;
+        // let hosts = teamList.slice(0,listMiddle);
+        // let guests = teamList.slice(listMiddle);
+        // console.log(hosts, guests);
+        for (var i = 0; i < matchesPerRound; i++) {
+            _basicFunctions.basicFunctions.randomWithoutRepeat(2, numberOfTeams);
+        }
     } else {
         var _matchesPerRound = (numberOfTeams + 1) / 2;
         console.log(_matchesPerRound, "nieparzysta");
@@ -178,7 +266,7 @@ function leagueGenerator(teamList) {
 };
 
 /***/ }),
-/* 3 */
+/* 5 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -193,7 +281,7 @@ function cupGenerator() {
 };
 
 /***/ }),
-/* 4 */
+/* 6 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -205,77 +293,6 @@ Object.defineProperty(exports, "__esModule", {
 exports.mixGenerator = mixGenerator;
 function mixGenerator() {
             console.log("MIX");
-};
-
-/***/ }),
-/* 5 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-    value: true
-});
-exports.basicFunctions = undefined;
-
-var _domElems = __webpack_require__(1);
-
-var _globalVariables = __webpack_require__(6);
-
-var _leagueGenerator = __webpack_require__(2);
-
-var _cupGenerator = __webpack_require__(3);
-
-var _mixGenerator = __webpack_require__(4);
-
-var basicFunctions = exports.basicFunctions = {
-    randomizer: function randomizer(teamList) {
-        teamList.sort(function (a, b) {
-            return 0.5 - Math.random();
-        });
-    },
-    switchingVisibility: function switchingVisibility(toHide, toShow) {
-        toHide.hide();
-        toShow.show();
-    },
-    gettingTeams: function gettingTeams() {
-        var newTeam = _domElems.domElems.teamInput.val();
-        if (_domElems.domElems.teamList.children().length > 1) {
-            _domElems.domElems.collectorAlertB.hide();
-        }
-        if (newTeam != "") {
-            var counter = _globalVariables.globalVariables.dataCounter++;
-            this.switchingVisibility(_domElems.domElems.collectorAlertA, _domElems.domElems.teamList);
-            _domElems.domElems.teamList.append("<li class=\"collector__listItem\" data-nr=\"" + counter + "\"> " + newTeam + "<button class=\"collector__del\" type=\"button\">X</button></li>");
-        } else {
-            _domElems.domElems.collectorAlertA.show();
-        }
-    },
-    choosingTournamentType: function choosingTournamentType(tournamentType) {
-        var teamList = _domElems.domElems.teamList.children();
-        if (tournamentType === 'League') {
-            (0, _leagueGenerator.leagueGenerator)(teamList);
-        } else if (tournamentType === 'Cup') {
-            (0, _cupGenerator.cupGenerator)();
-        } else {
-            (0, _mixGenerator.mixGenerator)();
-        }
-    }
-};
-
-/***/ }),
-/* 6 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-    value: true
-});
-var globalVariables = exports.globalVariables = {
-    dataCounter: 0
 };
 
 /***/ })
