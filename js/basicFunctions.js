@@ -30,8 +30,10 @@ export let basicFunctions = {
                 },
     choosingTournamentType: function (tournamentType) {
                     let teamList = domElems.teamList.children();
+                    console.log("Choosing team: ", teamList);
+                    
                     if (tournamentType === 'League') {
-                        leagueGenerator(teamList);
+                        let readySheduleLeague = leagueGenerator(teamList);                        
                     } else if (tournamentType === 'Cup') {
                         cupGenerator();
                     } else {

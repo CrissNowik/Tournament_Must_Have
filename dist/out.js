@@ -136,8 +136,10 @@ var basicFunctions = exports.basicFunctions = {
     },
     choosingTournamentType: function choosingTournamentType(tournamentType) {
         var teamList = _domElems.domElems.teamList.children();
+        console.log("Choosing team: ", teamList);
+
         if (tournamentType === 'League') {
-            (0, _leagueGenerator.leagueGenerator)(teamList);
+            var readySheduleLeague = (0, _leagueGenerator.leagueGenerator)(teamList);
         } else if (tournamentType === 'Cup') {
             (0, _cupGenerator.cupGenerator)();
         } else {
@@ -239,30 +241,25 @@ var globalVariables = exports.globalVariables = {
 
 
 Object.defineProperty(exports, "__esModule", {
-    value: true
+            value: true
 });
 exports.leagueGenerator = leagueGenerator;
 
 var _basicFunctions = __webpack_require__(1);
 
 function leagueGenerator(teamList) {
-    console.log("LIGA");
-    var numberOfTeams = teamList.length;
-    _basicFunctions.basicFunctions.shuffle(teamList);
+            console.log("LIGA");
+            var numberOfTeams = teamList.length;
+            var teamNamesList = [];
 
-    if (numberOfTeams % 2 === 0) {
-        var matchesPerRound = numberOfTeams / 2;
-        // let listMiddle = numberOfTeams / 2;
-        // let hosts = teamList.slice(0,listMiddle);
-        // let guests = teamList.slice(listMiddle);
-        // console.log(hosts, guests);
-        for (var i = 0; i < matchesPerRound; i++) {
-            _basicFunctions.basicFunctions.randomWithoutRepeat(2, numberOfTeams);
-        }
-    } else {
-        var _matchesPerRound = (numberOfTeams + 1) / 2;
-        console.log(_matchesPerRound, "nieparzysta");
-    }
+            for (var i = 0; i < numberOfTeams; i++) {
+                        teamNamesList.push(teamList[i].firstChild.wholeText);
+            }
+            _basicFunctions.basicFunctions.shuffle(teamNamesList); // shuffling teams
+
+            var robin = __webpack_require__(7); // call for algorythm
+            var readyShedule = robin(numberOfTeams, teamNamesList); // using algorythm
+            return readyShedule;
 };
 
 /***/ }),
@@ -294,6 +291,41 @@ exports.mixGenerator = mixGenerator;
 function mixGenerator() {
             console.log("MIX");
 };
+
+/***/ }),
+/* 7 */
+/***/ (function(module, exports) {
+
+const DUMMY = -1;
+// returns an array of round representations (array of player pairs).
+// http://en.wikipedia.org/wiki/Round-robin_tournament#Scheduling_algorithm
+module.exports = function (n, ps) {  // n = num players
+  var rs = [];                  // rs = round array
+  if (!ps) {
+    ps = [];
+    for (var k = 1; k <= n; k += 1) {
+      ps.push(k);
+    }
+  } else {
+    ps = ps.slice();
+  }
+
+  if (n % 2 === 1) {
+    ps.push(DUMMY); // so we can match algorithm for even numbers
+    n += 1;
+  }
+  for (var j = 0; j < n - 1; j += 1) {
+    rs[j] = []; // create inner match array for round j
+    for (var i = 0; i < n / 2; i += 1) {
+      if (ps[i] !== DUMMY && ps[n - 1 - i] !== DUMMY) {
+        rs[j].push([ps[i], ps[n - 1 - i]]); // insert pair as a match
+      }
+    }
+    ps.splice(1, 0, ps.pop()); // permutate for next round
+  }
+  return rs;
+};
+
 
 /***/ })
 /******/ ]);

@@ -29,3 +29,7 @@ Demo:
 Copyright:
 ==========
 CrissNowik
+
+Thanks to:
+==========
+Eirik Albrigtsen for his round-robin algorythm https://github.com/clux/roundrobin
