@@ -5,7 +5,7 @@ import { basicFunctions } from "./basicFunctions";
 $(document).ready(function () {
     //Removing teams from list
     //
-    domElems.teamList.on('click', 'li.collector__listItem>button.collector__del', function (e) {
+    domElems.teamList.on('click', 'li#collector__listItem>button.collector__del', function (e) {
         e.preventDefault();
         $(this).parent().remove();
     });

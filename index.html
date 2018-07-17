@@ -16,31 +16,31 @@
 			<h1 class="header__title" id="header">Tournament Must Have</h1>
 			<img class="header__logo" src="res/###" alt="TMH logo">
 		</header>
-		<nav class="nav">
-			<button type="button" class="nav__confirm">
+		<nav class="nav" id="nav">
+			<button type="button" class="nav__confirm" id="nav__confirm">
 				Create new Tournament
 			</button>
 		</nav>
-		<section class="collector">
+		<section class="collector" id="collector">
 			<form class="collector__form">
 				<select class="collector__select" name="Choose tournament type" id="collector__select" required>
 					<option value="League">League (round-robin)</option>
 					<option value="Cup">Cup</option>
 					<option value="Mixed">Mixed (league + cup)</option>
 				</select>
-				<input class="collector__input" type="text" ></input>
-				<button class="collector__add" type="button">Add</button>
-				<button class="collector__generate" type="button">Generate</button>
+				<input class="collector__input" id="collector__input" type="text" ></input>
+				<button class="collector__add" id="collector__add" type="button">Add</button>
+				<button class="collector__generate" id="collector__generate" type="button">Generate</button>
 			</form>
 			<div class="collector__show">
 				<p class="collector__alert"id="alertOne">First write team name :)</p>
 				<p class="collector__alert" id="alertTwo">You need at least 3 teams!</p>
-				<ul class="collector__list">
+				<ul class="collector__list" id="collector__list">
 
 				</ul>
 			</div>
 		</section>
-		<section class="result">
+		<section class="result" id="result">
 			<ol class="result__list">
 				<li class="test">test</li>
 			</ol>

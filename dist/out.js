@@ -76,15 +76,15 @@ Object.defineProperty(exports, "__esModule", {
 //DOM elements store
 //
 var domElems = exports.domElems = {
-    btnGenerate: $('.collector__generate'),
-    btnConfirm: $('.nav__confirm'),
-    collector: $('.collector'),
-    naviScreen: $('.nav'),
-    result: $('.result'),
-    btnAdd: $('.collector__add'),
-    teamList: $('.collector__list'),
-    teamInput: $('.collector__input'),
-    teamOnList: $('.collector__listItem'),
+    naviScreen: $('#nav'),
+    btnConfirm: $('#nav__confirm'),
+    collector: $('#collector'),
+    teamInput: $('#collector__input'),
+    btnAdd: $('#collector__add'),
+    btnGenerate: $('#collector__generate'),
+    teamList: $('#collector__list'),
+    teamOnList: $('#collector__listItem'),
+    result: $('#result'),
     collectorAlertA: $('#alertOne'),
     collectorAlertB: $('#alertTwo')
 };
@@ -107,9 +107,9 @@ var _globalVariables = __webpack_require__(3);
 
 var _leagueGenerator = __webpack_require__(4);
 
-var _cupGenerator = __webpack_require__(5);
+var _cupGenerator = __webpack_require__(6);
 
-var _mixGenerator = __webpack_require__(6);
+var _mixGenerator = __webpack_require__(7);
 
 var basicFunctions = exports.basicFunctions = {
     shuffle: function shuffle(teamList) {
@@ -129,17 +129,17 @@ var basicFunctions = exports.basicFunctions = {
         if (newTeam != "") {
             var counter = _globalVariables.globalVariables.dataCounter++;
             this.switchingVisibility(_domElems.domElems.collectorAlertA, _domElems.domElems.teamList);
-            _domElems.domElems.teamList.append("<li class=\"collector__listItem\" data-nr=\"" + counter + "\"> " + newTeam + "<button class=\"collector__del\" type=\"button\">X</button></li>");
+            _domElems.domElems.teamList.append("<li class=\"collector__listItem\" id=\"collector__listItem\" data-nr=\"" + counter + "\"> " + newTeam + "<button class=\"collector__del\" type=\"button\">X</button></li>");
         } else {
             _domElems.domElems.collectorAlertA.show();
         }
     },
     choosingTournamentType: function choosingTournamentType(tournamentType) {
         var teamList = _domElems.domElems.teamList.children();
-        console.log("Choosing team: ", teamList);
 
         if (tournamentType === 'League') {
             var readySheduleLeague = (0, _leagueGenerator.leagueGenerator)(teamList);
+            console.log("readySheduleLeague: ", readySheduleLeague);
         } else if (tournamentType === 'Cup') {
             (0, _cupGenerator.cupGenerator)();
         } else {
@@ -176,7 +176,7 @@ var _basicFunctions = __webpack_require__(1);
 $(document).ready(function () {
     //Removing teams from list
     //
-    _domElems.domElems.teamList.on('click', 'li.collector__listItem>button.collector__del', function (e) {
+    _domElems.domElems.teamList.on('click', 'li#collector__listItem>button.collector__del', function (e) {
         e.preventDefault();
         $(this).parent().remove();
     });
@@ -257,43 +257,13 @@ function leagueGenerator(teamList) {
             }
             _basicFunctions.basicFunctions.shuffle(teamNamesList); // shuffling teams
 
-            var robin = __webpack_require__(7); // call for algorythm
+            var robin = __webpack_require__(5); // call for algorythm
             var readyShedule = robin(numberOfTeams, teamNamesList); // using algorythm
             return readyShedule;
 };
 
 /***/ }),
 /* 5 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-        value: true
-});
-exports.cupGenerator = cupGenerator;
-function cupGenerator() {
-        console.log("CUP");
-};
-
-/***/ }),
-/* 6 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-            value: true
-});
-exports.mixGenerator = mixGenerator;
-function mixGenerator() {
-            console.log("MIX");
-};
-
-/***/ }),
-/* 7 */
 /***/ (function(module, exports) {
 
 const DUMMY = -1;
@@ -326,6 +296,36 @@ module.exports = function (n, ps) {  // n = num players
   return rs;
 };
 
+
+/***/ }),
+/* 6 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+        value: true
+});
+exports.cupGenerator = cupGenerator;
+function cupGenerator() {
+        console.log("CUP");
+};
+
+/***/ }),
+/* 7 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+            value: true
+});
+exports.mixGenerator = mixGenerator;
+function mixGenerator() {
+            console.log("MIX");
+};
 
 /***/ })
 /******/ ]);

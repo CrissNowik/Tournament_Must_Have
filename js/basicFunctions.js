@@ -23,17 +23,17 @@ export let basicFunctions = {
                         let counter = globalVariables.dataCounter++;
                         this.switchingVisibility(domElems.collectorAlertA, domElems.teamList);
                         domElems.teamList.append(
-                            `<li class="collector__listItem" data-nr="${counter}"> ${newTeam}<button class="collector__del" type="button">X</button></li>`);
+                            `<li class="collector__listItem" id="collector__listItem" data-nr="${counter}"> ${newTeam}<button class="collector__del" type="button">X</button></li>`);
                     } else {
                         domElems.collectorAlertA.show();
                     }
                 },
     choosingTournamentType: function (tournamentType) {
                     let teamList = domElems.teamList.children();
-                    console.log("Choosing team: ", teamList);
                     
                     if (tournamentType === 'League') {
                         let readySheduleLeague = leagueGenerator(teamList);                        
+                        console.log("readySheduleLeague: ", readySheduleLeague);
                     } else if (tournamentType === 'Cup') {
                         cupGenerator();
                     } else {

@@ -1,15 +1,15 @@
     //DOM elements store
     //
 export let domElems = {
-        btnGenerate: $('.collector__generate'),
-        btnConfirm: $('.nav__confirm'),
-        collector: $('.collector'),
-        naviScreen: $('.nav'),
-        result: $('.result'),
-        btnAdd: $('.collector__add'),
-        teamList: $('.collector__list'),
-        teamInput: $('.collector__input'),
-        teamOnList: $('.collector__listItem'),
+        naviScreen: $('#nav'),
+        btnConfirm: $('#nav__confirm'),
+        collector: $('#collector'),
+        teamInput: $('#collector__input'),
+        btnAdd: $('#collector__add'),
+        btnGenerate: $('#collector__generate'),
+        teamList: $('#collector__list'),
+        teamOnList: $('#collector__listItem'),
+        result: $('#result'),
         collectorAlertA: $('#alertOne'),
         collectorAlertB: $('#alertTwo')
     }
