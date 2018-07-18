@@ -3,6 +3,7 @@ import { globalVariables } from "./globalVariables";
 import { leagueGenerator } from "./leagueGenerator";
 import { cupGenerator } from "./cupGenerator";
 import { mixGenerator } from "./mixGenerator";
+import { showShedule } from "./showShedule";
 
 export let basicFunctions = {
     shuffle: function (teamList) {
@@ -33,7 +34,7 @@ export let basicFunctions = {
                     
                     if (tournamentType === 'League') {
                         let readySheduleLeague = leagueGenerator(teamList);                        
-                        console.log("readySheduleLeague: ", readySheduleLeague);
+                        showShedule(readySheduleLeague);
                     } else if (tournamentType === 'Cup') {
                         cupGenerator();
                     } else {

@@ -86,7 +86,11 @@ var domElems = exports.domElems = {
     teamOnList: $('#collector__listItem'),
     result: $('#result'),
     collectorAlertA: $('#alertOne'),
-    collectorAlertB: $('#alertTwo')
+    collectorAlertB: $('#alertTwo'),
+    sheduleOnScreenA: $('#result__listA'),
+    sheduleOnScreenB: $('#result__listB'),
+    sheduleOnScreenC: $('#result__listC'),
+    sheduleOnScreenD: $('#result__listD')
 };
 
 /***/ }),
@@ -110,6 +114,8 @@ var _leagueGenerator = __webpack_require__(4);
 var _cupGenerator = __webpack_require__(6);
 
 var _mixGenerator = __webpack_require__(7);
+
+var _showShedule = __webpack_require__(8);
 
 var basicFunctions = exports.basicFunctions = {
     shuffle: function shuffle(teamList) {
@@ -139,7 +145,7 @@ var basicFunctions = exports.basicFunctions = {
 
         if (tournamentType === 'League') {
             var readySheduleLeague = (0, _leagueGenerator.leagueGenerator)(teamList);
-            console.log("readySheduleLeague: ", readySheduleLeague);
+            (0, _showShedule.showShedule)(readySheduleLeague);
         } else if (tournamentType === 'Cup') {
             (0, _cupGenerator.cupGenerator)();
         } else {
@@ -325,6 +331,56 @@ Object.defineProperty(exports, "__esModule", {
 exports.mixGenerator = mixGenerator;
 function mixGenerator() {
             console.log("MIX");
+};
+
+/***/ }),
+/* 8 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+exports.showShedule = showShedule;
+
+var _domElems = __webpack_require__(0);
+
+function showShedule(readySheduleLeague) {
+    for (var i = 0; i < readySheduleLeague.length; i++) {
+        var roundCounter = 1 + i;
+        var gameCounter = 0;
+        if (roundCounter <= 8) {
+            _domElems.domElems.sheduleOnScreenA.append("<ul class=\"result__listItem--roundHeader\">Round nr " + roundCounter + "</ul>");
+        } else if (8 <= roundCounter && roundCounter <= 16) {
+            _domElems.domElems.sheduleOnScreenB.append("<ul class=\"result__listItem--roundHeader\">Round nr " + roundCounter + "</ul>");
+        } else if (17 <= roundCounter && roundCounter <= 24) {
+            _domElems.domElems.sheduleOnScreenC.append("<ul class=\"result__listItem--roundHeader\">Round nr " + roundCounter + "</ul>");
+        } else {
+            _domElems.domElems.sheduleOnScreenD.append("<ul class=\"result__listItem--roundHeader\">Round nr " + roundCounter + "</ul>");
+        }
+
+        for (var j = 0; j < readySheduleLeague[i].length; j++) {
+            var newPair = readySheduleLeague[i][j];
+            var pairOnScreen = newPair.join(" ___ - ___ ");
+            if (roundCounter <= 8) {
+                _domElems.domElems.sheduleOnScreenA.append("<li class=\"result__listItem\">" + pairOnScreen + "</li>");
+            } else if (8 <= roundCounter && roundCounter <= 16) {
+                gameCounter = _domElems.domElems.sheduleOnScreenA.find('li').length + 1;
+                _domElems.domElems.sheduleOnScreenB.attr('start', "" + gameCounter);
+                _domElems.domElems.sheduleOnScreenB.append("<li class=\"result__listItem\">" + pairOnScreen + "</li>");
+            } else if (17 <= roundCounter && roundCounter <= 24) {
+                gameCounter = _domElems.domElems.sheduleOnScreenB.find('li').length * 2 + 1;
+                _domElems.domElems.sheduleOnScreenC.attr('start', "" + gameCounter);
+                _domElems.domElems.sheduleOnScreenC.append("<li class=\"result__listItem\">" + pairOnScreen + "</li>");
+            } else {
+                gameCounter = _domElems.domElems.sheduleOnScreenC.find('li').length * 3 + 1;
+                _domElems.domElems.sheduleOnScreenD.attr('start', "" + gameCounter);
+                _domElems.domElems.sheduleOnScreenD.append("<li class=\"result__listItem\">" + pairOnScreen + "</li>");
+            }
+        }
+    }
 };
 
 /***/ })

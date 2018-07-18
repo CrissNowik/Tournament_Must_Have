@@ -11,6 +11,10 @@ export let domElems = {
         teamOnList: $('#collector__listItem'),
         result: $('#result'),
         collectorAlertA: $('#alertOne'),
-        collectorAlertB: $('#alertTwo')
+        collectorAlertB: $('#alertTwo'),
+        sheduleOnScreenA: $('#result__listA'),
+        sheduleOnScreenB: $('#result__listB'),
+        sheduleOnScreenC: $('#result__listC'),
+        sheduleOnScreenD: $('#result__listD')
     }
 
