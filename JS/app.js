@@ -8,6 +8,10 @@ $(document).ready(function () {
     domElems.teamList.on('click', 'li#collector__listItem>button.collector__del', function (e) {
         e.preventDefault();
         $(this).parent().remove();
+        if (domElems.teamInput.attr('disabled')) {
+            domElems.teamInput.removeAttr('disabled');
+        }
+        
     });
 
     //Function calls on elems

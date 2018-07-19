@@ -5,6 +5,7 @@ import { cupGenerator } from "./cupGenerator";
 import { mixGenerator } from "./mixGenerator";
 import { showShedule } from "./showShedule";
 
+
 export let basicFunctions = {
     shuffle: function (teamList) {
                     teamList.sort(function(a, b){
@@ -19,6 +20,10 @@ export let basicFunctions = {
                     let newTeam = domElems.teamInput.val();
                     if (domElems.teamList.children().length > 1){
                         domElems.collectorAlertB.hide();
+                    }
+                    if (domElems.teamList.children().length > 30){
+                        domElems.collectorAlertD.show();
+                        domElems.teamInput.attr('disabled', true);
                     }
                     if (newTeam != "") {
                         let counter = globalVariables.dataCounter++;

@@ -87,6 +87,8 @@ var domElems = exports.domElems = {
     result: $('#result'),
     collectorAlertA: $('#alertOne'),
     collectorAlertB: $('#alertTwo'),
+    collectorAlertC: $('#alertThree'),
+    collectorAlertD: $('#alertFour'),
     sheduleOnScreenA: $('#result__listA'),
     sheduleOnScreenB: $('#result__listB'),
     sheduleOnScreenC: $('#result__listC'),
@@ -131,6 +133,10 @@ var basicFunctions = exports.basicFunctions = {
         var newTeam = _domElems.domElems.teamInput.val();
         if (_domElems.domElems.teamList.children().length > 1) {
             _domElems.domElems.collectorAlertB.hide();
+        }
+        if (_domElems.domElems.teamList.children().length > 30) {
+            _domElems.domElems.collectorAlertD.show();
+            _domElems.domElems.teamInput.attr('disabled', true);
         }
         if (newTeam != "") {
             var counter = _globalVariables.globalVariables.dataCounter++;
@@ -185,6 +191,9 @@ $(document).ready(function () {
     _domElems.domElems.teamList.on('click', 'li#collector__listItem>button.collector__del', function (e) {
         e.preventDefault();
         $(this).parent().remove();
+        if (_domElems.domElems.teamInput.attr('disabled')) {
+            _domElems.domElems.teamInput.removeAttr('disabled');
+        }
     });
 
     //Function calls on elems

@@ -12,6 +12,8 @@ export let domElems = {
         result: $('#result'),
         collectorAlertA: $('#alertOne'),
         collectorAlertB: $('#alertTwo'),
+        collectorAlertC: $('#alertThree'),
+        collectorAlertD: $('#alertFour'),
         sheduleOnScreenA: $('#result__listA'),
         sheduleOnScreenB: $('#result__listB'),
         sheduleOnScreenC: $('#result__listC'),
