@@ -24,14 +24,17 @@ export let basicFunctions = {
                     if (domElems.teamList.children().length > 30){
                         domElems.collectorAlertD.show();
                         domElems.teamInput.attr('disabled', true);
-                    }
-                    if (newTeam != "") {
+                    } 
+                    if (newTeam != "" && newTeam.length < 25) {
                         let counter = globalVariables.dataCounter++;
                         this.switchingVisibility(domElems.collectorAlertA, domElems.teamList);
+                        this.switchingVisibility(domElems.collectorAlertC, domElems.teamList);
                         domElems.teamList.append(
                             `<li class="collector__listItem" id="collector__listItem" data-nr="${counter}"> ${newTeam}<button class="collector__del" type="button">X</button></li>`);
-                    } else {
+                    } else if (newTeam === ""){
                         domElems.collectorAlertA.show();
+                    } else {
+                        domElems.collectorAlertC.show();
                     }
                 },
     choosingTournamentType: function (tournamentType) {

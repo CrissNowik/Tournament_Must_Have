@@ -138,12 +138,15 @@ var basicFunctions = exports.basicFunctions = {
             _domElems.domElems.collectorAlertD.show();
             _domElems.domElems.teamInput.attr('disabled', true);
         }
-        if (newTeam != "") {
+        if (newTeam != "" && newTeam.length < 25) {
             var counter = _globalVariables.globalVariables.dataCounter++;
             this.switchingVisibility(_domElems.domElems.collectorAlertA, _domElems.domElems.teamList);
+            this.switchingVisibility(_domElems.domElems.collectorAlertC, _domElems.domElems.teamList);
             _domElems.domElems.teamList.append("<li class=\"collector__listItem\" id=\"collector__listItem\" data-nr=\"" + counter + "\"> " + newTeam + "<button class=\"collector__del\" type=\"button\">X</button></li>");
-        } else {
+        } else if (newTeam === "") {
             _domElems.domElems.collectorAlertA.show();
+        } else {
+            _domElems.domElems.collectorAlertC.show();
         }
     },
     choosingTournamentType: function choosingTournamentType(tournamentType) {
