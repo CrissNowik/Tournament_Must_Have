@@ -3,8 +3,7 @@ import { basicFunctions } from "./basicFunctions";
 
 
 $(document).ready(function () {
-    //Removing teams from list
-    //
+    // removing teams from list
     domElems.teamList.on('click', 'li#collector__listItem>button.collector__del', function (e) {
         e.preventDefault();
         $(this).parent().remove();
@@ -13,32 +12,28 @@ $(document).ready(function () {
         }
         
     });
-
-    //Function calls on elems
-    //
+    // creating new tournament
     domElems.btnConfirm.on('click', function (e) {
         e.preventDefault();
         basicFunctions.switchingVisibility(domElems.naviScreen, domElems.collector);
     });
-
+    // adding teams by button click
     domElems.btnAdd.bind('click keypress', function (e) {
         e.preventDefault();
         let code = e.keyCode || e.which;
         if (code === 13 || e.type === 'click') {
             basicFunctions.gettingTeams();
-            domElems.teamInput.val("");
         };
     });
-
+    // adding teams by keyboard
     domElems.teamInput.on('keypress', function (e) {
         let code = e.keyCode || e.which;
         if (code === 13) {
             e.preventDefault();
             basicFunctions.gettingTeams();
-            domElems.teamInput.val("");
         };
     });
-
+    // generating shedule 
     domElems.btnGenerate.on('click', function (e) {
         e.preventDefault();
         if (domElems.teamList.children().length > 2) {

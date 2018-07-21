@@ -132,17 +132,21 @@ var basicFunctions = exports.basicFunctions = {
     gettingTeams: function gettingTeams() {
         var newTeam = _domElems.domElems.teamInput.val();
         if (_domElems.domElems.teamList.children().length > 1) {
+            // generator validation
             _domElems.domElems.collectorAlertB.hide();
         }
         if (_domElems.domElems.teamList.children().length > 30) {
+            // number of teams validation
             _domElems.domElems.collectorAlertD.show();
             _domElems.domElems.teamInput.attr('disabled', true);
         }
-        if (newTeam != "" && newTeam.length < 25) {
+        if (newTeam != "" && newTeam.length < 26) {
+            // input content validation
             var counter = _globalVariables.globalVariables.dataCounter++;
             this.switchingVisibility(_domElems.domElems.collectorAlertA, _domElems.domElems.teamList);
             this.switchingVisibility(_domElems.domElems.collectorAlertC, _domElems.domElems.teamList);
             _domElems.domElems.teamList.append("<li class=\"collector__listItem\" id=\"collector__listItem\" data-nr=\"" + counter + "\"> " + newTeam + "<button class=\"collector__del\" type=\"button\">X</button></li>");
+            _domElems.domElems.teamInput.val("");
         } else if (newTeam === "") {
             _domElems.domElems.collectorAlertA.show();
         } else {
@@ -156,7 +160,7 @@ var basicFunctions = exports.basicFunctions = {
             var readySheduleLeague = (0, _leagueGenerator.leagueGenerator)(teamList);
             (0, _showShedule.showShedule)(readySheduleLeague);
         } else if (tournamentType === 'Cup') {
-            (0, _cupGenerator.cupGenerator)();
+            (0, _cupGenerator.cupGenerator)(teamList);
         } else {
             (0, _mixGenerator.mixGenerator)();
         }
@@ -174,6 +178,23 @@ var basicFunctions = exports.basicFunctions = {
             numbers[rand] = numbers[range - 1];
             range--;
         }
+    },
+    gettingTeamNames: function gettingTeamNames(teamList, numberOfTeams) {
+        var teamNamesList = [];
+
+        for (var i = 0; i < numberOfTeams; i++) {
+            teamNamesList.push(teamList[i].firstChild.wholeText);
+        }
+        return teamNamesList;
+    },
+    pairing: function pairing(teamNamesList, numberOfTeams) {
+        var pairsReadyToShow = [];
+
+        for (var i = 0; i < numberOfTeams; i++) {
+            var array = [teamNamesList[i], teamNamesList[i + 1]];
+            pairsReadyToShow.push(array);
+        }
+        return pairsReadyToShow;
     }
 };
 
@@ -189,8 +210,7 @@ var _domElems = __webpack_require__(0);
 var _basicFunctions = __webpack_require__(1);
 
 $(document).ready(function () {
-    //Removing teams from list
-    //
+    // removing teams from list
     _domElems.domElems.teamList.on('click', 'li#collector__listItem>button.collector__del', function (e) {
         e.preventDefault();
         $(this).parent().remove();
@@ -198,32 +218,28 @@ $(document).ready(function () {
             _domElems.domElems.teamInput.removeAttr('disabled');
         }
     });
-
-    //Function calls on elems
-    //
+    // creating new tournament
     _domElems.domElems.btnConfirm.on('click', function (e) {
         e.preventDefault();
         _basicFunctions.basicFunctions.switchingVisibility(_domElems.domElems.naviScreen, _domElems.domElems.collector);
     });
-
+    // adding teams by button click
     _domElems.domElems.btnAdd.bind('click keypress', function (e) {
         e.preventDefault();
         var code = e.keyCode || e.which;
         if (code === 13 || e.type === 'click') {
             _basicFunctions.basicFunctions.gettingTeams();
-            _domElems.domElems.teamInput.val("");
         };
     });
-
+    // adding teams by keyboard
     _domElems.domElems.teamInput.on('keypress', function (e) {
         var code = e.keyCode || e.which;
         if (code === 13) {
             e.preventDefault();
             _basicFunctions.basicFunctions.gettingTeams();
-            _domElems.domElems.teamInput.val("");
         };
     });
-
+    // generating shedule 
     _domElems.domElems.btnGenerate.on('click', function (e) {
         e.preventDefault();
         if (_domElems.domElems.teamList.children().length > 2) {
@@ -268,11 +284,8 @@ var _basicFunctions = __webpack_require__(1);
 function leagueGenerator(teamList) {
             console.log("LIGA");
             var numberOfTeams = teamList.length;
-            var teamNamesList = [];
+            var teamNamesList = _basicFunctions.basicFunctions.gettingTeamNames(teamList, numberOfTeams);
 
-            for (var i = 0; i < numberOfTeams; i++) {
-                        teamNamesList.push(teamList[i].firstChild.wholeText);
-            }
             _basicFunctions.basicFunctions.shuffle(teamNamesList); // shuffling teams
 
             var robin = __webpack_require__(5); // call for algorythm
@@ -323,11 +336,21 @@ module.exports = function (n, ps) {  // n = num players
 
 
 Object.defineProperty(exports, "__esModule", {
-        value: true
+            value: true
 });
 exports.cupGenerator = cupGenerator;
-function cupGenerator() {
-        console.log("CUP");
+
+var _basicFunctions = __webpack_require__(1);
+
+function cupGenerator(teamList) {
+            console.log("CUP");
+            var numberOfTeams = teamList.length;
+            var teamNamesList = _basicFunctions.basicFunctions.gettingTeamNames(teamList, numberOfTeams);
+
+            _basicFunctions.basicFunctions.shuffle(teamNamesList); // shuffling teams
+
+            var pairsReadyToShow = _basicFunctions.basicFunctions.pairing(teamNamesList, numberOfTeams);
+            console.log(pairsReadyToShow);
 };
 
 /***/ }),

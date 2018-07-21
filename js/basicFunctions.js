@@ -18,19 +18,20 @@ export let basicFunctions = {
                         },
     gettingTeams: function () {
                     let newTeam = domElems.teamInput.val();
-                    if (domElems.teamList.children().length > 1){
+                    if (domElems.teamList.children().length > 1){ // generator validation
                         domElems.collectorAlertB.hide();
                     }
-                    if (domElems.teamList.children().length > 30){
+                    if (domElems.teamList.children().length > 30){ // number of teams validation
                         domElems.collectorAlertD.show();
                         domElems.teamInput.attr('disabled', true);
                     } 
-                    if (newTeam != "" && newTeam.length < 25) {
+                    if (newTeam != "" && newTeam.length < 26) { // input content validation
                         let counter = globalVariables.dataCounter++;
                         this.switchingVisibility(domElems.collectorAlertA, domElems.teamList);
                         this.switchingVisibility(domElems.collectorAlertC, domElems.teamList);
                         domElems.teamList.append(
                             `<li class="collector__listItem" id="collector__listItem" data-nr="${counter}"> ${newTeam}<button class="collector__del" type="button">X</button></li>`);
+                        domElems.teamInput.val("");
                     } else if (newTeam === ""){
                         domElems.collectorAlertA.show();
                     } else {
@@ -44,7 +45,7 @@ export let basicFunctions = {
                         let readySheduleLeague = leagueGenerator(teamList);                        
                         showShedule(readySheduleLeague);
                     } else if (tournamentType === 'Cup') {
-                        cupGenerator();
+                        cupGenerator(teamList);
                     } else {
                         mixGenerator();
                     }
@@ -62,5 +63,22 @@ export let basicFunctions = {
            numbers[rand] = numbers[range - 1];
            range--;
         }
+     },
+     gettingTeamNames: function(teamList, numberOfTeams){
+        let teamNamesList = [];
+
+        for (let i = 0; i < numberOfTeams; i++) {
+            teamNamesList.push(teamList[i].firstChild.wholeText);
+        }
+        return teamNamesList;
+     },
+     pairing: function (teamNamesList, numberOfTeams) {
+         let pairsReadyToShow = [];
+
+         for (let i = 0; i < numberOfTeams; i++) {
+            let array = [teamNamesList[i], teamNamesList[i+1]];
+             pairsReadyToShow.push(array);
+         }
+        return pairsReadyToShow;
      }
 }
