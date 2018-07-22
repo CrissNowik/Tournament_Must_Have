@@ -60,7 +60,7 @@
 /******/ 	__webpack_require__.p = "";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 2);
+/******/ 	return __webpack_require__(__webpack_require__.s = 3);
 /******/ })
 /************************************************************************/
 /******/ ([
@@ -109,7 +109,7 @@ exports.basicFunctions = undefined;
 
 var _domElems = __webpack_require__(0);
 
-var _globalVariables = __webpack_require__(3);
+var _globalVariables = __webpack_require__(2);
 
 var _leagueGenerator = __webpack_require__(4);
 
@@ -117,9 +117,9 @@ var _cupGenerator = __webpack_require__(6);
 
 var _mixGenerator = __webpack_require__(7);
 
-var _showSheduleLeague = __webpack_require__(9);
+var _showSheduleLeague = __webpack_require__(8);
 
-var _showSheduleCup = __webpack_require__(10);
+var _showSheduleCup = __webpack_require__(9);
 
 var basicFunctions = exports.basicFunctions = {
     shuffle: function shuffle(teamList) {
@@ -220,6 +220,21 @@ var basicFunctions = exports.basicFunctions = {
 "use strict";
 
 
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+var globalVariables = exports.globalVariables = {
+    dataCounter: 0,
+    idCharArr: ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P"]
+};
+
+/***/ }),
+/* 3 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
 var _domElems = __webpack_require__(0);
 
 var _basicFunctions = __webpack_require__(1);
@@ -267,21 +282,6 @@ $(document).ready(function () {
         }
     });
 });
-
-/***/ }),
-/* 3 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-    value: true
-});
-var globalVariables = exports.globalVariables = {
-    dataCounter: 0,
-    idCharArr: ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P"]
-};
 
 /***/ }),
 /* 4 */
@@ -383,8 +383,7 @@ function mixGenerator() {
 };
 
 /***/ }),
-/* 8 */,
-/* 9 */
+/* 8 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -436,7 +435,7 @@ function showSheduleLeague(readyShedule) {
 };
 
 /***/ }),
-/* 10 */
+/* 9 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -449,29 +448,49 @@ exports.showSheduleCup = showSheduleCup;
 
 var _domElems = __webpack_require__(0);
 
-var _globalVariables = __webpack_require__(3);
+var _globalVariables = __webpack_require__(2);
 
 function showSheduleCup(readyShedule) {
     var repsR1 = readyShedule.length;
     var repsR2 = Math.ceil(repsR1 / 2);
     var roundCounter = 1;
+    var pairsInR2 = [];
+    var idLeft = "";
+    var idRight = "";
+    var pairOnScreen = "";
     //Round 1
     _domElems.domElems.sheduleOnScreenA.append("<ul class=\"result__listItem--roundHeader\">Round nr " + roundCounter + "</ul>");
     for (var i = 0; i < repsR1; i++) {
-        var idLeft = "";
         idLeft = _globalVariables.globalVariables.idCharArr[i] + "1";
-        var idRight = "";
         idRight = _globalVariables.globalVariables.idCharArr[i] + "2";
-        var pairOnScreen = readyShedule[i].join(" " + idLeft + " ___ - ___ " + ("" + idRight));
+        pairOnScreen = readyShedule[i].join(" " + idLeft + " ___ - ___ " + ("" + idRight));
 
         _domElems.domElems.sheduleOnScreenA.append("<li class=\"result__listItem\">" + pairOnScreen + "</li>");
     }
     roundCounter++;
     //Round 2
     _domElems.domElems.sheduleOnScreenA.append("<ul class=\"result__listItem--roundHeader\">Round nr " + roundCounter + "</ul>");
-    for (var j = 0; j < repsR2; j++) {
+    if (repsR2 % 2 === 0) {
+        for (var j = 0; j < repsR2; j++) {
+            var array = _globalVariables.globalVariables.idCharArr.slice(0, 2);
+            _globalVariables.globalVariables.idCharArr.splice(0, 2);
+            pairsInR2.push(array);
+        }
+    } else {
+        var teams = _globalVariables.globalVariables.idCharArr;
+        teams.splice(-1, 1, " Lucky");
+        for (var _i = 0; _i < repsR2; _i++) {
+            var _array = teams.slice(0, 2);
+            teams.splice(0, 2);
+            pairsInR2.push(_array);
+        }
+    }
+    console.log("pairsInR2", pairsInR2);
 
-        //TO DO: parowanie w kolejnych rundach 
+    for (var k = 0; k < pairsInR2.length; k++) {
+
+        pairOnScreen = pairsInR2[k].join(" ___ - ___ ");
+        _domElems.domElems.sheduleOnScreenA.append("<li class=\"result__listItem\">" + pairOnScreen + "</li>");
     }
 }
 
