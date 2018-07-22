@@ -38,9 +38,9 @@ $(document).ready(function () {
         e.preventDefault();
         if (domElems.teamList.children().length > 2) {
             basicFunctions.switchingVisibility(domElems.collectorAlertB, domElems.result);
-            let selectedTeam = $('#collector__select :selected').val();
+            let selectedTournamentType = $('#collector__select :selected').val();
             basicFunctions.switchingVisibility(domElems.collector, domElems.result);
-            basicFunctions.choosingTournamentType(selectedTeam);
+            basicFunctions.choosingTournamentType(selectedTournamentType);
         } else {
             domElems.collectorAlertB.show();
         }

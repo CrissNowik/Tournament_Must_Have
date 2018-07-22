@@ -2,7 +2,6 @@ import { basicFunctions } from "./basicFunctions";
 
 
 export function leagueGenerator(teamList) {
-            console.log("LIGA");
             let numberOfTeams = teamList.length;
             let teamNamesList = basicFunctions.gettingTeamNames(teamList, numberOfTeams);
 

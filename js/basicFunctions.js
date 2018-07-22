@@ -3,7 +3,8 @@ import { globalVariables } from "./globalVariables";
 import { leagueGenerator } from "./leagueGenerator";
 import { cupGenerator } from "./cupGenerator";
 import { mixGenerator } from "./mixGenerator";
-import { showShedule } from "./showShedule";
+import { showSheduleLeague } from "./showSheduleLeague";
+import { showSheduleCup } from "./showSheduleCup";
 
 
 export let basicFunctions = {
@@ -42,10 +43,11 @@ export let basicFunctions = {
                     let teamList = domElems.teamList.children();
                     
                     if (tournamentType === 'League') {
-                        let readySheduleLeague = leagueGenerator(teamList);                        
-                        showShedule(readySheduleLeague);
+                        let readySheduleLeague = leagueGenerator(teamList);
+                        showSheduleLeague(readySheduleLeague);
                     } else if (tournamentType === 'Cup') {
-                        cupGenerator(teamList);
+                        let readySheduleCup = cupGenerator(teamList);
+                        showSheduleCup(readySheduleCup);
                     } else {
                         mixGenerator();
                     }
@@ -74,10 +76,22 @@ export let basicFunctions = {
      },
      pairing: function (teamNamesList, numberOfTeams) {
          let pairsReadyToShow = [];
+         let rep = Math.ceil(numberOfTeams/2);
 
-         for (let i = 0; i < numberOfTeams; i++) {
-            let array = [teamNamesList[i], teamNamesList[i+1]];
-             pairsReadyToShow.push(array);
+         if (numberOfTeams % 2 === 0) {
+            for (let i = 0; i < rep; i++) {
+               let array = teamNamesList.slice(0,2);
+               teamNamesList.splice(0,2);
+               pairsReadyToShow.push(array);
+             }
+         } else {
+             let teams = teamNamesList;
+             teams.push(" Lucky");
+             for (let i = 0; i < rep; i++) {
+                let array = teams.slice(0,2);
+                teams.splice(0,2);
+                pairsReadyToShow.push(array);
+              }
          }
         return pairsReadyToShow;
      }

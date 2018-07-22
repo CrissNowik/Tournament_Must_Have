@@ -117,7 +117,9 @@ var _cupGenerator = __webpack_require__(6);
 
 var _mixGenerator = __webpack_require__(7);
 
-var _showShedule = __webpack_require__(8);
+var _showSheduleLeague = __webpack_require__(9);
+
+var _showSheduleCup = __webpack_require__(10);
 
 var basicFunctions = exports.basicFunctions = {
     shuffle: function shuffle(teamList) {
@@ -158,9 +160,10 @@ var basicFunctions = exports.basicFunctions = {
 
         if (tournamentType === 'League') {
             var readySheduleLeague = (0, _leagueGenerator.leagueGenerator)(teamList);
-            (0, _showShedule.showShedule)(readySheduleLeague);
+            (0, _showSheduleLeague.showSheduleLeague)(readySheduleLeague);
         } else if (tournamentType === 'Cup') {
-            (0, _cupGenerator.cupGenerator)(teamList);
+            var readySheduleCup = (0, _cupGenerator.cupGenerator)(teamList);
+            (0, _showSheduleCup.showSheduleCup)(readySheduleCup);
         } else {
             (0, _mixGenerator.mixGenerator)();
         }
@@ -189,10 +192,22 @@ var basicFunctions = exports.basicFunctions = {
     },
     pairing: function pairing(teamNamesList, numberOfTeams) {
         var pairsReadyToShow = [];
+        var rep = Math.ceil(numberOfTeams / 2);
 
-        for (var i = 0; i < numberOfTeams; i++) {
-            var array = [teamNamesList[i], teamNamesList[i + 1]];
-            pairsReadyToShow.push(array);
+        if (numberOfTeams % 2 === 0) {
+            for (var i = 0; i < rep; i++) {
+                var array = teamNamesList.slice(0, 2);
+                teamNamesList.splice(0, 2);
+                pairsReadyToShow.push(array);
+            }
+        } else {
+            var teams = teamNamesList;
+            teams.push(" Lucky");
+            for (var _i2 = 0; _i2 < rep; _i2++) {
+                var _array = teams.slice(0, 2);
+                teams.splice(0, 2);
+                pairsReadyToShow.push(_array);
+            }
         }
         return pairsReadyToShow;
     }
@@ -244,9 +259,9 @@ $(document).ready(function () {
         e.preventDefault();
         if (_domElems.domElems.teamList.children().length > 2) {
             _basicFunctions.basicFunctions.switchingVisibility(_domElems.domElems.collectorAlertB, _domElems.domElems.result);
-            var selectedTeam = $('#collector__select :selected').val();
+            var selectedTournamentType = $('#collector__select :selected').val();
             _basicFunctions.basicFunctions.switchingVisibility(_domElems.domElems.collector, _domElems.domElems.result);
-            _basicFunctions.basicFunctions.choosingTournamentType(selectedTeam);
+            _basicFunctions.basicFunctions.choosingTournamentType(selectedTournamentType);
         } else {
             _domElems.domElems.collectorAlertB.show();
         }
@@ -264,7 +279,8 @@ Object.defineProperty(exports, "__esModule", {
     value: true
 });
 var globalVariables = exports.globalVariables = {
-    dataCounter: 0
+    dataCounter: 0,
+    idCharArr: ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P"]
 };
 
 /***/ }),
@@ -282,7 +298,6 @@ exports.leagueGenerator = leagueGenerator;
 var _basicFunctions = __webpack_require__(1);
 
 function leagueGenerator(teamList) {
-            console.log("LIGA");
             var numberOfTeams = teamList.length;
             var teamNamesList = _basicFunctions.basicFunctions.gettingTeamNames(teamList, numberOfTeams);
 
@@ -343,14 +358,13 @@ exports.cupGenerator = cupGenerator;
 var _basicFunctions = __webpack_require__(1);
 
 function cupGenerator(teamList) {
-            console.log("CUP");
             var numberOfTeams = teamList.length;
             var teamNamesList = _basicFunctions.basicFunctions.gettingTeamNames(teamList, numberOfTeams);
 
             _basicFunctions.basicFunctions.shuffle(teamNamesList); // shuffling teams
 
             var pairsReadyToShow = _basicFunctions.basicFunctions.pairing(teamNamesList, numberOfTeams);
-            console.log(pairsReadyToShow);
+            return pairsReadyToShow;
 };
 
 /***/ }),
@@ -369,7 +383,8 @@ function mixGenerator() {
 };
 
 /***/ }),
-/* 8 */
+/* 8 */,
+/* 9 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -378,14 +393,15 @@ function mixGenerator() {
 Object.defineProperty(exports, "__esModule", {
     value: true
 });
-exports.showShedule = showShedule;
+exports.showSheduleLeague = showSheduleLeague;
 
 var _domElems = __webpack_require__(0);
 
-function showShedule(readySheduleLeague) {
-    for (var i = 0; i < readySheduleLeague.length; i++) {
+function showSheduleLeague(readyShedule) {
+    for (var i = 0; i < readyShedule.length; i++) {
         var roundCounter = 1 + i;
         var gameCounter = 0;
+
         if (roundCounter <= 8) {
             _domElems.domElems.sheduleOnScreenA.append("<ul class=\"result__listItem--roundHeader\">Round nr " + roundCounter + "</ul>");
         } else if (8 <= roundCounter && roundCounter <= 16) {
@@ -396,9 +412,10 @@ function showShedule(readySheduleLeague) {
             _domElems.domElems.sheduleOnScreenD.append("<ul class=\"result__listItem--roundHeader\">Round nr " + roundCounter + "</ul>");
         }
 
-        for (var j = 0; j < readySheduleLeague[i].length; j++) {
-            var newPair = readySheduleLeague[i][j];
+        for (var j = 0; j < readyShedule[i].length; j++) {
+            var newPair = readyShedule[i][j];
             var pairOnScreen = newPair.join(" ___ - ___ ");
+
             if (roundCounter <= 8) {
                 _domElems.domElems.sheduleOnScreenA.append("<li class=\"result__listItem\">" + pairOnScreen + "</li>");
             } else if (8 <= roundCounter && roundCounter <= 16) {
@@ -417,6 +434,46 @@ function showShedule(readySheduleLeague) {
         }
     }
 };
+
+/***/ }),
+/* 10 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+exports.showSheduleCup = showSheduleCup;
+
+var _domElems = __webpack_require__(0);
+
+var _globalVariables = __webpack_require__(3);
+
+function showSheduleCup(readyShedule) {
+    var repsR1 = readyShedule.length;
+    var repsR2 = Math.ceil(repsR1 / 2);
+    var roundCounter = 1;
+    //Round 1
+    _domElems.domElems.sheduleOnScreenA.append("<ul class=\"result__listItem--roundHeader\">Round nr " + roundCounter + "</ul>");
+    for (var i = 0; i < repsR1; i++) {
+        var idLeft = "";
+        idLeft = _globalVariables.globalVariables.idCharArr[i] + "1";
+        var idRight = "";
+        idRight = _globalVariables.globalVariables.idCharArr[i] + "2";
+        var pairOnScreen = readyShedule[i].join(" " + idLeft + " ___ - ___ " + ("" + idRight));
+
+        _domElems.domElems.sheduleOnScreenA.append("<li class=\"result__listItem\">" + pairOnScreen + "</li>");
+    }
+    roundCounter++;
+    //Round 2
+    _domElems.domElems.sheduleOnScreenA.append("<ul class=\"result__listItem--roundHeader\">Round nr " + roundCounter + "</ul>");
+    for (var j = 0; j < repsR2; j++) {
+
+        //TO DO: parowanie w kolejnych rundach 
+    }
+}
 
 /***/ })
 /******/ ]);

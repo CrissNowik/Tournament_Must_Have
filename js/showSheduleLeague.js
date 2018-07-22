@@ -1,9 +1,10 @@
 import { domElems } from "./domElems";
 
-export function showShedule(readySheduleLeague) {    
-       for (let i = 0; i < readySheduleLeague.length; i++) {
+export function showSheduleLeague(readyShedule) {        
+       for (let i = 0; i < readyShedule.length; i++) {
            let roundCounter = 1 + i;
            let gameCounter = 0;
+
            if (roundCounter<=8) {
             domElems.sheduleOnScreenA.append(
                 `<ul class="result__listItem--roundHeader">Round nr ${roundCounter}</ul>`);    
@@ -18,9 +19,10 @@ export function showShedule(readySheduleLeague) {
                     `<ul class="result__listItem--roundHeader">Round nr ${roundCounter}</ul>`);
             }
 
-            for (let j = 0; j < readySheduleLeague[i].length; j++) {
-                let newPair = readySheduleLeague[i][j];
+            for (let j = 0; j < readyShedule[i].length; j++) {
+                let newPair = readyShedule[i][j];
                 let pairOnScreen = newPair.join(" ___ - ___ ");
+
                 if (roundCounter<=8) {
                     domElems.sheduleOnScreenA.append(
                         `<li class="result__listItem">${pairOnScreen}</li>`); 
