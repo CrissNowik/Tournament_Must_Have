@@ -46,8 +46,8 @@ export let basicFunctions = {
                         let readySheduleLeague = leagueGenerator(teamList);
                         showSheduleLeague(readySheduleLeague);
                     } else if (tournamentType === 'Cup') {
-                        let readySheduleCup = cupGenerator(teamList);
-                        showSheduleCup(readySheduleCup);
+                        let sheduleRound1 = cupGenerator(teamList);
+                        showSheduleCup(sheduleRound1);
                     } else {
                         mixGenerator();
                     }

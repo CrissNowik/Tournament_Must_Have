@@ -162,8 +162,8 @@ var basicFunctions = exports.basicFunctions = {
             var readySheduleLeague = (0, _leagueGenerator.leagueGenerator)(teamList);
             (0, _showSheduleLeague.showSheduleLeague)(readySheduleLeague);
         } else if (tournamentType === 'Cup') {
-            var readySheduleCup = (0, _cupGenerator.cupGenerator)(teamList);
-            (0, _showSheduleCup.showSheduleCup)(readySheduleCup);
+            var sheduleRound1 = (0, _cupGenerator.cupGenerator)(teamList);
+            (0, _showSheduleCup.showSheduleCup)(sheduleRound1);
         } else {
             (0, _mixGenerator.mixGenerator)();
         }
@@ -363,8 +363,12 @@ function cupGenerator(teamList) {
 
             _basicFunctions.basicFunctions.shuffle(teamNamesList); // shuffling teams
 
-            var pairsReadyToShow = _basicFunctions.basicFunctions.pairing(teamNamesList, numberOfTeams);
-            return pairsReadyToShow;
+            var pairsReadyToShowR1 = _basicFunctions.basicFunctions.pairing(teamNamesList, numberOfTeams);
+            // let pairsReadyToShowR2 = basicFunctions.pairing(pairsReadyToShowR1, pairsReadyToShowR1.length)
+            console.log("pairsReadyToShowR1", pairsReadyToShowR1);
+            // console.log("pairsReadyToShowR2", pairsReadyToShowR2);
+
+            return pairsReadyToShowR1;
 };
 
 /***/ }),
@@ -450,48 +454,33 @@ var _domElems = __webpack_require__(0);
 
 var _globalVariables = __webpack_require__(2);
 
-function showSheduleCup(readyShedule) {
-    var repsR1 = readyShedule.length;
-    var repsR2 = Math.ceil(repsR1 / 2);
+function showSheduleCup(sheduleRound1) {
+    var repsR1 = sheduleRound1.length;
+    // let repsR2 = Math.ceil(repsR1/2);
     var roundCounter = 1;
-    var pairsInR2 = [];
     var idLeft = "";
     var idRight = "";
     var pairOnScreen = "";
+
     //Round 1
     _domElems.domElems.sheduleOnScreenA.append("<ul class=\"result__listItem--roundHeader\">Round nr " + roundCounter + "</ul>");
+
     for (var i = 0; i < repsR1; i++) {
         idLeft = _globalVariables.globalVariables.idCharArr[i] + "1";
         idRight = _globalVariables.globalVariables.idCharArr[i] + "2";
-        pairOnScreen = readyShedule[i].join(" " + idLeft + " ___ - ___ " + ("" + idRight));
+        pairOnScreen = sheduleRound1[i].join(" " + idLeft + " ___ - ___ " + ("" + idRight));
 
         _domElems.domElems.sheduleOnScreenA.append("<li class=\"result__listItem\">" + pairOnScreen + "</li>");
     }
     roundCounter++;
     //Round 2
     _domElems.domElems.sheduleOnScreenA.append("<ul class=\"result__listItem--roundHeader\">Round nr " + roundCounter + "</ul>");
-    if (repsR2 % 2 === 0) {
-        for (var j = 0; j < repsR2; j++) {
-            var array = _globalVariables.globalVariables.idCharArr.slice(0, 2);
-            _globalVariables.globalVariables.idCharArr.splice(0, 2);
-            pairsInR2.push(array);
-        }
-    } else {
-        var teams = _globalVariables.globalVariables.idCharArr;
-        teams.splice(-1, 1, " Lucky");
-        for (var _i = 0; _i < repsR2; _i++) {
-            var _array = teams.slice(0, 2);
-            teams.splice(0, 2);
-            pairsInR2.push(_array);
-        }
-    }
-    console.log("pairsInR2", pairsInR2);
 
-    for (var k = 0; k < pairsInR2.length; k++) {
+    //  for (let k = 0; k < repsR2; k++) {
+    //     pairOnScreen = sheduleRound2[k].join(" ___ - ___ ");   
+    //     domElems.sheduleOnScreenA.append(`<li class="result__listItem">${pairOnScreen}</li>`);
 
-        pairOnScreen = pairsInR2[k].join(" ___ - ___ ");
-        _domElems.domElems.sheduleOnScreenA.append("<li class=\"result__listItem\">" + pairOnScreen + "</li>");
-    }
+    //  }
 }
 
 /***/ })
