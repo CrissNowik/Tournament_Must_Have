@@ -157,13 +157,29 @@ var basicFunctions = exports.basicFunctions = {
     },
     choosingTournamentType: function choosingTournamentType(tournamentType) {
         var teamList = _domElems.domElems.teamList.children();
+        var numberOfCompetitors = teamList.length;
+        console.log("teamList", numberOfCompetitors);
 
         if (tournamentType === 'League') {
-            var readySheduleLeague = (0, _leagueGenerator.leagueGenerator)(teamList);
+            var readySheduleLeague = (0, _leagueGenerator.leagueGenerator)(numberOfCompetitors);
             (0, _showSheduleLeague.showSheduleLeague)(readySheduleLeague);
         } else if (tournamentType === 'Cup') {
-            var sheduleRound1 = (0, _cupGenerator.cupGenerator)(teamList);
-            (0, _showSheduleCup.showSheduleCup)(sheduleRound1);
+            if (numberOfCompetitors < 5) {
+                // 2 rounds
+                var sheduleToShowUp = (0, _cupGenerator.cupGenerator)(teamList);
+                console.log("sheduleToShowUp ", sheduleToShowUp);
+
+                (0, _showSheduleCup.showSheduleCup)(sheduleToShowUp);
+            } else if (numberOfCompetitors > 4 && numberOfCompetitors < 9) {
+                // 3 rounds
+                console.log(" 3 rounds");
+            } else if (numberOfCompetitors > 8 && numberOfCompetitors < 17) {
+                // 4 rounds
+                console.log(" 4 rounds");
+            } else {
+                // 5 rounds
+                console.log(" 5 rounds");
+            }
         } else {
             (0, _mixGenerator.mixGenerator)();
         }
@@ -351,24 +367,36 @@ module.exports = function (n, ps) {  // n = num players
 
 
 Object.defineProperty(exports, "__esModule", {
-            value: true
+    value: true
 });
 exports.cupGenerator = cupGenerator;
 
 var _basicFunctions = __webpack_require__(1);
 
 function cupGenerator(teamList) {
-            var numberOfTeams = teamList.length;
-            var teamNamesList = _basicFunctions.basicFunctions.gettingTeamNames(teamList, numberOfTeams);
+    var numberOfTeams = teamList.length;
+    var teamNamesList = _basicFunctions.basicFunctions.gettingTeamNames(teamList, numberOfTeams);
+    var pairsReadyToShowR1 = [];
+    var pairsReadyToShowR2 = [];
+    var pairsReadyToShowR3 = [];
+    var pairsReadyToShowR4 = [];
+    var pairsReadyToShowR5 = [];
 
-            _basicFunctions.basicFunctions.shuffle(teamNamesList); // shuffling teams
+    _basicFunctions.basicFunctions.shuffle(teamNamesList); // shuffling teams
 
-            var pairsReadyToShowR1 = _basicFunctions.basicFunctions.pairing(teamNamesList, numberOfTeams);
-            // let pairsReadyToShowR2 = basicFunctions.pairing(pairsReadyToShowR1, pairsReadyToShowR1.length)
-            console.log("pairsReadyToShowR1", pairsReadyToShowR1);
-            // console.log("pairsReadyToShowR2", pairsReadyToShowR2);
-
-            return pairsReadyToShowR1;
+    if (numberOfTeams < 5) {
+        // 2 rounds
+        pairsReadyToShowR1 = _basicFunctions.basicFunctions.pairing(teamNamesList, numberOfTeams);
+        console.log("Cup generator, 2 rounds ", pairsReadyToShowR1);
+        return pairsReadyToShowR1;
+        // return array with 2 subarrays;
+    } else if (numberOfTeams > 4 && numberOfTeams < 9) {// 3 rounds
+        // return array with 3 subarrays;
+    } else if (numberOfTeams > 8 && numberOfTeams < 17) {// 4 rounds
+        // return array with 4 subarrays;
+    } else {// 5 rounds
+            // return array with 5 subarrays;
+        }
 };
 
 /***/ }),

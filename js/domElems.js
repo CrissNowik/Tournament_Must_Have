@@ -19,4 +19,5 @@ export let domElems = {
         sheduleOnScreenC: $('#result__listC'),
         sheduleOnScreenD: $('#result__listD')
     }
-
+ 
+ 

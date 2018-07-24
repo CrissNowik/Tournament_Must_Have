@@ -28,5 +28,4 @@ export function showSheduleCup(sheduleRound1) {
     //     domElems.sheduleOnScreenA.append(`<li class="result__listItem">${pairOnScreen}</li>`);
          
     //  }
-
 }

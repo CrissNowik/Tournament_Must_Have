@@ -41,13 +41,25 @@ export let basicFunctions = {
                 },
     choosingTournamentType: function (tournamentType) {
                     let teamList = domElems.teamList.children();
+                    let numberOfCompetitors = teamList.length;
+                    console.log("teamList", numberOfCompetitors);
                     
                     if (tournamentType === 'League') {
-                        let readySheduleLeague = leagueGenerator(teamList);
+                        let readySheduleLeague = leagueGenerator(numberOfCompetitors);
                         showSheduleLeague(readySheduleLeague);
                     } else if (tournamentType === 'Cup') {
-                        let sheduleRound1 = cupGenerator(teamList);
-                        showSheduleCup(sheduleRound1);
+                        if (numberOfCompetitors<5) { // 2 rounds
+                            let sheduleToShowUp = cupGenerator(teamList);   
+                            console.log("sheduleToShowUp ", sheduleToShowUp);
+                                                   
+                            showSheduleCup(sheduleToShowUp);
+                        } else if (numberOfCompetitors > 4 && numberOfCompetitors < 9 ) { // 3 rounds
+                            console.log(" 3 rounds");
+                        } else if (numberOfCompetitors > 8 && numberOfCompetitors < 17) { // 4 rounds
+                            console.log(" 4 rounds"); 
+                        } else { // 5 rounds
+                            console.log(" 5 rounds");
+                        }
                     } else {
                         mixGenerator();
                     }
