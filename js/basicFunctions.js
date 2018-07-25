@@ -106,5 +106,11 @@ export let basicFunctions = {
               }
          }
         return pairsReadyToShow;
-     }
+     },
+     showHeader: function (where, roundCounter) {
+        where.append(`<ul class="result__listItem--roundHeader">Round nr ${roundCounter}</ul>`)
+    },
+    showMatch: function(where, pairOnScreen){
+        where.append(`<li class="result__listItem">${pairOnScreen}</li>`);
+    }
 }

@@ -1,21 +1,21 @@
 import { basicFunctions } from "./basicFunctions";
+import { globalVariables } from "./globalVariables";
 
 export  function cupGenerator(teamList) {
             let numberOfTeams = teamList.length;
             let teamNamesList = basicFunctions.gettingTeamNames(teamList, numberOfTeams);
-            let pairsReadyToShowR1 = [];
-            let pairsReadyToShowR2 = [];
-            let pairsReadyToShowR3 = [];
-            let pairsReadyToShowR4 = [];
-            let pairsReadyToShowR5 = [];
+            let final  = [];
+            let pairsReadyToShowR1, pairsReadyToShowR2, pairsReadyToShowR3, pairsReadyToShowR4, pairsReadyToShowR5;
+            pairsReadyToShowR1 = pairsReadyToShowR2 = pairsReadyToShowR3 = pairsReadyToShowR4 = pairsReadyToShowR5 = [];
+            
 
             basicFunctions.shuffle(teamNamesList); // shuffling teams
 
             if (numberOfTeams<5) { // 2 rounds
                 pairsReadyToShowR1 = basicFunctions.pairing(teamNamesList, numberOfTeams);
-                console.log("Cup generator, 2 rounds ", pairsReadyToShowR1 );
-                return pairsReadyToShowR1;
-                // return array with 2 subarrays;
+                pairsReadyToShowR2 = [globalVariables.empty, globalVariables.empty];
+                final.push(pairsReadyToShowR1, pairsReadyToShowR2);
+                return final;
             } else if (numberOfTeams > 4 && numberOfTeams < 9 ) { // 3 rounds
                 // return array with 3 subarrays;
             } else if (numberOfTeams > 8 && numberOfTeams < 17) { // 4 rounds
