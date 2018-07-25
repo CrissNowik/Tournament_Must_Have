@@ -8,6 +8,6 @@ export function leagueGenerator(teamList) {
             basicFunctions.shuffle(teamNamesList); // shuffling teams
             
             let robin = require ('roundrobin'); // call for algorythm
-            let readyShedule = robin(numberOfTeams, teamNamesList); // using algorythm
+            let readyShedule = robin(numberOfTeams, teamNamesList); // using algorythm          
             return readyShedule;
         };

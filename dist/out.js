@@ -73,41 +73,9 @@
 Object.defineProperty(exports, "__esModule", {
     value: true
 });
-//DOM elements store
-//
-var domElems = exports.domElems = {
-    naviScreen: $('#nav'),
-    btnConfirm: $('#nav__confirm'),
-    collector: $('#collector'),
-    teamInput: $('#collector__input'),
-    btnAdd: $('#collector__add'),
-    btnGenerate: $('#collector__generate'),
-    teamList: $('#collector__list'),
-    teamOnList: $('#collector__listItem'),
-    result: $('#result'),
-    collectorAlertA: $('#alertOne'),
-    collectorAlertB: $('#alertTwo'),
-    collectorAlertC: $('#alertThree'),
-    collectorAlertD: $('#alertFour'),
-    sheduleOnScreenA: $('#result__listA'),
-    sheduleOnScreenB: $('#result__listB'),
-    sheduleOnScreenC: $('#result__listC'),
-    sheduleOnScreenD: $('#result__listD')
-};
-
-/***/ }),
-/* 1 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-    value: true
-});
 exports.basicFunctions = undefined;
 
-var _domElems = __webpack_require__(0);
+var _domElems = __webpack_require__(1);
 
 var _globalVariables = __webpack_require__(2);
 
@@ -236,6 +204,38 @@ var basicFunctions = exports.basicFunctions = {
 };
 
 /***/ }),
+/* 1 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+//DOM elements store
+//
+var domElems = exports.domElems = {
+    naviScreen: $('#nav'),
+    btnConfirm: $('#nav__confirm'),
+    collector: $('#collector'),
+    teamInput: $('#collector__input'),
+    btnAdd: $('#collector__add'),
+    btnGenerate: $('#collector__generate'),
+    teamList: $('#collector__list'),
+    teamOnList: $('#collector__listItem'),
+    result: $('#result'),
+    collectorAlertA: $('#alertOne'),
+    collectorAlertB: $('#alertTwo'),
+    collectorAlertC: $('#alertThree'),
+    collectorAlertD: $('#alertFour'),
+    sheduleOnScreenA: $('#result__listA'),
+    sheduleOnScreenB: $('#result__listB'),
+    sheduleOnScreenC: $('#result__listC'),
+    sheduleOnScreenD: $('#result__listD')
+};
+
+/***/ }),
 /* 2 */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -258,9 +258,9 @@ var globalVariables = exports.globalVariables = {
 "use strict";
 
 
-var _domElems = __webpack_require__(0);
+var _domElems = __webpack_require__(1);
 
-var _basicFunctions = __webpack_require__(1);
+var _basicFunctions = __webpack_require__(0);
 
 $(document).ready(function () {
     // removing teams from list
@@ -318,7 +318,7 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.leagueGenerator = leagueGenerator;
 
-var _basicFunctions = __webpack_require__(1);
+var _basicFunctions = __webpack_require__(0);
 
 function leagueGenerator(teamList) {
             var numberOfTeams = teamList.length;
@@ -327,7 +327,7 @@ function leagueGenerator(teamList) {
             _basicFunctions.basicFunctions.shuffle(teamNamesList); // shuffling teams
 
             var robin = __webpack_require__(5); // call for algorythm
-            var readyShedule = robin(numberOfTeams, teamNamesList); // using algorythm
+            var readyShedule = robin(numberOfTeams, teamNamesList); // using algorythm          
             return readyShedule;
 };
 
@@ -378,7 +378,7 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.cupGenerator = cupGenerator;
 
-var _basicFunctions = __webpack_require__(1);
+var _basicFunctions = __webpack_require__(0);
 
 var _globalVariables = __webpack_require__(2);
 
@@ -437,21 +437,24 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.showSheduleLeague = showSheduleLeague;
 
-var _domElems = __webpack_require__(0);
+var _domElems = __webpack_require__(1);
+
+var _basicFunctions = __webpack_require__(0);
 
 function showSheduleLeague(readyShedule) {
     for (var i = 0; i < readyShedule.length; i++) {
         var roundCounter = 1 + i;
         var gameCounter = 0;
+        console.log("showSheduleLeague");
 
         if (roundCounter <= 8) {
-            _domElems.domElems.sheduleOnScreenA.append("<ul class=\"result__listItem--roundHeader\">Round nr " + roundCounter + "</ul>");
+            _basicFunctions.basicFunctions.showHeader(_domElems.domElems.sheduleOnScreenA, roundCounter);
         } else if (8 <= roundCounter && roundCounter <= 16) {
-            _domElems.domElems.sheduleOnScreenB.append("<ul class=\"result__listItem--roundHeader\">Round nr " + roundCounter + "</ul>");
+            _basicFunctions.basicFunctions.showHeader(_domElems.domElems.sheduleOnScreenB, roundCounter);
         } else if (17 <= roundCounter && roundCounter <= 24) {
-            _domElems.domElems.sheduleOnScreenC.append("<ul class=\"result__listItem--roundHeader\">Round nr " + roundCounter + "</ul>");
+            _basicFunctions.basicFunctions.showHeader(_domElems.domElems.sheduleOnScreenC, roundCounter);
         } else {
-            _domElems.domElems.sheduleOnScreenD.append("<ul class=\"result__listItem--roundHeader\">Round nr " + roundCounter + "</ul>");
+            _basicFunctions.basicFunctions.showHeader(_domElems.domElems.sheduleOnScreenD, roundCounter);
         }
 
         for (var j = 0; j < readyShedule[i].length; j++) {
@@ -489,11 +492,11 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.showSheduleCup = showSheduleCup;
 
-var _domElems = __webpack_require__(0);
+var _domElems = __webpack_require__(1);
 
 var _globalVariables = __webpack_require__(2);
 
-var _basicFunctions = __webpack_require__(1);
+var _basicFunctions = __webpack_require__(0);
 
 function showSheduleCup(sheduleArray) {
     var repsR1 = sheduleArray[0].length;

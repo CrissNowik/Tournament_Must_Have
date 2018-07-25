@@ -1,22 +1,20 @@
 import { domElems } from "./domElems";
+import { basicFunctions } from "./basicFunctions";
 
 export function showSheduleLeague(readyShedule) {        
        for (let i = 0; i < readyShedule.length; i++) {
            let roundCounter = 1 + i;
            let gameCounter = 0;
-
+            console.log("showSheduleLeague");
+            
            if (roundCounter<=8) {
-            domElems.sheduleOnScreenA.append(
-                `<ul class="result__listItem--roundHeader">Round nr ${roundCounter}</ul>`);    
+                basicFunctions.showHeader(domElems.sheduleOnScreenA , roundCounter);
             } else if ( 8<=roundCounter && roundCounter<=16) {
-                domElems.sheduleOnScreenB.append(
-                    `<ul class="result__listItem--roundHeader">Round nr ${roundCounter}</ul>`);
+                basicFunctions.showHeader(domElems.sheduleOnScreenB , roundCounter);
             } else if (17<=roundCounter&& roundCounter<=24){
-                domElems.sheduleOnScreenC.append(
-                    `<ul class="result__listItem--roundHeader">Round nr ${roundCounter}</ul>`);
+                basicFunctions.showHeader(domElems.sheduleOnScreenC , roundCounter);
             } else {
-                domElems.sheduleOnScreenD.append(
-                    `<ul class="result__listItem--roundHeader">Round nr ${roundCounter}</ul>`);
+                basicFunctions.showHeader(domElems.sheduleOnScreenD , roundCounter);
             }
 
             for (let j = 0; j < readyShedule[i].length; j++) {
