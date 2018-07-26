@@ -6,6 +6,7 @@ import { mixGenerator } from "./mixGenerator";
 import { showSheduleLeague } from "./showSheduleLeague";
 import { showSheduleCup } from "./showSheduleCup";
 
+const DUMMY = -1;
 
 export let basicFunctions = {
     shuffle: function (teamList) {
@@ -40,12 +41,11 @@ export let basicFunctions = {
                     }
                 },
     choosingTournamentType: function (tournamentType) {
-                    let teamList = domElems.teamList.children();
+                    let teamList = domElems.teamList.children();                    
                     let numberOfCompetitors = teamList.length;
-                    console.log("teamList", numberOfCompetitors);
                     
                     if (tournamentType === 'League') {
-                        let readySheduleLeague = leagueGenerator(numberOfCompetitors);
+                        let readySheduleLeague = leagueGenerator(teamList);
                         showSheduleLeague(readySheduleLeague);
                     } else if (tournamentType === 'Cup') {
                         if (numberOfCompetitors<5) { // 2 rounds
@@ -77,16 +77,16 @@ export let basicFunctions = {
            numbers[rand] = numbers[range - 1];
            range--;
         }
-     },
-     gettingTeamNames: function(teamList, numberOfTeams){
+    },
+    gettingTeamNames: function(teamList, numberOfTeams){
         let teamNamesList = [];
 
         for (let i = 0; i < numberOfTeams; i++) {
             teamNamesList.push(teamList[i].firstChild.wholeText);
         }
         return teamNamesList;
-     },
-     pairing: function (teamNamesList, numberOfTeams) {
+    },
+    pairing: function (teamNamesList, numberOfTeams) {
          let pairsReadyToShow = [];
          let rep = Math.ceil(numberOfTeams/2);
 
@@ -106,7 +106,7 @@ export let basicFunctions = {
               }
          }
         return pairsReadyToShow;
-     },
+    },
      showHeader: function (where, roundCounter) {
         where.append(`<ul class="result__listItem--roundHeader">Round nr ${roundCounter}</ul>`)
     },

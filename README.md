@@ -32,4 +32,4 @@ CrissNowik
 
 Thanks to:
 ==========
-Eirik Albrigtsen for his round-robin algorythm https://github.com/clux/roundrobin
+Eirik Albrigtsen for his roundrobin algorythm https://github.com/clux/roundrobin

@@ -1,13 +1,12 @@
 import { basicFunctions } from "./basicFunctions";
+import { roundrobin } from "./roundrobin";
 
 
 export function leagueGenerator(teamList) {
             let numberOfTeams = teamList.length;
             let teamNamesList = basicFunctions.gettingTeamNames(teamList, numberOfTeams);
-
             basicFunctions.shuffle(teamNamesList); // shuffling teams
-            
-            let robin = require ('roundrobin'); // call for algorythm
-            let readyShedule = robin(numberOfTeams, teamNamesList); // using algorythm          
+            let readyShedule = roundrobin(numberOfTeams, teamNamesList);
+    
             return readyShedule;
         };
