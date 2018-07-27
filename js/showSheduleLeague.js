@@ -8,13 +8,13 @@ export function showSheduleLeague(readyShedule) {
             console.log("showSheduleLeague");
             
            if (roundCounter<=8) {
-                basicFunctions.showHeader(domElems.sheduleOnScreenA , roundCounter);
+                basicFunctions.showHeader(domElems.sheduleOnScreenA, roundCounter);
             } else if ( 8<=roundCounter && roundCounter<=16) {
-                basicFunctions.showHeader(domElems.sheduleOnScreenB , roundCounter);
+                basicFunctions.showHeader(domElems.sheduleOnScreenB, roundCounter);
             } else if (17<=roundCounter&& roundCounter<=24){
-                basicFunctions.showHeader(domElems.sheduleOnScreenC , roundCounter);
+                basicFunctions.showHeader(domElems.sheduleOnScreenC, roundCounter);
             } else {
-                basicFunctions.showHeader(domElems.sheduleOnScreenD , roundCounter);
+                basicFunctions.showHeader(domElems.sheduleOnScreenD, roundCounter);
             }
 
             for (let j = 0; j < readyShedule[i].length; j++) {
@@ -22,23 +22,19 @@ export function showSheduleLeague(readyShedule) {
                 let pairOnScreen = newPair.join(" ___ - ___ ");
 
                 if (roundCounter<=8) {
-                    domElems.sheduleOnScreenA.append(
-                        `<li class="result__listItem">${pairOnScreen}</li>`); 
+                    basicFunctions.showMatch(domElems.sheduleOnScreenA, pairOnScreen); 
                 } else if ( 8<=roundCounter && roundCounter<=16) {
                     gameCounter = domElems.sheduleOnScreenA.find('li').length + 1;
                     domElems.sheduleOnScreenB.attr('start', `${gameCounter}`);
-                    domElems.sheduleOnScreenB.append(
-                        `<li class="result__listItem">${pairOnScreen}</li>`); 
+                    basicFunctions.showMatch(domElems.sheduleOnScreenB, pairOnScreen);
                 } else if (17<=roundCounter&& roundCounter<=24){
                     gameCounter = (domElems.sheduleOnScreenB.find('li').length)*2 + 1;
                     domElems.sheduleOnScreenC.attr('start', `${gameCounter}`);
-                    domElems.sheduleOnScreenC.append(
-                       `<li class="result__listItem">${pairOnScreen}</li>`); 
+                    basicFunctions.showMatch(domElems.sheduleOnScreenC, pairOnScreen);
                 } else {
                     gameCounter = (domElems.sheduleOnScreenC.find('li').length)*3 + 1;
                     domElems.sheduleOnScreenD.attr('start', `${gameCounter}`);
-                    domElems.sheduleOnScreenD.append(
-                        `<li class="result__listItem">${pairOnScreen}</li>`); 
+                    basicFunctions.showMatch(domElems.sheduleOnScreenD, pairOnScreen);
                 }
             }    
        }
