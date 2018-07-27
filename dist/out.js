@@ -136,12 +136,11 @@ var basicFunctions = exports.basicFunctions = {
             if (numberOfCompetitors < 5) {
                 // 2 rounds
                 var sheduleToShowUp = (0, _cupGenerator.cupGenerator)(teamList);
-                console.log("sheduleToShowUp ", sheduleToShowUp);
-
                 (0, _showSheduleCup.showSheduleCup)(sheduleToShowUp);
             } else if (numberOfCompetitors > 4 && numberOfCompetitors < 9) {
                 // 3 rounds
-                console.log(" 3 rounds");
+                var _sheduleToShowUp = (0, _cupGenerator.cupGenerator)(teamList);
+                (0, _showSheduleCup.showSheduleCup)(_sheduleToShowUp);
             } else if (numberOfCompetitors > 8 && numberOfCompetitors < 17) {
                 // 4 rounds
                 console.log(" 4 rounds");
@@ -249,7 +248,8 @@ Object.defineProperty(exports, "__esModule", {
 var globalVariables = exports.globalVariables = {
     dataCounter: 0,
     idCharArr: ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P"],
-    empty: ".............."
+    empty: "..............",
+    lucky: " Lucky Team"
 };
 
 /***/ }),
@@ -402,17 +402,29 @@ function cupGenerator(teamList) {
         pairsReadyToShowR4 = void 0,
         pairsReadyToShowR5 = void 0;
     pairsReadyToShowR1 = pairsReadyToShowR2 = pairsReadyToShowR3 = pairsReadyToShowR4 = pairsReadyToShowR5 = [];
+    var twoEmpty = [_globalVariables.globalVariables.empty, _globalVariables.globalVariables.empty];
 
     _basicFunctions.basicFunctions.shuffle(teamNamesList); // shuffling teams
 
     if (numberOfTeams < 5) {
         // 2 rounds
         pairsReadyToShowR1 = _basicFunctions.basicFunctions.pairing(teamNamesList, numberOfTeams);
-        pairsReadyToShowR2 = [_globalVariables.globalVariables.empty, _globalVariables.globalVariables.empty];
+        pairsReadyToShowR2 = twoEmpty;
         final.push(pairsReadyToShowR1, pairsReadyToShowR2);
         return final;
-    } else if (numberOfTeams > 4 && numberOfTeams < 9) {// 3 rounds
-        // return array with 3 subarrays;
+    } else if (numberOfTeams > 4 && numberOfTeams < 9) {
+        // 3 rounds
+        pairsReadyToShowR1 = _basicFunctions.basicFunctions.pairing(teamNamesList, numberOfTeams);
+        if (numberOfTeams === 5 || numberOfTeams === 6) {
+            pairsReadyToShowR2.push(twoEmpty, [_globalVariables.globalVariables.empty, _globalVariables.globalVariables.lucky]);
+        } else {
+            for (var i = 0; i < 2; i++) {
+                pairsReadyToShowR2.push(twoEmpty);
+            }
+        }
+        pairsReadyToShowR3 = twoEmpty;
+        final.push(pairsReadyToShowR1, pairsReadyToShowR2, pairsReadyToShowR3);
+        return final;
     } else if (numberOfTeams > 8 && numberOfTeams < 17) {// 4 rounds
         // return array with 4 subarrays;
     } else {// 5 rounds
@@ -510,11 +522,13 @@ var _basicFunctions = __webpack_require__(0);
 
 function showSheduleCup(sheduleArray) {
     var repsR1 = sheduleArray[0].length;
-    var repsR2 = sheduleArray[1].length / 2;
+    var repsR2 = sheduleArray[1].length;
+    var repsR3 = sheduleArray[2].length;
     var roundCounter = 1;
     var idLeft = "";
     var idRight = "";
     var pairOnScreen = "";
+    console.log(sheduleArray);
 
     //Round 1    
     _basicFunctions.basicFunctions.showHeader(_domElems.domElems.sheduleOnScreenA, roundCounter);
@@ -530,6 +544,15 @@ function showSheduleCup(sheduleArray) {
     _basicFunctions.basicFunctions.showHeader(_domElems.domElems.sheduleOnScreenA, roundCounter);
     for (var k = 0; k < repsR2; k++) {
         pairOnScreen = sheduleArray[1].join(" ___ - ___ ");
+        _basicFunctions.basicFunctions.showMatch(_domElems.domElems.sheduleOnScreenA, pairOnScreen);
+    }
+    roundCounter++;
+
+    //Round 3
+
+    _basicFunctions.basicFunctions.showHeader(_domElems.domElems.sheduleOnScreenA, roundCounter);
+    for (var l = 0; l < repsR3; l++) {
+        pairOnScreen = sheduleArray[2].join(" ___ - ___ ");
         _basicFunctions.basicFunctions.showMatch(_domElems.domElems.sheduleOnScreenA, pairOnScreen);
     }
     roundCounter++;

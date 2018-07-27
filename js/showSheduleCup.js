@@ -4,11 +4,13 @@ import { basicFunctions } from "./basicFunctions";
 
 export function showSheduleCup(sheduleArray) {
     let repsR1 = sheduleArray[0].length;
-    let repsR2 = sheduleArray[1].length/2;
+    let repsR2 = sheduleArray[1].length;
+    let repsR3 = sheduleArray[2].length;
     let roundCounter = 1;
     let idLeft = ""; 
     let idRight = "";
     let pairOnScreen = "";
+console.log(sheduleArray);
 
 
     //Round 1    
@@ -25,6 +27,15 @@ export function showSheduleCup(sheduleArray) {
     basicFunctions.showHeader(domElems.sheduleOnScreenA, roundCounter);
      for (let k = 0; k < repsR2; k++) {
         pairOnScreen = sheduleArray[1].join(" ___ - ___ ");   
+        basicFunctions.showMatch(domElems.sheduleOnScreenA, pairOnScreen);   
+     }
+     roundCounter++;
+
+     //Round 3
+     
+     basicFunctions.showHeader(domElems.sheduleOnScreenA, roundCounter);
+     for (let l = 0; l < repsR3; l++) {
+        pairOnScreen = sheduleArray[2].join(" ___ - ___ ");   
         basicFunctions.showMatch(domElems.sheduleOnScreenA, pairOnScreen);   
      }
      roundCounter++;

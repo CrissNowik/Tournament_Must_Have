@@ -49,12 +49,11 @@ export let basicFunctions = {
                         showSheduleLeague(readySheduleLeague);
                     } else if (tournamentType === 'Cup') {
                         if (numberOfCompetitors<5) { // 2 rounds
-                            let sheduleToShowUp = cupGenerator(teamList);   
-                            console.log("sheduleToShowUp ", sheduleToShowUp);
-                                                   
+                            let sheduleToShowUp = cupGenerator(teamList);
                             showSheduleCup(sheduleToShowUp);
                         } else if (numberOfCompetitors > 4 && numberOfCompetitors < 9 ) { // 3 rounds
-                            console.log(" 3 rounds");
+                            let sheduleToShowUp = cupGenerator(teamList);
+                            showSheduleCup(sheduleToShowUp);
                         } else if (numberOfCompetitors > 8 && numberOfCompetitors < 17) { // 4 rounds
                             console.log(" 4 rounds"); 
                         } else { // 5 rounds
