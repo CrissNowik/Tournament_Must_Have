@@ -529,7 +529,7 @@ function showSheduleCup(sheduleArray, numberOfTeams) {
     var pairOnScreen = "";
     console.log(sheduleArray);
 
-    if (numberOfTeams < 5) {
+    function showingTwoFirstRoundsCup() {
         //Round 1   
         _basicFunctions.basicFunctions.showHeader(_domElems.domElems.sheduleOnScreenA, roundCounter);
         for (var i = 0; i < repsR1; i++) {
@@ -554,31 +554,12 @@ function showSheduleCup(sheduleArray, numberOfTeams) {
             }
         }
         roundCounter++;
-    } else {
-        //Round 1  
-        _basicFunctions.basicFunctions.showHeader(_domElems.domElems.sheduleOnScreenA, roundCounter);
-        for (var _i = 0; _i < repsR1; _i++) {
-            idLeft = _globalVariables.globalVariables.idCharArr[_i] + "1";
-            idRight = _globalVariables.globalVariables.idCharArr[_i] + "2";
-            pairOnScreen = sheduleArray[0][_i].join(" " + idLeft + " ___ - ___ " + ("" + idRight));
-            _basicFunctions.basicFunctions.showMatch(_domElems.domElems.sheduleOnScreenA, pairOnScreen);
-        }
-        roundCounter++;
+    };
 
-        //Round 2
-        _basicFunctions.basicFunctions.showHeader(_domElems.domElems.sheduleOnScreenA, roundCounter);
-        if (numberOfTeams === 3 || numberOfTeams === 4) {
-            for (var _k2 = 0; _k2 < repsR2; _k2++) {
-                pairOnScreen = sheduleArray[1].join(" ___ - ___ ");
-                _basicFunctions.basicFunctions.showMatch(_domElems.domElems.sheduleOnScreenA, pairOnScreen);
-            }
-        } else if (numberOfTeams > 4 && numberOfTeams < 9) {
-            for (var _k3 = 0; _k3 < repsR2; _k3++) {
-                pairOnScreen = sheduleArray[1][_k3].join(" ___ - ___ ");
-                _basicFunctions.basicFunctions.showMatch(_domElems.domElems.sheduleOnScreenA, pairOnScreen);
-            }
-        }
-        roundCounter++;
+    if (numberOfTeams < 5) {
+        showingTwoFirstRoundsCup();
+    } else {
+        showingTwoFirstRoundsCup();
         //Round 3
         var repsR3 = Math.ceil(sheduleArray[1].length / 2);
         _basicFunctions.basicFunctions.showHeader(_domElems.domElems.sheduleOnScreenA, roundCounter);
