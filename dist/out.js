@@ -136,11 +136,11 @@ var basicFunctions = exports.basicFunctions = {
             if (numberOfCompetitors < 5) {
                 // 2 rounds
                 var sheduleToShowUp = (0, _cupGenerator.cupGenerator)(teamList);
-                (0, _showSheduleCup.showSheduleCup)(sheduleToShowUp);
+                (0, _showSheduleCup.showSheduleCup)(sheduleToShowUp, numberOfCompetitors);
             } else if (numberOfCompetitors > 4 && numberOfCompetitors < 9) {
                 // 3 rounds
                 var _sheduleToShowUp = (0, _cupGenerator.cupGenerator)(teamList);
-                (0, _showSheduleCup.showSheduleCup)(_sheduleToShowUp);
+                (0, _showSheduleCup.showSheduleCup)(_sheduleToShowUp, numberOfCompetitors);
             } else if (numberOfCompetitors > 8 && numberOfCompetitors < 17) {
                 // 4 rounds
                 console.log(" 4 rounds");
@@ -186,7 +186,7 @@ var basicFunctions = exports.basicFunctions = {
             }
         } else {
             var teams = teamNamesList;
-            teams.push(" Lucky");
+            teams.push(" Lucky Team");
             for (var _i2 = 0; _i2 < rep; _i2++) {
                 var _array = teams.slice(0, 2);
                 teams.splice(0, 2);
@@ -520,43 +520,75 @@ var _globalVariables = __webpack_require__(2);
 
 var _basicFunctions = __webpack_require__(0);
 
-function showSheduleCup(sheduleArray) {
+function showSheduleCup(sheduleArray, numberOfTeams) {
     var repsR1 = sheduleArray[0].length;
-    var repsR2 = sheduleArray[1].length;
-    var repsR3 = sheduleArray[2].length;
+    var repsR2 = Math.ceil(sheduleArray[0].length / 2);
     var roundCounter = 1;
     var idLeft = "";
     var idRight = "";
     var pairOnScreen = "";
     console.log(sheduleArray);
 
-    //Round 1    
-    _basicFunctions.basicFunctions.showHeader(_domElems.domElems.sheduleOnScreenA, roundCounter);
-    for (var i = 0; i < repsR1; i++) {
-        idLeft = _globalVariables.globalVariables.idCharArr[i] + "1";
-        idRight = _globalVariables.globalVariables.idCharArr[i] + "2";
-        pairOnScreen = sheduleArray[0][i].join(" " + idLeft + " ___ - ___ " + ("" + idRight));
-        _basicFunctions.basicFunctions.showMatch(_domElems.domElems.sheduleOnScreenA, pairOnScreen);
-    }
-    roundCounter++;
+    if (numberOfTeams < 5) {
+        //Round 1   
+        _basicFunctions.basicFunctions.showHeader(_domElems.domElems.sheduleOnScreenA, roundCounter);
+        for (var i = 0; i < repsR1; i++) {
+            idLeft = _globalVariables.globalVariables.idCharArr[i] + "1";
+            idRight = _globalVariables.globalVariables.idCharArr[i] + "2";
+            pairOnScreen = sheduleArray[0][i].join(" " + idLeft + " ___ - ___ " + ("" + idRight));
+            _basicFunctions.basicFunctions.showMatch(_domElems.domElems.sheduleOnScreenA, pairOnScreen);
+        }
+        roundCounter++;
 
-    //Round 2
-    _basicFunctions.basicFunctions.showHeader(_domElems.domElems.sheduleOnScreenA, roundCounter);
-    for (var k = 0; k < repsR2; k++) {
-        pairOnScreen = sheduleArray[1].join(" ___ - ___ ");
-        _basicFunctions.basicFunctions.showMatch(_domElems.domElems.sheduleOnScreenA, pairOnScreen);
-    }
-    roundCounter++;
+        //Round 2
+        _basicFunctions.basicFunctions.showHeader(_domElems.domElems.sheduleOnScreenA, roundCounter);
+        if (numberOfTeams === 3 || numberOfTeams === 4) {
+            for (var k = 0; k < repsR2; k++) {
+                pairOnScreen = sheduleArray[1].join(" ___ - ___ ");
+                _basicFunctions.basicFunctions.showMatch(_domElems.domElems.sheduleOnScreenA, pairOnScreen);
+            }
+        } else if (numberOfTeams > 4 && numberOfTeams < 9) {
+            for (var _k = 0; _k < repsR2; _k++) {
+                pairOnScreen = sheduleArray[1][_k].join(" ___ - ___ ");
+                _basicFunctions.basicFunctions.showMatch(_domElems.domElems.sheduleOnScreenA, pairOnScreen);
+            }
+        }
+        roundCounter++;
+    } else {
+        //Round 1  
+        _basicFunctions.basicFunctions.showHeader(_domElems.domElems.sheduleOnScreenA, roundCounter);
+        for (var _i = 0; _i < repsR1; _i++) {
+            idLeft = _globalVariables.globalVariables.idCharArr[_i] + "1";
+            idRight = _globalVariables.globalVariables.idCharArr[_i] + "2";
+            pairOnScreen = sheduleArray[0][_i].join(" " + idLeft + " ___ - ___ " + ("" + idRight));
+            _basicFunctions.basicFunctions.showMatch(_domElems.domElems.sheduleOnScreenA, pairOnScreen);
+        }
+        roundCounter++;
 
-    //Round 3
-
-    _basicFunctions.basicFunctions.showHeader(_domElems.domElems.sheduleOnScreenA, roundCounter);
-    for (var l = 0; l < repsR3; l++) {
-        pairOnScreen = sheduleArray[2].join(" ___ - ___ ");
-        _basicFunctions.basicFunctions.showMatch(_domElems.domElems.sheduleOnScreenA, pairOnScreen);
+        //Round 2
+        _basicFunctions.basicFunctions.showHeader(_domElems.domElems.sheduleOnScreenA, roundCounter);
+        if (numberOfTeams === 3 || numberOfTeams === 4) {
+            for (var _k2 = 0; _k2 < repsR2; _k2++) {
+                pairOnScreen = sheduleArray[1].join(" ___ - ___ ");
+                _basicFunctions.basicFunctions.showMatch(_domElems.domElems.sheduleOnScreenA, pairOnScreen);
+            }
+        } else if (numberOfTeams > 4 && numberOfTeams < 9) {
+            for (var _k3 = 0; _k3 < repsR2; _k3++) {
+                pairOnScreen = sheduleArray[1][_k3].join(" ___ - ___ ");
+                _basicFunctions.basicFunctions.showMatch(_domElems.domElems.sheduleOnScreenA, pairOnScreen);
+            }
+        }
+        roundCounter++;
+        //Round 3
+        var repsR3 = Math.ceil(sheduleArray[1].length / 2);
+        _basicFunctions.basicFunctions.showHeader(_domElems.domElems.sheduleOnScreenA, roundCounter);
+        for (var l = 0; l < repsR3; l++) {
+            pairOnScreen = sheduleArray[2].join(" ___ - ___ ");
+            _basicFunctions.basicFunctions.showMatch(_domElems.domElems.sheduleOnScreenA, pairOnScreen);
+        }
+        roundCounter++;
     }
-    roundCounter++;
-}
+};
 
 /***/ })
 /******/ ]);

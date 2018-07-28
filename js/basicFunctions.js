@@ -50,10 +50,10 @@ export let basicFunctions = {
                     } else if (tournamentType === 'Cup') {
                         if (numberOfCompetitors<5) { // 2 rounds
                             let sheduleToShowUp = cupGenerator(teamList);
-                            showSheduleCup(sheduleToShowUp);
+                            showSheduleCup(sheduleToShowUp, numberOfCompetitors);
                         } else if (numberOfCompetitors > 4 && numberOfCompetitors < 9 ) { // 3 rounds
                             let sheduleToShowUp = cupGenerator(teamList);
-                            showSheduleCup(sheduleToShowUp);
+                            showSheduleCup(sheduleToShowUp, numberOfCompetitors);
                         } else if (numberOfCompetitors > 8 && numberOfCompetitors < 17) { // 4 rounds
                             console.log(" 4 rounds"); 
                         } else { // 5 rounds
@@ -97,7 +97,7 @@ export let basicFunctions = {
              }
          } else {
              let teams = teamNamesList;
-             teams.push(" Lucky");
+             teams.push(" Lucky Team");
              for (let i = 0; i < rep; i++) {
                 let array = teams.slice(0,2);
                 teams.splice(0,2);
