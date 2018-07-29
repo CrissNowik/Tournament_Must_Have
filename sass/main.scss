@@ -10,7 +10,13 @@
 "partials/header",
 "partials/footer";
 
+body{
+    background: $color-bg-main;
+}
+
+
 ol {
     display: block;
     float: left;
 }
+

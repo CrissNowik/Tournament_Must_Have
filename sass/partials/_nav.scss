@@ -1,0 +1,13 @@
+@import
+"modules/fonts",
+"modules/mixins",
+"modules/colors";
+
+.nav__confirm{
+    background-color: $color-btn-confirm;
+    border: 2px solid #fff;
+    border-radius: 2px;
+    color: #fff;
+    font-family: 'Quantico-Bold';
+    font-size:  15px;
+} 
