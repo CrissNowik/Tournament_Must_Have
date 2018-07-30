@@ -9,7 +9,7 @@ export function showSheduleCup(sheduleArray, numberOfTeams) {
     let idLeft = ""; 
     let idRight = "";
     let pairOnScreen = "";
-console.log(sheduleArray);
+console.log("do wyświetlenia: ", sheduleArray);
 
         function showingTwoFirstRoundsCup() {
             //Round 1   

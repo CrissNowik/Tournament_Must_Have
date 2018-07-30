@@ -143,7 +143,8 @@ var basicFunctions = exports.basicFunctions = {
                 (0, _showSheduleCup.showSheduleCup)(_sheduleToShowUp, numberOfCompetitors);
             } else if (numberOfCompetitors > 8 && numberOfCompetitors < 17) {
                 // 4 rounds
-                console.log(" 4 rounds");
+                var _sheduleToShowUp2 = (0, _cupGenerator.cupGenerator)(teamList);
+                (0, _showSheduleCup.showSheduleCup)(_sheduleToShowUp2, numberOfCompetitors);
             } else {
                 // 5 rounds
                 console.log(" 5 rounds");
@@ -403,20 +404,20 @@ function cupGenerator(teamList) {
         pairsReadyToShowR5 = void 0;
     pairsReadyToShowR1 = pairsReadyToShowR2 = pairsReadyToShowR3 = pairsReadyToShowR4 = pairsReadyToShowR5 = [];
     var twoEmpty = [_globalVariables.globalVariables.empty, _globalVariables.globalVariables.empty];
+    var emptyAndLucky = [_globalVariables.globalVariables.empty, _globalVariables.globalVariables.lucky];
 
     _basicFunctions.basicFunctions.shuffle(teamNamesList); // shuffling teams
-
+    // 2 rounds
     if (numberOfTeams < 5) {
-        // 2 rounds
         pairsReadyToShowR1 = _basicFunctions.basicFunctions.pairing(teamNamesList, numberOfTeams);
         pairsReadyToShowR2 = twoEmpty;
         final.push(pairsReadyToShowR1, pairsReadyToShowR2);
         return final;
-    } else if (numberOfTeams > 4 && numberOfTeams < 9) {
         // 3 rounds
+    } else if (numberOfTeams > 4 && numberOfTeams < 9) {
         pairsReadyToShowR1 = _basicFunctions.basicFunctions.pairing(teamNamesList, numberOfTeams);
         if (numberOfTeams === 5 || numberOfTeams === 6) {
-            pairsReadyToShowR2.push(twoEmpty, [_globalVariables.globalVariables.empty, _globalVariables.globalVariables.lucky]);
+            pairsReadyToShowR2.push(twoEmpty, emptyAndLucky);
         } else {
             for (var i = 0; i < 2; i++) {
                 pairsReadyToShowR2.push(twoEmpty);
@@ -425,11 +426,28 @@ function cupGenerator(teamList) {
         pairsReadyToShowR3 = twoEmpty;
         final.push(pairsReadyToShowR1, pairsReadyToShowR2, pairsReadyToShowR3);
         return final;
-    } else if (numberOfTeams > 8 && numberOfTeams < 17) {// 4 rounds
-        // return array with 4 subarrays;
-    } else {// 5 rounds
-            // return array with 5 subarrays;
+        // 4 rounds
+    } else if (numberOfTeams > 8 && numberOfTeams < 17) {
+        pairsReadyToShowR1 = _basicFunctions.basicFunctions.pairing(teamNamesList, numberOfTeams);
+        if (numberOfTeams === 9 || numberOfTeams === 10) {
+            // for (let j = 0; j < 2; j++) {
+            //     pairsReadyToShowR2.push(twoEmpty)                        
+            // }
+            // pairsReadyToShowR2.push(emptyAndLucky);
+            pairsReadyToShowR2.push(twoEmpty, twoEmpty, emptyAndLucky);
+        } else {
+            // for (let k = 0; k < 3; k++) {
+            //     pairsReadyToShowR2.push(twoEmpty)                        
+            // }
+            pairsReadyToShowR2.push(twoEmpty, twoEmpty, twoEmpty);
         }
+        pairsReadyToShowR3.push(twoEmpty, emptyAndLucky);
+        pairsReadyToShowR4.push(twoEmpty);
+        final.push(pairsReadyToShowR1, pairsReadyToShowR2, pairsReadyToShowR3, pairsReadyToShowR4);
+        return final;
+    } else {// 5 rounds
+        // return array with 5 subarrays;
+    }
 };
 
 /***/ }),
@@ -527,7 +545,7 @@ function showSheduleCup(sheduleArray, numberOfTeams) {
     var idLeft = "";
     var idRight = "";
     var pairOnScreen = "";
-    console.log(sheduleArray);
+    console.log("do wyświetlenia: ", sheduleArray);
 
     function showingTwoFirstRoundsCup() {
         //Round 1   

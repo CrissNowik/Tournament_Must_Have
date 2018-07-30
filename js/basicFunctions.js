@@ -55,7 +55,8 @@ export let basicFunctions = {
                             let sheduleToShowUp = cupGenerator(teamList);
                             showSheduleCup(sheduleToShowUp, numberOfCompetitors);
                         } else if (numberOfCompetitors > 8 && numberOfCompetitors < 17) { // 4 rounds
-                            console.log(" 4 rounds"); 
+                            let sheduleToShowUp = cupGenerator(teamList);
+                            showSheduleCup(sheduleToShowUp, numberOfCompetitors); 
                         } else { // 5 rounds
                             console.log(" 5 rounds");
                         }
