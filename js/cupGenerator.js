@@ -35,19 +35,19 @@ export  function cupGenerator(teamList) {
             } else if (numberOfTeams > 8 && numberOfTeams < 17) { 
                 pairsReadyToShowR1 = basicFunctions.pairing(teamNamesList, numberOfTeams);
                 if (numberOfTeams === 9 || numberOfTeams === 10) {
-                    // for (let j = 0; j < 2; j++) {
-                    //     pairsReadyToShowR2.push(twoEmpty)                        
-                    // }
-                    // pairsReadyToShowR2.push(emptyAndLucky);
-                    pairsReadyToShowR2.push(twoEmpty, twoEmpty, emptyAndLucky);
+                    pairsReadyToShowR2 = [];
+                    for (let j = 0; j < 2; j++) {
+                        pairsReadyToShowR2.push(twoEmpty)                        
+                    }
+                    pairsReadyToShowR2.push(emptyAndLucky);
                 } else {
-                    // for (let k = 0; k < 3; k++) {
-                    //     pairsReadyToShowR2.push(twoEmpty)                        
-                    // }
-                    pairsReadyToShowR2.push(twoEmpty, twoEmpty, twoEmpty);
+                    pairsReadyToShowR2 = [];
+                    for (let k = 0; k < 3; k++) {
+                        pairsReadyToShowR2.push(twoEmpty)                        
+                    }
                 }
-                pairsReadyToShowR3.push(twoEmpty, emptyAndLucky);
-                pairsReadyToShowR4.push(twoEmpty);
+                pairsReadyToShowR3 = [twoEmpty, emptyAndLucky];
+                pairsReadyToShowR4 = twoEmpty;
                 final.push(pairsReadyToShowR1, pairsReadyToShowR2, pairsReadyToShowR3, pairsReadyToShowR4);
                 return final;
             } else { // 5 rounds

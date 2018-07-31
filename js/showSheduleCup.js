@@ -29,7 +29,7 @@ console.log("do wyświetlenia: ", sheduleArray);
                         pairOnScreen = sheduleArray[1].join(" ___ - ___ ");   
                         basicFunctions.showMatch(domElems.sheduleOnScreenA, pairOnScreen); 
                     }
-                } else if (numberOfTeams > 4 && numberOfTeams < 9) {
+                } else {
                     for (let k = 0; k < repsR2; k++) {
                         pairOnScreen = sheduleArray[1][k].join(" ___ - ___ ");   
                         basicFunctions.showMatch(domElems.sheduleOnScreenA, pairOnScreen); 
@@ -43,12 +43,24 @@ console.log("do wyświetlenia: ", sheduleArray);
     } else {
         showingTwoFirstRoundsCup();
         //Round 3
-        let repsR3 = Math.ceil(sheduleArray[1].length/2)
+        let repsR3 = Math.ceil(sheduleArray[1].length/2);
+
         basicFunctions.showHeader(domElems.sheduleOnScreenA, roundCounter);
-        for (let l = 0; l < repsR3; l++) {
-            pairOnScreen = sheduleArray[2].join(" ___ - ___ ");   
+        for (let l = 0; l < repsR3; l++) {            
+            // pairOnScreen = sheduleArray[2].join(" ___ - ___ ");   // for 7-8 teams if needed ;-(
+            pairOnScreen = sheduleArray[2][l].join(" ___ - ___ ");   // for 9-12 teams
             basicFunctions.showMatch(domElems.sheduleOnScreenA, pairOnScreen);   
         }
         roundCounter++;
+        // Round 4
+        let repsR4 = Math.ceil(sheduleArray[2].length/2);
+
+        basicFunctions.showHeader(domElems.sheduleOnScreenA, roundCounter);
+        for (let n = 0; n < repsR4; n++) {
+            pairOnScreen = sheduleArray[3].join(" ___ - ___ ");   
+            basicFunctions.showMatch(domElems.sheduleOnScreenA, pairOnScreen); 
         }
+        
+
+    }
 };

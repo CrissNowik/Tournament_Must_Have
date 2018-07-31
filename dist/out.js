@@ -430,19 +430,19 @@ function cupGenerator(teamList) {
     } else if (numberOfTeams > 8 && numberOfTeams < 17) {
         pairsReadyToShowR1 = _basicFunctions.basicFunctions.pairing(teamNamesList, numberOfTeams);
         if (numberOfTeams === 9 || numberOfTeams === 10) {
-            // for (let j = 0; j < 2; j++) {
-            //     pairsReadyToShowR2.push(twoEmpty)                        
-            // }
-            // pairsReadyToShowR2.push(emptyAndLucky);
-            pairsReadyToShowR2.push(twoEmpty, twoEmpty, emptyAndLucky);
+            pairsReadyToShowR2 = [];
+            for (var j = 0; j < 2; j++) {
+                pairsReadyToShowR2.push(twoEmpty);
+            }
+            pairsReadyToShowR2.push(emptyAndLucky);
         } else {
-            // for (let k = 0; k < 3; k++) {
-            //     pairsReadyToShowR2.push(twoEmpty)                        
-            // }
-            pairsReadyToShowR2.push(twoEmpty, twoEmpty, twoEmpty);
+            pairsReadyToShowR2 = [];
+            for (var k = 0; k < 3; k++) {
+                pairsReadyToShowR2.push(twoEmpty);
+            }
         }
-        pairsReadyToShowR3.push(twoEmpty, emptyAndLucky);
-        pairsReadyToShowR4.push(twoEmpty);
+        pairsReadyToShowR3 = [twoEmpty, emptyAndLucky];
+        pairsReadyToShowR4 = twoEmpty;
         final.push(pairsReadyToShowR1, pairsReadyToShowR2, pairsReadyToShowR3, pairsReadyToShowR4);
         return final;
     } else {// 5 rounds
@@ -565,7 +565,7 @@ function showSheduleCup(sheduleArray, numberOfTeams) {
                 pairOnScreen = sheduleArray[1].join(" ___ - ___ ");
                 _basicFunctions.basicFunctions.showMatch(_domElems.domElems.sheduleOnScreenA, pairOnScreen);
             }
-        } else if (numberOfTeams > 4 && numberOfTeams < 9) {
+        } else {
             for (var _k = 0; _k < repsR2; _k++) {
                 pairOnScreen = sheduleArray[1][_k].join(" ___ - ___ ");
                 _basicFunctions.basicFunctions.showMatch(_domElems.domElems.sheduleOnScreenA, pairOnScreen);
@@ -580,12 +580,22 @@ function showSheduleCup(sheduleArray, numberOfTeams) {
         showingTwoFirstRoundsCup();
         //Round 3
         var repsR3 = Math.ceil(sheduleArray[1].length / 2);
+
         _basicFunctions.basicFunctions.showHeader(_domElems.domElems.sheduleOnScreenA, roundCounter);
         for (var l = 0; l < repsR3; l++) {
-            pairOnScreen = sheduleArray[2].join(" ___ - ___ ");
+            // pairOnScreen = sheduleArray[2].join(" ___ - ___ ");   // for 7-8 teams if needed ;-(
+            pairOnScreen = sheduleArray[2][l].join(" ___ - ___ "); // for 9-12 teams
             _basicFunctions.basicFunctions.showMatch(_domElems.domElems.sheduleOnScreenA, pairOnScreen);
         }
         roundCounter++;
+        // Round 4
+        var repsR4 = Math.ceil(sheduleArray[2].length / 2);
+
+        _basicFunctions.basicFunctions.showHeader(_domElems.domElems.sheduleOnScreenA, roundCounter);
+        for (var n = 0; n < repsR4; n++) {
+            pairOnScreen = sheduleArray[3].join(" ___ - ___ ");
+            _basicFunctions.basicFunctions.showMatch(_domElems.domElems.sheduleOnScreenA, pairOnScreen);
+        }
     }
 };
 
