@@ -40,27 +40,35 @@ console.log("do wyświetlenia: ", sheduleArray);
      
     if (numberOfTeams<5) {
         showingTwoFirstRoundsCup();
-    } else {
+    } else if (numberOfTeams > 4) {
         showingTwoFirstRoundsCup();
         //Round 3
         let repsR3 = Math.ceil(sheduleArray[1].length/2);
 
         basicFunctions.showHeader(domElems.sheduleOnScreenA, roundCounter);
-        for (let l = 0; l < repsR3; l++) {            
-            // pairOnScreen = sheduleArray[2].join(" ___ - ___ ");   // for 7-8 teams if needed ;-(
-            pairOnScreen = sheduleArray[2][l].join(" ___ - ___ ");   // for 9-12 teams
-            basicFunctions.showMatch(domElems.sheduleOnScreenA, pairOnScreen);   
-        }
-        roundCounter++;
-        // Round 4
-        let repsR4 = Math.ceil(sheduleArray[2].length/2);
+        if (numberOfTeams > 4 && numberOfTeams < 9) {
+            for (let l = 0; l < repsR3; l++) {            
+                pairOnScreen = sheduleArray[2].join(" ___ - ___ ");
+                basicFunctions.showMatch(domElems.sheduleOnScreenA, pairOnScreen);   
+            }
+            roundCounter++;
+        } else if (numberOfTeams > 8 && numberOfTeams < 33) {
+            for (let l = 0; l < repsR3; l++) {    
+                pairOnScreen = sheduleArray[2][l].join(" ___ - ___ "); 
+                basicFunctions.showMatch(domElems.sheduleOnScreenA, pairOnScreen);   
+            }
+            roundCounter++;
+             // Round 4
+            let repsR4 = Math.ceil(sheduleArray[2].length/2);
 
-        basicFunctions.showHeader(domElems.sheduleOnScreenA, roundCounter);
-        for (let n = 0; n < repsR4; n++) {
-            pairOnScreen = sheduleArray[3].join(" ___ - ___ ");   
-            basicFunctions.showMatch(domElems.sheduleOnScreenA, pairOnScreen); 
-        }
+            basicFunctions.showHeader(domElems.sheduleOnScreenA, roundCounter);
+            for (let n = 0; n < repsR4; n++) {
+                pairOnScreen = sheduleArray[3].join(" ___ - ___ ");   
+                basicFunctions.showMatch(domElems.sheduleOnScreenA, pairOnScreen); 
+            }
+            roundCounter++;
+        } 
         
-
-    }
+    } 
 };
+

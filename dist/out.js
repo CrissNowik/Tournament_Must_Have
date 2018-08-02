@@ -576,25 +576,33 @@ function showSheduleCup(sheduleArray, numberOfTeams) {
 
     if (numberOfTeams < 5) {
         showingTwoFirstRoundsCup();
-    } else {
+    } else if (numberOfTeams > 4) {
         showingTwoFirstRoundsCup();
         //Round 3
         var repsR3 = Math.ceil(sheduleArray[1].length / 2);
 
         _basicFunctions.basicFunctions.showHeader(_domElems.domElems.sheduleOnScreenA, roundCounter);
-        for (var l = 0; l < repsR3; l++) {
-            // pairOnScreen = sheduleArray[2].join(" ___ - ___ ");   // for 7-8 teams if needed ;-(
-            pairOnScreen = sheduleArray[2][l].join(" ___ - ___ "); // for 9-12 teams
-            _basicFunctions.basicFunctions.showMatch(_domElems.domElems.sheduleOnScreenA, pairOnScreen);
-        }
-        roundCounter++;
-        // Round 4
-        var repsR4 = Math.ceil(sheduleArray[2].length / 2);
+        if (numberOfTeams > 4 && numberOfTeams < 9) {
+            for (var l = 0; l < repsR3; l++) {
+                pairOnScreen = sheduleArray[2].join(" ___ - ___ ");
+                _basicFunctions.basicFunctions.showMatch(_domElems.domElems.sheduleOnScreenA, pairOnScreen);
+            }
+            roundCounter++;
+        } else if (numberOfTeams > 8 && numberOfTeams < 33) {
+            for (var _l = 0; _l < repsR3; _l++) {
+                pairOnScreen = sheduleArray[2][_l].join(" ___ - ___ ");
+                _basicFunctions.basicFunctions.showMatch(_domElems.domElems.sheduleOnScreenA, pairOnScreen);
+            }
+            roundCounter++;
+            // Round 4
+            var repsR4 = Math.ceil(sheduleArray[2].length / 2);
 
-        _basicFunctions.basicFunctions.showHeader(_domElems.domElems.sheduleOnScreenA, roundCounter);
-        for (var n = 0; n < repsR4; n++) {
-            pairOnScreen = sheduleArray[3].join(" ___ - ___ ");
-            _basicFunctions.basicFunctions.showMatch(_domElems.domElems.sheduleOnScreenA, pairOnScreen);
+            _basicFunctions.basicFunctions.showHeader(_domElems.domElems.sheduleOnScreenA, roundCounter);
+            for (var n = 0; n < repsR4; n++) {
+                pairOnScreen = sheduleArray[3].join(" ___ - ___ ");
+                _basicFunctions.basicFunctions.showMatch(_domElems.domElems.sheduleOnScreenA, pairOnScreen);
+            }
+            roundCounter++;
         }
     }
 };
