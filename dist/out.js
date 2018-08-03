@@ -249,7 +249,7 @@ Object.defineProperty(exports, "__esModule", {
 var globalVariables = exports.globalVariables = {
     dataCounter: 0,
     idCharArr: ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P"],
-    empty: "..............",
+    empty: ". . . . . . . . . . . . . .",
     lucky: " Lucky Team"
 };
 
@@ -435,18 +435,28 @@ function cupGenerator(teamList) {
                 pairsReadyToShowR2.push(twoEmpty);
             }
             pairsReadyToShowR2.push(emptyAndLucky);
-        } else {
+        } else if (numberOfTeams === 11 || numberOfTeams === 12) {
             pairsReadyToShowR2 = [];
             for (var k = 0; k < 3; k++) {
                 pairsReadyToShowR2.push(twoEmpty);
             }
+        } else if (numberOfTeams === 13 || numberOfTeams === 14) {
+            pairsReadyToShowR2 = [];
+            for (var l = 0; l < 3; l++) {
+                pairsReadyToShowR2.push(twoEmpty);
+            }
+            pairsReadyToShowR2.push(emptyAndLucky);
         }
-        pairsReadyToShowR3 = [twoEmpty, emptyAndLucky];
-        pairsReadyToShowR4 = twoEmpty;
+        pairsReadyToShowR3 = [twoEmpty, emptyAndLucky]; // to rebuild
+        pairsReadyToShowR4 = twoEmpty; // to rebuild
         final.push(pairsReadyToShowR1, pairsReadyToShowR2, pairsReadyToShowR3, pairsReadyToShowR4);
         return final;
-    } else {// 5 rounds
-        // return array with 5 subarrays;
+    } else {
+        // pairsReadyToShowR1 = basicFunctions.pairing(teamNamesList, numberOfTeams);
+
+        // pairsReadyToShowR5 = twoEmpty;
+        // final.push(pairsReadyToShowR1, pairsReadyToShowR2, pairsReadyToShowR3, pairsReadyToShowR4, pairsReadyToShowR5);
+        // return final;
     }
 };
 
