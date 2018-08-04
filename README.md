@@ -6,7 +6,7 @@ I'm glad that you want to use my userful web app which help you in organising an
 Features:
 *  "round-robin" game system (Berger table)
 *  "tournament" game system
-*  "mixed" game system
+*  cup visualisation - tournament ladder 
 
 It's obvious that "Tournament_Must_Have" app is fully responsive and works properly on mobile devices.
 

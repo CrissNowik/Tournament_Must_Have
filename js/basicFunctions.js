@@ -2,7 +2,6 @@ import { domElems } from "./domElems";
 import { globalVariables } from "./globalVariables";
 import { leagueGenerator } from "./leagueGenerator";
 import { cupGenerator } from "./cupGenerator";
-import { mixGenerator } from "./mixGenerator";
 import { showSheduleLeague } from "./showSheduleLeague";
 import { showSheduleCup } from "./showSheduleCup";
 
@@ -60,8 +59,6 @@ export let basicFunctions = {
                         } else { // 5 rounds
                             console.log(" 5 rounds");
                         }
-                    } else {
-                        mixGenerator();
                     }
                 },
     randomWithoutRepeat: function(howMuch, range) {     

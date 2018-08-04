@@ -83,8 +83,6 @@ var _leagueGenerator = __webpack_require__(4);
 
 var _cupGenerator = __webpack_require__(6);
 
-var _mixGenerator = __webpack_require__(7);
-
 var _showSheduleLeague = __webpack_require__(8);
 
 var _showSheduleCup = __webpack_require__(9);
@@ -149,8 +147,6 @@ var basicFunctions = exports.basicFunctions = {
                 // 5 rounds
                 console.log(" 5 rounds");
             }
-        } else {
-            (0, _mixGenerator.mixGenerator)();
         }
     },
     randomWithoutRepeat: function randomWithoutRepeat(howMuch, range) {
@@ -233,7 +229,8 @@ var domElems = exports.domElems = {
     sheduleOnScreenA: $('#result__listA'),
     sheduleOnScreenB: $('#result__listB'),
     sheduleOnScreenC: $('#result__listC'),
-    sheduleOnScreenD: $('#result__listD')
+    sheduleOnScreenD: $('#result__listD'),
+    cupCaution: $('#alertCup')
 };
 
 /***/ }),
@@ -461,21 +458,7 @@ function cupGenerator(teamList) {
 };
 
 /***/ }),
-/* 7 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-            value: true
-});
-exports.mixGenerator = mixGenerator;
-function mixGenerator() {
-            console.log("MIX");
-};
-
-/***/ }),
+/* 7 */,
 /* 8 */
 /***/ (function(module, exports, __webpack_require__) {
 
