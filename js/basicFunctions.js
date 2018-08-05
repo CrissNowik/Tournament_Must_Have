@@ -5,8 +5,6 @@ import { cupGenerator } from "./cupGenerator";
 import { showSheduleLeague } from "./showSheduleLeague";
 import { showSheduleCup } from "./showSheduleCup";
 
-const DUMMY = -1;
-
 export let basicFunctions = {
     shuffle: function (teamList) {
                     teamList.sort(function(a, b){
@@ -61,20 +59,6 @@ export let basicFunctions = {
                         }
                     }
                 },
-    randomWithoutRepeat: function(howMuch, range) {     
-        // wypełnienie tablicy
-        let numbers = new Array(range);
-        for (let i=0; i<range; i++) {
-           numbers[i] = i + 1;
-        }
-        // losowanie howMuch liczb
-        for (let i=0; i<howMuch; i++) {
-           let rand = Math.floor(Math.random()*range);
-           console.log("wylosowano: ", numbers[rand]);
-           numbers[rand] = numbers[range - 1];
-           range--;
-        }
-    },
     gettingTeamNames: function(teamList, numberOfTeams){
         let teamNamesList = [];
 

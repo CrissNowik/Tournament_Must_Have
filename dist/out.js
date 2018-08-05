@@ -87,8 +87,6 @@ var _showSheduleLeague = __webpack_require__(7);
 
 var _showSheduleCup = __webpack_require__(8);
 
-var DUMMY = -1;
-
 var basicFunctions = exports.basicFunctions = {
     shuffle: function shuffle(teamList) {
         teamList.sort(function (a, b) {
@@ -149,20 +147,6 @@ var basicFunctions = exports.basicFunctions = {
             }
         }
     },
-    randomWithoutRepeat: function randomWithoutRepeat(howMuch, range) {
-        // wypełnienie tablicy
-        var numbers = new Array(range);
-        for (var i = 0; i < range; i++) {
-            numbers[i] = i + 1;
-        }
-        // losowanie howMuch liczb
-        for (var _i = 0; _i < howMuch; _i++) {
-            var rand = Math.floor(Math.random() * range);
-            console.log("wylosowano: ", numbers[rand]);
-            numbers[rand] = numbers[range - 1];
-            range--;
-        }
-    },
     gettingTeamNames: function gettingTeamNames(teamList, numberOfTeams) {
         var teamNamesList = [];
 
@@ -184,7 +168,7 @@ var basicFunctions = exports.basicFunctions = {
         } else {
             var teams = teamNamesList;
             teams.push(" Lucky Team");
-            for (var _i2 = 0; _i2 < rep; _i2++) {
+            for (var _i = 0; _i < rep; _i++) {
                 var _array = teams.slice(0, 2);
                 teams.splice(0, 2);
                 pairsReadyToShow.push(_array);
