@@ -40,20 +40,32 @@ export  function cupGenerator(teamList) {
                         pairsReadyToShowR2.push(twoEmpty)                        
                     }
                     pairsReadyToShowR2.push(emptyAndLucky);
+                    pairsReadyToShowR3 = [twoEmpty, emptyAndLucky];
+                    pairsReadyToShowR4 = twoEmpty;
                 } else if (numberOfTeams === 11 || numberOfTeams === 12) {
                     pairsReadyToShowR2 = [];
                     for (let k = 0; k < 3; k++) {
                         pairsReadyToShowR2.push(twoEmpty)                        
                     }
+                    pairsReadyToShowR3 = [twoEmpty, emptyAndLucky];
+                    pairsReadyToShowR4 = twoEmpty;
                 } else if (numberOfTeams === 13 || numberOfTeams === 14){
                     pairsReadyToShowR2 = [];
                     for (let l = 0; l < 3; l++) {
                         pairsReadyToShowR2.push(twoEmpty)                 
                     }
                     pairsReadyToShowR2.push(emptyAndLucky)
+                    pairsReadyToShowR3 = [twoEmpty, twoEmpty]; 
+                    pairsReadyToShowR4 = twoEmpty; 
+                } else if (numberOfTeams === 15 || numberOfTeams === 16) {
+                    pairsReadyToShowR2 = [];
+                    for (let m = 0; m < 4; m++) {
+                        pairsReadyToShowR2.push(twoEmpty)                 
+                    }
+                    pairsReadyToShowR3 = [twoEmpty, twoEmpty]; 
+                    pairsReadyToShowR4 = twoEmpty;
                 }
-                pairsReadyToShowR3 = [twoEmpty, emptyAndLucky]; // to rebuild
-                pairsReadyToShowR4 = twoEmpty; // to rebuild
+                
                 final.push(pairsReadyToShowR1, pairsReadyToShowR2, pairsReadyToShowR3, pairsReadyToShowR4);
                 return final;
             } else { 

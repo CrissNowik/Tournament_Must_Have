@@ -83,9 +83,9 @@ var _leagueGenerator = __webpack_require__(4);
 
 var _cupGenerator = __webpack_require__(6);
 
-var _showSheduleLeague = __webpack_require__(8);
+var _showSheduleLeague = __webpack_require__(7);
 
-var _showSheduleCup = __webpack_require__(9);
+var _showSheduleCup = __webpack_require__(8);
 
 var DUMMY = -1;
 
@@ -246,7 +246,7 @@ Object.defineProperty(exports, "__esModule", {
 var globalVariables = exports.globalVariables = {
     dataCounter: 0,
     idCharArr: ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P"],
-    empty: ". . . . . . . . . . . . . .",
+    empty: "  . . . . . . . . . . . . . . ",
     lucky: " Lucky Team"
 };
 
@@ -432,20 +432,32 @@ function cupGenerator(teamList) {
                 pairsReadyToShowR2.push(twoEmpty);
             }
             pairsReadyToShowR2.push(emptyAndLucky);
+            pairsReadyToShowR3 = [twoEmpty, emptyAndLucky];
+            pairsReadyToShowR4 = twoEmpty;
         } else if (numberOfTeams === 11 || numberOfTeams === 12) {
             pairsReadyToShowR2 = [];
             for (var k = 0; k < 3; k++) {
                 pairsReadyToShowR2.push(twoEmpty);
             }
+            pairsReadyToShowR3 = [twoEmpty, emptyAndLucky];
+            pairsReadyToShowR4 = twoEmpty;
         } else if (numberOfTeams === 13 || numberOfTeams === 14) {
             pairsReadyToShowR2 = [];
             for (var l = 0; l < 3; l++) {
                 pairsReadyToShowR2.push(twoEmpty);
             }
             pairsReadyToShowR2.push(emptyAndLucky);
+            pairsReadyToShowR3 = [twoEmpty, twoEmpty];
+            pairsReadyToShowR4 = twoEmpty;
+        } else if (numberOfTeams === 15 || numberOfTeams === 16) {
+            pairsReadyToShowR2 = [];
+            for (var m = 0; m < 4; m++) {
+                pairsReadyToShowR2.push(twoEmpty);
+            }
+            pairsReadyToShowR3 = [twoEmpty, twoEmpty];
+            pairsReadyToShowR4 = twoEmpty;
         }
-        pairsReadyToShowR3 = [twoEmpty, emptyAndLucky]; // to rebuild
-        pairsReadyToShowR4 = twoEmpty; // to rebuild
+
         final.push(pairsReadyToShowR1, pairsReadyToShowR2, pairsReadyToShowR3, pairsReadyToShowR4);
         return final;
     } else {
@@ -458,8 +470,7 @@ function cupGenerator(teamList) {
 };
 
 /***/ }),
-/* 7 */,
-/* 8 */
+/* 7 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -514,7 +525,7 @@ function showSheduleLeague(readyShedule) {
 };
 
 /***/ }),
-/* 9 */
+/* 8 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -532,15 +543,15 @@ var _globalVariables = __webpack_require__(2);
 var _basicFunctions = __webpack_require__(0);
 
 function showSheduleCup(sheduleArray, numberOfTeams) {
-    var repsR1 = sheduleArray[0].length;
-    var repsR2 = Math.ceil(sheduleArray[0].length / 2);
     var roundCounter = 1;
-    var idLeft = "";
-    var idRight = "";
     var pairOnScreen = "";
     console.log("do wyświetlenia: ", sheduleArray);
 
     function showingTwoFirstRoundsCup() {
+        var repsR1 = sheduleArray[0].length;
+        var repsR2 = Math.ceil(sheduleArray[0].length / 2);
+        var idLeft = "";
+        var idRight = "";
         //Round 1   
         _basicFunctions.basicFunctions.showHeader(_domElems.domElems.sheduleOnScreenA, roundCounter);
         for (var i = 0; i < repsR1; i++) {

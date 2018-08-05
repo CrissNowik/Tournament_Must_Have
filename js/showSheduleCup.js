@@ -3,15 +3,15 @@ import { globalVariables } from "./globalVariables";
 import { basicFunctions } from "./basicFunctions";
 
 export function showSheduleCup(sheduleArray, numberOfTeams) {
-    let repsR1 = sheduleArray[0].length;
-    let repsR2 = Math.ceil(sheduleArray[0].length/2);
     let roundCounter = 1;
-    let idLeft = ""; 
-    let idRight = "";
     let pairOnScreen = "";
 console.log("do wyświetlenia: ", sheduleArray);
 
         function showingTwoFirstRoundsCup() {
+            let repsR1 = sheduleArray[0].length;
+            let repsR2 = Math.ceil(sheduleArray[0].length/2);
+            let idLeft = ""; 
+            let idRight = "";
             //Round 1   
                 basicFunctions.showHeader(domElems.sheduleOnScreenA, roundCounter);
                 for (let i = 0; i < repsR1; i++) {
