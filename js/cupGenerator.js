@@ -69,11 +69,91 @@ export  function cupGenerator(teamList) {
                 final.push(pairsReadyToShowR1, pairsReadyToShowR2, pairsReadyToShowR3, pairsReadyToShowR4);
                 return final;
             } else { 
-                // pairsReadyToShowR1 = basicFunctions.pairing(teamNamesList, numberOfTeams);
-
-                // pairsReadyToShowR5 = twoEmpty;
-                // final.push(pairsReadyToShowR1, pairsReadyToShowR2, pairsReadyToShowR3, pairsReadyToShowR4, pairsReadyToShowR5);
-                // return final;
+                pairsReadyToShowR1 = basicFunctions.pairing(teamNamesList, numberOfTeams);
+                if (numberOfTeams === 17 || numberOfTeams === 18) {
+                    pairsReadyToShowR2 = [];
+                    for (let n = 0; n < 4; n++) {
+                        pairsReadyToShowR2.push(twoEmpty)                 
+                    }
+                    pairsReadyToShowR2.push(emptyAndLucky);
+                    pairsReadyToShowR3 = [twoEmpty, twoEmpty, emptyAndLucky]; 
+                    pairsReadyToShowR4 = [twoEmpty, emptyAndLucky];
+                    pairsReadyToShowR5 = twoEmpty;
+                } else if (numberOfTeams === 19 || numberOfTeams === 20) {
+                    pairsReadyToShowR2 = [];
+                    for (let n = 0; n < 5; n++) {
+                        pairsReadyToShowR2.push(twoEmpty)                 
+                    }
+                    pairsReadyToShowR3 = [twoEmpty, twoEmpty, emptyAndLucky]; 
+                    pairsReadyToShowR4 = [twoEmpty, emptyAndLucky];
+                    pairsReadyToShowR5 = twoEmpty;
+                } else if (numberOfTeams === 21 || numberOfTeams === 22) {
+                    pairsReadyToShowR2 = [];
+                    for (let o = 0; o < 5; o++) {
+                        pairsReadyToShowR2.push(twoEmpty)                 
+                    }
+                    pairsReadyToShowR2.push(emptyAndLucky)
+                    pairsReadyToShowR3 = [twoEmpty, twoEmpty, twoEmpty]; 
+                    pairsReadyToShowR4 = [twoEmpty, emptyAndLucky];
+                    pairsReadyToShowR5 = twoEmpty;
+                } else if (numberOfTeams === 23 || numberOfTeams === 24) {
+                    pairsReadyToShowR2 = [];
+                    for (let o = 0; o < 6; o++) {
+                        pairsReadyToShowR2.push(twoEmpty)                 
+                    }
+                    for (let u = 0; u < 3; u++) {
+                        pairsReadyToShowR3.push(twoEmpty)                 
+                    }
+                    pairsReadyToShowR4 = [twoEmpty, emptyAndLucky];
+                    pairsReadyToShowR5 = twoEmpty;
+                } else if (numberOfTeams === 25 || numberOfTeams === 26) {
+                    pairsReadyToShowR2 = [];
+                    for (let o = 0; o < 6; o++) {
+                        pairsReadyToShowR2.push(twoEmpty)                 
+                    }
+                    pairsReadyToShowR2.push(emptyAndLucky)
+                    for (let u = 0; u < 3; u++) {
+                        pairsReadyToShowR3.push(twoEmpty)
+                    }
+                    pairsReadyToShowR3.push(emptyAndLucky); 
+                    pairsReadyToShowR4 = [twoEmpty, twoEmpty];
+                    pairsReadyToShowR5 = twoEmpty;
+                } else if (numberOfTeams === 27 || numberOfTeams === 28) {
+                    pairsReadyToShowR2 = [];
+                    for (let o = 0; o < 7; o++) {
+                        pairsReadyToShowR2.push(twoEmpty)                 
+                    }
+                    for (let u = 0; u < 3; u++) {
+                        pairsReadyToShowR3.push(twoEmpty)
+                    }
+                    pairsReadyToShowR3.push(emptyAndLucky); 
+                    pairsReadyToShowR4 = [twoEmpty, twoEmpty];
+                    pairsReadyToShowR5 = twoEmpty;
+                } else if (numberOfTeams === 29 || numberOfTeams === 30) {
+                    pairsReadyToShowR2 = [];
+                    for (let o = 0; o < 7; o++) {
+                        pairsReadyToShowR2.push(twoEmpty)                 
+                    }
+                    pairsReadyToShowR2.push(emptyAndLucky)
+                    for (let u = 0; u < 4; u++) {
+                        pairsReadyToShowR3.push(twoEmpty)
+                    }
+                    pairsReadyToShowR4 = [twoEmpty, twoEmpty];
+                    pairsReadyToShowR5 = twoEmpty;
+                } else if (numberOfTeams === 31 || numberOfTeams === 32) {
+                    pairsReadyToShowR2 = [];
+                    for (let o = 0; o < 8; o++) {
+                        pairsReadyToShowR2.push(twoEmpty)                 
+                    }
+                    for (let u = 0; u < 4; u++) {
+                        pairsReadyToShowR3.push(twoEmpty)
+                    }
+                    pairsReadyToShowR4 = [twoEmpty, twoEmpty];
+                    pairsReadyToShowR5 = twoEmpty;
+                }
+               
+                final.push(pairsReadyToShowR1, pairsReadyToShowR2, pairsReadyToShowR3, pairsReadyToShowR4, pairsReadyToShowR5);
+                return final;
             }          
         };
 
