@@ -108,6 +108,12 @@ var basicFunctions = exports.basicFunctions = {
             _domElems.domElems.collectorAlertD.show();
             _domElems.domElems.teamInput.attr('disabled', true);
         }
+        if (_domElems.domElems.teamList.children().length !== 3 && //cup caution about Lucky team
+        _domElems.domElems.teamList.children().length !== 7 && _domElems.domElems.teamList.children().length !== 16 && _domElems.domElems.teamList.children().length !== 31) {
+            _domElems.domElems.cupCaution.show();
+        } else {
+            _domElems.domElems.cupCaution.hide();
+        }
         if (newTeam != "" && newTeam.length < 26) {
             // input content validation
             var counter = _globalVariables.globalVariables.dataCounter++;
@@ -253,6 +259,12 @@ $(document).ready(function () {
         $(this).parent().remove();
         if (_domElems.domElems.teamInput.attr('disabled')) {
             _domElems.domElems.teamInput.removeAttr('disabled');
+        }
+        if (_domElems.domElems.teamList.children().length !== 4 && //cup caution about Lucky team
+        _domElems.domElems.teamList.children().length !== 8 && _domElems.domElems.teamList.children().length !== 16 && _domElems.domElems.teamList.children().length !== 32) {
+            _domElems.domElems.cupCaution.show();
+        } else {
+            _domElems.domElems.cupCaution.hide();
         }
     });
     // creating new tournament

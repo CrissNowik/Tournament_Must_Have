@@ -10,7 +10,15 @@ $(document).ready(function () {
         if (domElems.teamInput.attr('disabled')) {
             domElems.teamInput.removeAttr('disabled');
         }
-        
+        if (domElems.teamList.children().length !== 4 && //cup caution about Lucky team
+            domElems.teamList.children().length !== 8 && 
+            domElems.teamList.children().length !== 16 && 
+            domElems.teamList.children().length !== 32) 
+            {
+                domElems.cupCaution.show();
+            } else {
+                domElems.cupCaution.hide();
+            }
     });
     // creating new tournament
     domElems.btnConfirm.on('click', function (e) {

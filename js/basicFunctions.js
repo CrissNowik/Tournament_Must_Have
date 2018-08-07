@@ -24,6 +24,15 @@ export let basicFunctions = {
                         domElems.collectorAlertD.show();
                         domElems.teamInput.attr('disabled', true);
                     } 
+                    if (domElems.teamList.children().length !== 3 && //cup caution about Lucky team
+                        domElems.teamList.children().length !== 7 && 
+                        domElems.teamList.children().length !== 16 && 
+                        domElems.teamList.children().length !== 31) 
+                    {
+                        domElems.cupCaution.show();
+                    } else {
+                        domElems.cupCaution.hide();
+                    }
                     if (newTeam != "" && newTeam.length < 26) { // input content validation
                         let counter = globalVariables.dataCounter++;
                         this.switchingVisibility(domElems.collectorAlertA, domElems.teamList);
