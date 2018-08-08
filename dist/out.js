@@ -109,7 +109,7 @@ var basicFunctions = exports.basicFunctions = {
             _domElems.domElems.teamInput.attr('disabled', true);
         }
         if (_domElems.domElems.teamList.children().length !== 3 && //cup caution about Lucky team
-        _domElems.domElems.teamList.children().length !== 7 && _domElems.domElems.teamList.children().length !== 16 && _domElems.domElems.teamList.children().length !== 31) {
+        _domElems.domElems.teamList.children().length !== 7 && _domElems.domElems.teamList.children().length !== 15 && _domElems.domElems.teamList.children().length !== 31) {
             _domElems.domElems.cupCaution.show();
         } else {
             _domElems.domElems.cupCaution.hide();
@@ -401,15 +401,38 @@ function cupGenerator(teamList) {
     var emptyAndLucky = [_globalVariables.globalVariables.empty, _globalVariables.globalVariables.lucky];
 
     _basicFunctions.basicFunctions.shuffle(teamNamesList); // shuffling teams
+
+    function showingPairsR1(teamNamesList, numberOfTeams) {
+        pairsReadyToShowR1 = _basicFunctions.basicFunctions.pairing(teamNamesList, numberOfTeams);
+    };
+    function showingPairsR3R4(lucky) {
+        if (lucky === true) {
+            pairsReadyToShowR3 = [twoEmpty, emptyAndLucky];
+            pairsReadyToShowR4 = twoEmpty;
+        } else {
+            pairsReadyToShowR3 = [twoEmpty, twoEmpty];
+            pairsReadyToShowR4 = twoEmpty;
+        }
+    }
+    function showingPairsR4R5(lucky) {
+        if (lucky === true) {
+            pairsReadyToShowR4 = [twoEmpty, emptyAndLucky];
+            pairsReadyToShowR5 = twoEmpty;
+        } else {
+            pairsReadyToShowR4 = [twoEmpty, twoEmpty];
+            pairsReadyToShowR5 = twoEmpty;
+        }
+    };
+
     // 2 rounds
     if (numberOfTeams < 5) {
-        pairsReadyToShowR1 = _basicFunctions.basicFunctions.pairing(teamNamesList, numberOfTeams);
+        showingPairsR1(teamNamesList, numberOfTeams);
         pairsReadyToShowR2 = twoEmpty;
         final.push(pairsReadyToShowR1, pairsReadyToShowR2);
         return final;
         // 3 rounds
     } else if (numberOfTeams > 4 && numberOfTeams < 9) {
-        pairsReadyToShowR1 = _basicFunctions.basicFunctions.pairing(teamNamesList, numberOfTeams);
+        showingPairsR1(teamNamesList, numberOfTeams);
         if (numberOfTeams === 5 || numberOfTeams === 6) {
             pairsReadyToShowR2.push(twoEmpty, emptyAndLucky);
         } else {
@@ -422,43 +445,39 @@ function cupGenerator(teamList) {
         return final;
         // 4 rounds
     } else if (numberOfTeams > 8 && numberOfTeams < 17) {
-        pairsReadyToShowR1 = _basicFunctions.basicFunctions.pairing(teamNamesList, numberOfTeams);
+        showingPairsR1(teamNamesList, numberOfTeams);
         if (numberOfTeams === 9 || numberOfTeams === 10) {
             pairsReadyToShowR2 = [];
             for (var j = 0; j < 2; j++) {
                 pairsReadyToShowR2.push(twoEmpty);
             }
             pairsReadyToShowR2.push(emptyAndLucky);
-            pairsReadyToShowR3 = [twoEmpty, emptyAndLucky];
-            pairsReadyToShowR4 = twoEmpty;
+            showingPairsR3R4(true);
         } else if (numberOfTeams === 11 || numberOfTeams === 12) {
             pairsReadyToShowR2 = [];
             for (var k = 0; k < 3; k++) {
                 pairsReadyToShowR2.push(twoEmpty);
             }
-            pairsReadyToShowR3 = [twoEmpty, emptyAndLucky];
-            pairsReadyToShowR4 = twoEmpty;
+            showingPairsR3R4(true);
         } else if (numberOfTeams === 13 || numberOfTeams === 14) {
             pairsReadyToShowR2 = [];
             for (var l = 0; l < 3; l++) {
                 pairsReadyToShowR2.push(twoEmpty);
             }
             pairsReadyToShowR2.push(emptyAndLucky);
-            pairsReadyToShowR3 = [twoEmpty, twoEmpty];
-            pairsReadyToShowR4 = twoEmpty;
+            showingPairsR3R4(false);
         } else if (numberOfTeams === 15 || numberOfTeams === 16) {
             pairsReadyToShowR2 = [];
             for (var m = 0; m < 4; m++) {
                 pairsReadyToShowR2.push(twoEmpty);
             }
-            pairsReadyToShowR3 = [twoEmpty, twoEmpty];
-            pairsReadyToShowR4 = twoEmpty;
+            showingPairsR3R4(false);
         }
 
         final.push(pairsReadyToShowR1, pairsReadyToShowR2, pairsReadyToShowR3, pairsReadyToShowR4);
         return final;
     } else {
-        pairsReadyToShowR1 = _basicFunctions.basicFunctions.pairing(teamNamesList, numberOfTeams);
+        showingPairsR1(teamNamesList, numberOfTeams);
         if (numberOfTeams === 17 || numberOfTeams === 18) {
             pairsReadyToShowR2 = [];
             for (var n = 0; n < 4; n++) {
@@ -466,16 +485,14 @@ function cupGenerator(teamList) {
             }
             pairsReadyToShowR2.push(emptyAndLucky);
             pairsReadyToShowR3 = [twoEmpty, twoEmpty, emptyAndLucky];
-            pairsReadyToShowR4 = [twoEmpty, emptyAndLucky];
-            pairsReadyToShowR5 = twoEmpty;
+            showingPairsR4R5(pairsReadyToShowR4, pairsReadyToShowR5, true);
         } else if (numberOfTeams === 19 || numberOfTeams === 20) {
             pairsReadyToShowR2 = [];
             for (var _n = 0; _n < 5; _n++) {
                 pairsReadyToShowR2.push(twoEmpty);
             }
             pairsReadyToShowR3 = [twoEmpty, twoEmpty, emptyAndLucky];
-            pairsReadyToShowR4 = [twoEmpty, emptyAndLucky];
-            pairsReadyToShowR5 = twoEmpty;
+            showingPairsR4R5(true);
         } else if (numberOfTeams === 21 || numberOfTeams === 22) {
             pairsReadyToShowR2 = [];
             for (var o = 0; o < 5; o++) {
@@ -483,8 +500,7 @@ function cupGenerator(teamList) {
             }
             pairsReadyToShowR2.push(emptyAndLucky);
             pairsReadyToShowR3 = [twoEmpty, twoEmpty, twoEmpty];
-            pairsReadyToShowR4 = [twoEmpty, emptyAndLucky];
-            pairsReadyToShowR5 = twoEmpty;
+            showingPairsR4R5(true);
         } else if (numberOfTeams === 23 || numberOfTeams === 24) {
             pairsReadyToShowR2 = [];
             for (var _o = 0; _o < 6; _o++) {
@@ -493,8 +509,7 @@ function cupGenerator(teamList) {
             for (var u = 0; u < 3; u++) {
                 pairsReadyToShowR3.push(twoEmpty);
             }
-            pairsReadyToShowR4 = [twoEmpty, emptyAndLucky];
-            pairsReadyToShowR5 = twoEmpty;
+            showingPairsR4R5(true);
         } else if (numberOfTeams === 25 || numberOfTeams === 26) {
             pairsReadyToShowR2 = [];
             for (var _o2 = 0; _o2 < 6; _o2++) {
@@ -505,8 +520,7 @@ function cupGenerator(teamList) {
                 pairsReadyToShowR3.push(twoEmpty);
             }
             pairsReadyToShowR3.push(emptyAndLucky);
-            pairsReadyToShowR4 = [twoEmpty, twoEmpty];
-            pairsReadyToShowR5 = twoEmpty;
+            showingPairsR4R5(false);
         } else if (numberOfTeams === 27 || numberOfTeams === 28) {
             pairsReadyToShowR2 = [];
             for (var _o3 = 0; _o3 < 7; _o3++) {
@@ -516,8 +530,7 @@ function cupGenerator(teamList) {
                 pairsReadyToShowR3.push(twoEmpty);
             }
             pairsReadyToShowR3.push(emptyAndLucky);
-            pairsReadyToShowR4 = [twoEmpty, twoEmpty];
-            pairsReadyToShowR5 = twoEmpty;
+            showingPairsR4R5(false);
         } else if (numberOfTeams === 29 || numberOfTeams === 30) {
             pairsReadyToShowR2 = [];
             for (var _o4 = 0; _o4 < 7; _o4++) {
@@ -527,8 +540,7 @@ function cupGenerator(teamList) {
             for (var _u3 = 0; _u3 < 4; _u3++) {
                 pairsReadyToShowR3.push(twoEmpty);
             }
-            pairsReadyToShowR4 = [twoEmpty, twoEmpty];
-            pairsReadyToShowR5 = twoEmpty;
+            showingPairsR4R5(false);
         } else if (numberOfTeams === 31 || numberOfTeams === 32) {
             pairsReadyToShowR2 = [];
             for (var _o5 = 0; _o5 < 8; _o5++) {
@@ -537,8 +549,7 @@ function cupGenerator(teamList) {
             for (var _u4 = 0; _u4 < 4; _u4++) {
                 pairsReadyToShowR3.push(twoEmpty);
             }
-            pairsReadyToShowR4 = [twoEmpty, twoEmpty];
-            pairsReadyToShowR5 = twoEmpty;
+            showingPairsR4R5(false);
         }
 
         final.push(pairsReadyToShowR1, pairsReadyToShowR2, pairsReadyToShowR3, pairsReadyToShowR4, pairsReadyToShowR5);

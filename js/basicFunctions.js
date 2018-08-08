@@ -26,7 +26,7 @@ export let basicFunctions = {
                     } 
                     if (domElems.teamList.children().length !== 3 && //cup caution about Lucky team
                         domElems.teamList.children().length !== 7 && 
-                        domElems.teamList.children().length !== 16 && 
+                        domElems.teamList.children().length !== 15 && 
                         domElems.teamList.children().length !== 31) 
                     {
                         domElems.cupCaution.show();
