@@ -69,6 +69,8 @@ export function showSheduleCup(sheduleArray, numberOfTeams) {
                 }
             } else if (numberOfTeams > 16) {
                 for (let n = 0; n < repsR4; n++) {
+                    console.log("testowanko: ", typeof sheduleArray[3][n]);
+                    
                     pairOnScreen = sheduleArray[3][n].join(" ___ - ___ ");   
                     basicFunctions.showMatch(domElems.sheduleOnScreenA, pairOnScreen); 
                 }

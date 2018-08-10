@@ -402,10 +402,11 @@ function cupGenerator(teamList) {
 
     _basicFunctions.basicFunctions.shuffle(teamNamesList); // shuffling teams
 
-    function showingPairsR1(teamNamesList, numberOfTeams) {
+    function generatingPairsR1(teamNamesList, numberOfTeams) {
         pairsReadyToShowR1 = _basicFunctions.basicFunctions.pairing(teamNamesList, numberOfTeams);
     };
-    function showingPairsR2(howMuchEmpty, lucky) {
+    function generatingPairsR2(howMuchEmpty, lucky) {
+        pairsReadyToShowR2 = [];
         if (lucky === true) {
             for (var i = 0; i < howMuchEmpty; i++) {
                 pairsReadyToShowR2.push(twoEmpty);
@@ -417,7 +418,7 @@ function cupGenerator(teamList) {
             }
         }
     };
-    function showingPairsR3R4(lucky) {
+    function generatingPairsR3R4(lucky) {
         if (lucky === true) {
             pairsReadyToShowR3 = [twoEmpty, emptyAndLucky];
             pairsReadyToShowR4 = twoEmpty;
@@ -426,7 +427,7 @@ function cupGenerator(teamList) {
             pairsReadyToShowR4 = twoEmpty;
         }
     };
-    function showingPairsR4R5(lucky) {
+    function generatingPairsR4R5(lucky) {
         if (lucky === true) {
             pairsReadyToShowR4 = [twoEmpty, emptyAndLucky];
             pairsReadyToShowR5 = twoEmpty;
@@ -438,85 +439,85 @@ function cupGenerator(teamList) {
 
     // 2 rounds
     if (numberOfTeams < 5) {
-        showingPairsR1(teamNamesList, numberOfTeams);
-        showingPairsR2(1, false);
+        generatingPairsR1(teamNamesList, numberOfTeams);
+        generatingPairsR2(1, false);
         final.push(pairsReadyToShowR1, pairsReadyToShowR2);
         return final;
         // 3 rounds
     } else if (numberOfTeams > 4 && numberOfTeams < 9) {
-        showingPairsR1(teamNamesList, numberOfTeams);
+        generatingPairsR1(teamNamesList, numberOfTeams);
         if (numberOfTeams === 5 || numberOfTeams === 6) {
-            showingPairsR2(1, true);
+            generatingPairsR2(1, true);
         } else {
-            showingPairsR2(2, false);
+            generatingPairsR2(2, false);
         }
         pairsReadyToShowR3 = twoEmpty;
         final.push(pairsReadyToShowR1, pairsReadyToShowR2, pairsReadyToShowR3);
         return final;
         // 4 rounds
     } else if (numberOfTeams > 8 && numberOfTeams < 17) {
-        showingPairsR1(teamNamesList, numberOfTeams);
+        generatingPairsR1(teamNamesList, numberOfTeams);
         if (numberOfTeams === 9 || numberOfTeams === 10) {
-            showingPairsR2(2, true);
-            showingPairsR3R4(true);
+            generatingPairsR2(2, true);
+            generatingPairsR3R4(true);
         } else if (numberOfTeams === 11 || numberOfTeams === 12) {
-            showingPairsR2(3, false);
-            showingPairsR3R4(true);
+            generatingPairsR2(3, false);
+            generatingPairsR3R4(true);
         } else if (numberOfTeams === 13 || numberOfTeams === 14) {
-            showingPairsR2(3, true);
-            showingPairsR3R4(false);
+            generatingPairsR2(3, true);
+            generatingPairsR3R4(false);
         } else if (numberOfTeams === 15 || numberOfTeams === 16) {
-            showingPairsR2(4, false);
-            showingPairsR3R4(false);
+            generatingPairsR2(4, false);
+            generatingPairsR3R4(false);
         }
         final.push(pairsReadyToShowR1, pairsReadyToShowR2, pairsReadyToShowR3, pairsReadyToShowR4);
         return final;
     } else {
-        showingPairsR1(teamNamesList, numberOfTeams);
+        generatingPairsR1(teamNamesList, numberOfTeams);
         if (numberOfTeams === 17 || numberOfTeams === 18) {
-            showingPairsR2(4, true);
+            generatingPairsR2(4, true);
             pairsReadyToShowR3 = [twoEmpty, twoEmpty, emptyAndLucky];
-            showingPairsR4R5(pairsReadyToShowR4, pairsReadyToShowR5, true);
+            generatingPairsR4R5(true);
         } else if (numberOfTeams === 19 || numberOfTeams === 20) {
-            showingPairsR2(5, false);
+            generatingPairsR2(5, false);
             pairsReadyToShowR3 = [twoEmpty, twoEmpty, emptyAndLucky];
-            showingPairsR4R5(true);
+            generatingPairsR4R5(true);
         } else if (numberOfTeams === 21 || numberOfTeams === 22) {
-            showingPairsR2(5, true);
+            generatingPairsR2(5, true);
             pairsReadyToShowR3 = [twoEmpty, twoEmpty, twoEmpty];
-            showingPairsR4R5(true);
+            generatingPairsR4R5(true);
         } else if (numberOfTeams === 23 || numberOfTeams === 24) {
-            showingPairsR2(6, false);
+            generatingPairsR2(6, false);
             for (var u = 0; u < 3; u++) {
                 pairsReadyToShowR3.push(twoEmpty);
             }
-            showingPairsR4R5(true);
+            generatingPairsR4R5(true);
         } else if (numberOfTeams === 25 || numberOfTeams === 26) {
-            showingPairsR2(6, true);
+            generatingPairsR2(6, true);
             for (var _u = 0; _u < 3; _u++) {
                 pairsReadyToShowR3.push(twoEmpty);
             }
             pairsReadyToShowR3.push(emptyAndLucky);
-            showingPairsR4R5(false);
+            generatingPairsR4R5(false);
         } else if (numberOfTeams === 27 || numberOfTeams === 28) {
-            showingPairsR2(7, false);
+            generatingPairsR2(7, false);
             for (var _u2 = 0; _u2 < 3; _u2++) {
                 pairsReadyToShowR3.push(twoEmpty);
             }
             pairsReadyToShowR3.push(emptyAndLucky);
-            showingPairsR4R5(false);
+            generatingPairsR4R5(false);
         } else if (numberOfTeams === 29 || numberOfTeams === 30) {
-            showingPairsR2(7, true);
+            generatingPairsR2(7, true);
             for (var _u3 = 0; _u3 < 4; _u3++) {
                 pairsReadyToShowR3.push(twoEmpty);
             }
-            showingPairsR4R5(false);
+            generatingPairsR4R5(false);
         } else if (numberOfTeams === 31 || numberOfTeams === 32) {
-            showingPairsR2(8, false);
+            generatingPairsR2(8, false);
             for (var _u4 = 0; _u4 < 4; _u4++) {
                 pairsReadyToShowR3.push(twoEmpty);
             }
-            showingPairsR4R5(false);
+            generatingPairsR4R5(false);
         }
 
         final.push(pairsReadyToShowR1, pairsReadyToShowR2, pairsReadyToShowR3, pairsReadyToShowR4, pairsReadyToShowR5);
@@ -589,6 +590,9 @@ function showSheduleLeague(readyShedule) {
 Object.defineProperty(exports, "__esModule", {
     value: true
 });
+
+var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
+
 exports.showSheduleCup = showSheduleCup;
 
 var _domElems = __webpack_require__(1);
@@ -664,6 +668,8 @@ function showSheduleCup(sheduleArray, numberOfTeams) {
                 }
             } else if (numberOfTeams > 16) {
                 for (var _n = 0; _n < repsR4; _n++) {
+                    console.log("testowanko: ", _typeof(sheduleArray[3][_n]));
+
                     pairOnScreen = sheduleArray[3][_n].join(" ___ - ___ ");
                     _basicFunctions.basicFunctions.showMatch(_domElems.domElems.sheduleOnScreenA, pairOnScreen);
                 }
