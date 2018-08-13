@@ -26,7 +26,7 @@ export function showSheduleCup(sheduleArray, numberOfTeams) {
             basicFunctions.showHeader(domElems.sheduleOnScreenA, roundCounter);
             if (numberOfTeams === 3 || numberOfTeams === 4) {
                 for (let k = 0; k < repsR2; k++) {
-                    pairOnScreen = sheduleArray[1].join(" ___ - ___ ");   
+                    pairOnScreen = sheduleArray[1].join(" ___ - ___ ");                      
                     basicFunctions.showMatch(domElems.sheduleOnScreenA, pairOnScreen); 
                 }
             } else {

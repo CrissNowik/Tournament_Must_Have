@@ -385,7 +385,7 @@ exports.cupGenerator = cupGenerator;
 
 var _basicFunctions = __webpack_require__(0);
 
-var _globalVariables = __webpack_require__(2);
+var _cupPairGenerators = __webpack_require__(10);
 
 function cupGenerator(teamList) {
     var final = [];
@@ -397,129 +397,91 @@ function cupGenerator(teamList) {
         pairsReadyToShowR4 = void 0,
         pairsReadyToShowR5 = void 0;
     pairsReadyToShowR1 = pairsReadyToShowR2 = pairsReadyToShowR3 = pairsReadyToShowR4 = pairsReadyToShowR5 = [];
-    var twoEmpty = [_globalVariables.globalVariables.empty, _globalVariables.globalVariables.empty];
 
     _basicFunctions.basicFunctions.shuffle(teamNamesList); // shuffling teams
 
-    function generatingPairsR1(teamNamesList, numberOfTeams) {
-        pairsReadyToShowR1 = _basicFunctions.basicFunctions.pairing(teamNamesList, numberOfTeams);
-    };
-    function generatingPairsR2(howMuchEmpty, lucky) {
-        pairsReadyToShowR2 = [];
-        if (lucky === true) {
-            for (var i = 0; i < howMuchEmpty; i++) {
-                pairsReadyToShowR2.push(twoEmpty);
-            }
-            pairsReadyToShowR2.push(emptyAndLucky);
-        } else {
-            for (var _i = 0; _i < howMuchEmpty; _i++) {
-                pairsReadyToShowR2.push(twoEmpty);
-            }
-        }
-    };
-    function generatingPairsR3(howMuchEmpty, lucky) {
-        pairsReadyToShowR3 = [];
-        if (lucky === true) {
-            for (var i = 0; i < howMuchEmpty; i++) {
-                pairsReadyToShowR3.push(twoEmpty);
-            }
-            pairsReadyToShowR3.push(emptyAndLucky);
-        } else {
-            for (var _i2 = 0; _i2 < howMuchEmpty; _i2++) {
-                pairsReadyToShowR3.push(twoEmpty);
-            }
-        }
-    };
-    function generatingPairsR3R4(lucky) {
-        if (lucky === true) {
-            pairsReadyToShowR3 = [twoEmpty, emptyAndLucky];
-            pairsReadyToShowR4 = twoEmpty;
-        } else {
-            pairsReadyToShowR3 = [twoEmpty, twoEmpty];
-            pairsReadyToShowR4 = twoEmpty;
-        }
-    };
-    function generatingPairsR4R5(lucky) {
-        if (lucky === true) {
-            pairsReadyToShowR4 = [twoEmpty, emptyAndLucky];
-            pairsReadyToShowR5 = twoEmpty;
-        } else {
-            pairsReadyToShowR4 = [twoEmpty, twoEmpty];
-            pairsReadyToShowR5 = twoEmpty;
-        }
-    };
-
     // 2 rounds
     if (numberOfTeams < 5) {
-        generatingPairsR1(teamNamesList, numberOfTeams);
-        generatingPairsR2(1, false);
+        pairsReadyToShowR1 = _basicFunctions.basicFunctions.pairing(teamNamesList, numberOfTeams);
+        pairsReadyToShowR2 = _cupPairGenerators.cupPairGenerators.generatingPairsR2(1, false);
         final.push(pairsReadyToShowR1, pairsReadyToShowR2);
         return final;
         // 3 rounds
     } else if (numberOfTeams > 4 && numberOfTeams < 9) {
-        generatingPairsR1(teamNamesList, numberOfTeams);
+        pairsReadyToShowR1 = _basicFunctions.basicFunctions.pairing(teamNamesList, numberOfTeams);
         if (numberOfTeams === 5 || numberOfTeams === 6) {
-            generatingPairsR2(1, true);
+            pairsReadyToShowR2 = _cupPairGenerators.cupPairGenerators.generatingPairsR2(1, true);
         } else {
-            generatingPairsR2(2, false);
+            pairsReadyToShowR2 = _cupPairGenerators.cupPairGenerators.generatingPairsR2(2, false);
         }
-        pairsReadyToShowR3 = twoEmpty;
+        pairsReadyToShowR3 = _cupPairGenerators.cupPairGenerators.generatingPairsR3(1, false);
         final.push(pairsReadyToShowR1, pairsReadyToShowR2, pairsReadyToShowR3);
         return final;
         // 4 rounds
     } else if (numberOfTeams > 8 && numberOfTeams < 17) {
-        generatingPairsR1(teamNamesList, numberOfTeams);
+        pairsReadyToShowR1 = _basicFunctions.basicFunctions.pairing(teamNamesList, numberOfTeams);
         if (numberOfTeams === 9 || numberOfTeams === 10) {
-            generatingPairsR2(2, true);
-            generatingPairsR3R4(true);
+            pairsReadyToShowR2 = _cupPairGenerators.cupPairGenerators.generatingPairsR2(2, true);
+            pairsReadyToShowR3 = _cupPairGenerators.cupPairGenerators.generatingPairsPuRound(true);
+            pairsReadyToShowR4 = _cupPairGenerators.cupPairGenerators.generatingPairsLastRound();
         } else if (numberOfTeams === 11 || numberOfTeams === 12) {
-            generatingPairsR2(3, false);
-            generatingPairsR3R4(true);
+            pairsReadyToShowR2 = _cupPairGenerators.cupPairGenerators.generatingPairsR2(3, false);
+            pairsReadyToShowR3 = _cupPairGenerators.cupPairGenerators.generatingPairsPuRound(true);
+            pairsReadyToShowR4 = _cupPairGenerators.cupPairGenerators.generatingPairsLastRound();
         } else if (numberOfTeams === 13 || numberOfTeams === 14) {
-            generatingPairsR2(3, true);
-            generatingPairsR3R4(false);
+            pairsReadyToShowR2 = _cupPairGenerators.cupPairGenerators.generatingPairsR2(3, true);
+            pairsReadyToShowR3 = _cupPairGenerators.cupPairGenerators.generatingPairsPuRound(false);
+            pairsReadyToShowR4 = _cupPairGenerators.cupPairGenerators.generatingPairsLastRound();
         } else if (numberOfTeams === 15 || numberOfTeams === 16) {
-            generatingPairsR2(4, false);
-            generatingPairsR3R4(false);
+            pairsReadyToShowR2 = _cupPairGenerators.cupPairGenerators.generatingPairsR2(4, false);
+            pairsReadyToShowR3 = _cupPairGenerators.cupPairGenerators.generatingPairsPuRound(false);
+            pairsReadyToShowR4 = _cupPairGenerators.cupPairGenerators.generatingPairsLastRound();
         }
         final.push(pairsReadyToShowR1, pairsReadyToShowR2, pairsReadyToShowR3, pairsReadyToShowR4);
         return final;
     } else {
-        generatingPairsR1(teamNamesList, numberOfTeams);
+        pairsReadyToShowR1 = _basicFunctions.basicFunctions.pairing(teamNamesList, numberOfTeams);
         if (numberOfTeams === 17 || numberOfTeams === 18) {
-            generatingPairsR2(4, true);
-            generatingPairsR3(2, true);
-            generatingPairsR4R5(true);
+            pairsReadyToShowR2 = _cupPairGenerators.cupPairGenerators.generatingPairsR2(4, true);
+            pairsReadyToShowR3 = _cupPairGenerators.cupPairGenerators.generatingPairsR3(2, true);
+            pairsReadyToShowR4 = _cupPairGenerators.cupPairGenerators.generatingPairsPuRound(true);
+            pairsReadyToShowR5 = _cupPairGenerators.cupPairGenerators.generatingPairsLastRound();
         } else if (numberOfTeams === 19 || numberOfTeams === 20) {
-            generatingPairsR2(5, false);
-            generatingPairsR3(2, true);
-            generatingPairsR4R5(true);
+            pairsReadyToShowR2 = _cupPairGenerators.cupPairGenerators.generatingPairsR2(5, false);
+            pairsReadyToShowR3 = _cupPairGenerators.cupPairGenerators.generatingPairsR3(2, true);
+            pairsReadyToShowR4 = _cupPairGenerators.cupPairGenerators.generatingPairsPuRound(true);
+            pairsReadyToShowR5 = _cupPairGenerators.cupPairGenerators.generatingPairsLastRound();
         } else if (numberOfTeams === 21 || numberOfTeams === 22) {
-            generatingPairsR2(5, true);
-            generatingPairsR3(3, false);
-            generatingPairsR4R5(true);
+            pairsReadyToShowR2 = _cupPairGenerators.cupPairGenerators.generatingPairsR2(5, true);
+            pairsReadyToShowR3 = _cupPairGenerators.cupPairGenerators.generatingPairsR3(3, false);
+            pairsReadyToShowR4 = _cupPairGenerators.cupPairGenerators.generatingPairsPuRound(true);
+            pairsReadyToShowR5 = _cupPairGenerators.cupPairGenerators.generatingPairsLastRound();
         } else if (numberOfTeams === 23 || numberOfTeams === 24) {
-            generatingPairsR2(6, false);
-            generatingPairsR3(3, false);
-            generatingPairsR4R5(true);
+            pairsReadyToShowR2 = _cupPairGenerators.cupPairGenerators.generatingPairsR2(6, false);
+            pairsReadyToShowR3 = _cupPairGenerators.cupPairGenerators.generatingPairsR3(3, false);
+            pairsReadyToShowR4 = _cupPairGenerators.cupPairGenerators.generatingPairsPuRound(true);
+            pairsReadyToShowR5 = _cupPairGenerators.cupPairGenerators.generatingPairsLastRound();
         } else if (numberOfTeams === 25 || numberOfTeams === 26) {
-            generatingPairsR2(6, true);
-            generatingPairsR3(3, true);
-            generatingPairsR4R5(false);
+            pairsReadyToShowR2 = _cupPairGenerators.cupPairGenerators.generatingPairsR2(6, true);
+            pairsReadyToShowR3 = _cupPairGenerators.cupPairGenerators.generatingPairsR3(3, true);
+            pairsReadyToShowR4 = _cupPairGenerators.cupPairGenerators.generatingPairsPuRound(false);
+            pairsReadyToShowR5 = _cupPairGenerators.cupPairGenerators.generatingPairsLastRound();
         } else if (numberOfTeams === 27 || numberOfTeams === 28) {
-            generatingPairsR2(7, false);
-            generatingPairsR3(3, true);
-            generatingPairsR4R5(false);
+            pairsReadyToShowR2 = _cupPairGenerators.cupPairGenerators.generatingPairsR2(7, false);
+            pairsReadyToShowR3 = _cupPairGenerators.cupPairGenerators.generatingPairsR3(3, true);
+            pairsReadyToShowR4 = _cupPairGenerators.cupPairGenerators.generatingPairsPuRound(false);
+            pairsReadyToShowR5 = _cupPairGenerators.cupPairGenerators.generatingPairsLastRound();
         } else if (numberOfTeams === 29 || numberOfTeams === 30) {
-            generatingPairsR2(7, true);
-            generatingPairsR3(4, false);
-            generatingPairsR4R5(false);
+            pairsReadyToShowR2 = _cupPairGenerators.cupPairGenerators.generatingPairsR2(7, true);
+            pairsReadyToShowR3 = _cupPairGenerators.cupPairGenerators.generatingPairsR3(4, false);
+            pairsReadyToShowR4 = _cupPairGenerators.cupPairGenerators.generatingPairsPuRound(false);
+            pairsReadyToShowR5 = _cupPairGenerators.cupPairGenerators.generatingPairsLastRound();
         } else if (numberOfTeams === 31 || numberOfTeams === 32) {
-            generatingPairsR2(8, false);
-            generatingPairsR3(4, false);
-            generatingPairsR4R5(false);
+            pairsReadyToShowR2 = _cupPairGenerators.cupPairGenerators.generatingPairsR2(8, false);
+            pairsReadyToShowR3 = _cupPairGenerators.cupPairGenerators.generatingPairsR3(4, false);
+            pairsReadyToShowR4 = _cupPairGenerators.cupPairGenerators.generatingPairsPuRound(false);
+            pairsReadyToShowR5 = _cupPairGenerators.cupPairGenerators.generatingPairsLastRound();
         }
-
         final.push(pairsReadyToShowR1, pairsReadyToShowR2, pairsReadyToShowR3, pairsReadyToShowR4, pairsReadyToShowR5);
         return final;
     }
@@ -686,6 +648,77 @@ function showSheduleCup(sheduleArray, numberOfTeams) {
         }
     }
 }
+
+/***/ }),
+/* 9 */,
+/* 10 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+exports.cupPairGenerators = undefined;
+
+var _globalVariables = __webpack_require__(2);
+
+var TWOEMPTY = [_globalVariables.globalVariables.empty, _globalVariables.globalVariables.empty];
+var EMPTYANDLUCKY = [_globalVariables.globalVariables.empty, _globalVariables.globalVariables.lucky];
+
+var cupPairGenerators = exports.cupPairGenerators = {
+    generatingPairsR2: function generatingPairsR2(howMuchEmpty, lucky) {
+        var pairsReadyToShowR2 = [];
+        if (howMuchEmpty === 1 && lucky === false) {
+            pairsReadyToShowR2 = TWOEMPTY;
+        } else {
+            if (lucky === true) {
+                for (var i = 0; i < howMuchEmpty; i++) {
+                    pairsReadyToShowR2.push(TWOEMPTY);
+                }
+                pairsReadyToShowR2.push(EMPTYANDLUCKY);
+            } else {
+                for (var _i = 0; _i < howMuchEmpty; _i++) {
+                    pairsReadyToShowR2.push(TWOEMPTY);
+                }
+            }
+        }
+        return pairsReadyToShowR2;
+    },
+    generatingPairsR3: function generatingPairsR3(howMuchEmpty, lucky) {
+        var pairsReadyToShowR3 = [];
+        if (howMuchEmpty === 1 && lucky === false) {
+            pairsReadyToShowR3 = TWOEMPTY;
+        } else {
+            if (lucky === true) {
+                for (var i = 0; i < howMuchEmpty; i++) {
+                    pairsReadyToShowR3.push(TWOEMPTY);
+                }
+                pairsReadyToShowR3.push(EMPTYANDLUCKY);
+            } else {
+                for (var _i2 = 0; _i2 < howMuchEmpty; _i2++) {
+                    pairsReadyToShowR3.push(TWOEMPTY);
+                }
+            }
+        }
+        return pairsReadyToShowR3;
+    },
+    generatingPairsPuRound: function generatingPairsPuRound(lucky) {
+        var pairsReadyToShowOneBeforeLastRound = [];
+        if (lucky === true) {
+            pairsReadyToShowOneBeforeLastRound = [TWOEMPTY, EMPTYANDLUCKY];
+        } else {
+            pairsReadyToShowOneBeforeLastRound = [TWOEMPTY, TWOEMPTY];
+        }
+        return pairsReadyToShowOneBeforeLastRound;
+    },
+    generatingPairsLastRound: function generatingPairsLastRound() {
+        var pairsReadyToShowLastRound = [];
+        pairsReadyToShowLastRound = TWOEMPTY;
+        return pairsReadyToShowLastRound;
+    }
+};
 
 /***/ })
 /******/ ]);
