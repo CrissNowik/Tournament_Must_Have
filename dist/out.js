@@ -221,7 +221,8 @@ var domElems = exports.domElems = {
     sheduleOnScreenB: $('#result__listB'),
     sheduleOnScreenC: $('#result__listC'),
     sheduleOnScreenD: $('#result__listD'),
-    cupCaution: $('#alertCup')
+    cupCaution: $('#alertCup'),
+    cupLadder: $('#result__lader')
 };
 
 /***/ }),
@@ -552,9 +553,6 @@ function showSheduleLeague(readyShedule) {
 Object.defineProperty(exports, "__esModule", {
     value: true
 });
-
-var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
-
 exports.showSheduleCup = showSheduleCup;
 
 var _domElems = __webpack_require__(1);
@@ -566,7 +564,11 @@ var _globalVariables = __webpack_require__(2);
 function showSheduleCup(sheduleArray, numberOfTeams) {
     var roundCounter = 1;
     var pairOnScreen = "";
-    console.log("do wyświetlenia: ", sheduleArray);
+
+    _domElems.domElems.sheduleOnScreenB.css('display', 'none');
+    _domElems.domElems.sheduleOnScreenC.css('display', 'none');
+    _domElems.domElems.sheduleOnScreenD.css('display', 'none');
+    _domElems.domElems.cupLadder.css('display', 'flex');
 
     function showingTwoFirstRoundsCup() {
         var repsR1 = sheduleArray[0].length;
@@ -630,8 +632,6 @@ function showSheduleCup(sheduleArray, numberOfTeams) {
                 }
             } else if (numberOfTeams > 16) {
                 for (var _n = 0; _n < repsR4; _n++) {
-                    console.log("testowanko: ", _typeof(sheduleArray[3][_n]));
-
                     pairOnScreen = sheduleArray[3][_n].join(" ___ - ___ ");
                     _basicFunctions.basicFunctions.showMatch(_domElems.domElems.sheduleOnScreenA, pairOnScreen);
                 }
@@ -647,7 +647,7 @@ function showSheduleCup(sheduleArray, numberOfTeams) {
             }
         }
     }
-}
+};
 
 /***/ }),
 /* 9 */,

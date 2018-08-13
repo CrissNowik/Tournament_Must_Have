@@ -5,8 +5,12 @@ import { globalVariables } from "./globalVariables";
 export function showSheduleCup(sheduleArray, numberOfTeams) {
     let roundCounter = 1;
     let pairOnScreen = "";
-    console.log("do wyświetlenia: ", sheduleArray);   
-    
+
+    domElems.sheduleOnScreenB.css('display', 'none');    
+    domElems.sheduleOnScreenC.css('display', 'none');
+    domElems.sheduleOnScreenD.css('display', 'none');
+    domElems.cupLadder.css('display', 'flex');
+
     function showingTwoFirstRoundsCup() {
         let repsR1 = sheduleArray[0].length;
         let repsR2 = Math.ceil(sheduleArray[0].length/2);
@@ -69,8 +73,6 @@ export function showSheduleCup(sheduleArray, numberOfTeams) {
                 }
             } else if (numberOfTeams > 16) {
                 for (let n = 0; n < repsR4; n++) {
-                    console.log("testowanko: ", typeof sheduleArray[3][n]);
-                    
                     pairOnScreen = sheduleArray[3][n].join(" ___ - ___ ");   
                     basicFunctions.showMatch(domElems.sheduleOnScreenA, pairOnScreen); 
                 }
@@ -87,4 +89,4 @@ export function showSheduleCup(sheduleArray, numberOfTeams) {
         } 
         
     } 
-}
+};
