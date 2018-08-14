@@ -4,16 +4,15 @@
     display: none;
     .result__lader {
         display: none;
-        .result__ladder_rect{
-            @include ladderRect;
-            margin: 10px 10px;
+        .result__ladder_round{
+            display: flex;
+            justify-content: space-evenly;
+            flex-flow: column;
+            .result__ladder_rect{
+                @include ladderRect;                
+            }
         }
+        
     }
 }
 
-@for $i from 2 through 5 {
-    .result__ladder_rectR#{$i}{
-        @include ladderRect;
-        margin-top: $i*20px;
-    }
-}
