@@ -19,7 +19,12 @@ export let domElems = {
         sheduleOnScreenC: $('#result__listC'),
         sheduleOnScreenD: $('#result__listD'),
         cupCaution: $('#alertCup'),
-        cupLadder: $('#result__lader')
+        cupLadder: $('#result__lader'),
+        ladder_round1: $('#ladder_round1'),
+        ladder_round2: $('#ladder_round2'),
+        ladder_round3: $('#ladder_round3'),
+        ladder_round4: $('#ladder_round4'),
+        ladder_round5: $('#ladder_round5')
     }
  
  

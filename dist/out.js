@@ -83,9 +83,9 @@ var _leagueGenerator = __webpack_require__(4);
 
 var _cupGenerator = __webpack_require__(6);
 
-var _showSheduleLeague = __webpack_require__(7);
+var _showSheduleLeague = __webpack_require__(8);
 
-var _showSheduleCup = __webpack_require__(8);
+var _showSheduleCup = __webpack_require__(9);
 
 var basicFunctions = exports.basicFunctions = {
     shuffle: function shuffle(teamList) {
@@ -222,7 +222,12 @@ var domElems = exports.domElems = {
     sheduleOnScreenC: $('#result__listC'),
     sheduleOnScreenD: $('#result__listD'),
     cupCaution: $('#alertCup'),
-    cupLadder: $('#result__lader')
+    cupLadder: $('#result__lader'),
+    ladder_round1: $('#ladder_round1'),
+    ladder_round2: $('#ladder_round2'),
+    ladder_round3: $('#ladder_round3'),
+    ladder_round4: $('#ladder_round4'),
+    ladder_round5: $('#ladder_round5')
 };
 
 /***/ }),
@@ -386,7 +391,7 @@ exports.cupGenerator = cupGenerator;
 
 var _basicFunctions = __webpack_require__(0);
 
-var _cupPairGenerators = __webpack_require__(10);
+var _cupPairGenerators = __webpack_require__(7);
 
 function cupGenerator(teamList) {
     var final = [];
@@ -498,168 +503,6 @@ function cupGenerator(teamList) {
 Object.defineProperty(exports, "__esModule", {
     value: true
 });
-exports.showSheduleLeague = showSheduleLeague;
-
-var _domElems = __webpack_require__(1);
-
-var _basicFunctions = __webpack_require__(0);
-
-function showSheduleLeague(readyShedule) {
-    for (var i = 0; i < readyShedule.length; i++) {
-        var roundCounter = 1 + i;
-        var gameCounter = 0;
-        console.log("showSheduleLeague");
-
-        if (roundCounter <= 8) {
-            _basicFunctions.basicFunctions.showHeader(_domElems.domElems.sheduleOnScreenA, roundCounter);
-        } else if (8 <= roundCounter && roundCounter <= 16) {
-            _basicFunctions.basicFunctions.showHeader(_domElems.domElems.sheduleOnScreenB, roundCounter);
-        } else if (17 <= roundCounter && roundCounter <= 24) {
-            _basicFunctions.basicFunctions.showHeader(_domElems.domElems.sheduleOnScreenC, roundCounter);
-        } else {
-            _basicFunctions.basicFunctions.showHeader(_domElems.domElems.sheduleOnScreenD, roundCounter);
-        }
-
-        for (var j = 0; j < readyShedule[i].length; j++) {
-            var newPair = readyShedule[i][j];
-            var pairOnScreen = newPair.join(" ___ - ___ ");
-
-            if (roundCounter <= 8) {
-                _basicFunctions.basicFunctions.showMatch(_domElems.domElems.sheduleOnScreenA, pairOnScreen);
-            } else if (8 <= roundCounter && roundCounter <= 16) {
-                gameCounter = _domElems.domElems.sheduleOnScreenA.find('li').length + 1;
-                _domElems.domElems.sheduleOnScreenB.attr('start', "" + gameCounter);
-                _basicFunctions.basicFunctions.showMatch(_domElems.domElems.sheduleOnScreenB, pairOnScreen);
-            } else if (17 <= roundCounter && roundCounter <= 24) {
-                gameCounter = _domElems.domElems.sheduleOnScreenB.find('li').length * 2 + 1;
-                _domElems.domElems.sheduleOnScreenC.attr('start', "" + gameCounter);
-                _basicFunctions.basicFunctions.showMatch(_domElems.domElems.sheduleOnScreenC, pairOnScreen);
-            } else {
-                gameCounter = _domElems.domElems.sheduleOnScreenC.find('li').length * 3 + 1;
-                _domElems.domElems.sheduleOnScreenD.attr('start', "" + gameCounter);
-                _basicFunctions.basicFunctions.showMatch(_domElems.domElems.sheduleOnScreenD, pairOnScreen);
-            }
-        }
-    }
-};
-
-/***/ }),
-/* 8 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-    value: true
-});
-exports.showSheduleCup = showSheduleCup;
-
-var _domElems = __webpack_require__(1);
-
-var _basicFunctions = __webpack_require__(0);
-
-var _globalVariables = __webpack_require__(2);
-
-function showSheduleCup(sheduleArray, numberOfTeams) {
-    var roundCounter = 1;
-    var pairOnScreen = "";
-
-    _domElems.domElems.sheduleOnScreenB.css('display', 'none');
-    _domElems.domElems.sheduleOnScreenC.css('display', 'none');
-    _domElems.domElems.sheduleOnScreenD.css('display', 'none');
-    _domElems.domElems.cupLadder.css('display', 'flex');
-
-    function showingTwoFirstRoundsCup() {
-        var repsR1 = sheduleArray[0].length;
-        var repsR2 = Math.ceil(sheduleArray[0].length / 2);
-        var idLeft = "";
-        var idRight = "";
-        //Round 1   
-        _basicFunctions.basicFunctions.showHeader(_domElems.domElems.sheduleOnScreenA, roundCounter);
-        for (var i = 0; i < repsR1; i++) {
-            idLeft = _globalVariables.globalVariables.idCharArr[i] + "1";
-            idRight = _globalVariables.globalVariables.idCharArr[i] + "2";
-            pairOnScreen = sheduleArray[0][i].join(" " + idLeft + " ___ - ___ " + ("" + idRight));
-            _basicFunctions.basicFunctions.showMatch(_domElems.domElems.sheduleOnScreenA, pairOnScreen);
-        }
-        roundCounter++;
-
-        //Round 2
-        _basicFunctions.basicFunctions.showHeader(_domElems.domElems.sheduleOnScreenA, roundCounter);
-        if (numberOfTeams === 3 || numberOfTeams === 4) {
-            for (var k = 0; k < repsR2; k++) {
-                pairOnScreen = sheduleArray[1].join(" ___ - ___ ");
-                _basicFunctions.basicFunctions.showMatch(_domElems.domElems.sheduleOnScreenA, pairOnScreen);
-            }
-        } else {
-            for (var _k = 0; _k < repsR2; _k++) {
-                pairOnScreen = sheduleArray[1][_k].join(" ___ - ___ ");
-                _basicFunctions.basicFunctions.showMatch(_domElems.domElems.sheduleOnScreenA, pairOnScreen);
-            }
-        }
-        roundCounter++;
-    };
-
-    if (numberOfTeams < 5) {
-        showingTwoFirstRoundsCup();
-    } else if (numberOfTeams > 4) {
-        showingTwoFirstRoundsCup();
-        //Round 3
-        var repsR3 = Math.ceil(sheduleArray[1].length / 2);
-
-        _basicFunctions.basicFunctions.showHeader(_domElems.domElems.sheduleOnScreenA, roundCounter);
-        if (numberOfTeams > 4 && numberOfTeams < 9) {
-            for (var l = 0; l < repsR3; l++) {
-                pairOnScreen = sheduleArray[2].join(" ___ - ___ ");
-                _basicFunctions.basicFunctions.showMatch(_domElems.domElems.sheduleOnScreenA, pairOnScreen);
-            }
-            roundCounter++;
-        } else if (numberOfTeams > 8 && numberOfTeams < 33) {
-            for (var _l = 0; _l < repsR3; _l++) {
-                pairOnScreen = sheduleArray[2][_l].join(" ___ - ___ ");
-                _basicFunctions.basicFunctions.showMatch(_domElems.domElems.sheduleOnScreenA, pairOnScreen);
-            }
-            roundCounter++;
-            // Round 4
-            var repsR4 = Math.ceil(sheduleArray[2].length / 2);
-
-            _basicFunctions.basicFunctions.showHeader(_domElems.domElems.sheduleOnScreenA, roundCounter);
-            if (numberOfTeams > 8 && numberOfTeams < 17) {
-                for (var n = 0; n < repsR4; n++) {
-                    pairOnScreen = sheduleArray[3].join(" ___ - ___ ");
-                    _basicFunctions.basicFunctions.showMatch(_domElems.domElems.sheduleOnScreenA, pairOnScreen);
-                }
-            } else if (numberOfTeams > 16) {
-                for (var _n = 0; _n < repsR4; _n++) {
-                    pairOnScreen = sheduleArray[3][_n].join(" ___ - ___ ");
-                    _basicFunctions.basicFunctions.showMatch(_domElems.domElems.sheduleOnScreenA, pairOnScreen);
-                }
-                roundCounter++;
-                // Round 5
-                var repsR5 = Math.ceil(sheduleArray[3].length / 2);
-
-                _basicFunctions.basicFunctions.showHeader(_domElems.domElems.sheduleOnScreenA, roundCounter);
-                for (var o = 0; o < repsR5; o++) {
-                    pairOnScreen = sheduleArray[4].join(" ___ - ___ ");
-                    _basicFunctions.basicFunctions.showMatch(_domElems.domElems.sheduleOnScreenA, pairOnScreen);
-                }
-            }
-        }
-    }
-};
-
-/***/ }),
-/* 9 */,
-/* 10 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-    value: true
-});
 exports.cupPairGenerators = undefined;
 
 var _globalVariables = __webpack_require__(2);
@@ -717,6 +560,186 @@ var cupPairGenerators = exports.cupPairGenerators = {
         var pairsReadyToShowLastRound = [];
         pairsReadyToShowLastRound = TWOEMPTY;
         return pairsReadyToShowLastRound;
+    }
+};
+
+/***/ }),
+/* 8 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+exports.showSheduleLeague = showSheduleLeague;
+
+var _domElems = __webpack_require__(1);
+
+var _basicFunctions = __webpack_require__(0);
+
+function showSheduleLeague(readyShedule) {
+    for (var i = 0; i < readyShedule.length; i++) {
+        var roundCounter = 1 + i;
+        var gameCounter = 0;
+        console.log("showSheduleLeague");
+
+        if (roundCounter <= 8) {
+            _basicFunctions.basicFunctions.showHeader(_domElems.domElems.sheduleOnScreenA, roundCounter);
+        } else if (8 <= roundCounter && roundCounter <= 16) {
+            _basicFunctions.basicFunctions.showHeader(_domElems.domElems.sheduleOnScreenB, roundCounter);
+        } else if (17 <= roundCounter && roundCounter <= 24) {
+            _basicFunctions.basicFunctions.showHeader(_domElems.domElems.sheduleOnScreenC, roundCounter);
+        } else {
+            _basicFunctions.basicFunctions.showHeader(_domElems.domElems.sheduleOnScreenD, roundCounter);
+        }
+
+        for (var j = 0; j < readyShedule[i].length; j++) {
+            var newPair = readyShedule[i][j];
+            var pairOnScreen = newPair.join(" ___ - ___ ");
+
+            if (roundCounter <= 8) {
+                _basicFunctions.basicFunctions.showMatch(_domElems.domElems.sheduleOnScreenA, pairOnScreen);
+            } else if (8 <= roundCounter && roundCounter <= 16) {
+                gameCounter = _domElems.domElems.sheduleOnScreenA.find('li').length + 1;
+                _domElems.domElems.sheduleOnScreenB.attr('start', "" + gameCounter);
+                _basicFunctions.basicFunctions.showMatch(_domElems.domElems.sheduleOnScreenB, pairOnScreen);
+            } else if (17 <= roundCounter && roundCounter <= 24) {
+                gameCounter = _domElems.domElems.sheduleOnScreenB.find('li').length * 2 + 1;
+                _domElems.domElems.sheduleOnScreenC.attr('start', "" + gameCounter);
+                _basicFunctions.basicFunctions.showMatch(_domElems.domElems.sheduleOnScreenC, pairOnScreen);
+            } else {
+                gameCounter = _domElems.domElems.sheduleOnScreenC.find('li').length * 3 + 1;
+                _domElems.domElems.sheduleOnScreenD.attr('start', "" + gameCounter);
+                _basicFunctions.basicFunctions.showMatch(_domElems.domElems.sheduleOnScreenD, pairOnScreen);
+            }
+        }
+    }
+};
+
+/***/ }),
+/* 9 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+exports.showSheduleCup = showSheduleCup;
+
+var _domElems = __webpack_require__(1);
+
+var _basicFunctions = __webpack_require__(0);
+
+var _globalVariables = __webpack_require__(2);
+
+function showSheduleCup(sheduleArray, numberOfTeams) {
+    var roundCounter = 1;
+    var pairOnScreen = "";
+
+    _domElems.domElems.sheduleOnScreenB.css('display', 'none');
+    _domElems.domElems.sheduleOnScreenC.css('display', 'none');
+    _domElems.domElems.sheduleOnScreenD.css('display', 'none');
+    _domElems.domElems.cupLadder.css('display', 'flex');
+
+    function makeLadderRectR1(where, idLeft, idRight, teamOne, teamTwo) {
+        where.append("<li class=\"result__ladder_rect\">" + idLeft + teamOne + "</li><li class=\"result__ladder_rect\">" + idRight + teamTwo + "</li>");
+    }
+    function makeLadderRect(where, roundNumber) {
+        where.append("<li class=\"result__ladder_rectR" + roundNumber + "\"></li><li class=\"result__ladder_rectR" + roundNumber + "\"></li>");
+    }
+
+    function showingTwoFirstRoundsCup() {
+        var repsR1 = sheduleArray[0].length;
+        var repsR2 = Math.ceil(sheduleArray[0].length / 2);
+        var idLeft = "";
+        var idRight = "";
+        var teamOne = "";
+        var teamTwo = "";
+        //Round 1   
+        _basicFunctions.basicFunctions.showHeader(_domElems.domElems.sheduleOnScreenA, roundCounter);
+        for (var i = 0; i < repsR1; i++) {
+            idLeft = _globalVariables.globalVariables.idCharArr[i] + "1";
+            idRight = _globalVariables.globalVariables.idCharArr[i] + "2";
+            teamOne = sheduleArray[0][i][0];
+            teamTwo = sheduleArray[0][i][1];
+            pairOnScreen = sheduleArray[0][i].join(" " + idLeft + " ___ - ___ " + ("" + idRight));
+            makeLadderRectR1(_domElems.domElems.ladder_round1, idLeft, idRight, teamOne, teamTwo);
+            _basicFunctions.basicFunctions.showMatch(_domElems.domElems.sheduleOnScreenA, pairOnScreen);
+        }
+        roundCounter++;
+
+        //Round 2
+        _basicFunctions.basicFunctions.showHeader(_domElems.domElems.sheduleOnScreenA, roundCounter);
+        if (numberOfTeams === 3 || numberOfTeams === 4) {
+            for (var k = 0; k < repsR2; k++) {
+                pairOnScreen = sheduleArray[1].join(" ___ - ___ ");
+                makeLadderRect(_domElems.domElems.ladder_round2, 2);
+                _basicFunctions.basicFunctions.showMatch(_domElems.domElems.sheduleOnScreenA, pairOnScreen);
+            }
+        } else {
+            for (var _k = 0; _k < repsR2; _k++) {
+                pairOnScreen = sheduleArray[1][_k].join(" ___ - ___ ");
+                makeLadderRect(_domElems.domElems.ladder_round2, 2);
+                _basicFunctions.basicFunctions.showMatch(_domElems.domElems.sheduleOnScreenA, pairOnScreen);
+            }
+        }
+        roundCounter++;
+    };
+
+    if (numberOfTeams < 5) {
+        showingTwoFirstRoundsCup();
+    } else if (numberOfTeams > 4) {
+        showingTwoFirstRoundsCup();
+        //Round 3
+        var repsR3 = Math.ceil(sheduleArray[1].length / 2);
+
+        _basicFunctions.basicFunctions.showHeader(_domElems.domElems.sheduleOnScreenA, roundCounter);
+        if (numberOfTeams > 4 && numberOfTeams < 9) {
+            for (var l = 0; l < repsR3; l++) {
+                pairOnScreen = sheduleArray[2].join(" ___ - ___ ");
+                makeLadderRect(_domElems.domElems.ladder_round3, 3);
+                _basicFunctions.basicFunctions.showMatch(_domElems.domElems.sheduleOnScreenA, pairOnScreen);
+            }
+            roundCounter++;
+        } else if (numberOfTeams > 8 && numberOfTeams < 33) {
+            for (var _l = 0; _l < repsR3; _l++) {
+                pairOnScreen = sheduleArray[2][_l].join(" ___ - ___ ");
+                makeLadderRect(_domElems.domElems.ladder_round3, 3);
+                _basicFunctions.basicFunctions.showMatch(_domElems.domElems.sheduleOnScreenA, pairOnScreen);
+            }
+            roundCounter++;
+            // Round 4
+            var repsR4 = Math.ceil(sheduleArray[2].length / 2);
+
+            _basicFunctions.basicFunctions.showHeader(_domElems.domElems.sheduleOnScreenA, roundCounter);
+            if (numberOfTeams > 8 && numberOfTeams < 17) {
+                for (var n = 0; n < repsR4; n++) {
+                    pairOnScreen = sheduleArray[3].join(" ___ - ___ ");
+                    makeLadderRect(_domElems.domElems.ladder_round4, 4);
+                    _basicFunctions.basicFunctions.showMatch(_domElems.domElems.sheduleOnScreenA, pairOnScreen);
+                }
+            } else if (numberOfTeams > 16) {
+                for (var _n = 0; _n < repsR4; _n++) {
+                    pairOnScreen = sheduleArray[3][_n].join(" ___ - ___ ");
+                    makeLadderRect(_domElems.domElems.ladder_round4, 4);
+                    _basicFunctions.basicFunctions.showMatch(_domElems.domElems.sheduleOnScreenA, pairOnScreen);
+                }
+                roundCounter++;
+                // Round 5
+                var repsR5 = Math.ceil(sheduleArray[3].length / 2);
+
+                _basicFunctions.basicFunctions.showHeader(_domElems.domElems.sheduleOnScreenA, roundCounter);
+                for (var o = 0; o < repsR5; o++) {
+                    pairOnScreen = sheduleArray[4].join(" ___ - ___ ");
+                    makeLadderRect(_domElems.domElems.ladder_round5, 5);
+                    _basicFunctions.basicFunctions.showMatch(_domElems.domElems.sheduleOnScreenA, pairOnScreen);
+                }
+            }
+        }
     }
 };
 
