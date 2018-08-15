@@ -5,14 +5,35 @@
     .result__lader {
         display: none;
         .result__ladder_round{
-            display: flex;
-            justify-content: space-evenly;
-            flex-flow: column;
             .result__ladder_rect{
+                margin: 40px 10px;
                 @include ladderRect;                
             }
         }
-        
     }
 }
 
+// @for $i from 1 through 4 {
+//     .result__ladder_rectR#{$i+1}{
+//         @include ladderRect;
+//         margin: $i*40px 10px 120px 10px;
+//     }
+// }
+
+.result__ladder_rectR2{
+    @include ladderRect;
+        margin: 80px 10px 120px 10px;
+}
+
+.result__ladder_rectR3{
+    @include ladderRect;
+        margin: 160px 10px 280px 10px;
+}
+.result__ladder_rectR4{
+    @include ladderRect;
+        margin: 320px 10px 600px 10px;
+}
+.result__ladder_rectR5{
+    @include ladderRect;
+        margin: 640px 10px 1240px 10px;
+}

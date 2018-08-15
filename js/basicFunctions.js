@@ -28,6 +28,7 @@ export let basicFunctions = {
                         domElems.teamList.children().length !== 7 && 
                         domElems.teamList.children().length !== 15 && 
                         domElems.teamList.children().length !== 31) 
+                        
                     {
                         domElems.cupCaution.show();
                     } else {
@@ -89,7 +90,7 @@ export let basicFunctions = {
              }
          } else {
              let teams = teamNamesList;
-             teams.push(" Lucky Team");
+             teams.push(globalVariables.lucky);
              for (let i = 0; i < rep; i++) {
                 let array = teams.slice(0,2);
                 teams.splice(0,2);

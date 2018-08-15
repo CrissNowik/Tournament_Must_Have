@@ -174,7 +174,7 @@ var basicFunctions = exports.basicFunctions = {
             }
         } else {
             var teams = teamNamesList;
-            teams.push(" Lucky Team");
+            teams.push(_globalVariables.globalVariables.lucky);
             for (var _i = 0; _i < rep; _i++) {
                 var _array = teams.slice(0, 2);
                 teams.splice(0, 2);
@@ -648,8 +648,8 @@ function showSheduleCup(sheduleArray, numberOfTeams) {
     function makeLadderRectR1(where, idLeft, idRight, teamOne, teamTwo) {
         where.append("<li class=\"result__ladder_rect\">" + idLeft + teamOne + "</li><li class=\"result__ladder_rect\">" + idRight + teamTwo + "</li>");
     }
-    function makeLadderRect(where) {
-        where.append("<li class=\"result__ladder_rect\"></li><li class=\"result__ladder_rect\"></li>");
+    function makeLadderRect(where, roundNumber) {
+        where.append("<li class=\"result__ladder_rectR" + roundNumber + "\"></li><li class=\"result__ladder_rectR" + roundNumber + "\"></li>");
     }
 
     function showingTwoFirstRoundsCup() {
@@ -677,13 +677,13 @@ function showSheduleCup(sheduleArray, numberOfTeams) {
         if (numberOfTeams === 3 || numberOfTeams === 4) {
             for (var k = 0; k < repsR2; k++) {
                 pairOnScreen = sheduleArray[1].join(" ___ - ___ ");
-                makeLadderRect(_domElems.domElems.ladder_round2);
+                makeLadderRect(_domElems.domElems.ladder_round2, 2);
                 _basicFunctions.basicFunctions.showMatch(_domElems.domElems.sheduleOnScreenA, pairOnScreen);
             }
         } else {
             for (var _k = 0; _k < repsR2; _k++) {
                 pairOnScreen = sheduleArray[1][_k].join(" ___ - ___ ");
-                makeLadderRect(_domElems.domElems.ladder_round2);
+                makeLadderRect(_domElems.domElems.ladder_round2, 2);
                 _basicFunctions.basicFunctions.showMatch(_domElems.domElems.sheduleOnScreenA, pairOnScreen);
             }
         }
@@ -701,14 +701,14 @@ function showSheduleCup(sheduleArray, numberOfTeams) {
         if (numberOfTeams > 4 && numberOfTeams < 9) {
             for (var l = 0; l < repsR3; l++) {
                 pairOnScreen = sheduleArray[2].join(" ___ - ___ ");
-                makeLadderRect(_domElems.domElems.ladder_round3);
+                makeLadderRect(_domElems.domElems.ladder_round3, 3);
                 _basicFunctions.basicFunctions.showMatch(_domElems.domElems.sheduleOnScreenA, pairOnScreen);
             }
             roundCounter++;
         } else if (numberOfTeams > 8 && numberOfTeams < 33) {
             for (var _l = 0; _l < repsR3; _l++) {
                 pairOnScreen = sheduleArray[2][_l].join(" ___ - ___ ");
-                makeLadderRect(_domElems.domElems.ladder_round3);
+                makeLadderRect(_domElems.domElems.ladder_round3, 3);
                 _basicFunctions.basicFunctions.showMatch(_domElems.domElems.sheduleOnScreenA, pairOnScreen);
             }
             roundCounter++;
@@ -719,13 +719,13 @@ function showSheduleCup(sheduleArray, numberOfTeams) {
             if (numberOfTeams > 8 && numberOfTeams < 17) {
                 for (var n = 0; n < repsR4; n++) {
                     pairOnScreen = sheduleArray[3].join(" ___ - ___ ");
-                    makeLadderRect(_domElems.domElems.ladder_round4);
+                    makeLadderRect(_domElems.domElems.ladder_round4, 4);
                     _basicFunctions.basicFunctions.showMatch(_domElems.domElems.sheduleOnScreenA, pairOnScreen);
                 }
             } else if (numberOfTeams > 16) {
                 for (var _n = 0; _n < repsR4; _n++) {
                     pairOnScreen = sheduleArray[3][_n].join(" ___ - ___ ");
-                    makeLadderRect(_domElems.domElems.ladder_round4);
+                    makeLadderRect(_domElems.domElems.ladder_round4, 4);
                     _basicFunctions.basicFunctions.showMatch(_domElems.domElems.sheduleOnScreenA, pairOnScreen);
                 }
                 roundCounter++;
@@ -735,7 +735,7 @@ function showSheduleCup(sheduleArray, numberOfTeams) {
                 _basicFunctions.basicFunctions.showHeader(_domElems.domElems.sheduleOnScreenA, roundCounter);
                 for (var o = 0; o < repsR5; o++) {
                     pairOnScreen = sheduleArray[4].join(" ___ - ___ ");
-                    makeLadderRect(_domElems.domElems.ladder_round5);
+                    makeLadderRect(_domElems.domElems.ladder_round5, 5);
                     _basicFunctions.basicFunctions.showMatch(_domElems.domElems.sheduleOnScreenA, pairOnScreen);
                 }
             }
