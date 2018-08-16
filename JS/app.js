@@ -23,7 +23,7 @@ $(document).ready(function () {
     // creating new tournament
     domElems.btnConfirm.on('click', function (e) {
         e.preventDefault();
-        basicFunctions.switchingVisibility(domElems.naviScreen, domElems.collector);
+        basicFunctions.showAndHide(domElems.naviScreen, domElems.collector);
     });
     // adding teams by button click
     domElems.btnAdd.bind('click keypress', function (e) {
@@ -45,9 +45,9 @@ $(document).ready(function () {
     domElems.btnGenerate.on('click', function (e) {
         e.preventDefault();
         if (domElems.teamList.children().length > 2) {
-            basicFunctions.switchingVisibility(domElems.collectorAlertB, domElems.result);
+            basicFunctions.showAndHide(domElems.collectorAlertB, domElems.result);
             let selectedTournamentType = $('#collector__select :selected').val();
-            basicFunctions.switchingVisibility(domElems.collector, domElems.result);
+            basicFunctions.showAndHide(domElems.collector, domElems.result);
             basicFunctions.choosingTournamentType(selectedTournamentType);
         } else {
             domElems.collectorAlertB.show();
