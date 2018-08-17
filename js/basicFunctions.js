@@ -8,6 +8,7 @@ import { showSheduleCup } from "./showSheduleCup";
 export let basicFunctions = {
     gettingTeams: function () {
                     let newTeam = domElems.teamInput.val();
+                    let selectedTournamentType = $('#collector__select :selected').val();
                     if (domElems.teamList.children().length > 1){ // generator validation
                         domElems.collectorAlertB.hide();
                     }
@@ -18,7 +19,8 @@ export let basicFunctions = {
                     if (domElems.teamList.children().length !== 3 && //cup caution about Lucky team
                         domElems.teamList.children().length !== 7 && 
                         domElems.teamList.children().length !== 15 && 
-                        domElems.teamList.children().length !== 31) 
+                        domElems.teamList.children().length !== 31 &&
+                        selectedTournamentType === 'Cup') 
                         
                     {
                         domElems.cupCaution.show();

@@ -90,6 +90,7 @@ var _showSheduleCup = __webpack_require__(9);
 var basicFunctions = exports.basicFunctions = {
     gettingTeams: function gettingTeams() {
         var newTeam = _domElems.domElems.teamInput.val();
+        var selectedTournamentType = $('#collector__select :selected').val();
         if (_domElems.domElems.teamList.children().length > 1) {
             // generator validation
             _domElems.domElems.collectorAlertB.hide();
@@ -100,7 +101,7 @@ var basicFunctions = exports.basicFunctions = {
             _domElems.domElems.teamInput.attr('disabled', true);
         }
         if (_domElems.domElems.teamList.children().length !== 3 && //cup caution about Lucky team
-        _domElems.domElems.teamList.children().length !== 7 && _domElems.domElems.teamList.children().length !== 15 && _domElems.domElems.teamList.children().length !== 31) {
+        _domElems.domElems.teamList.children().length !== 7 && _domElems.domElems.teamList.children().length !== 15 && _domElems.domElems.teamList.children().length !== 31 && selectedTournamentType === 'Cup') {
             _domElems.domElems.cupCaution.show();
         } else {
             _domElems.domElems.cupCaution.hide();
@@ -268,6 +269,7 @@ var _domElems = __webpack_require__(1);
 var _basicFunctions = __webpack_require__(0);
 
 $(document).ready(function () {
+
     // removing teams from list
     _domElems.domElems.teamList.on('click', 'li#collector__listItem>button.collector__del', function (e) {
         e.preventDefault();
@@ -275,8 +277,9 @@ $(document).ready(function () {
         if (_domElems.domElems.teamInput.attr('disabled')) {
             _domElems.domElems.teamInput.removeAttr('disabled');
         }
-        if (_domElems.domElems.teamList.children().length !== 4 && //cup caution about Lucky team
-        _domElems.domElems.teamList.children().length !== 8 && _domElems.domElems.teamList.children().length !== 16 && _domElems.domElems.teamList.children().length !== 32) {
+        //cup caution about Lucky team
+        var selectedTournamentType = $('#collector__select :selected').val();
+        if (_domElems.domElems.teamList.children().length !== 4 && _domElems.domElems.teamList.children().length !== 8 && _domElems.domElems.teamList.children().length !== 16 && _domElems.domElems.teamList.children().length !== 32 && selectedTournamentType === 'Cup') {
             _domElems.domElems.cupCaution.show();
         } else {
             _domElems.domElems.cupCaution.hide();

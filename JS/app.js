@@ -3,6 +3,7 @@ import { basicFunctions } from "./basicFunctions";
 
 
 $(document).ready(function () {
+   
     // removing teams from list
     domElems.teamList.on('click', 'li#collector__listItem>button.collector__del', function (e) {
         e.preventDefault();
@@ -10,10 +11,13 @@ $(document).ready(function () {
         if (domElems.teamInput.attr('disabled')) {
             domElems.teamInput.removeAttr('disabled');
         }
-        if (domElems.teamList.children().length !== 4 && //cup caution about Lucky team
+        //cup caution about Lucky team
+        let selectedTournamentType = $('#collector__select :selected').val();
+        if (domElems.teamList.children().length !== 4 && 
             domElems.teamList.children().length !== 8 && 
             domElems.teamList.children().length !== 16 && 
-            domElems.teamList.children().length !== 32) 
+            domElems.teamList.children().length !== 32 && 
+            selectedTournamentType === 'Cup') 
             {
                 domElems.cupCaution.show();
             } else {
