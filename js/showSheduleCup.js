@@ -40,7 +40,9 @@ export function showSheduleCup(sheduleArray, numberOfTeams) {
                     basicFunctions.showLadderRect(domElems.ladder_round2, 2);
                     basicFunctions.showMatch(domElems.sheduleOnScreenA, pairOnScreen); 
                     basicFunctions.showChamp(domElems.sheduleOnScreenA);
+                // TO DO    basicFunctions.showChampRect(domElems.ladder_round3, 3); 
                 }
+                
             } else {
                 for (let k = 0; k < repsR2; k++) {
                     pairOnScreen = sheduleArray[1][k].join(" ___ - ___ ");   
@@ -64,7 +66,8 @@ export function showSheduleCup(sheduleArray, numberOfTeams) {
                 pairOnScreen = sheduleArray[2].join(" ___ - ___ ");
                 basicFunctions.showLadderRect(domElems.ladder_round3, 3);
                 basicFunctions.showMatch(domElems.sheduleOnScreenA, pairOnScreen); 
-                basicFunctions.showChamp(domElems.sheduleOnScreenA);  
+                basicFunctions.showChamp(domElems.sheduleOnScreenA); 
+            // TO DO    basicFunctions.showChampRect(domElems.ladder_round4, 4); 
             }
             roundCounter++;
         } else if (numberOfTeams > 8 && numberOfTeams < 33) {
@@ -84,6 +87,7 @@ export function showSheduleCup(sheduleArray, numberOfTeams) {
                     basicFunctions.showLadderRect(domElems.ladder_round4, 4);   
                     basicFunctions.showMatch(domElems.sheduleOnScreenA, pairOnScreen);
                     basicFunctions.showChamp(domElems.sheduleOnScreenA); 
+            // TO DO        basicFunctions.showChampRect(domElems.ladder_round5, 5);
                 }
             } else if (numberOfTeams > 16) {
                 for (let n = 0; n < repsR4; n++) {
@@ -98,7 +102,8 @@ export function showSheduleCup(sheduleArray, numberOfTeams) {
                 basicFunctions.showHeader(domElems.sheduleOnScreenA, roundCounter);
                 for (let o = 0; o < repsR5; o++) {
                     pairOnScreen = sheduleArray[4].join(" ___ - ___ ");
-                    basicFunctions.showLadderRect(domElems.ladder_round5, 5);   
+                    basicFunctions.showLadderRect(domElems.ladder_round5, 5); 
+                // TO DO    basicFunctions.showChampRect(domElems.ladder_round6, 6);  
                     basicFunctions.showMatch(domElems.sheduleOnScreenA, pairOnScreen);
                     basicFunctions.showChamp(domElems.sheduleOnScreenA);
                 }

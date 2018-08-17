@@ -24,7 +24,8 @@ export let domElems = {
         ladder_round2: $('#ladder_round2'),
         ladder_round3: $('#ladder_round3'),
         ladder_round4: $('#ladder_round4'),
-        ladder_round5: $('#ladder_round5')
+        ladder_round5: $('#ladder_round5'),
+        ladder_round6: $('#ladder_round6')
     }
  
  
