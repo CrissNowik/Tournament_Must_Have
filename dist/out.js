@@ -637,6 +637,7 @@ var _showIt = __webpack_require__(10);
 function showSheduleCup(sheduleArray, numberOfTeams) {
     var roundCounter = 1;
     var pairOnScreen = "";
+    console.log("do pokazania: ", sheduleArray);
 
     _domElems.domElems.sheduleOnScreenB.css('display', 'none');
     _domElems.domElems.sheduleOnScreenC.css('display', 'none');
@@ -668,17 +669,19 @@ function showSheduleCup(sheduleArray, numberOfTeams) {
         if (numberOfTeams === 3 || numberOfTeams === 4) {
             for (var k = 0; k < repsR2; k++) {
                 pairOnScreen = sheduleArray[1].join(" ___ - ___ ");
-                _showIt.showIt.showLadderRect(_domElems.domElems.ladder_round2, 2);
                 _showIt.showIt.showMatch(_domElems.domElems.sheduleOnScreenA, pairOnScreen);
                 _showIt.showIt.showChamp(_domElems.domElems.sheduleOnScreenA);
                 _showIt.showIt.showChampRect(_domElems.domElems.ladder_round3, 3);
             }
+            var howMany = sheduleArray[0].length * 2 / 2;
+            _showIt.showIt.showLadderRect(_domElems.domElems.ladder_round2, 2, howMany);
         } else {
             for (var _k = 0; _k < repsR2; _k++) {
                 pairOnScreen = sheduleArray[1][_k].join(" ___ - ___ ");
-                _showIt.showIt.showLadderRect(_domElems.domElems.ladder_round2, 2);
                 _showIt.showIt.showMatch(_domElems.domElems.sheduleOnScreenA, pairOnScreen);
             }
+            var _howMany = sheduleArray[0].length * 2 / 2;
+            _showIt.showIt.showLadderRect(_domElems.domElems.ladder_round2, 2, _howMany);
         }
         roundCounter++;
     };
@@ -694,18 +697,20 @@ function showSheduleCup(sheduleArray, numberOfTeams) {
         if (numberOfTeams > 4 && numberOfTeams < 9) {
             for (var l = 0; l < repsR3; l++) {
                 pairOnScreen = sheduleArray[2].join(" ___ - ___ ");
-                _showIt.showIt.showLadderRect(_domElems.domElems.ladder_round3, 3);
                 _showIt.showIt.showMatch(_domElems.domElems.sheduleOnScreenA, pairOnScreen);
                 _showIt.showIt.showChamp(_domElems.domElems.sheduleOnScreenA);
                 _showIt.showIt.showChampRect(_domElems.domElems.ladder_round4, 4);
             }
+            var howMany = sheduleArray[1].length * 2 / 2;
+            _showIt.showIt.showLadderRect(_domElems.domElems.ladder_round3, 3, howMany);
             roundCounter++;
         } else if (numberOfTeams > 8 && numberOfTeams < 33) {
             for (var _l = 0; _l < repsR3; _l++) {
                 pairOnScreen = sheduleArray[2][_l].join(" ___ - ___ ");
-                _showIt.showIt.showLadderRect(_domElems.domElems.ladder_round3, 3);
                 _showIt.showIt.showMatch(_domElems.domElems.sheduleOnScreenA, pairOnScreen);
             }
+            var _howMany2 = sheduleArray[1].length * 2 / 2;
+            _showIt.showIt.showLadderRect(_domElems.domElems.ladder_round3, 3, _howMany2);
             roundCounter++;
             // Round 4
             var repsR4 = Math.ceil(sheduleArray[2].length / 2);
@@ -719,12 +724,16 @@ function showSheduleCup(sheduleArray, numberOfTeams) {
                     _showIt.showIt.showChamp(_domElems.domElems.sheduleOnScreenA);
                     _showIt.showIt.showChampRect(_domElems.domElems.ladder_round5, 5);
                 }
+                var _howMany3 = sheduleArray[2].length * 2 / 2;
+                _showIt.showIt.showLadderRect(_domElems.domElems.ladder_round4, 4, _howMany3);
             } else if (numberOfTeams > 16) {
                 for (var _n = 0; _n < repsR4; _n++) {
                     pairOnScreen = sheduleArray[3][_n].join(" ___ - ___ ");
                     _showIt.showIt.showLadderRect(_domElems.domElems.ladder_round4, 4);
                     _showIt.showIt.showMatch(_domElems.domElems.sheduleOnScreenA, pairOnScreen);
                 }
+                var _howMany4 = sheduleArray[2].length * 2 / 2;
+                _showIt.showIt.showLadderRect(_domElems.domElems.ladder_round4, 4, _howMany4);
                 roundCounter++;
                 // Round 5
                 var repsR5 = Math.ceil(sheduleArray[3].length / 2);
@@ -737,6 +746,8 @@ function showSheduleCup(sheduleArray, numberOfTeams) {
                     _showIt.showIt.showMatch(_domElems.domElems.sheduleOnScreenA, pairOnScreen);
                     _showIt.showIt.showChamp(_domElems.domElems.sheduleOnScreenA);
                 }
+                var many = sheduleArray[3].length * 2 / 2;
+                _showIt.showIt.showLadderRect(_domElems.domElems.ladder_round5, 5, many);
             }
         }
     }
@@ -773,8 +784,22 @@ var showIt = exports.showIt = {
     showLadderRectR1: function showLadderRectR1(where, idLeft, idRight, teamOne, teamTwo) {
         where.append("<li class=\"result__ladder_rect\">" + idLeft + teamOne + "</li><li class=\"result__ladder_rect\">" + idRight + teamTwo + "</li>");
     },
-    showLadderRect: function showLadderRect(where, roundNumber) {
-        where.append("<li class=\"result__ladder_rectR" + roundNumber + "\"></li><li class=\"result__ladder_rectR" + roundNumber + "\"></li>");
+    showLadderRect: function showLadderRect(where, roundNumber, howMany, isLucky) {
+        var lastArrayElem = isLucky.length - 1;
+        var decision = isLucky[lastArrayElem].indexOf(" Lucky Team");
+        if (decision !== -1) {
+            for (var i = 0; i < howMany - 2; i++) {
+                where.append("<li class=\"result__ladder_rectR" + roundNumber + "\"></li>");
+                console.log("showLadderRect LUCKY");
+            }
+            where.append("<li class=\"result__ladder_rectRaL" + roundNumber + "\"></li>");
+            where.append("<li class=\"result__ladder_rectR" + roundNumber + "\"></li>");
+        } else {
+            for (var _i = 0; _i < howMany; _i++) {
+                where.append("<li class=\"result__ladder_rectR" + roundNumber + "\"></li>");
+                console.log("showLadderRect");
+            }
+        }
     },
     showChampRect: function showChampRect(where, roundNumber) {
         where.append("<li class=\"result__ladder_rectR" + roundNumber + "\"></li>");

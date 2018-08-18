@@ -31,16 +31,28 @@
 .result__ladder_rectR3{
     @include ladderRect;
         margin: 160px 10px 280px 10px;
-}
+    }
 .result__ladder_rectR4{
     @include ladderRect;
         margin: 320px 10px 600px 10px;
-}
+    }
 .result__ladder_rectR5{
     @include ladderRect;
         margin: 640px 10px 1240px 10px;
-}
+    }
 .result__ladder_rectR6{
     @include ladderRect;
-        margin: 1280px 10px 2520px;
+       margin: 1280px 10px 2520px 10px;
+    }
+.result__ladder_rectRaL2{
+    @include ladderRect;
+        margin: 160px 10px 160px 10px;
+}
+.result__ladder_rectRaL3{
+    @include ladderRect;
+        margin: 160px 10px 200px 10px;
+}
+.result__ladder_rectRaL4{
+    @include ladderRect;
+        margin: 320px 10px 360px 10px;
 }
