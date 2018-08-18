@@ -1,5 +1,6 @@
 import { domElems } from "./domElems";
 import { basicFunctions } from "./basicFunctions";
+import { showIt } from "./showIt";
 
 
 $(document).ready(function () {
@@ -27,7 +28,7 @@ $(document).ready(function () {
     // creating new tournament
     domElems.btnConfirm.on('click', function (e) {
         e.preventDefault();
-        basicFunctions.showAndHide(domElems.naviScreen, domElems.collector);
+        showIt.showAndHide(domElems.naviScreen, domElems.collector);
     });
     // adding teams by button click
     domElems.btnAdd.bind('click keypress', function (e) {
@@ -49,9 +50,9 @@ $(document).ready(function () {
     domElems.btnGenerate.on('click', function (e) {
         e.preventDefault();
         if (domElems.teamList.children().length > 2) {
-            basicFunctions.showAndHide(domElems.collectorAlertB, domElems.result);
+            showIt.showAndHide(domElems.collectorAlertB, domElems.result);
             let selectedTournamentType = $('#collector__select :selected').val();
-            basicFunctions.showAndHide(domElems.collector, domElems.result);
+            showIt.showAndHide(domElems.collector, domElems.result);
             basicFunctions.choosingTournamentType(selectedTournamentType);
         } else {
             domElems.collectorAlertB.show();

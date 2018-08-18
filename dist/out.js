@@ -87,6 +87,8 @@ var _showSheduleLeague = __webpack_require__(8);
 
 var _showSheduleCup = __webpack_require__(9);
 
+var _showIt = __webpack_require__(10);
+
 var basicFunctions = exports.basicFunctions = {
     gettingTeams: function gettingTeams() {
         var newTeam = _domElems.domElems.teamInput.val();
@@ -109,8 +111,8 @@ var basicFunctions = exports.basicFunctions = {
         if (newTeam != "" && newTeam.length < 26) {
             // input content validation
             var counter = _globalVariables.globalVariables.dataCounter++;
-            this.showAndHide(_domElems.domElems.collectorAlertA, _domElems.domElems.teamList);
-            this.showAndHide(_domElems.domElems.collectorAlertC, _domElems.domElems.teamList);
+            _showIt.showIt.showAndHide(_domElems.domElems.collectorAlertA, _domElems.domElems.teamList);
+            _showIt.showIt.showAndHide(_domElems.domElems.collectorAlertC, _domElems.domElems.teamList);
             _domElems.domElems.teamList.append("<li class=\"collector__listItem\" id=\"collector__listItem\" data-nr=\"" + counter + "\"> " + newTeam + "<button class=\"collector__del\" type=\"button\">X</button></li>");
             _domElems.domElems.teamInput.val("");
         } else if (newTeam === "") {
@@ -179,28 +181,6 @@ var basicFunctions = exports.basicFunctions = {
                 (0, _showSheduleCup.showSheduleCup)(_sheduleToShowUp3, numberOfCompetitors);
             }
         }
-    },
-    showAndHide: function showAndHide(toHide, toShow) {
-        toHide.hide();
-        toShow.show();
-    },
-    showHeader: function showHeader(where, roundCounter) {
-        where.append("<ul class=\"result__listItem--roundHeader\">Round nr " + roundCounter + "</ul>");
-    },
-    showChamp: function showChamp(where) {
-        where.append("<ul class=\"result__listItem--roundHeader\">Champion:</ul><li class=\"result__champ\">" + _globalVariables.globalVariables.empty + "</li>");
-    },
-    showMatch: function showMatch(where, pairOnScreen) {
-        where.append("<li class=\"result__listItem\">" + pairOnScreen + "</li>");
-    },
-    showLadderRectR1: function showLadderRectR1(where, idLeft, idRight, teamOne, teamTwo) {
-        where.append("<li class=\"result__ladder_rect\">" + idLeft + teamOne + "</li><li class=\"result__ladder_rect\">" + idRight + teamTwo + "</li>");
-    },
-    showLadderRect: function showLadderRect(where, roundNumber) {
-        where.append("<li class=\"result__ladder_rectR" + roundNumber + "\"></li><li class=\"result__ladder_rectR" + roundNumber + "\"></li>");
-    },
-    showChampRect: function showChampRect(where, roundNumber) {
-        where.append("<li class=\"result__ladder_rectR" + roundNumber + "\"></li>");
     }
 };
 
@@ -272,6 +252,8 @@ var _domElems = __webpack_require__(1);
 
 var _basicFunctions = __webpack_require__(0);
 
+var _showIt = __webpack_require__(10);
+
 $(document).ready(function () {
 
     // removing teams from list
@@ -292,7 +274,7 @@ $(document).ready(function () {
     // creating new tournament
     _domElems.domElems.btnConfirm.on('click', function (e) {
         e.preventDefault();
-        _basicFunctions.basicFunctions.showAndHide(_domElems.domElems.naviScreen, _domElems.domElems.collector);
+        _showIt.showIt.showAndHide(_domElems.domElems.naviScreen, _domElems.domElems.collector);
     });
     // adding teams by button click
     _domElems.domElems.btnAdd.bind('click keypress', function (e) {
@@ -314,9 +296,9 @@ $(document).ready(function () {
     _domElems.domElems.btnGenerate.on('click', function (e) {
         e.preventDefault();
         if (_domElems.domElems.teamList.children().length > 2) {
-            _basicFunctions.basicFunctions.showAndHide(_domElems.domElems.collectorAlertB, _domElems.domElems.result);
+            _showIt.showIt.showAndHide(_domElems.domElems.collectorAlertB, _domElems.domElems.result);
             var selectedTournamentType = $('#collector__select :selected').val();
-            _basicFunctions.basicFunctions.showAndHide(_domElems.domElems.collector, _domElems.domElems.result);
+            _showIt.showIt.showAndHide(_domElems.domElems.collector, _domElems.domElems.result);
             _basicFunctions.basicFunctions.choosingTournamentType(selectedTournamentType);
         } else {
             _domElems.domElems.collectorAlertB.show();
@@ -648,9 +630,9 @@ exports.showSheduleCup = showSheduleCup;
 
 var _domElems = __webpack_require__(1);
 
-var _basicFunctions = __webpack_require__(0);
-
 var _globalVariables = __webpack_require__(2);
+
+var _showIt = __webpack_require__(10);
 
 function showSheduleCup(sheduleArray, numberOfTeams) {
     var roundCounter = 1;
@@ -669,33 +651,33 @@ function showSheduleCup(sheduleArray, numberOfTeams) {
         var teamOne = "";
         var teamTwo = "";
         //Round 1   
-        _basicFunctions.basicFunctions.showHeader(_domElems.domElems.sheduleOnScreenA, roundCounter);
+        _showIt.showIt.showHeader(_domElems.domElems.sheduleOnScreenA, roundCounter);
         for (var i = 0; i < repsR1; i++) {
             idLeft = _globalVariables.globalVariables.idCharArr[i] + "1";
             idRight = _globalVariables.globalVariables.idCharArr[i] + "2";
             teamOne = sheduleArray[0][i][0];
             teamTwo = sheduleArray[0][i][1];
             pairOnScreen = sheduleArray[0][i].join(" " + idLeft + " ___ - ___ " + ("" + idRight));
-            _basicFunctions.basicFunctions.showLadderRectR1(_domElems.domElems.ladder_round1, idLeft, idRight, teamOne, teamTwo);
-            _basicFunctions.basicFunctions.showMatch(_domElems.domElems.sheduleOnScreenA, pairOnScreen);
+            _showIt.showIt.showLadderRectR1(_domElems.domElems.ladder_round1, idLeft, idRight, teamOne, teamTwo);
+            _showIt.showIt.showMatch(_domElems.domElems.sheduleOnScreenA, pairOnScreen);
         }
         roundCounter++;
 
         //Round 2
-        _basicFunctions.basicFunctions.showHeader(_domElems.domElems.sheduleOnScreenA, roundCounter);
+        _showIt.showIt.showHeader(_domElems.domElems.sheduleOnScreenA, roundCounter);
         if (numberOfTeams === 3 || numberOfTeams === 4) {
             for (var k = 0; k < repsR2; k++) {
                 pairOnScreen = sheduleArray[1].join(" ___ - ___ ");
-                _basicFunctions.basicFunctions.showLadderRect(_domElems.domElems.ladder_round2, 2);
-                _basicFunctions.basicFunctions.showMatch(_domElems.domElems.sheduleOnScreenA, pairOnScreen);
-                _basicFunctions.basicFunctions.showChamp(_domElems.domElems.sheduleOnScreenA);
-                _basicFunctions.basicFunctions.showChampRect(_domElems.domElems.ladder_round3, 3);
+                _showIt.showIt.showLadderRect(_domElems.domElems.ladder_round2, 2);
+                _showIt.showIt.showMatch(_domElems.domElems.sheduleOnScreenA, pairOnScreen);
+                _showIt.showIt.showChamp(_domElems.domElems.sheduleOnScreenA);
+                _showIt.showIt.showChampRect(_domElems.domElems.ladder_round3, 3);
             }
         } else {
             for (var _k = 0; _k < repsR2; _k++) {
                 pairOnScreen = sheduleArray[1][_k].join(" ___ - ___ ");
-                _basicFunctions.basicFunctions.showLadderRect(_domElems.domElems.ladder_round2, 2);
-                _basicFunctions.basicFunctions.showMatch(_domElems.domElems.sheduleOnScreenA, pairOnScreen);
+                _showIt.showIt.showLadderRect(_domElems.domElems.ladder_round2, 2);
+                _showIt.showIt.showMatch(_domElems.domElems.sheduleOnScreenA, pairOnScreen);
             }
         }
         roundCounter++;
@@ -708,55 +690,94 @@ function showSheduleCup(sheduleArray, numberOfTeams) {
         //Round 3
         var repsR3 = Math.ceil(sheduleArray[1].length / 2);
 
-        _basicFunctions.basicFunctions.showHeader(_domElems.domElems.sheduleOnScreenA, roundCounter);
+        _showIt.showIt.showHeader(_domElems.domElems.sheduleOnScreenA, roundCounter);
         if (numberOfTeams > 4 && numberOfTeams < 9) {
             for (var l = 0; l < repsR3; l++) {
                 pairOnScreen = sheduleArray[2].join(" ___ - ___ ");
-                _basicFunctions.basicFunctions.showLadderRect(_domElems.domElems.ladder_round3, 3);
-                _basicFunctions.basicFunctions.showMatch(_domElems.domElems.sheduleOnScreenA, pairOnScreen);
-                _basicFunctions.basicFunctions.showChamp(_domElems.domElems.sheduleOnScreenA);
-                _basicFunctions.basicFunctions.showChampRect(_domElems.domElems.ladder_round4, 4);
+                _showIt.showIt.showLadderRect(_domElems.domElems.ladder_round3, 3);
+                _showIt.showIt.showMatch(_domElems.domElems.sheduleOnScreenA, pairOnScreen);
+                _showIt.showIt.showChamp(_domElems.domElems.sheduleOnScreenA);
+                _showIt.showIt.showChampRect(_domElems.domElems.ladder_round4, 4);
             }
             roundCounter++;
         } else if (numberOfTeams > 8 && numberOfTeams < 33) {
             for (var _l = 0; _l < repsR3; _l++) {
                 pairOnScreen = sheduleArray[2][_l].join(" ___ - ___ ");
-                _basicFunctions.basicFunctions.showLadderRect(_domElems.domElems.ladder_round3, 3);
-                _basicFunctions.basicFunctions.showMatch(_domElems.domElems.sheduleOnScreenA, pairOnScreen);
+                _showIt.showIt.showLadderRect(_domElems.domElems.ladder_round3, 3);
+                _showIt.showIt.showMatch(_domElems.domElems.sheduleOnScreenA, pairOnScreen);
             }
             roundCounter++;
             // Round 4
             var repsR4 = Math.ceil(sheduleArray[2].length / 2);
 
-            _basicFunctions.basicFunctions.showHeader(_domElems.domElems.sheduleOnScreenA, roundCounter);
+            _showIt.showIt.showHeader(_domElems.domElems.sheduleOnScreenA, roundCounter);
             if (numberOfTeams > 8 && numberOfTeams < 17) {
                 for (var n = 0; n < repsR4; n++) {
                     pairOnScreen = sheduleArray[3].join(" ___ - ___ ");
-                    _basicFunctions.basicFunctions.showLadderRect(_domElems.domElems.ladder_round4, 4);
-                    _basicFunctions.basicFunctions.showMatch(_domElems.domElems.sheduleOnScreenA, pairOnScreen);
-                    _basicFunctions.basicFunctions.showChamp(_domElems.domElems.sheduleOnScreenA);
-                    _basicFunctions.basicFunctions.showChampRect(_domElems.domElems.ladder_round5, 5);
+                    _showIt.showIt.showLadderRect(_domElems.domElems.ladder_round4, 4);
+                    _showIt.showIt.showMatch(_domElems.domElems.sheduleOnScreenA, pairOnScreen);
+                    _showIt.showIt.showChamp(_domElems.domElems.sheduleOnScreenA);
+                    _showIt.showIt.showChampRect(_domElems.domElems.ladder_round5, 5);
                 }
             } else if (numberOfTeams > 16) {
                 for (var _n = 0; _n < repsR4; _n++) {
                     pairOnScreen = sheduleArray[3][_n].join(" ___ - ___ ");
-                    _basicFunctions.basicFunctions.showLadderRect(_domElems.domElems.ladder_round4, 4);
-                    _basicFunctions.basicFunctions.showMatch(_domElems.domElems.sheduleOnScreenA, pairOnScreen);
+                    _showIt.showIt.showLadderRect(_domElems.domElems.ladder_round4, 4);
+                    _showIt.showIt.showMatch(_domElems.domElems.sheduleOnScreenA, pairOnScreen);
                 }
                 roundCounter++;
                 // Round 5
                 var repsR5 = Math.ceil(sheduleArray[3].length / 2);
 
-                _basicFunctions.basicFunctions.showHeader(_domElems.domElems.sheduleOnScreenA, roundCounter);
+                _showIt.showIt.showHeader(_domElems.domElems.sheduleOnScreenA, roundCounter);
                 for (var o = 0; o < repsR5; o++) {
                     pairOnScreen = sheduleArray[4].join(" ___ - ___ ");
-                    _basicFunctions.basicFunctions.showLadderRect(_domElems.domElems.ladder_round5, 5);
-                    _basicFunctions.basicFunctions.showChampRect(_domElems.domElems.ladder_round6, 6);
-                    _basicFunctions.basicFunctions.showMatch(_domElems.domElems.sheduleOnScreenA, pairOnScreen);
-                    _basicFunctions.basicFunctions.showChamp(_domElems.domElems.sheduleOnScreenA);
+                    _showIt.showIt.showLadderRect(_domElems.domElems.ladder_round5, 5);
+                    _showIt.showIt.showChampRect(_domElems.domElems.ladder_round6, 6);
+                    _showIt.showIt.showMatch(_domElems.domElems.sheduleOnScreenA, pairOnScreen);
+                    _showIt.showIt.showChamp(_domElems.domElems.sheduleOnScreenA);
                 }
             }
         }
+    }
+};
+
+/***/ }),
+/* 10 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+exports.showIt = undefined;
+
+var _globalVariables = __webpack_require__(2);
+
+var showIt = exports.showIt = {
+    showAndHide: function showAndHide(toHide, toShow) {
+        toHide.hide();
+        toShow.show();
+    },
+    showHeader: function showHeader(where, roundCounter) {
+        where.append("<ul class=\"result__listItem--roundHeader\">Round nr " + roundCounter + "</ul>");
+    },
+    showChamp: function showChamp(where) {
+        where.append("<ul class=\"result__listItem--roundHeader\">Champion:</ul><li class=\"result__champ\">" + _globalVariables.globalVariables.empty + "</li>");
+    },
+    showMatch: function showMatch(where, pairOnScreen) {
+        where.append("<li class=\"result__listItem\">" + pairOnScreen + "</li>");
+    },
+    showLadderRectR1: function showLadderRectR1(where, idLeft, idRight, teamOne, teamTwo) {
+        where.append("<li class=\"result__ladder_rect\">" + idLeft + teamOne + "</li><li class=\"result__ladder_rect\">" + idRight + teamTwo + "</li>");
+    },
+    showLadderRect: function showLadderRect(where, roundNumber) {
+        where.append("<li class=\"result__ladder_rectR" + roundNumber + "\"></li><li class=\"result__ladder_rectR" + roundNumber + "\"></li>");
+    },
+    showChampRect: function showChampRect(where, roundNumber) {
+        where.append("<li class=\"result__ladder_rectR" + roundNumber + "\"></li>");
     }
 };
 
