@@ -17,7 +17,7 @@ export let showIt = {
     showLadderRectR1: function (where, idLeft, idRight, teamOne, teamTwo){
         where.append(`<li class="result__ladder_rect">${idLeft}${teamOne}</li><li class="result__ladder_rect">${idRight}${teamTwo}</li>`);
     },
-        /*
+     /**
      * showLadderRect - main function of drawing rectangles in ladder
      * ---------------
      * params:
@@ -30,50 +30,38 @@ export let showIt = {
      * how it works:
      *    1. check if there was lucky team round before and in current round
      *    2. create ladder rectangles with correct classes for suitable case 
-        */
+     */
+   
     showLadderRect: function (where, roundNumber, howMany, isLucky, luckyBefore) {
         let lastElemIsLucky = isLucky.length-1;
         let lastElemLuckyBefore = luckyBefore.length-1;
         let decision = isLucky[lastElemIsLucky].indexOf(" Lucky Team");
         let decisionBef = luckyBefore[lastElemLuckyBefore].indexOf(" Lucky Team");
         if (decisionBef !== -1 && decision !== -1) {
-            for (let i = 0; i < howMany-2; i++) {
+            for (let i = 0; i < howMany-2; i++) {                                          
                 where.append(`<li class="result__ladder_rectR${roundNumber}"></li>`);
-                console.log(`${roundNumber}`,"showLadderRect + +")
             }
             where.append(`<li class="result__ladder_rectRaL${roundNumber}"></li>`);
             where.append(`<li class="result__ladder_rectR${roundNumber}"></li>`);
+            console.log(`${roundNumber}`,"showLadderRect + +")
         } else if (decisionBef === -1 && decision === -1) {
-            for (let i = 0; i < howMany; i++) {
+            for (let i = 0; i < howMany; i++) {                                            
                 where.append(`<li class="result__ladder_rectR${roundNumber}"></li>`);
+                }
                 console.log(`${roundNumber}`,"showLadderRect - -")
-            }
         } else if (decisionBef !== -1 && decision === -1){
-            for (let i = 0; i < howMany; i++) {
-                where.append(`<li class="result__ladder_rectR${roundNumber}"></li>`);
-                console.log(`${roundNumber}`,"showLadderRect + -")
-            }
-        } else if (decisionBef === -1 && decision !== -1){
             for (let i = 0; i < howMany-2; i++) {
                 where.append(`<li class="result__ladder_rectR${roundNumber}"></li>`);
-                console.log(`${roundNumber}`,"showLadderRect - +")
             }
             where.append(`<li class="result__ladder_rectRaL${roundNumber}"></li>`);
             where.append(`<li class="result__ladder_rectR${roundNumber}"></li>`);
+            console.log(`${roundNumber}`,"showLadderRect + -")
+        } else if (decisionBef === -1 && decision !== -1){
+            for (let i = 0; i < howMany; i++) {                                             
+                where.append(`<li class="result__ladder_rectR${roundNumber}"></li>`);
+            }
+            console.log(`${roundNumber}`,"showLadderRect - +")
         }
-        // if (decision !== -1) {
-        //     for (let i = 0; i < howMany-2; i++) {
-        //         where.append(`<li class="result__ladder_rectR${roundNumber}"></li>`);
-        //         console.log("showLadderRect LUCKY")
-        //     }
-        //     where.append(`<li class="result__ladder_rectRaL${roundNumber}"></li>`);
-        //     where.append(`<li class="result__ladder_rectR${roundNumber}"></li>`);
-        // } else {
-        //     for (let i = 0; i < howMany; i++) {
-        //         where.append(`<li class="result__ladder_rectR${roundNumber}"></li>`);
-        //         console.log("showLadderRect")
-        //     }
-        // }
     },
     showChampRect: function (where, roundNumber) {
         where.append(`<li class="result__ladder_rectR${roundNumber}"></li>`);

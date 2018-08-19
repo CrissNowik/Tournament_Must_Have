@@ -51,9 +51,15 @@
 }
 .result__ladder_rectRaL3{
     @include ladderRect;
-        margin: 160px 10px 280px 10px;
+        // margin: 160px 10px 280px 10px;
+        margin: 160px 10px 200px 10px;
 }
 .result__ladder_rectRaL4{
     @include ladderRect;
-        margin: 320px 10px 440px 10px;
+        // margin: 320px 10px 440px 10px;
+        margin: 320px 10px 360px 10px;
+}
+.result__ladder_rectRaL5{
+    @include ladderRect;
+        margin: 640px 10px 400px 10px;
 }

@@ -60,7 +60,7 @@
 /******/ 	__webpack_require__.p = "";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 3);
+/******/ 	return __webpack_require__(__webpack_require__.s = 4);
 /******/ })
 /************************************************************************/
 /******/ ([
@@ -73,21 +73,61 @@
 Object.defineProperty(exports, "__esModule", {
     value: true
 });
+//DOM elements store
+//
+var domElems = exports.domElems = {
+    naviScreen: $('#nav'),
+    btnConfirm: $('#nav__confirm'),
+    collector: $('#collector'),
+    teamInput: $('#collector__input'),
+    btnAdd: $('#collector__add'),
+    btnGenerate: $('#collector__generate'),
+    teamList: $('#collector__list'),
+    teamOnList: $('#collector__listItem'),
+    result: $('#result'),
+    collectorAlertA: $('#alertOne'),
+    collectorAlertB: $('#alertTwo'),
+    collectorAlertC: $('#alertThree'),
+    collectorAlertD: $('#alertFour'),
+    sheduleOnScreenA: $('#result__listA'),
+    sheduleOnScreenB: $('#result__listB'),
+    sheduleOnScreenC: $('#result__listC'),
+    sheduleOnScreenD: $('#result__listD'),
+    cupCaution: $('#alertCup'),
+    cupLadder: $('#result__lader'),
+    ladder_round1: $('#ladder_round1'),
+    ladder_round2: $('#ladder_round2'),
+    ladder_round3: $('#ladder_round3'),
+    ladder_round4: $('#ladder_round4'),
+    ladder_round5: $('#ladder_round5'),
+    ladder_round6: $('#ladder_round6')
+};
+
+/***/ }),
+/* 1 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
 exports.basicFunctions = undefined;
 
-var _domElems = __webpack_require__(1);
+var _domElems = __webpack_require__(0);
 
 var _globalVariables = __webpack_require__(2);
 
-var _leagueGenerator = __webpack_require__(4);
+var _leagueGenerator = __webpack_require__(5);
 
-var _cupGenerator = __webpack_require__(6);
+var _cupGenerator = __webpack_require__(7);
 
-var _showSheduleLeague = __webpack_require__(8);
+var _showSheduleLeague = __webpack_require__(9);
 
-var _showSheduleCup = __webpack_require__(9);
+var _showSheduleCup = __webpack_require__(10);
 
-var _showIt = __webpack_require__(10);
+var _showIt = __webpack_require__(3);
 
 var basicFunctions = exports.basicFunctions = {
     gettingTeams: function gettingTeams() {
@@ -185,46 +225,6 @@ var basicFunctions = exports.basicFunctions = {
 };
 
 /***/ }),
-/* 1 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-    value: true
-});
-//DOM elements store
-//
-var domElems = exports.domElems = {
-    naviScreen: $('#nav'),
-    btnConfirm: $('#nav__confirm'),
-    collector: $('#collector'),
-    teamInput: $('#collector__input'),
-    btnAdd: $('#collector__add'),
-    btnGenerate: $('#collector__generate'),
-    teamList: $('#collector__list'),
-    teamOnList: $('#collector__listItem'),
-    result: $('#result'),
-    collectorAlertA: $('#alertOne'),
-    collectorAlertB: $('#alertTwo'),
-    collectorAlertC: $('#alertThree'),
-    collectorAlertD: $('#alertFour'),
-    sheduleOnScreenA: $('#result__listA'),
-    sheduleOnScreenB: $('#result__listB'),
-    sheduleOnScreenC: $('#result__listC'),
-    sheduleOnScreenD: $('#result__listD'),
-    cupCaution: $('#alertCup'),
-    cupLadder: $('#result__lader'),
-    ladder_round1: $('#ladder_round1'),
-    ladder_round2: $('#ladder_round2'),
-    ladder_round3: $('#ladder_round3'),
-    ladder_round4: $('#ladder_round4'),
-    ladder_round5: $('#ladder_round5'),
-    ladder_round6: $('#ladder_round6')
-};
-
-/***/ }),
 /* 2 */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -248,11 +248,93 @@ var globalVariables = exports.globalVariables = {
 "use strict";
 
 
-var _domElems = __webpack_require__(1);
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+exports.showIt = undefined;
 
-var _basicFunctions = __webpack_require__(0);
+var _globalVariables = __webpack_require__(2);
 
-var _showIt = __webpack_require__(10);
+var showIt = exports.showIt = {
+    showAndHide: function showAndHide(toHide, toShow) {
+        toHide.hide();
+        toShow.show();
+    },
+    showHeader: function showHeader(where, roundCounter) {
+        where.append("<ul class=\"result__listItem--roundHeader\">Round nr " + roundCounter + "</ul>");
+    },
+    showChamp: function showChamp(where) {
+        where.append("<ul class=\"result__listItem--roundHeader\">Champion:</ul><li class=\"result__champ\">" + _globalVariables.globalVariables.empty + "</li>");
+    },
+    showMatch: function showMatch(where, pairOnScreen) {
+        where.append("<li class=\"result__listItem\">" + pairOnScreen + "</li>");
+    },
+    showLadderRectR1: function showLadderRectR1(where, idLeft, idRight, teamOne, teamTwo) {
+        where.append("<li class=\"result__ladder_rect\">" + idLeft + teamOne + "</li><li class=\"result__ladder_rect\">" + idRight + teamTwo + "</li>");
+    },
+    /**
+    * showLadderRect - main function of drawing rectangles in ladder
+    * ---------------
+    * params:
+    *    where - <domElem> where created rectangle should be placed
+    *    roundNumber - <number> used in creating proper class name for sass
+    *    howMany - <number>how many rectangles function should create
+    *    isLucky - <array> represents teams in current round, useful for state if there is lucky team
+    *    luckyBefore - <array> represents teams in round before, useful for state if round before was lucky team
+    * ---------------
+    * how it works:
+    *    1. check if there was lucky team round before and in current round
+    *    2. create ladder rectangles with correct classes for suitable case 
+    */
+
+    showLadderRect: function showLadderRect(where, roundNumber, howMany, isLucky, luckyBefore) {
+        var lastElemIsLucky = isLucky.length - 1;
+        var lastElemLuckyBefore = luckyBefore.length - 1;
+        var decision = isLucky[lastElemIsLucky].indexOf(" Lucky Team");
+        var decisionBef = luckyBefore[lastElemLuckyBefore].indexOf(" Lucky Team");
+        if (decisionBef !== -1 && decision !== -1) {
+            for (var i = 0; i < howMany - 2; i++) {
+                where.append("<li class=\"result__ladder_rectR" + roundNumber + "\"></li>");
+            }
+            where.append("<li class=\"result__ladder_rectRaL" + roundNumber + "\"></li>");
+            where.append("<li class=\"result__ladder_rectR" + roundNumber + "\"></li>");
+            console.log("" + roundNumber, "showLadderRect + +");
+        } else if (decisionBef === -1 && decision === -1) {
+            for (var _i = 0; _i < howMany; _i++) {
+                where.append("<li class=\"result__ladder_rectR" + roundNumber + "\"></li>");
+            }
+            console.log("" + roundNumber, "showLadderRect - -");
+        } else if (decisionBef !== -1 && decision === -1) {
+            for (var _i2 = 0; _i2 < howMany - 2; _i2++) {
+                where.append("<li class=\"result__ladder_rectR" + roundNumber + "\"></li>");
+            }
+            where.append("<li class=\"result__ladder_rectRaL" + roundNumber + "\"></li>");
+            where.append("<li class=\"result__ladder_rectR" + roundNumber + "\"></li>");
+            console.log("" + roundNumber, "showLadderRect + -");
+        } else if (decisionBef === -1 && decision !== -1) {
+            for (var _i3 = 0; _i3 < howMany; _i3++) {
+                where.append("<li class=\"result__ladder_rectR" + roundNumber + "\"></li>");
+            }
+            console.log("" + roundNumber, "showLadderRect - +");
+        }
+    },
+    showChampRect: function showChampRect(where, roundNumber) {
+        where.append("<li class=\"result__ladder_rectR" + roundNumber + "\"></li>");
+    }
+};
+
+/***/ }),
+/* 4 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+var _domElems = __webpack_require__(0);
+
+var _basicFunctions = __webpack_require__(1);
+
+var _showIt = __webpack_require__(3);
 
 $(document).ready(function () {
 
@@ -307,7 +389,7 @@ $(document).ready(function () {
 });
 
 /***/ }),
-/* 4 */
+/* 5 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -318,9 +400,9 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.leagueGenerator = leagueGenerator;
 
-var _basicFunctions = __webpack_require__(0);
+var _basicFunctions = __webpack_require__(1);
 
-var _roundrobin = __webpack_require__(5);
+var _roundrobin = __webpack_require__(6);
 
 function leagueGenerator(teamList) {
             var numberOfTeams = teamList.length;
@@ -332,7 +414,7 @@ function leagueGenerator(teamList) {
 };
 
 /***/ }),
-/* 5 */
+/* 6 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -376,7 +458,7 @@ function roundrobin(n, ps) {
 // Eirik Albrigtsen for his roundrobin algorythm https://github.com/clux/roundrobin
 
 /***/ }),
-/* 6 */
+/* 7 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -387,9 +469,9 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.cupGenerator = cupGenerator;
 
-var _basicFunctions = __webpack_require__(0);
+var _basicFunctions = __webpack_require__(1);
 
-var _cupPairGenerators = __webpack_require__(7);
+var _cupPairGenerators = __webpack_require__(8);
 
 function cupGenerator(teamList) {
     var final = [];
@@ -492,7 +574,7 @@ function cupGenerator(teamList) {
 };
 
 /***/ }),
-/* 7 */
+/* 8 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -562,7 +644,7 @@ var cupPairGenerators = exports.cupPairGenerators = {
 };
 
 /***/ }),
-/* 8 */
+/* 9 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -573,9 +655,9 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.showSheduleLeague = showSheduleLeague;
 
-var _domElems = __webpack_require__(1);
+var _domElems = __webpack_require__(0);
 
-var _basicFunctions = __webpack_require__(0);
+var _basicFunctions = __webpack_require__(1);
 
 function showSheduleLeague(readyShedule) {
     for (var i = 0; i < readyShedule.length; i++) {
@@ -617,7 +699,7 @@ function showSheduleLeague(readyShedule) {
 };
 
 /***/ }),
-/* 9 */
+/* 10 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -628,11 +710,11 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.showSheduleCup = showSheduleCup;
 
-var _domElems = __webpack_require__(1);
+var _domElems = __webpack_require__(0);
 
 var _globalVariables = __webpack_require__(2);
 
-var _showIt = __webpack_require__(10);
+var _showIt = __webpack_require__(3);
 
 function showSheduleCup(sheduleArray, numberOfTeams) {
     var roundCounter = 1;
@@ -747,100 +829,6 @@ function showSheduleCup(sheduleArray, numberOfTeams) {
                 _showIt.showIt.showLadderRect(_domElems.domElems.ladder_round5, 5, many, sheduleArray[4], sheduleArray[3]);
             }
         }
-    }
-};
-
-/***/ }),
-/* 10 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-    value: true
-});
-exports.showIt = undefined;
-
-var _globalVariables = __webpack_require__(2);
-
-var showIt = exports.showIt = {
-    showAndHide: function showAndHide(toHide, toShow) {
-        toHide.hide();
-        toShow.show();
-    },
-    showHeader: function showHeader(where, roundCounter) {
-        where.append("<ul class=\"result__listItem--roundHeader\">Round nr " + roundCounter + "</ul>");
-    },
-    showChamp: function showChamp(where) {
-        where.append("<ul class=\"result__listItem--roundHeader\">Champion:</ul><li class=\"result__champ\">" + _globalVariables.globalVariables.empty + "</li>");
-    },
-    showMatch: function showMatch(where, pairOnScreen) {
-        where.append("<li class=\"result__listItem\">" + pairOnScreen + "</li>");
-    },
-    showLadderRectR1: function showLadderRectR1(where, idLeft, idRight, teamOne, teamTwo) {
-        where.append("<li class=\"result__ladder_rect\">" + idLeft + teamOne + "</li><li class=\"result__ladder_rect\">" + idRight + teamTwo + "</li>");
-    },
-    /*
-    * showLadderRect - main function of drawing rectangles in ladder
-    * ---------------
-    * params:
-    *    where - <domElem> where created rectangle should be placed
-    *    roundNumber - <number> used in creating proper class name for sass
-    *    howMany - <number>how many rectangles function should create
-    *    isLucky - <array> represents teams in current round, useful for state if there is lucky team
-    *    luckyBefore - <array> represents teams in round before, useful for state if round before was lucky team
-    * ---------------
-    * how it works:
-    *    1. check if there was lucky team round before and in current round
-    *    2. create ladder rectangles with correct classes for suitable case 
-    */
-    showLadderRect: function showLadderRect(where, roundNumber, howMany, isLucky, luckyBefore) {
-        var lastElemIsLucky = isLucky.length - 1;
-        var lastElemLuckyBefore = luckyBefore.length - 1;
-        var decision = isLucky[lastElemIsLucky].indexOf(" Lucky Team");
-        var decisionBef = luckyBefore[lastElemLuckyBefore].indexOf(" Lucky Team");
-        if (decisionBef !== -1 && decision !== -1) {
-            for (var i = 0; i < howMany - 2; i++) {
-                where.append("<li class=\"result__ladder_rectR" + roundNumber + "\"></li>");
-                console.log("" + roundNumber, "showLadderRect + +");
-            }
-            where.append("<li class=\"result__ladder_rectRaL" + roundNumber + "\"></li>");
-            where.append("<li class=\"result__ladder_rectR" + roundNumber + "\"></li>");
-        } else if (decisionBef === -1 && decision === -1) {
-            for (var _i = 0; _i < howMany; _i++) {
-                where.append("<li class=\"result__ladder_rectR" + roundNumber + "\"></li>");
-                console.log("" + roundNumber, "showLadderRect - -");
-            }
-        } else if (decisionBef !== -1 && decision === -1) {
-            for (var _i2 = 0; _i2 < howMany; _i2++) {
-                where.append("<li class=\"result__ladder_rectR" + roundNumber + "\"></li>");
-                console.log("" + roundNumber, "showLadderRect + -");
-            }
-        } else if (decisionBef === -1 && decision !== -1) {
-            for (var _i3 = 0; _i3 < howMany - 2; _i3++) {
-                where.append("<li class=\"result__ladder_rectR" + roundNumber + "\"></li>");
-                console.log("" + roundNumber, "showLadderRect - +");
-            }
-            where.append("<li class=\"result__ladder_rectRaL" + roundNumber + "\"></li>");
-            where.append("<li class=\"result__ladder_rectR" + roundNumber + "\"></li>");
-        }
-        // if (decision !== -1) {
-        //     for (let i = 0; i < howMany-2; i++) {
-        //         where.append(`<li class="result__ladder_rectR${roundNumber}"></li>`);
-        //         console.log("showLadderRect LUCKY")
-        //     }
-        //     where.append(`<li class="result__ladder_rectRaL${roundNumber}"></li>`);
-        //     where.append(`<li class="result__ladder_rectR${roundNumber}"></li>`);
-        // } else {
-        //     for (let i = 0; i < howMany; i++) {
-        //         where.append(`<li class="result__ladder_rectR${roundNumber}"></li>`);
-        //         console.log("showLadderRect")
-        //     }
-        // }
-    },
-    showChampRect: function showChampRect(where, roundNumber) {
-        where.append("<li class=\"result__ladder_rectR" + roundNumber + "\"></li>");
     }
 };
 
