@@ -674,14 +674,14 @@ function showSheduleCup(sheduleArray, numberOfTeams) {
                 _showIt.showIt.showChampRect(_domElems.domElems.ladder_round3, 3);
             }
             var howMany = sheduleArray[0].length * 2 / 2;
-            _showIt.showIt.showLadderRect(_domElems.domElems.ladder_round2, 2, howMany);
+            _showIt.showIt.showLadderRect(_domElems.domElems.ladder_round2, 2, howMany, sheduleArray[1], sheduleArray[0]);
         } else {
             for (var _k = 0; _k < repsR2; _k++) {
                 pairOnScreen = sheduleArray[1][_k].join(" ___ - ___ ");
                 _showIt.showIt.showMatch(_domElems.domElems.sheduleOnScreenA, pairOnScreen);
             }
             var _howMany = sheduleArray[0].length * 2 / 2;
-            _showIt.showIt.showLadderRect(_domElems.domElems.ladder_round2, 2, _howMany);
+            _showIt.showIt.showLadderRect(_domElems.domElems.ladder_round2, 2, _howMany, sheduleArray[1], sheduleArray[0]);
         }
         roundCounter++;
     };
@@ -702,7 +702,7 @@ function showSheduleCup(sheduleArray, numberOfTeams) {
                 _showIt.showIt.showChampRect(_domElems.domElems.ladder_round4, 4);
             }
             var howMany = sheduleArray[1].length * 2 / 2;
-            _showIt.showIt.showLadderRect(_domElems.domElems.ladder_round3, 3, howMany);
+            _showIt.showIt.showLadderRect(_domElems.domElems.ladder_round3, 3, howMany, sheduleArray[2], sheduleArray[1]);
             roundCounter++;
         } else if (numberOfTeams > 8 && numberOfTeams < 33) {
             for (var _l = 0; _l < repsR3; _l++) {
@@ -710,7 +710,7 @@ function showSheduleCup(sheduleArray, numberOfTeams) {
                 _showIt.showIt.showMatch(_domElems.domElems.sheduleOnScreenA, pairOnScreen);
             }
             var _howMany2 = sheduleArray[1].length * 2 / 2;
-            _showIt.showIt.showLadderRect(_domElems.domElems.ladder_round3, 3, _howMany2);
+            _showIt.showIt.showLadderRect(_domElems.domElems.ladder_round3, 3, _howMany2, sheduleArray[2], sheduleArray[1]);
             roundCounter++;
             // Round 4
             var repsR4 = Math.ceil(sheduleArray[2].length / 2);
@@ -719,21 +719,19 @@ function showSheduleCup(sheduleArray, numberOfTeams) {
             if (numberOfTeams > 8 && numberOfTeams < 17) {
                 for (var n = 0; n < repsR4; n++) {
                     pairOnScreen = sheduleArray[3].join(" ___ - ___ ");
-                    _showIt.showIt.showLadderRect(_domElems.domElems.ladder_round4, 4);
                     _showIt.showIt.showMatch(_domElems.domElems.sheduleOnScreenA, pairOnScreen);
                     _showIt.showIt.showChamp(_domElems.domElems.sheduleOnScreenA);
                     _showIt.showIt.showChampRect(_domElems.domElems.ladder_round5, 5);
                 }
                 var _howMany3 = sheduleArray[2].length * 2 / 2;
-                _showIt.showIt.showLadderRect(_domElems.domElems.ladder_round4, 4, _howMany3);
+                _showIt.showIt.showLadderRect(_domElems.domElems.ladder_round4, 4, _howMany3, sheduleArray[3], sheduleArray[2]);
             } else if (numberOfTeams > 16) {
                 for (var _n = 0; _n < repsR4; _n++) {
                     pairOnScreen = sheduleArray[3][_n].join(" ___ - ___ ");
-                    _showIt.showIt.showLadderRect(_domElems.domElems.ladder_round4, 4);
                     _showIt.showIt.showMatch(_domElems.domElems.sheduleOnScreenA, pairOnScreen);
                 }
                 var _howMany4 = sheduleArray[2].length * 2 / 2;
-                _showIt.showIt.showLadderRect(_domElems.domElems.ladder_round4, 4, _howMany4);
+                _showIt.showIt.showLadderRect(_domElems.domElems.ladder_round4, 4, _howMany4, sheduleArray[3], sheduleArray[2]);
                 roundCounter++;
                 // Round 5
                 var repsR5 = Math.ceil(sheduleArray[3].length / 2);
@@ -741,13 +739,12 @@ function showSheduleCup(sheduleArray, numberOfTeams) {
                 _showIt.showIt.showHeader(_domElems.domElems.sheduleOnScreenA, roundCounter);
                 for (var o = 0; o < repsR5; o++) {
                     pairOnScreen = sheduleArray[4].join(" ___ - ___ ");
-                    _showIt.showIt.showLadderRect(_domElems.domElems.ladder_round5, 5);
                     _showIt.showIt.showChampRect(_domElems.domElems.ladder_round6, 6);
                     _showIt.showIt.showMatch(_domElems.domElems.sheduleOnScreenA, pairOnScreen);
                     _showIt.showIt.showChamp(_domElems.domElems.sheduleOnScreenA);
                 }
                 var many = sheduleArray[3].length * 2 / 2;
-                _showIt.showIt.showLadderRect(_domElems.domElems.ladder_round5, 5, many);
+                _showIt.showIt.showLadderRect(_domElems.domElems.ladder_round5, 5, many, sheduleArray[4], sheduleArray[3]);
             }
         }
     }
@@ -784,22 +781,63 @@ var showIt = exports.showIt = {
     showLadderRectR1: function showLadderRectR1(where, idLeft, idRight, teamOne, teamTwo) {
         where.append("<li class=\"result__ladder_rect\">" + idLeft + teamOne + "</li><li class=\"result__ladder_rect\">" + idRight + teamTwo + "</li>");
     },
-    showLadderRect: function showLadderRect(where, roundNumber, howMany, isLucky) {
-        var lastArrayElem = isLucky.length - 1;
-        var decision = isLucky[lastArrayElem].indexOf(" Lucky Team");
-        if (decision !== -1) {
+    /*
+    * showLadderRect - main function of drawing rectangles in ladder
+    * ---------------
+    * params:
+    *    where - <domElem> where created rectangle should be placed
+    *    roundNumber - <number> used in creating proper class name for sass
+    *    howMany - <number>how many rectangles function should create
+    *    isLucky - <array> represents teams in current round, useful for state if there is lucky team
+    *    luckyBefore - <array> represents teams in round before, useful for state if round before was lucky team
+    * ---------------
+    * how it works:
+    *    1. check if there was lucky team round before and in current round
+    *    2. create ladder rectangles with correct classes for suitable case 
+    */
+    showLadderRect: function showLadderRect(where, roundNumber, howMany, isLucky, luckyBefore) {
+        var lastElemIsLucky = isLucky.length - 1;
+        var lastElemLuckyBefore = luckyBefore.length - 1;
+        var decision = isLucky[lastElemIsLucky].indexOf(" Lucky Team");
+        var decisionBef = luckyBefore[lastElemLuckyBefore].indexOf(" Lucky Team");
+        if (decisionBef !== -1 && decision !== -1) {
             for (var i = 0; i < howMany - 2; i++) {
                 where.append("<li class=\"result__ladder_rectR" + roundNumber + "\"></li>");
-                console.log("showLadderRect LUCKY");
+                console.log("" + roundNumber, "showLadderRect + +");
             }
             where.append("<li class=\"result__ladder_rectRaL" + roundNumber + "\"></li>");
             where.append("<li class=\"result__ladder_rectR" + roundNumber + "\"></li>");
-        } else {
+        } else if (decisionBef === -1 && decision === -1) {
             for (var _i = 0; _i < howMany; _i++) {
                 where.append("<li class=\"result__ladder_rectR" + roundNumber + "\"></li>");
-                console.log("showLadderRect");
+                console.log("" + roundNumber, "showLadderRect - -");
             }
+        } else if (decisionBef !== -1 && decision === -1) {
+            for (var _i2 = 0; _i2 < howMany; _i2++) {
+                where.append("<li class=\"result__ladder_rectR" + roundNumber + "\"></li>");
+                console.log("" + roundNumber, "showLadderRect + -");
+            }
+        } else if (decisionBef === -1 && decision !== -1) {
+            for (var _i3 = 0; _i3 < howMany - 2; _i3++) {
+                where.append("<li class=\"result__ladder_rectR" + roundNumber + "\"></li>");
+                console.log("" + roundNumber, "showLadderRect - +");
+            }
+            where.append("<li class=\"result__ladder_rectRaL" + roundNumber + "\"></li>");
+            where.append("<li class=\"result__ladder_rectR" + roundNumber + "\"></li>");
         }
+        // if (decision !== -1) {
+        //     for (let i = 0; i < howMany-2; i++) {
+        //         where.append(`<li class="result__ladder_rectR${roundNumber}"></li>`);
+        //         console.log("showLadderRect LUCKY")
+        //     }
+        //     where.append(`<li class="result__ladder_rectRaL${roundNumber}"></li>`);
+        //     where.append(`<li class="result__ladder_rectR${roundNumber}"></li>`);
+        // } else {
+        //     for (let i = 0; i < howMany; i++) {
+        //         where.append(`<li class="result__ladder_rectR${roundNumber}"></li>`);
+        //         console.log("showLadderRect")
+        //     }
+        // }
     },
     showChampRect: function showChampRect(where, roundNumber) {
         where.append("<li class=\"result__ladder_rectR" + roundNumber + "\"></li>");

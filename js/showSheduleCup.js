@@ -43,14 +43,14 @@ export function showSheduleCup(sheduleArray, numberOfTeams) {
                     showIt.showChampRect(domElems.ladder_round3, 3);  
                 }
                 let howMany = (sheduleArray[0].length*2)/2;
-                showIt.showLadderRect(domElems.ladder_round2, 2, howMany);
+                showIt.showLadderRect(domElems.ladder_round2, 2, howMany, sheduleArray[1], sheduleArray[0]);
             } else {
                 for (let k = 0; k < repsR2; k++) {
                     pairOnScreen = sheduleArray[1][k].join(" ___ - ___ ");   
                     showIt.showMatch(domElems.sheduleOnScreenA, pairOnScreen); 
                 }
                 let howMany = (sheduleArray[0].length*2)/2;
-                showIt.showLadderRect(domElems.ladder_round2, 2, howMany);
+                showIt.showLadderRect(domElems.ladder_round2, 2, howMany, sheduleArray[1], sheduleArray[0]);
             }
             roundCounter++;
             };
@@ -71,7 +71,7 @@ export function showSheduleCup(sheduleArray, numberOfTeams) {
                 showIt.showChampRect(domElems.ladder_round4, 4); 
             }
             let howMany = (sheduleArray[1].length*2)/2;
-                showIt.showLadderRect(domElems.ladder_round3, 3, howMany);
+                showIt.showLadderRect(domElems.ladder_round3, 3, howMany, sheduleArray[2], sheduleArray[1]);
             roundCounter++;
         } else if (numberOfTeams > 8 && numberOfTeams < 33) {
             for (let l = 0; l < repsR3; l++) {    
@@ -79,7 +79,7 @@ export function showSheduleCup(sheduleArray, numberOfTeams) {
                 showIt.showMatch(domElems.sheduleOnScreenA, pairOnScreen);   
             }
             let howMany = (sheduleArray[1].length*2)/2;
-                showIt.showLadderRect(domElems.ladder_round3, 3, howMany);
+                showIt.showLadderRect(domElems.ladder_round3, 3, howMany, sheduleArray[2], sheduleArray[1]);
             roundCounter++;
     // Round 4
             let repsR4 = Math.ceil(sheduleArray[2].length/2);
@@ -88,21 +88,19 @@ export function showSheduleCup(sheduleArray, numberOfTeams) {
             if (numberOfTeams > 8 && numberOfTeams < 17) {
                 for (let n = 0; n < repsR4; n++) {
                     pairOnScreen = sheduleArray[3].join(" ___ - ___ ");
-                    showIt.showLadderRect(domElems.ladder_round4, 4);   
                     showIt.showMatch(domElems.sheduleOnScreenA, pairOnScreen);
                     showIt.showChamp(domElems.sheduleOnScreenA); 
                     showIt.showChampRect(domElems.ladder_round5, 5);
                 }
                 let howMany = (sheduleArray[2].length*2)/2;
-                showIt.showLadderRect(domElems.ladder_round4, 4, howMany);
+                showIt.showLadderRect(domElems.ladder_round4, 4, howMany, sheduleArray[3], sheduleArray[2]);
             } else if (numberOfTeams > 16) {
                 for (let n = 0; n < repsR4; n++) {
                     pairOnScreen = sheduleArray[3][n].join(" ___ - ___ ");
-                    showIt.showLadderRect(domElems.ladder_round4, 4);   
                     showIt.showMatch(domElems.sheduleOnScreenA, pairOnScreen); 
                 }
                 let howMany = (sheduleArray[2].length*2)/2;
-                showIt.showLadderRect(domElems.ladder_round4, 4, howMany);
+                showIt.showLadderRect(domElems.ladder_round4, 4, howMany, sheduleArray[3], sheduleArray[2]);
                 roundCounter++;
     // Round 5
                 let repsR5 = Math.ceil(sheduleArray[3].length/2);
@@ -110,13 +108,12 @@ export function showSheduleCup(sheduleArray, numberOfTeams) {
                 showIt.showHeader(domElems.sheduleOnScreenA, roundCounter);
                 for (let o = 0; o < repsR5; o++) {
                     pairOnScreen = sheduleArray[4].join(" ___ - ___ ");
-                    showIt.showLadderRect(domElems.ladder_round5, 5); 
                     showIt.showChampRect(domElems.ladder_round6, 6);  
                     showIt.showMatch(domElems.sheduleOnScreenA, pairOnScreen);
                     showIt.showChamp(domElems.sheduleOnScreenA);
                 }
                 let many = (sheduleArray[3].length*2)/2;
-                showIt.showLadderRect(domElems.ladder_round5, 5, many);
+                showIt.showLadderRect(domElems.ladder_round5, 5, many, sheduleArray[4], sheduleArray[3]);
             }
         } 
         
