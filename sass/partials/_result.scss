@@ -43,6 +43,7 @@
 .result__ladder_rectR6{
     @include ladderRect;
        margin: 1280px 10px 2520px 10px;
+
     }
 
 .result__ladder_rectRaL2{
@@ -62,4 +63,17 @@
 .result__ladder_rectRaL5{
     @include ladderRect;
         margin: 640px 10px 400px 10px;
+}
+.result__ladder_rect4{
+    @include ladderRect;
+    margin: 280px  10px 320px 10px;
+}
+.result__ladder_rect5{
+    @include ladderRect;
+    margin: 520px  10px 320px 10px;
+}
+
+.result__ladder_rect6{
+    @include ladderRect;
+    margin: 1000px  10px 320px 10px;
 }

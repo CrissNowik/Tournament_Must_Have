@@ -64,6 +64,6 @@ export let showIt = {
         }
     },
     showChampRect: function (where, roundNumber) {
-        where.append(`<li class="result__ladder_rectR${roundNumber}"></li>`);
+        where.append(`<li class="result__ladder_rect${roundNumber}"></li>`);
     }
 }
