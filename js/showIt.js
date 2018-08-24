@@ -63,7 +63,7 @@ export let showIt = {
             console.log(`${roundNumber}`,"showLadderRect - +")
         }
     },
-    showChampRect: function (where, roundNumber) {
-        where.append(`<li class="result__ladder_rect${roundNumber}"></li>`);
+    showChampRect: function (where, roundNumber, postfix) {
+        where.append(`<li class="result__ladder_rect${roundNumber}${postfix}"></li>`);
     }
 }

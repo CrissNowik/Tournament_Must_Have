@@ -64,16 +64,34 @@
     @include ladderRect;
         margin: 640px 10px 400px 10px;
 }
-.result__ladder_rect4{
+
+
+.result__ladder_rect3a{
     @include ladderRect;
-    margin: 280px  10px 320px 10px;
+    margin: 160px 10px 320px 10px;
 }
-.result__ladder_rect5{
+.result__ladder_rect4a{
+    @include ladderRect;
+    margin: 280px 10px 320px 10px;
+}
+.result__ladder_rect4b{
+    @include ladderRect;
+    margin: 320px 10px 320px 10px;
+}
+.result__ladder_rect5a{
     @include ladderRect;
     margin: 520px  10px 320px 10px;
 }
+.result__ladder_rect5b{
+    @include ladderRect;
+    margin: 640px  10px 320px 10px;
+}
 
-.result__ladder_rect6{
+.result__ladder_rect6a{
     @include ladderRect;
     margin: 1000px  10px 320px 10px;
+}
+.result__ladder_rect6b{
+    @include ladderRect;
+    margin: 1120px  10px 320px 10px;
 }
