@@ -27,8 +27,16 @@
     @include ladderRect;
         margin: 80px 10px 120px 10px;
 }
+.result__ladder_rectR2a{
+    @include ladderRect;
+        margin: 80px 10px 120px 10px;
+}
 
 .result__ladder_rectR2b{
+    @include ladderRect;
+        margin: 80px 10px 120px 10px;
+}
+.result__ladder_rectR2e{
     @include ladderRect;
         margin: 80px 10px 120px 10px;
 }
@@ -37,14 +45,22 @@
     @include ladderRect;
         margin: 160px 10px 280px 10px;
     }
+
+.result__ladder_rectR3c{
+    @include ladderRect;
+        margin: 160px 10px 280px 10px;
+    }
 .result__ladder_rectR4{
     @include ladderRect;
         margin: 320px 10px 600px 10px;
-        // margin: 320px 10px 560px 10px; //R13
     }
 .result__ladder_rectR4a{
     @include ladderRect;
-        margin: 320px 10px 560px 10px; //R13
+        margin: 320px 10px 560px 10px;
+    }
+.result__ladder_rectR4b{
+    @include ladderRect;
+        margin: 240px 10px 50px 10px;
     }
 .result__ladder_rectR5{
     @include ladderRect;
@@ -58,62 +74,91 @@
     @include ladderRect;
         margin: 760px 10px 1240px 10px;
     }
+.result__ladder_rectR5c{
+    @include ladderRect;
+        margin: 600px 10px 1240px 10px;
+    }
+.result__ladder_rectR5d{
+    @include ladderRect;
+        margin: 600px 10px 1160px 10px;
+    }
+.result__ladder_rectR5e{
+    @include ladderRect;
+        margin: 640px 10px 1080px 10px;
+    }
 .result__ladder_rectR6{
     @include ladderRect;
-       margin: 1280px 10px 2520px 10px;
+       margin: 1280px 10px 20px 10px;
     }
 
 .result__ladder_rectRaL2{
     @include ladderRect;
         margin: 80px 10px 120px 10px;
 }
+.result__ladder_rectRaL2b{
+    @include ladderRect;
+        margin: 80px 10px 120px 10px;
+}
 .result__ladder_rectRaL3{
     @include ladderRect;
-        // margin: 160px 10px 280px 10px;
         margin: 160px 10px 200px 10px;
 }
 .result__ladder_rectRaL4{
     @include ladderRect;
-        // margin: 320px 10px 440px 10px;
         margin: 320px 10px 360px 10px;
 }
 .result__ladder_rectRaL4a{
     @include ladderRect;
         margin: 320px 10px 440px 10px;
 }
+.result__ladder_rectRaL4b{
+    @include ladderRect;
+        margin: 320px 10px 280px 10px;
+}
 .result__ladder_rectRaL5{
     @include ladderRect;
         margin: 640px 10px 400px 10px;
-        // margin: 680px 10px 1240px 10px; //R17
 }
 
 
 .result__ladder_rect3a{
     @include ladderRect;
-    margin: 160px 10px 320px 10px;
+    margin: 160px 10px 20px 10px;
 }
 .result__ladder_rect4a{
     @include ladderRect;
-    margin: 280px 10px 320px 10px;
+    margin: 280px 10px 20px 10px;
 }
 .result__ladder_rect4b{
     @include ladderRect;
-    margin: 320px 10px 320px 10px;
+    margin: 320px 10px 20px 10px;
 }
 .result__ladder_rect5a{
     @include ladderRect;
-    margin: 520px  10px 320px 10px;
+    margin: 520px  10px 20px 10px;
 }
 .result__ladder_rect5b{
     @include ladderRect;
-    margin: 640px  10px 320px 10px;
+    margin: 640px  10px 20px 10px;
 }
 
 .result__ladder_rect6a{
     @include ladderRect;
-    margin: 1000px  10px 320px 10px;
+    margin: 1000px  10px 20px 10px;
 }
 .result__ladder_rect6b{
     @include ladderRect;
-    margin: 1040px  10px 320px 10px;
+    margin: 1040px  10px 20px 10px;
+}
+.result__ladder_rect6c{
+    @include ladderRect;
+    margin: 960px  10px 20px 10px;
+}
+.result__ladder_rect6d{
+    @include ladderRect;
+    margin: 1200px  10px 20px 10px;
+}
+.result__ladder_rect6e{
+    @include ladderRect;
+    margin: 1280px  10px 20px 10px;
 }

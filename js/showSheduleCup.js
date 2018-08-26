@@ -125,7 +125,13 @@ export function showSheduleCup(sheduleArray, numberOfTeams) {
                     showIt.showChampRect(domElems.ladder_round6, 6, "a");
                 } else if (numberOfTeams === 19 || numberOfTeams === 20){
                     showIt.showChampRect(domElems.ladder_round6, 6, "b");
-                }  
+                } else if (numberOfTeams > 20 && numberOfTeams < 25){
+                    showIt.showChampRect(domElems.ladder_round6, 6, "c");
+                } else if (numberOfTeams > 24 && numberOfTeams < 29){
+                    showIt.showChampRect(domElems.ladder_round6, 6, "d");
+                } else {
+                    showIt.showChampRect(domElems.ladder_round6, 6, "e");
+                }
             }
         } 
         
