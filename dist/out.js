@@ -792,6 +792,12 @@ function showSheduleCup(sheduleArray, numberOfTeams) {
     _domElems.domElems.sheduleOnScreenD.css('display', 'none');
     _domElems.domElems.cupLadder.css('display', 'flex');
 
+    function showLines(where, amount) {
+        for (var i = 0; i < amount; i++) {
+            where.append("<div class=\"result__ladder_lineR1\"></div>");
+        }
+    }
+
     function showingTwoFirstRoundsCup() {
         var repsR1 = sheduleArray[0].length;
         var repsR2 = Math.ceil(sheduleArray[0].length / 2);
@@ -810,6 +816,8 @@ function showSheduleCup(sheduleArray, numberOfTeams) {
             _showIt.showIt.showLadderRectR1(_domElems.domElems.ladder_round1, idLeft, idRight, teamOne, teamTwo);
             _showIt.showIt.showMatch(_domElems.domElems.sheduleOnScreenA, pairOnScreen);
         }
+        var amount = sheduleArray[0].length * 2 / 2;
+        showLines(_domElems.domElems.ladder_round1, amount);
         roundCounter++;
 
         //Round 2
