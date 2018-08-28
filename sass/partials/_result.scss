@@ -163,13 +163,30 @@
     margin: 1280px  10px 20px 10px;
 }
 
-.result__ladder_lineR1 {
-    width: 140px;
-    height: 80px;
-    margin: 60px 0 80px 160px;
-    border: 1px solid #000;
-    border-left: none;
-    border-radius: 5px;
+.result__lines_container{
     position: absolute;
     z-index: -1;
+    .result__ladder_lines{
+        width: 205px;
+        float: left;
+        .result__ladder_lineR1 {
+            width: 140px;
+            height: 78px;
+            margin: 76px 0 80px 205px;
+            border: 3px solid #000;
+            border-left: none;
+            border-radius: 5px;
+            position: relative;
+        }
+        .result__ladder_lineR2 {
+            width: 140px;
+            height: 158px;
+            margin: 116px 0 160px 205px;
+            border: 3px solid #000;
+            border-left: none;
+            border-radius: 5px;
+            position: relative;
+        }
+    }
 }
+

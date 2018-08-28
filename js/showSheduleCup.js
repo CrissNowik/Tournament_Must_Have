@@ -13,12 +13,6 @@ export function showSheduleCup(sheduleArray, numberOfTeams) {
     domElems.cupLadder.css('display', 'flex');
 
 
-    function showLines(where, amount) {
-        for (let i = 0; i < amount; i++) {
-            where.append(`<div class="result__ladder_lineR1"></div>`);
-        }
-    }
-
     function showingTwoFirstRoundsCup() {
         let repsR1 = sheduleArray[0].length;
         let repsR2 = Math.ceil(sheduleArray[0].length/2);
@@ -38,7 +32,7 @@ export function showSheduleCup(sheduleArray, numberOfTeams) {
                 showIt.showMatch(domElems.sheduleOnScreenA, pairOnScreen);
             }
             let amount = (sheduleArray[0].length*2)/2;
-            showLines(domElems.ladder_round1, amount);
+            showIt.showLines(domElems.line_container1, amount,1);
             roundCounter++;
             
     //Round 2
@@ -52,6 +46,8 @@ export function showSheduleCup(sheduleArray, numberOfTeams) {
                 }
                 let howMany = (sheduleArray[0].length*2)/2;
                 showIt.showLadderRect(domElems.ladder_round2, 2, howMany, sheduleArray[1], sheduleArray[0], numberOfTeams);
+                let amount = sheduleArray[0].length/2;
+                showIt.showLines(domElems.line_container2, amount,2); // HERE!!!!!!!!!!!!
             } else {
                 for (let k = 0; k < repsR2; k++) {
                     pairOnScreen = sheduleArray[1][k].join(" ___ - ___ ");   

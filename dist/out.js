@@ -100,7 +100,13 @@ var domElems = exports.domElems = {
     ladder_round3: $('#ladder_round3'),
     ladder_round4: $('#ladder_round4'),
     ladder_round5: $('#ladder_round5'),
-    ladder_round6: $('#ladder_round6')
+    ladder_round6: $('#ladder_round6'),
+    line_container1: $('#line_contR1'),
+    line_container2: $('#line_contR2'),
+    line_container3: $('#line_contR3'),
+    line_container4: $('#line_contR4'),
+    line_container5: $('#line_contR5'),
+    line_container6: $('#line_contR6')
 };
 
 /***/ }),
@@ -386,6 +392,11 @@ var showIt = exports.showIt = {
     },
     showChampRect: function showChampRect(where, roundNumber, postfix) {
         where.append("<li class=\"result__ladder_rect" + roundNumber + postfix + "\"></li>");
+    },
+    showLines: function showLines(where, amount, round) {
+        for (var i = 0; i < amount; i++) {
+            where.append("<div class=\"result__ladder_lineR" + round + "\"></div>");
+        }
     }
 };
 
@@ -792,12 +803,6 @@ function showSheduleCup(sheduleArray, numberOfTeams) {
     _domElems.domElems.sheduleOnScreenD.css('display', 'none');
     _domElems.domElems.cupLadder.css('display', 'flex');
 
-    function showLines(where, amount) {
-        for (var i = 0; i < amount; i++) {
-            where.append("<div class=\"result__ladder_lineR1\"></div>");
-        }
-    }
-
     function showingTwoFirstRoundsCup() {
         var repsR1 = sheduleArray[0].length;
         var repsR2 = Math.ceil(sheduleArray[0].length / 2);
@@ -817,7 +822,7 @@ function showSheduleCup(sheduleArray, numberOfTeams) {
             _showIt.showIt.showMatch(_domElems.domElems.sheduleOnScreenA, pairOnScreen);
         }
         var amount = sheduleArray[0].length * 2 / 2;
-        showLines(_domElems.domElems.ladder_round1, amount);
+        _showIt.showIt.showLines(_domElems.domElems.line_container1, amount, 1);
         roundCounter++;
 
         //Round 2
@@ -831,6 +836,8 @@ function showSheduleCup(sheduleArray, numberOfTeams) {
             }
             var howMany = sheduleArray[0].length * 2 / 2;
             _showIt.showIt.showLadderRect(_domElems.domElems.ladder_round2, 2, howMany, sheduleArray[1], sheduleArray[0], numberOfTeams);
+            var _amount = sheduleArray[0].length / 2;
+            _showIt.showIt.showLines(_domElems.domElems.line_container2, _amount, 2); // HERE!!!!!!!!!!!!
         } else {
             for (var _k = 0; _k < repsR2; _k++) {
                 pairOnScreen = sheduleArray[1][_k].join(" ___ - ___ ");

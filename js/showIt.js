@@ -133,5 +133,10 @@ export let showIt = {
     },
     showChampRect: function (where, roundNumber, postfix) {
         where.append(`<li class="result__ladder_rect${roundNumber}${postfix}"></li>`);
+    },
+    showLines: function(where, amount, round) {
+        for (let i = 0; i < amount; i++) {
+            where.append(`<div class="result__ladder_lineR${round}"></div>`);
+        }
     }
 }
