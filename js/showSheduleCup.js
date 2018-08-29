@@ -32,7 +32,7 @@ export function showSheduleCup(sheduleArray, numberOfTeams) {
                 showIt.showMatch(domElems.sheduleOnScreenA, pairOnScreen);
             }
             let amount = (sheduleArray[0].length*2)/2;
-            showIt.showLines(domElems.line_container1, amount,1);
+            showIt.showLinesR1(domElems.line_container1, amount,1);
             roundCounter++;
             
     //Round 2
@@ -47,7 +47,7 @@ export function showSheduleCup(sheduleArray, numberOfTeams) {
                 let howMany = (sheduleArray[0].length*2)/2;
                 showIt.showLadderRect(domElems.ladder_round2, 2, howMany, sheduleArray[1], sheduleArray[0], numberOfTeams);
                 let amount = sheduleArray[0].length/2;
-                showIt.showLines(domElems.line_container2, amount,2); // HERE!!!!!!!!!!!!
+                showIt.showLines(domElems.line_container2, amount, 2, sheduleArray[1]); 
             } else {
                 for (let k = 0; k < repsR2; k++) {
                     pairOnScreen = sheduleArray[1][k].join(" ___ - ___ ");   
@@ -55,6 +55,8 @@ export function showSheduleCup(sheduleArray, numberOfTeams) {
                 }
                 let howMany = (sheduleArray[0].length*2)/2;
                 showIt.showLadderRect(domElems.ladder_round2, 2, howMany, sheduleArray[1], sheduleArray[0], numberOfTeams);
+                let amount = sheduleArray[0].length/2;
+                showIt.showLines(domElems.line_container2, amount, 2, sheduleArray[1]);
             }
             roundCounter++;
             };

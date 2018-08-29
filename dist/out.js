@@ -393,9 +393,25 @@ var showIt = exports.showIt = {
     showChampRect: function showChampRect(where, roundNumber, postfix) {
         where.append("<li class=\"result__ladder_rect" + roundNumber + postfix + "\"></li>");
     },
-    showLines: function showLines(where, amount, round) {
+    showLinesR1: function showLinesR1(where, amount, round) {
         for (var i = 0; i < amount; i++) {
             where.append("<div class=\"result__ladder_lineR" + round + "\"></div>");
+        }
+    },
+    showLines: function showLines(where, amount, round, isLucky) {
+        var lastElemIsLucky = isLucky.length - 1;
+        var decision = isLucky[lastElemIsLucky].indexOf(" Lucky Team");
+        console.log("decyzja: ", decision);
+
+        if (decision !== -1) {
+            for (var i = 0; i < amount - 1; i++) {
+                where.append("<div class=\"result__ladder_lineR" + round + "\"></div>");
+            }
+            where.append("<div class=\"result__ladder_luckyLine" + round + "\"></div>");
+        } else {
+            for (var _i13 = 0; _i13 < amount; _i13++) {
+                where.append("<div class=\"result__ladder_lineR" + round + "\"></div>");
+            }
         }
     }
 };
@@ -822,7 +838,7 @@ function showSheduleCup(sheduleArray, numberOfTeams) {
             _showIt.showIt.showMatch(_domElems.domElems.sheduleOnScreenA, pairOnScreen);
         }
         var amount = sheduleArray[0].length * 2 / 2;
-        _showIt.showIt.showLines(_domElems.domElems.line_container1, amount, 1);
+        _showIt.showIt.showLinesR1(_domElems.domElems.line_container1, amount, 1);
         roundCounter++;
 
         //Round 2
@@ -837,7 +853,7 @@ function showSheduleCup(sheduleArray, numberOfTeams) {
             var howMany = sheduleArray[0].length * 2 / 2;
             _showIt.showIt.showLadderRect(_domElems.domElems.ladder_round2, 2, howMany, sheduleArray[1], sheduleArray[0], numberOfTeams);
             var _amount = sheduleArray[0].length / 2;
-            _showIt.showIt.showLines(_domElems.domElems.line_container2, _amount, 2); // HERE!!!!!!!!!!!!
+            _showIt.showIt.showLines(_domElems.domElems.line_container2, _amount, 2, sheduleArray[1]);
         } else {
             for (var _k = 0; _k < repsR2; _k++) {
                 pairOnScreen = sheduleArray[1][_k].join(" ___ - ___ ");
@@ -845,6 +861,8 @@ function showSheduleCup(sheduleArray, numberOfTeams) {
             }
             var _howMany = sheduleArray[0].length * 2 / 2;
             _showIt.showIt.showLadderRect(_domElems.domElems.ladder_round2, 2, _howMany, sheduleArray[1], sheduleArray[0], numberOfTeams);
+            var _amount2 = sheduleArray[0].length / 2;
+            _showIt.showIt.showLines(_domElems.domElems.line_container2, _amount2, 2, sheduleArray[1]);
         }
         roundCounter++;
     };

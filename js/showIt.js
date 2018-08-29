@@ -134,9 +134,25 @@ export let showIt = {
     showChampRect: function (where, roundNumber, postfix) {
         where.append(`<li class="result__ladder_rect${roundNumber}${postfix}"></li>`);
     },
-    showLines: function(where, amount, round) {
+    showLinesR1: function(where, amount, round){
         for (let i = 0; i < amount; i++) {
             where.append(`<div class="result__ladder_lineR${round}"></div>`);
+        }
+    },
+    showLines: function(where, amount, round, isLucky) {
+        let lastElemIsLucky = isLucky.length-1;
+        let decision = isLucky[lastElemIsLucky].indexOf(" Lucky Team");
+        console.log("decyzja: ", decision);
+        
+        if (decision !== -1) {
+            for (let i = 0; i < amount-1; i++) {
+                where.append(`<div class="result__ladder_lineR${round}"></div>`);
+            }
+            where.append(`<div class="result__ladder_luckyLine${round}"></div>`);
+        } else {
+            for (let i = 0; i < amount; i++) {
+                where.append(`<div class="result__ladder_lineR${round}"></div>`);
+            }
         }
     }
 }
