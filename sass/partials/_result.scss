@@ -95,6 +95,10 @@
     @include ladderRect;
         margin: 80px 10px 120px 10px;
 }
+.result__ladder_rectRaL2a{
+    @include ladderRect;
+        margin: 80px 10px 120px 10px;
+}
 .result__ladder_rectRaL2b{
     @include ladderRect;
         margin: 80px 10px 120px 10px;
@@ -180,6 +184,17 @@
             border-radius: 5px;
             position: relative;
         }
+        .result__ladder_luckyLine3{
+            width: 140px;
+            height: 78px;
+            margin: 316px 0 80px 205px;
+            border-top: 1px solid #000;
+            border-right: none;
+            border-bottom: none;
+            border-left: none;
+            border-radius: 5px;
+            position: relative;
+        }
         .result__ladder_lineR1 {
             width: 140px;
             height: 78px;
@@ -189,7 +204,7 @@
             border-radius: 5px;
             position: relative;
         }
-        .result__ladder_lineR2 {
+        .result__ladder_lineR2a {
             width: 140px;
             height: 158px;
             margin: 116px 0 160px 205px;
@@ -198,6 +213,34 @@
             border-radius: 5px;
             position: relative;
         }
+        .result__ladder_lineR3a {
+            width: 140px;
+            height: 240px;
+            margin: 196px 0 160px 205px;
+            border: 1px solid #000;
+            border-left: none;
+            border-radius: 5px;
+            position: relative;
+        }
+        .result__ladder_lineR3b {
+            width: 140px;
+            height: 320px;
+            margin: 196px 0 160px 205px;
+            border: 1px solid #000;
+            border-left: none;
+            border-radius: 5px;
+            position: relative;
+        }
+        .result__ladder_lineR3c {
+            width: 140px;
+            height: 240px;
+            margin: 316px 0 160px 205px;
+            border: 1px solid #000;
+            border-left: none;
+            border-radius: 5px;
+            position: relative;
+        }
+        
     }
 }
 

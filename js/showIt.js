@@ -78,7 +78,14 @@ export let showIt = {
             }
            
         } else if (decisionBef !== -1 && decision === -1){
-            if (numberOfTeams === 17 || numberOfTeams === 18) {
+            if (numberOfTeams === 11 || numberOfTeams === 12) {
+                for (let i = 0; i < howMany-2; i++) {
+                    where.append(`<li class="result__ladder_rectR${roundNumber}"></li>`);
+                }
+                where.append(`<li class="result__ladder_rectRaL${roundNumber}a"></li>`);
+                where.append(`<li class="result__ladder_rectR${roundNumber}"></li>`);
+                console.log(`${roundNumber}`,"showLadderRect + - a")
+            } else if (numberOfTeams === 17 || numberOfTeams === 18) {
                 for (let i = 0; i < howMany-2; i++) {
                     where.append(`<li class="result__ladder_rectR${roundNumber}"></li>`);
                 }
@@ -139,19 +146,19 @@ export let showIt = {
             where.append(`<div class="result__ladder_lineR${round}"></div>`);
         }
     },
-    showLines: function(where, amount, round, isLucky) {
+    showLines: function(where, amount, round, isLucky, postfix) {
         let lastElemIsLucky = isLucky.length-1;
         let decision = isLucky[lastElemIsLucky].indexOf(" Lucky Team");
         console.log("decyzja: ", decision);
         
-        if (decision !== -1) {
+        if (decision !== -1) { //HERE!!!!! MAKE SOME MAGIC WITH IF'S ABOUT SPECIAL CASES 13 - wydzielić nową funkcję dla R3-R4 
             for (let i = 0; i < amount-1; i++) {
-                where.append(`<div class="result__ladder_lineR${round}"></div>`);
+                where.append(`<div class="result__ladder_lineR${round}${postfix}"></div>`);
             }
             where.append(`<div class="result__ladder_luckyLine${round}"></div>`);
         } else {
             for (let i = 0; i < amount; i++) {
-                where.append(`<div class="result__ladder_lineR${round}"></div>`);
+                where.append(`<div class="result__ladder_lineR${round}${postfix}"></div>`);
             }
         }
     }

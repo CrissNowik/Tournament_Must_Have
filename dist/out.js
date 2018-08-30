@@ -338,36 +338,43 @@ var showIt = exports.showIt = {
                 console.log("" + roundNumber, "showLadderRect - -");
             }
         } else if (decisionBef !== -1 && decision === -1) {
-            if (numberOfTeams === 17 || numberOfTeams === 18) {
+            if (numberOfTeams === 11 || numberOfTeams === 12) {
                 for (var _i6 = 0; _i6 < howMany - 2; _i6++) {
+                    where.append("<li class=\"result__ladder_rectR" + roundNumber + "\"></li>");
+                }
+                where.append("<li class=\"result__ladder_rectRaL" + roundNumber + "a\"></li>");
+                where.append("<li class=\"result__ladder_rectR" + roundNumber + "\"></li>");
+                console.log("" + roundNumber, "showLadderRect + - a");
+            } else if (numberOfTeams === 17 || numberOfTeams === 18) {
+                for (var _i7 = 0; _i7 < howMany - 2; _i7++) {
                     where.append("<li class=\"result__ladder_rectR" + roundNumber + "\"></li>");
                 }
                 where.append("<li class=\"result__ladder_rectRaL" + roundNumber + "\"></li>");
                 where.append("<li class=\"result__ladder_rectR" + roundNumber + "a\"></li>");
                 console.log("" + roundNumber, "showLadderRect + - a");
             } else if (numberOfTeams === 19 || numberOfTeams === 20) {
-                for (var _i7 = 0; _i7 < howMany - 2; _i7++) {
+                for (var _i8 = 0; _i8 < howMany - 2; _i8++) {
                     where.append("<li class=\"result__ladder_rectR" + roundNumber + "\"></li>");
                 }
                 where.append("<li class=\"result__ladder_rectRaL" + roundNumber + "\"></li>");
                 where.append("<li class=\"result__ladder_rectR" + roundNumber + "b\"></li>");
                 console.log("" + roundNumber, "showLadderRect + - b");
             } else if (numberOfTeams === 21 || numberOfTeams === 22) {
-                for (var _i8 = 0; _i8 < howMany - 2; _i8++) {
+                for (var _i9 = 0; _i9 < howMany - 2; _i9++) {
                     where.append("<li class=\"result__ladder_rectR" + roundNumber + "\"></li>");
                 }
                 where.append("<li class=\"result__ladder_rectRaL" + roundNumber + "\"></li>");
                 where.append("<li class=\"result__ladder_rectR" + roundNumber + "c\"></li>");
                 console.log("" + roundNumber, "showLadderRect + - b");
             } else if (numberOfTeams === 27 || numberOfTeams === 28) {
-                for (var _i9 = 0; _i9 < howMany - 2; _i9++) {
+                for (var _i10 = 0; _i10 < howMany - 2; _i10++) {
                     where.append("<li class=\"result__ladder_rectR" + roundNumber + "\"></li>");
                 }
                 where.append("<li class=\"result__ladder_rectRaL" + roundNumber + "b\"></li>");
                 where.append("<li class=\"result__ladder_rectR" + roundNumber + "b\"></li>");
                 console.log("" + roundNumber, "showLadderRect + - bb");
             } else {
-                for (var _i10 = 0; _i10 < howMany - 2; _i10++) {
+                for (var _i11 = 0; _i11 < howMany - 2; _i11++) {
                     where.append("<li class=\"result__ladder_rectR" + roundNumber + "\"></li>");
                 }
                 where.append("<li class=\"result__ladder_rectRaL" + roundNumber + "\"></li>");
@@ -376,14 +383,14 @@ var showIt = exports.showIt = {
             }
         } else if (decisionBef === -1 && decision !== -1) {
             if (numberOfTeams === 21 || numberOfTeams === 22) {
-                for (var _i11 = 0; _i11 < howMany - 2; _i11++) {
+                for (var _i12 = 0; _i12 < howMany - 2; _i12++) {
                     where.append("<li class=\"result__ladder_rectR" + roundNumber + "\"></li>");
                 }
                 where.append("<li class=\"result__ladder_rectR" + roundNumber + "a\"></li>");
                 where.append("<li class=\"result__ladder_rectR" + roundNumber + "\"></li>");
                 console.log("" + roundNumber, "showLadderRect - +");
             } else {
-                for (var _i12 = 0; _i12 < howMany; _i12++) {
+                for (var _i13 = 0; _i13 < howMany; _i13++) {
                     where.append("<li class=\"result__ladder_rectR" + roundNumber + "\"></li>");
                 }
                 console.log("" + roundNumber, "showLadderRect - +");
@@ -398,19 +405,20 @@ var showIt = exports.showIt = {
             where.append("<div class=\"result__ladder_lineR" + round + "\"></div>");
         }
     },
-    showLines: function showLines(where, amount, round, isLucky) {
+    showLines: function showLines(where, amount, round, isLucky, postfix) {
         var lastElemIsLucky = isLucky.length - 1;
         var decision = isLucky[lastElemIsLucky].indexOf(" Lucky Team");
         console.log("decyzja: ", decision);
 
         if (decision !== -1) {
+            //HERE!!!!! MAKE SOME MAGIC WITH IF'S ABOUT SPECIAL CASES 13 - wydzielić nową funkcję dla R3-R4 
             for (var i = 0; i < amount - 1; i++) {
-                where.append("<div class=\"result__ladder_lineR" + round + "\"></div>");
+                where.append("<div class=\"result__ladder_lineR" + round + postfix + "\"></div>");
             }
             where.append("<div class=\"result__ladder_luckyLine" + round + "\"></div>");
         } else {
-            for (var _i13 = 0; _i13 < amount; _i13++) {
-                where.append("<div class=\"result__ladder_lineR" + round + "\"></div>");
+            for (var _i14 = 0; _i14 < amount; _i14++) {
+                where.append("<div class=\"result__ladder_lineR" + round + postfix + "\"></div>");
             }
         }
     }
@@ -853,7 +861,7 @@ function showSheduleCup(sheduleArray, numberOfTeams) {
             var howMany = sheduleArray[0].length * 2 / 2;
             _showIt.showIt.showLadderRect(_domElems.domElems.ladder_round2, 2, howMany, sheduleArray[1], sheduleArray[0], numberOfTeams);
             var _amount = sheduleArray[0].length / 2;
-            _showIt.showIt.showLines(_domElems.domElems.line_container2, _amount, 2, sheduleArray[1]);
+            _showIt.showIt.showLines(_domElems.domElems.line_container2, _amount, 2, sheduleArray[1], "a");
         } else {
             for (var _k = 0; _k < repsR2; _k++) {
                 pairOnScreen = sheduleArray[1][_k].join(" ___ - ___ ");
@@ -862,7 +870,7 @@ function showSheduleCup(sheduleArray, numberOfTeams) {
             var _howMany = sheduleArray[0].length * 2 / 2;
             _showIt.showIt.showLadderRect(_domElems.domElems.ladder_round2, 2, _howMany, sheduleArray[1], sheduleArray[0], numberOfTeams);
             var _amount2 = sheduleArray[0].length / 2;
-            _showIt.showIt.showLines(_domElems.domElems.line_container2, _amount2, 2, sheduleArray[1]);
+            _showIt.showIt.showLines(_domElems.domElems.line_container2, _amount2, 2, sheduleArray[1], "a");
         }
         roundCounter++;
     };
@@ -883,10 +891,15 @@ function showSheduleCup(sheduleArray, numberOfTeams) {
             }
             var howMany = sheduleArray[1].length * 2 / 2;
             _showIt.showIt.showLadderRect(_domElems.domElems.ladder_round3, 3, howMany, sheduleArray[2], sheduleArray[1], numberOfTeams);
+
             if (numberOfTeams === 5 || numberOfTeams === 6) {
                 _showIt.showIt.showChampRect(_domElems.domElems.ladder_round4, 4, "a");
+                var amount = sheduleArray[1].length / 2;
+                _showIt.showIt.showLines(_domElems.domElems.line_container3, amount, 3, sheduleArray[2], "a");
             } else if (numberOfTeams === 7 || numberOfTeams === 8) {
                 _showIt.showIt.showChampRect(_domElems.domElems.ladder_round4, 4, "b");
+                var _amount3 = sheduleArray[1].length / 2;
+                _showIt.showIt.showLines(_domElems.domElems.line_container3, _amount3, 3, sheduleArray[2], "b");
             }
             roundCounter++;
         } else if (numberOfTeams > 8 && numberOfTeams < 33) {
@@ -896,6 +909,8 @@ function showSheduleCup(sheduleArray, numberOfTeams) {
             }
             var _howMany2 = sheduleArray[1].length * 2 / 2;
             _showIt.showIt.showLadderRect(_domElems.domElems.ladder_round3, 3, _howMany2, sheduleArray[2], sheduleArray[1], numberOfTeams);
+            var _amount4 = sheduleArray[1].length / 2;
+            _showIt.showIt.showLines(_domElems.domElems.line_container3, _amount4, 3, sheduleArray[2], "b");
             roundCounter++;
             // Round 4
             var repsR4 = Math.ceil(sheduleArray[2].length / 2);
