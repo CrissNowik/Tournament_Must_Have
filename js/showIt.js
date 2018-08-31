@@ -146,20 +146,46 @@ export let showIt = {
             where.append(`<div class="result__ladder_lineR${round}"></div>`);
         }
     },
-    showLines: function(where, amount, round, isLucky, postfix) {
+    showLines: function(where, amount, round, isLucky, numberOfTeams) {
         let lastElemIsLucky = isLucky.length-1;
-        let decision = isLucky[lastElemIsLucky].indexOf(" Lucky Team");
+        let decision = isLucky[lastElemIsLucky].indexOf(" Lucky Team");  
         console.log("decyzja: ", decision);
-        
-        if (decision !== -1) { //HERE!!!!! MAKE SOME MAGIC WITH IF'S ABOUT SPECIAL CASES 13 - wydzielić nową funkcję dla R3-R4 
-            for (let i = 0; i < amount-1; i++) {
-                where.append(`<div class="result__ladder_lineR${round}${postfix}"></div>`);
-            }
-            where.append(`<div class="result__ladder_luckyLine${round}"></div>`);
-        } else {
-            for (let i = 0; i < amount; i++) {
-                where.append(`<div class="result__ladder_lineR${round}${postfix}"></div>`);
-            }
+        if (numberOfTeams < 7) {
+            if (decision !== -1) { 
+                for (let i = 0; i < amount-1; i++) {
+                    where.append(`<div class="result__ladder_lineR${round}a"></div>`); // do zrefaktorowania 
+                }                                                                      // 
+                where.append(`<div class="result__ladder_luckyLine${round}"></div>`);  // jako jedna 
+            } else {                                                                    //  
+                for (let i = 0; i < amount; i++) {                                      // funkcja z parametrami
+                    where.append(`<div class="result__ladder_lineR${round}a"></div>`);  // 
+                }                                                                       //
+            }                                                                           // round i posfix abc
+        } else if (numberOfTeams > 6 && numberOfTeams < 13) {
+            if (numberOfTeams === 9 || numberOfTeams === 10) {
+                if (decision !== -1) { 
+                    for (let i = 0; i < amount-1; i++) {
+                        where.append(`<div class="result__ladder_lineR${round}b"></div>`);
+                    }
+                    where.append(`<div class="result__ladder_luckyLine${round}"></div>`);
+                } else {
+                    for (let i = 0; i < amount; i++) {
+                        where.append(`<div class="result__ladder_lineR${round}b"></div>`);
+                    }
+                }
+            } else if (decision !== -1) { 
+                    for (let i = 0; i < amount-1; i++) {
+                        where.append(`<div class="result__ladder_lineR${round}b"></div>`);
+                    }
+                    where.append(`<div class="result__ladder_luckyLine${round}"></div>`); 
+                } else {
+                    for (let i = 0; i < amount; i++) {
+                        where.append(`<div class="result__ladder_lineR${round}b"></div>`);
+                    }
+                }
+            
         }
+        
+        
     }
 }
