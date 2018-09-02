@@ -261,6 +261,8 @@ exports.showIt = undefined;
 
 var _globalVariables = __webpack_require__(2);
 
+var _domElems = __webpack_require__(0);
+
 var showIt = exports.showIt = {
     showAndHide: function showAndHide(toHide, toShow) {
         toHide.hide();
@@ -370,9 +372,9 @@ var showIt = exports.showIt = {
                 for (var _i10 = 0; _i10 < howMany - 2; _i10++) {
                     where.append("<li class=\"result__ladder_rectR" + roundNumber + "\"></li>");
                 }
-                where.append("<li class=\"result__ladder_rectRaL" + roundNumber + "b\"></li>");
+                where.append("<li class=\"result__ladder_rectRaL" + roundNumber + "a\"></li>");
                 where.append("<li class=\"result__ladder_rectR" + roundNumber + "b\"></li>");
-                console.log("" + roundNumber, "showLadderRect + - bb");
+                console.log("" + roundNumber, "showLadderRect + - ab");
             } else {
                 for (var _i11 = 0; _i11 < howMany - 2; _i11++) {
                     where.append("<li class=\"result__ladder_rectR" + roundNumber + "\"></li>");
@@ -405,44 +407,53 @@ var showIt = exports.showIt = {
             where.append("<div class=\"result__ladder_lineR" + round + "\"></div>");
         }
     },
+    drawLines: function drawLines(where, amount, decision, round, postfix, postfixL) {
+        if (decision !== -1) {
+            for (var i = 0; i < amount - 1; i++) {
+                where.append("<div class=\"result__ladder_lineR" + round + postfix + "\"></div>");
+            }
+            where.append("<div class=\"result__ladder_luckyLine" + round + postfixL + "\"></div>");
+        } else {
+            for (var _i14 = 0; _i14 < amount; _i14++) {
+                where.append("<div class=\"result__ladder_lineR" + round + postfix + "\"></div>");
+            }
+        }
+    },
     showLines: function showLines(where, amount, round, isLucky, numberOfTeams) {
         var lastElemIsLucky = isLucky.length - 1;
         var decision = isLucky[lastElemIsLucky].indexOf(" Lucky Team");
-        console.log("decyzja: ", decision);
         if (numberOfTeams < 7) {
-            if (decision !== -1) {
-                for (var i = 0; i < amount - 1; i++) {
-                    where.append("<div class=\"result__ladder_lineR" + round + "a\"></div>"); // do zrefaktorowania 
-                } // 
-                where.append("<div class=\"result__ladder_luckyLine" + round + "\"></div>"); // jako jedna 
-            } else {
-                //  
-                for (var _i14 = 0; _i14 < amount; _i14++) {
-                    // funkcja z parametrami
-                    where.append("<div class=\"result__ladder_lineR" + round + "a\"></div>"); // 
-                } //
-            } // round i posfix abc
-        } else if (numberOfTeams > 6 && numberOfTeams < 13) {
-            if (numberOfTeams === 9 || numberOfTeams === 10) {
-                if (decision !== -1) {
-                    for (var _i15 = 0; _i15 < amount - 1; _i15++) {
-                        where.append("<div class=\"result__ladder_lineR" + round + "b\"></div>");
-                    }
-                    where.append("<div class=\"result__ladder_luckyLine" + round + "\"></div>");
-                } else {
-                    for (var _i16 = 0; _i16 < amount; _i16++) {
-                        where.append("<div class=\"result__ladder_lineR" + round + "b\"></div>");
-                    }
-                }
-            } else if (decision !== -1) {
-                for (var _i17 = 0; _i17 < amount - 1; _i17++) {
-                    where.append("<div class=\"result__ladder_lineR" + round + "b\"></div>");
-                }
-                where.append("<div class=\"result__ladder_luckyLine" + round + "\"></div>");
-            } else {
-                for (var _i18 = 0; _i18 < amount; _i18++) {
-                    where.append("<div class=\"result__ladder_lineR" + round + "b\"></div>");
-                }
+            this.drawLines(where, amount, decision, round, "a", "a"); // R1,2,3 ok all complete                                  
+        } else if (numberOfTeams > 6 && numberOfTeams < 33) {
+            if (numberOfTeams > 6 && numberOfTeams < 11) {
+                // R,1,2,3 ok 
+                this.drawLines(where, amount, decision, round, "b", "a");
+            } else if (numberOfTeams === 11 || numberOfTeams === 12) {
+                // R1,2,3 ok
+                this.drawLines(where, amount, decision, round, "b", "b");
+            } else if (numberOfTeams === 13 || numberOfTeams === 14) {
+                // 
+                this.drawLines(where, amount, decision, round, "b", "b");
+            } else if (numberOfTeams === 15 || numberOfTeams === 16) {
+                // R1,2,3 ok
+                this.drawLines(where, amount, decision, round, "c", "b");
+            } else if (numberOfTeams === 17 || numberOfTeams === 18) {
+                this.drawLines(where, amount, decision, round, "c", "b");
+            } else if (numberOfTeams === 19 || numberOfTeams === 20) {
+                this.drawLines(where, amount, decision, round, "b", "b");
+            } else if (numberOfTeams === 21 || numberOfTeams === 22) {
+                this.drawLines(where, amount, decision, round, "b", "b");
+            } else if (numberOfTeams === 23 || numberOfTeams === 24) {
+                this.drawLines(where, amount, decision, round, "b", "b");
+            } else if (numberOfTeams === 25 || numberOfTeams === 26) {
+                this.drawLines(where, amount, decision, round, "b", "b");
+            } else if (numberOfTeams === 27 || numberOfTeams === 28) {
+                // R1,2,3 ok 
+                this.drawLines(where, amount, decision, round, "c", "b");
+            } else if (numberOfTeams === 29 || numberOfTeams === 30) {
+                this.drawLines(where, amount, decision, round, "c", "b"); // to co 13-14
+            } else if (numberOfTeams === 31 || numberOfTeams === 32) {
+                this.drawLines(where, amount, decision, round, "c", "b"); // R1,2,3 ok
             }
         }
     }
