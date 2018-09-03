@@ -115,6 +115,7 @@ export function showSheduleCup(sheduleArray, numberOfTeams) {
                 } else if(numberOfTeams > 12 && numberOfTeams < 17) {
                     showIt.showChampRect(domElems.ladder_round5, 5, "b");
                 }
+            //    showIt.showFinalLine(domElems.line_container4, 1, )
             } else if (numberOfTeams > 16) {
                 for (let n = 0; n < repsR4; n++) {
                     pairOnScreen = sheduleArray[3][n].join(" ___ - ___ ");
@@ -122,6 +123,8 @@ export function showSheduleCup(sheduleArray, numberOfTeams) {
                 }
                 let howMany = (sheduleArray[2].length*2)/2;
                 showIt.showLadderRect(domElems.ladder_round4, 4, howMany, sheduleArray[3], sheduleArray[2], numberOfTeams);
+                let amount = sheduleArray[2].length/2;
+                showIt.showLines(domElems.line_container4, amount, 4, sheduleArray[3], numberOfTeams);
                 roundCounter++;
     // Round 5
                 let repsR5 = Math.ceil(sheduleArray[3].length/2);

@@ -432,14 +432,20 @@ var showIt = exports.showIt = {
             where.append("<div class=\"result__ladder_lineR" + round + postfix3 + "\"></div>");
         }
     },
+    showFinalLine: function showFinalLine(where, round, postfix1) {
+        where.append("<div class=\"result__ladder_lineR" + round + postfix1 + "\"></div>");
+    },
     showLines: function showLines(where, amount, round, isLucky, numberOfTeams) {
         var lastElemIsLucky = isLucky.length - 1;
         var decision = isLucky[lastElemIsLucky].indexOf(" Lucky Team");
         if (numberOfTeams < 7) {
-            this.drawLines(where, amount, decision, round, "a", "a"); // R1,2,3 ok all complete                                  
+            this.drawLines(where, amount, decision, round, "a", "a"); // all ok                                 
         } else if (numberOfTeams > 6 && numberOfTeams < 33) {
-            if (numberOfTeams > 6 && numberOfTeams < 11) {
-                // R,1,2,3 ok 
+            if (numberOfTeams === 7 || numberOfTeams === 8) {
+                // all ok
+                this.drawLines(where, amount, decision, round, "b", "a");
+            } else if (numberOfTeams === 9 || numberOfTeams === 10) {
+                // all ok 
                 this.drawLines(where, amount, decision, round, "b", "a");
             } else if (numberOfTeams === 11 || numberOfTeams === 12) {
                 // R1,2,3 ok
@@ -982,6 +988,7 @@ function showSheduleCup(sheduleArray, numberOfTeams) {
                 } else if (numberOfTeams > 12 && numberOfTeams < 17) {
                     _showIt.showIt.showChampRect(_domElems.domElems.ladder_round5, 5, "b");
                 }
+                //    showIt.showFinalLine(domElems.line_container4, 1, )
             } else if (numberOfTeams > 16) {
                 for (var _n = 0; _n < repsR4; _n++) {
                     pairOnScreen = sheduleArray[3][_n].join(" ___ - ___ ");
@@ -989,6 +996,8 @@ function showSheduleCup(sheduleArray, numberOfTeams) {
                 }
                 var _howMany4 = sheduleArray[2].length * 2 / 2;
                 _showIt.showIt.showLadderRect(_domElems.domElems.ladder_round4, 4, _howMany4, sheduleArray[3], sheduleArray[2], numberOfTeams);
+                var _amount5 = sheduleArray[2].length / 2;
+                _showIt.showIt.showLines(_domElems.domElems.line_container4, _amount5, 4, sheduleArray[3], numberOfTeams);
                 roundCounter++;
                 // Round 5
                 var repsR5 = Math.ceil(sheduleArray[3].length / 2);
