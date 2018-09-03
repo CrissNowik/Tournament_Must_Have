@@ -195,6 +195,17 @@
             border-radius: 5px;
             position: relative;
         }
+        .result__ladder_luckyLine2d{
+            width: 140px;
+            height: 78px;
+            margin: 76px 0 80px 205px;
+            border-top: 1px solid #000;
+            border-right: none;
+            border-bottom: none;
+            border-left: none;
+            border-radius: 5px;
+            position: relative;
+        }
         .result__ladder_luckyLine3a{
             width: 140px;
             height: 78px;
@@ -228,6 +239,17 @@
             border-radius: 5px;
             position: relative;
         }
+        .result__ladder_luckyLine3d{
+            width: 140px;
+            height: 78px;
+            margin: -78px 0 0 205px;
+            border-top: 1px solid #000;
+            border-right: none;
+            border-bottom: none;
+            border-left: none;
+            border-radius: 5px;
+            position: relative;
+        } 
         .result__ladder_lineR1 {
             width: 140px;
             height: 78px;
@@ -282,15 +304,6 @@
             border-radius: 5px;
             position: relative;
         }
-        .result__ladder_lineR3spec{
-            width: 140px;
-            height: 120px;
-            margin: 318px 0 80px 205px;
-            border-top: 1px solid #000;
-            border-left: none;
-            border-radius: 5px;
-            position: relative;
-        }
         .result__ladder_lineR3c {
             width: 140px;
             height: 318px;
@@ -300,7 +313,15 @@
             border-radius: 5px;
             position: relative;
         }
-        
+        .result__ladder_lineR3d{
+            width: 140px;
+            height: 240px;
+            margin: 318px 0 80px 205px;
+            border: 1px solid #000;
+            border-left: none;
+            border-radius: 5px;
+            position: relative;
+        }
     }
 }
 

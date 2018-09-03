@@ -163,44 +163,74 @@ export let showIt = {
         let lastElemIsLucky = isLucky.length-1;
         let decision = isLucky[lastElemIsLucky].indexOf(" Lucky Team");  
         if (numberOfTeams < 7) {
-            this.drawLines(where, amount, decision, round, "a", "a");       // R1,2,3 ok all complete                                  
+            this.drawLines(where, amount, decision, round, "a", "a");                           // R1,2,3 ok all complete                                  
         } 
         else if (numberOfTeams > 6 && numberOfTeams < 33) {
-            if (numberOfTeams > 6 && numberOfTeams < 11) {                  // R,1,2,3 ok 
+            if (numberOfTeams > 6 && numberOfTeams < 11) {                                      // R,1,2,3 ok 
                 this.drawLines(where, amount, decision, round, "b", "a")
             } 
-            else if (numberOfTeams === 11 || numberOfTeams === 12) {        // R1,2,3 ok
+            else if (numberOfTeams === 11 || numberOfTeams === 12) {                            // R1,2,3 ok
                 this.drawLines(where, amount, decision, round, "b", "b")
             } 
-            else if (numberOfTeams === 13 || numberOfTeams === 14) {        // 
-                this.drawLines(where, amount, decision, round, "b", "b", )
+            else if (numberOfTeams === 13 || numberOfTeams === 14) {                            // R1,2,3 ok 
+                if (decision !== -1) { 
+                    for (let i = 0; i < amount-1; i++) {
+                        where.append(`<div class="result__ladder_lineR${round}b"></div>`); 
+                    }                                                                      
+                    where.append(`<div class="result__ladder_luckyLine${round}b"></div>`);  
+                } else {  
+                        for (let i = 0; i < amount-1; i++) {                                      
+                            where.append(`<div class="result__ladder_lineR${round}b"></div>`);  
+                    }  
+                    where.append(`<div class="result__ladder_lineR${round}d"></div>`);                                    
+                }
             }
-            else if (numberOfTeams === 15 || numberOfTeams === 16) {        // R1,2,3 ok
+            else if (numberOfTeams === 15 || numberOfTeams === 16) {                            // R1,2,3 ok
                 this.drawLines(where, amount, decision, round, "c", "b")
             }
-            else if (numberOfTeams === 17 || numberOfTeams === 18) {
+            else if (numberOfTeams === 17 || numberOfTeams === 18) {                            // R1,2,3 ok
+                this.drawLines(where, amount, decision, round, "c", "d")
+            }
+            else if (numberOfTeams === 19 || numberOfTeams === 20) {                            // R1,2,3 ok
                 this.drawLines(where, amount, decision, round, "c", "b")
             }
-            else if (numberOfTeams === 19 || numberOfTeams === 20) {
-                this.drawLines(where, amount, decision, round, "b", "b")
+            else if (numberOfTeams === 21 || numberOfTeams === 22) {                             // R1,2,3 ok
+                if (decision !== -1) { 
+                    for (let i = 0; i < amount-1; i++) {
+                        where.append(`<div class="result__ladder_lineR${round}c"></div>`); 
+                    }                                                                      
+                    where.append(`<div class="result__ladder_luckyLine${round}b"></div>`);  
+                } else {  
+                        for (let i = 0; i < amount-1; i++) {                                      
+                            where.append(`<div class="result__ladder_lineR${round}c"></div>`);  
+                    }  
+                    where.append(`<div class="result__ladder_lineR${round}d"></div>`);                                    
+                }
             }
-            else if (numberOfTeams === 21 || numberOfTeams === 22) {
-                this.drawLines(where, amount, decision, round, "b", "b")
-            }
-            else if (numberOfTeams === 23 || numberOfTeams === 24) {
-                this.drawLines(where, amount, decision, round, "b", "b")
-            }
-            else if (numberOfTeams === 25 || numberOfTeams === 26) {
-                this.drawLines(where, amount, decision, round, "b", "b")
-            }
-            else if (numberOfTeams === 27 || numberOfTeams === 28) {        // R1,2,3 ok 
+            else if (numberOfTeams === 23 || numberOfTeams === 24) {                            // R1,2,3 ok 
                 this.drawLines(where, amount, decision, round, "c", "b")
             }
-            else if (numberOfTeams === 29 || numberOfTeams === 30) {       
-                this.drawLines(where, amount, decision, round, "c", "b")    // to co 13-14
+            else if (numberOfTeams === 25 || numberOfTeams === 26) {                            // R1,2,3 ok 
+                this.drawLines(where, amount, decision, round, "c", "d")
+            }
+            else if (numberOfTeams === 27 || numberOfTeams === 28) {                             // R1,2,3 ok 
+                this.drawLines(where, amount, decision, round, "c", "b")
+            }
+            else if (numberOfTeams === 29 || numberOfTeams === 30) {                            // R1,2,3 ok
+                if (decision !== -1) { 
+                    for (let i = 0; i < amount-1; i++) {
+                        where.append(`<div class="result__ladder_lineR${round}c"></div>`); 
+                    }                                                                      
+                    where.append(`<div class="result__ladder_luckyLine${round}b"></div>`);  
+                } else {  
+                        for (let i = 0; i < amount-1; i++) {                                      
+                            where.append(`<div class="result__ladder_lineR${round}c"></div>`);  
+                    }  
+                    where.append(`<div class="result__ladder_lineR${round}d"></div>`);  
+                }  
             }   
             else if (numberOfTeams === 31 || numberOfTeams === 32) {
-                this.drawLines(where, amount, decision, round, "c", "b")    // R1,2,3 ok
+                this.drawLines(where, amount, decision, round, "c", "b")                        // R1,2,3 ok
             }
 
         }
