@@ -173,7 +173,7 @@ export let showIt = {
         }
     },
     showFinalLine: function(where, round, postfix1){
-        where.append(`<div class="result__ladder_lineR${round}${postfix1}"></div>`);  
+        where.append(`<div class="result__ladder_lineR${round}${postfix1}"></div>`);        
     },
     showLines: function(where, amount, round, isLucky, numberOfTeams) {
         let lastElemIsLucky = isLucky.length-1;
@@ -188,9 +188,9 @@ export let showIt = {
             else if (numberOfTeams === 9 || numberOfTeams === 10){                              // all ok 
                 this.drawLines(where, amount, decision, round, "b", "a");
             }
-            else if (numberOfTeams === 11 || numberOfTeams === 12) {                            // R1,2,3 ok
+            else if (numberOfTeams === 11 || numberOfTeams === 12) {                            // all ok
                 this.drawLines(where, amount, decision, round, "b", "b");
-                
+                domElems.line_container4.find("div").css({"height": "478px"});
             } 
             else if (numberOfTeams === 13 || numberOfTeams === 14) {    
                 this.drawSpecLines(where, amount, decision, round, "b", "b", "d");              // R1,2,3 ok 

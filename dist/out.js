@@ -448,8 +448,9 @@ var showIt = exports.showIt = {
                 // all ok 
                 this.drawLines(where, amount, decision, round, "b", "a");
             } else if (numberOfTeams === 11 || numberOfTeams === 12) {
-                // R1,2,3 ok
+                // all ok
                 this.drawLines(where, amount, decision, round, "b", "b");
+                _domElems.domElems.line_container4.find("div").css({ "height": "478px" });
             } else if (numberOfTeams === 13 || numberOfTeams === 14) {
                 this.drawSpecLines(where, amount, decision, round, "b", "b", "d"); // R1,2,3 ok 
             } else if (numberOfTeams === 15 || numberOfTeams === 16) {
@@ -988,7 +989,8 @@ function showSheduleCup(sheduleArray, numberOfTeams) {
                 } else if (numberOfTeams > 12 && numberOfTeams < 17) {
                     _showIt.showIt.showChampRect(_domElems.domElems.ladder_round5, 5, "b");
                 }
-                //    showIt.showFinalLine(domElems.line_container4, 1, )
+                var _amount5 = sheduleArray[2].length / 2;
+                _showIt.showIt.showLines(_domElems.domElems.line_container4, _amount5, 4, sheduleArray[3], numberOfTeams);
             } else if (numberOfTeams > 16) {
                 for (var _n = 0; _n < repsR4; _n++) {
                     pairOnScreen = sheduleArray[3][_n].join(" ___ - ___ ");
@@ -996,8 +998,8 @@ function showSheduleCup(sheduleArray, numberOfTeams) {
                 }
                 var _howMany4 = sheduleArray[2].length * 2 / 2;
                 _showIt.showIt.showLadderRect(_domElems.domElems.ladder_round4, 4, _howMany4, sheduleArray[3], sheduleArray[2], numberOfTeams);
-                var _amount5 = sheduleArray[2].length / 2;
-                _showIt.showIt.showLines(_domElems.domElems.line_container4, _amount5, 4, sheduleArray[3], numberOfTeams);
+                var _amount6 = sheduleArray[2].length / 2;
+                _showIt.showIt.showLines(_domElems.domElems.line_container4, _amount6, 4, sheduleArray[3], numberOfTeams);
                 roundCounter++;
                 // Round 5
                 var repsR5 = Math.ceil(sheduleArray[3].length / 2);
