@@ -413,10 +413,12 @@ var showIt = exports.showIt = {
                 where.append("<div class=\"result__ladder_lineR" + round + postfix + "\"></div>");
             }
             where.append("<div class=\"result__ladder_luckyLine" + round + postfixL + "\"></div>");
+            console.log("specka");
         } else {
             for (var _i14 = 0; _i14 < amount; _i14++) {
                 where.append("<div class=\"result__ladder_lineR" + round + postfix + "\"></div>");
             }
+            console.log("zwykła");
         }
     },
     drawSpecLines: function drawSpecLines(where, amount, decision, round, postfix1, postfix2, postfix3) {
@@ -431,9 +433,6 @@ var showIt = exports.showIt = {
             }
             where.append("<div class=\"result__ladder_lineR" + round + postfix3 + "\"></div>");
         }
-    },
-    showFinalLine: function showFinalLine(where, round, postfix1) {
-        where.append("<div class=\"result__ladder_lineR" + round + postfix1 + "\"></div>");
     },
     showLines: function showLines(where, amount, round, isLucky, numberOfTeams) {
         var lastElemIsLucky = isLucky.length - 1;
@@ -452,9 +451,9 @@ var showIt = exports.showIt = {
                 this.drawLines(where, amount, decision, round, "b", "b");
                 _domElems.domElems.line_container4.find("div").css({ "height": "478px" });
             } else if (numberOfTeams === 13 || numberOfTeams === 14) {
-                this.drawSpecLines(where, amount, decision, round, "b", "b", "d"); // R1,2,3 ok 
+                this.drawSpecLines(where, amount, decision, round, "b", "b", "d"); // all ok 
             } else if (numberOfTeams === 15 || numberOfTeams === 16) {
-                // R1,2,3 ok
+                // all ok
                 this.drawLines(where, amount, decision, round, "c", "b");
             } else if (numberOfTeams === 17 || numberOfTeams === 18) {
                 // R1,2,3 ok
@@ -987,7 +986,9 @@ function showSheduleCup(sheduleArray, numberOfTeams) {
                 if (numberOfTeams > 8 && numberOfTeams < 13) {
                     _showIt.showIt.showChampRect(_domElems.domElems.ladder_round5, 5, "a");
                 } else if (numberOfTeams > 12 && numberOfTeams < 17) {
+                    var _amount6 = sheduleArray[2].length / 2;
                     _showIt.showIt.showChampRect(_domElems.domElems.ladder_round5, 5, "b");
+                    _showIt.showIt.showLines(_domElems.domElems.line_container5, _amount6, 5, sheduleArray[3], numberOfTeams);
                 }
                 var _amount5 = sheduleArray[2].length / 2;
                 _showIt.showIt.showLines(_domElems.domElems.line_container4, _amount5, 4, sheduleArray[3], numberOfTeams);
@@ -998,8 +999,8 @@ function showSheduleCup(sheduleArray, numberOfTeams) {
                 }
                 var _howMany4 = sheduleArray[2].length * 2 / 2;
                 _showIt.showIt.showLadderRect(_domElems.domElems.ladder_round4, 4, _howMany4, sheduleArray[3], sheduleArray[2], numberOfTeams);
-                var _amount6 = sheduleArray[2].length / 2;
-                _showIt.showIt.showLines(_domElems.domElems.line_container4, _amount6, 4, sheduleArray[3], numberOfTeams);
+                var _amount7 = sheduleArray[3].length / 2;
+                _showIt.showIt.showLines(_domElems.domElems.line_container5, _amount7, 5, sheduleArray[4], numberOfTeams);
                 roundCounter++;
                 // Round 5
                 var repsR5 = Math.ceil(sheduleArray[3].length / 2);
@@ -1014,6 +1015,8 @@ function showSheduleCup(sheduleArray, numberOfTeams) {
                 _showIt.showIt.showLadderRect(_domElems.domElems.ladder_round5, 5, many, sheduleArray[4], sheduleArray[3], numberOfTeams);
                 if (numberOfTeams === 17 || numberOfTeams === 18) {
                     _showIt.showIt.showChampRect(_domElems.domElems.ladder_round6, 6, "a");
+                    var _amount8 = sheduleArray[3].length / 2;
+                    _showIt.showIt.showLines(_domElems.domElems.line_container6, _amount8, 6, sheduleArray[4], numberOfTeams);
                 } else if (numberOfTeams === 19 || numberOfTeams === 20) {
                     _showIt.showIt.showChampRect(_domElems.domElems.ladder_round6, 6, "b");
                 } else if (numberOfTeams > 20 && numberOfTeams < 25) {

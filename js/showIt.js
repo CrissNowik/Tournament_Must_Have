@@ -152,11 +152,14 @@ export let showIt = {
             for (let i = 0; i < amount-1; i++) {
                 where.append(`<div class="result__ladder_lineR${round}${postfix}"></div>`); 
             }                                                                      
-            where.append(`<div class="result__ladder_luckyLine${round}${postfixL}"></div>`);  
+            where.append(`<div class="result__ladder_luckyLine${round}${postfixL}"></div>`); 
+            console.log("specka");
+             
         } else {  
                 for (let i = 0; i < amount; i++) {                                      
                     where.append(`<div class="result__ladder_lineR${round}${postfix}"></div>`);  
-            }                                                                     
+            } 
+            console.log("zwykła");                                                                    
         }     
     },
     drawSpecLines: function(where, amount, decision, round, postfix1, postfix2, postfix3){
@@ -171,9 +174,6 @@ export let showIt = {
             }  
             where.append(`<div class="result__ladder_lineR${round}${postfix3}"></div>`);                                    
         }
-    },
-    showFinalLine: function(where, round, postfix1){
-        where.append(`<div class="result__ladder_lineR${round}${postfix1}"></div>`);        
     },
     showLines: function(where, amount, round, isLucky, numberOfTeams) {
         let lastElemIsLucky = isLucky.length-1;
@@ -193,13 +193,13 @@ export let showIt = {
                 domElems.line_container4.find("div").css({"height": "478px"});
             } 
             else if (numberOfTeams === 13 || numberOfTeams === 14) {    
-                this.drawSpecLines(where, amount, decision, round, "b", "b", "d");              // R1,2,3 ok 
+                this.drawSpecLines(where, amount, decision, round, "b", "b", "d");              // all ok 
             }
-            else if (numberOfTeams === 15 || numberOfTeams === 16) {                            // R1,2,3 ok
+            else if (numberOfTeams === 15 || numberOfTeams === 16) {                            // all ok
                 this.drawLines(where, amount, decision, round, "c", "b");
             }
             else if (numberOfTeams === 17 || numberOfTeams === 18) {                            // R1,2,3 ok
-                this.drawLines(where, amount, decision, round, "c", "d");
+                this.drawLines(where, amount, decision, round, "c", "d");  
             }
             else if (numberOfTeams === 19 || numberOfTeams === 20) {                            // R1,2,3 ok
                 this.drawLines(where, amount, decision, round, "c", "b");

@@ -113,7 +113,9 @@ export function showSheduleCup(sheduleArray, numberOfTeams) {
                 if (numberOfTeams > 8 && numberOfTeams < 13) {
                     showIt.showChampRect(domElems.ladder_round5, 5, "a");
                 } else if(numberOfTeams > 12 && numberOfTeams < 17) {
+                    let amount = sheduleArray[2].length/2;
                     showIt.showChampRect(domElems.ladder_round5, 5, "b");
+                    showIt.showLines(domElems.line_container5, amount, 5, sheduleArray[3], numberOfTeams);
                 }
                 let amount = sheduleArray[2].length/2;
                 showIt.showLines(domElems.line_container4, amount, 4, sheduleArray[3], numberOfTeams);
@@ -124,8 +126,8 @@ export function showSheduleCup(sheduleArray, numberOfTeams) {
                 }
                 let howMany = (sheduleArray[2].length*2)/2;
                 showIt.showLadderRect(domElems.ladder_round4, 4, howMany, sheduleArray[3], sheduleArray[2], numberOfTeams);
-                let amount = sheduleArray[2].length/2;
-                showIt.showLines(domElems.line_container4, amount, 4, sheduleArray[3], numberOfTeams);
+                let amount = sheduleArray[3].length/2;
+                showIt.showLines(domElems.line_container5, amount, 5, sheduleArray[4], numberOfTeams);
                 roundCounter++;
     // Round 5
                 let repsR5 = Math.ceil(sheduleArray[3].length/2);
@@ -140,6 +142,8 @@ export function showSheduleCup(sheduleArray, numberOfTeams) {
                 showIt.showLadderRect(domElems.ladder_round5, 5, many, sheduleArray[4], sheduleArray[3], numberOfTeams);
                 if (numberOfTeams === 17 || numberOfTeams === 18) {
                     showIt.showChampRect(domElems.ladder_round6, 6, "a");
+                    let amount = sheduleArray[3].length/2;
+                    showIt.showLines(domElems.line_container6, amount, 6, sheduleArray[4], numberOfTeams);
                 } else if (numberOfTeams === 19 || numberOfTeams === 20){
                     showIt.showChampRect(domElems.ladder_round6, 6, "b");
                 } else if (numberOfTeams > 20 && numberOfTeams < 25){
