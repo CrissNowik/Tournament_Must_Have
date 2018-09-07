@@ -144,8 +144,12 @@ export function showSheduleCup(sheduleArray, numberOfTeams) {
                     showIt.showChampRect(domElems.ladder_round6, 6, "a");
                     let amount = sheduleArray[3].length/2;
                     showIt.showLines(domElems.line_container6, amount, 6, sheduleArray[4], numberOfTeams);
+                    showIt.specialLine(domElems.line_container5 , 1, "a");
                 } else if (numberOfTeams === 19 || numberOfTeams === 20){
                     showIt.showChampRect(domElems.ladder_round6, 6, "b");
+                    let amount = sheduleArray[3].length/2;
+                    showIt.showLines(domElems.line_container6, amount, 6, sheduleArray[4], numberOfTeams);
+                    showIt.specialLine(domElems.line_container5 , 1, "b");
                 } else if (numberOfTeams > 20 && numberOfTeams < 25){
                     showIt.showChampRect(domElems.ladder_round6, 6, "c");
                 } else if (numberOfTeams > 24 && numberOfTeams < 29){

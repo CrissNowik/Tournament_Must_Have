@@ -456,11 +456,12 @@ var showIt = exports.showIt = {
                 // all ok
                 this.drawLines(where, amount, decision, round, "c", "b");
             } else if (numberOfTeams === 17 || numberOfTeams === 18) {
-                // R1,2,3 ok
+                // all ok
                 this.drawLines(where, amount, decision, round, "c", "d");
             } else if (numberOfTeams === 19 || numberOfTeams === 20) {
-                // R1,2,3 ok
+                // all ok
                 this.drawLines(where, amount, decision, round, "c", "b");
+                _domElems.domElems.line_container6.find("div").css({ "height": "800px" });
             } else if (numberOfTeams === 21 || numberOfTeams === 22) {
                 // R1,2,3 ok
                 this.drawSpecLines(where, amount, decision, round, "c", "b", "d");
@@ -479,6 +480,11 @@ var showIt = exports.showIt = {
             } else if (numberOfTeams === 31 || numberOfTeams === 32) {
                 this.drawLines(where, amount, decision, round, "c", "b"); // R1,2,3 ok
             }
+        }
+    },
+    specialLine: function specialLine(where, amount, postfix) {
+        for (var i = 0; i < amount; i++) {
+            where.find("div").after("<div class=\"result__ladder_luckyLine5" + postfix + "\"></div>");
         }
     }
 };
@@ -1017,8 +1023,12 @@ function showSheduleCup(sheduleArray, numberOfTeams) {
                     _showIt.showIt.showChampRect(_domElems.domElems.ladder_round6, 6, "a");
                     var _amount8 = sheduleArray[3].length / 2;
                     _showIt.showIt.showLines(_domElems.domElems.line_container6, _amount8, 6, sheduleArray[4], numberOfTeams);
+                    _showIt.showIt.specialLine(_domElems.domElems.line_container5, 1, "a");
                 } else if (numberOfTeams === 19 || numberOfTeams === 20) {
                     _showIt.showIt.showChampRect(_domElems.domElems.ladder_round6, 6, "b");
+                    var _amount9 = sheduleArray[3].length / 2;
+                    _showIt.showIt.showLines(_domElems.domElems.line_container6, _amount9, 6, sheduleArray[4], numberOfTeams);
+                    _showIt.showIt.specialLine(_domElems.domElems.line_container5, 1, "b");
                 } else if (numberOfTeams > 20 && numberOfTeams < 25) {
                     _showIt.showIt.showChampRect(_domElems.domElems.ladder_round6, 6, "c");
                 } else if (numberOfTeams > 24 && numberOfTeams < 29) {

@@ -198,11 +198,12 @@ export let showIt = {
             else if (numberOfTeams === 15 || numberOfTeams === 16) {                            // all ok
                 this.drawLines(where, amount, decision, round, "c", "b");
             }
-            else if (numberOfTeams === 17 || numberOfTeams === 18) {                            // R1,2,3 ok
-                this.drawLines(where, amount, decision, round, "c", "d");  
+            else if (numberOfTeams === 17 || numberOfTeams === 18) {                            // all ok
+                this.drawLines(where, amount, decision, round, "c", "d");
             }
-            else if (numberOfTeams === 19 || numberOfTeams === 20) {                            // R1,2,3 ok
+            else if (numberOfTeams === 19 || numberOfTeams === 20) {                            // all ok
                 this.drawLines(where, amount, decision, round, "c", "b");
+                domElems.line_container6.find("div").css({"height": "800px"});
             }
             else if (numberOfTeams === 21 || numberOfTeams === 22) {                             // R1,2,3 ok
                 this.drawSpecLines(where, amount, decision, round, "c", "b", "d");
@@ -222,9 +223,11 @@ export let showIt = {
             else if (numberOfTeams === 31 || numberOfTeams === 32) {
                 this.drawLines(where, amount, decision, round, "c", "b");                        // R1,2,3 ok
             }
-
+        } 
+    },
+    specialLine: function (where, amount, postfix) {
+        for (let i = 0; i < amount; i++) {
+            where.find("div").after(`<div class="result__ladder_luckyLine5${postfix}"></div>`);
         }
-        
-        
     }
 }
