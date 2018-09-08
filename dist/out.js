@@ -463,22 +463,29 @@ var showIt = exports.showIt = {
                 this.drawLines(where, amount, decision, round, "c", "b");
                 _domElems.domElems.line_container6.find("div").css({ "height": "800px" });
             } else if (numberOfTeams === 21 || numberOfTeams === 22) {
-                // R1,2,3 ok
+                // all ok
                 this.drawSpecLines(where, amount, decision, round, "c", "b", "d");
+                _domElems.domElems.line_container5.find("div").css({ "height": "638px" });
             } else if (numberOfTeams === 23 || numberOfTeams === 24) {
-                // R1,2,3 ok 
+                // all ok 
                 this.drawLines(where, amount, decision, round, "c", "b");
+                _domElems.domElems.line_container6.find("div").css({ "height": "680" });
             } else if (numberOfTeams === 25 || numberOfTeams === 26) {
-                // R1,2,3 ok 
+                // all ok 
                 this.drawLines(where, amount, decision, round, "c", "d");
+                _domElems.domElems.line_container6.find("div").css({ "height": "1200", "margin-top": "638px" });
             } else if (numberOfTeams === 27 || numberOfTeams === 28) {
-                // R1,2,3 ok 
+                // all ok 
                 this.drawLines(where, amount, decision, round, "c", "b");
+                _domElems.domElems.line_container6.find("div").css({ "height": "1120" });
             } else if (numberOfTeams === 29 || numberOfTeams === 30) {
-                // R1,2,3 ok
+                // all ok
                 this.drawSpecLines(where, amount, decision, round, "c", "b", "d");
+                _domElems.domElems.line_container5.find("div").css({ "height": "640" });
+                _domElems.domElems.line_container6.find("div").css({ "height": "1280" });
             } else if (numberOfTeams === 31 || numberOfTeams === 32) {
                 this.drawLines(where, amount, decision, round, "c", "b"); // R1,2,3 ok
+                _domElems.domElems.line_container6.find("div").css({ "height": "1280" });
             }
         }
     },
@@ -1021,20 +1028,27 @@ function showSheduleCup(sheduleArray, numberOfTeams) {
                 _showIt.showIt.showLadderRect(_domElems.domElems.ladder_round5, 5, many, sheduleArray[4], sheduleArray[3], numberOfTeams);
                 if (numberOfTeams === 17 || numberOfTeams === 18) {
                     _showIt.showIt.showChampRect(_domElems.domElems.ladder_round6, 6, "a");
-                    var _amount8 = sheduleArray[3].length / 2;
-                    _showIt.showIt.showLines(_domElems.domElems.line_container6, _amount8, 6, sheduleArray[4], numberOfTeams);
+                    _showIt.showIt.showLines(_domElems.domElems.line_container6, _amount7, 6, sheduleArray[4], numberOfTeams);
                     _showIt.showIt.specialLine(_domElems.domElems.line_container5, 1, "a");
                 } else if (numberOfTeams === 19 || numberOfTeams === 20) {
                     _showIt.showIt.showChampRect(_domElems.domElems.ladder_round6, 6, "b");
-                    var _amount9 = sheduleArray[3].length / 2;
-                    _showIt.showIt.showLines(_domElems.domElems.line_container6, _amount9, 6, sheduleArray[4], numberOfTeams);
+                    _showIt.showIt.showLines(_domElems.domElems.line_container6, _amount7, 6, sheduleArray[4], numberOfTeams);
                     _showIt.showIt.specialLine(_domElems.domElems.line_container5, 1, "b");
                 } else if (numberOfTeams > 20 && numberOfTeams < 25) {
                     _showIt.showIt.showChampRect(_domElems.domElems.ladder_round6, 6, "c");
+                    _showIt.showIt.showLines(_domElems.domElems.line_container6, _amount7, 6, sheduleArray[4], numberOfTeams);
+                    _showIt.showIt.specialLine(_domElems.domElems.line_container5, 1, "spec");
+                    _domElems.domElems.line_container5.find("div.result__ladder_luckyLine5spec").css({ "margin-top": "370px" });
                 } else if (numberOfTeams > 24 && numberOfTeams < 29) {
                     _showIt.showIt.showChampRect(_domElems.domElems.ladder_round6, 6, "d");
+                    _showIt.showIt.showLines(_domElems.domElems.line_container6, _amount7, 6, sheduleArray[4], numberOfTeams);
+                    _showIt.showIt.specialLine(_domElems.domElems.line_container5, 1, "specA");
+                    _domElems.domElems.line_container5.find("div.result__ladder_luckyLine5specA").css({ "height": "480px" });
                 } else {
                     _showIt.showIt.showChampRect(_domElems.domElems.ladder_round6, 6, "e");
+                    _showIt.showIt.showLines(_domElems.domElems.line_container6, _amount7, 6, sheduleArray[4], numberOfTeams);
+                    _showIt.showIt.specialLine(_domElems.domElems.line_container5, 1, "specA");
+                    _domElems.domElems.line_container5.find("div.result__ladder_luckyLine5specA").css({ "height": "640" });
                 }
             }
         }

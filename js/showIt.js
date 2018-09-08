@@ -205,23 +205,30 @@ export let showIt = {
                 this.drawLines(where, amount, decision, round, "c", "b");
                 domElems.line_container6.find("div").css({"height": "800px"});
             }
-            else if (numberOfTeams === 21 || numberOfTeams === 22) {                             // R1,2,3 ok
+            else if (numberOfTeams === 21 || numberOfTeams === 22) {                             // all ok
                 this.drawSpecLines(where, amount, decision, round, "c", "b", "d");
+                domElems.line_container5.find("div").css({"height": "638px"});
             }
-            else if (numberOfTeams === 23 || numberOfTeams === 24) {                            // R1,2,3 ok 
+            else if (numberOfTeams === 23 || numberOfTeams === 24) {                            // all ok 
                 this.drawLines(where, amount, decision, round, "c", "b");
+                domElems.line_container6.find("div").css({"height": "680"});
             }
-            else if (numberOfTeams === 25 || numberOfTeams === 26) {                            // R1,2,3 ok 
+            else if (numberOfTeams === 25 || numberOfTeams === 26) {                            // all ok 
                 this.drawLines(where, amount, decision, round, "c", "d");
+                domElems.line_container6.find("div").css({"height": "1200", "margin-top": "638px"});
             }
-            else if (numberOfTeams === 27 || numberOfTeams === 28) {                             // R1,2,3 ok 
+            else if (numberOfTeams === 27 || numberOfTeams === 28) {                             // all ok 
                 this.drawLines(where, amount, decision, round, "c", "b");
+                domElems.line_container6.find("div").css({"height": "1120"});
             }
-            else if (numberOfTeams === 29 || numberOfTeams === 30) {                            // R1,2,3 ok
+            else if (numberOfTeams === 29 || numberOfTeams === 30) {                            // all ok
                 this.drawSpecLines(where, amount, decision, round, "c", "b", "d");
+                domElems.line_container5.find("div").css({"height": "640"});
+                domElems.line_container6.find("div").css({"height": "1280"});
             }   
             else if (numberOfTeams === 31 || numberOfTeams === 32) {
                 this.drawLines(where, amount, decision, round, "c", "b");                        // R1,2,3 ok
+                domElems.line_container6.find("div").css({"height": "1280"});
             }
         } 
     },

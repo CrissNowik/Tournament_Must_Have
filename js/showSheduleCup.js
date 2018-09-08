@@ -142,20 +142,27 @@ export function showSheduleCup(sheduleArray, numberOfTeams) {
                 showIt.showLadderRect(domElems.ladder_round5, 5, many, sheduleArray[4], sheduleArray[3], numberOfTeams);
                 if (numberOfTeams === 17 || numberOfTeams === 18) {
                     showIt.showChampRect(domElems.ladder_round6, 6, "a");
-                    let amount = sheduleArray[3].length/2;
                     showIt.showLines(domElems.line_container6, amount, 6, sheduleArray[4], numberOfTeams);
                     showIt.specialLine(domElems.line_container5 , 1, "a");
                 } else if (numberOfTeams === 19 || numberOfTeams === 20){
                     showIt.showChampRect(domElems.ladder_round6, 6, "b");
-                    let amount = sheduleArray[3].length/2;
                     showIt.showLines(domElems.line_container6, amount, 6, sheduleArray[4], numberOfTeams);
                     showIt.specialLine(domElems.line_container5 , 1, "b");
                 } else if (numberOfTeams > 20 && numberOfTeams < 25){
                     showIt.showChampRect(domElems.ladder_round6, 6, "c");
+                    showIt.showLines(domElems.line_container6, amount, 6, sheduleArray[4], numberOfTeams);
+                    showIt.specialLine(domElems.line_container5, 1, "spec");
+                    domElems.line_container5.find("div.result__ladder_luckyLine5spec").css({"margin-top": "370px"});
                 } else if (numberOfTeams > 24 && numberOfTeams < 29){
                     showIt.showChampRect(domElems.ladder_round6, 6, "d");
+                    showIt.showLines(domElems.line_container6, amount, 6, sheduleArray[4], numberOfTeams);
+                    showIt.specialLine(domElems.line_container5, 1, "specA");
+                    domElems.line_container5.find("div.result__ladder_luckyLine5specA").css({"height": "480px"});
                 } else {
                     showIt.showChampRect(domElems.ladder_round6, 6, "e");
+                    showIt.showLines(domElems.line_container6, amount, 6, sheduleArray[4], numberOfTeams);
+                    showIt.specialLine(domElems.line_container5, 1, "specA")
+                    domElems.line_container5.find("div.result__ladder_luckyLine5specA").css({"height": "640"});
                 }
             }
         } 

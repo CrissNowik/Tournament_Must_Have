@@ -1,4 +1,5 @@
-@import "modules/mixins";
+@import
+"modules/mixins";
 
 .result {
     display: none;
@@ -272,6 +273,26 @@
             border-radius: 5px;
             position: relative;
         } 
+        .result__ladder_luckyLine5spec{
+            width: 140px;
+            height: 270px;
+            margin: 330px 0 0 205px;
+            border-bottom: 1px solid #000;
+            border-right: 1px solid #000;
+            border-top: none;
+            border-left: none;
+            border-radius: 5px;
+            position: relative;
+        } 
+        .result__ladder_luckyLine5specA{
+            width: 140px;
+            height: 400px;
+            margin: 638px 0 0 205px;
+            border: 1px solid #000;
+            border-left: none;
+            border-radius: 5px;
+            position: relative;
+        } 
         .result__ladder_lineR1 {
             width: 140px;
             height: 78px;
@@ -383,6 +404,15 @@
         .result__ladder_lineR6c {
             width: 140px;
             height: 720px;
+            margin: 676px 0 0 245px;
+            border: 1px solid #000;
+            border-left: none;
+            border-radius: 5px;
+            position: relative;
+        }
+        .result__ladder_lineR6d {
+            width: 140px;
+            height: 640px;
             margin: 676px 0 0 245px;
             border: 1px solid #000;
             border-left: none;
