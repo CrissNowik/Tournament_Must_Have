@@ -1,53 +1,35 @@
-@import
-"modules/mixins";
-
+@import "modules/mixins";
 .result {
     display: none;
-    .result__champ{
+    .result__champ {
         list-style-type: none;
     }
     .result__lader {
         display: none;
-        .result__lines_container{
+        .result__lines_container {
             position: absolute;
             z-index: -1;
-            .result__ladder_lines{
+            .result__ladder_lines {
                 width: 205px;
                 float: left;
-                .result__ladder_luckyLine2a{
+                .result__ladder_luckyLine2a {
                     @include luckyLineR2;
                 }
-                .result__ladder_luckyLine2b{
+                .result__ladder_luckyLine2b {
                     @include luckyLineR2;
                 }
-                .result__ladder_luckyLine2d{
+                .result__ladder_luckyLine2d {
                     @include luckyLineR2;
                 }
-                .result__ladder_luckyLine3a{
-                    @include luckyLineR35;
-                    margin: 240px 0 80px 205px;
-                } 
-                .result__ladder_luckyLine3b{
-                    @include luckyLineR35;
-                    margin: 318px 0 80px 205px;
+                $luckyLines:( 3a: 240px 0 80px 205px, 3b: 318px 0 80px 205px, 3c: 0 0 80px 205px, 3d: -78px 0 0 205px, 5a: 396px 0 0 205px, 5b: 476px 0 0 205px);
+                @each $line-name,
+                $margin-val in $luckyLines {
+                    .result__ladder_luckyLine#{$line-name} {
+                        @include luckyLineR35;
+                        margin: $margin-val;
+                    }
                 }
-                .result__ladder_luckyLine3c{
-                    @include luckyLineR35;
-                    margin: 0 0 80px 205px;
-                }
-                .result__ladder_luckyLine3d{
-                    @include luckyLineR35;
-                    margin: -78px 0 0 205px;
-                } 
-                .result__ladder_luckyLine5a{
-                    @include luckyLineR35;
-                    margin: 396px 0 0 205px;
-                } 
-                .result__ladder_luckyLine5b{
-                    @include luckyLineR35;
-                    margin: 476px 0 0 205px;
-                } 
-                .result__ladder_luckyLine5spec{
+                .result__ladder_luckyLine5spec {
                     width: 140px;
                     border-right: 1px solid #000;
                     border-bottom: 1px solid #000;
@@ -57,213 +39,50 @@
                     position: relative;
                     height: 270px;
                     margin: 330px 0 0 205px;
-                } 
-                .result__ladder_luckyLine5specA{
+                }
+                .result__ladder_luckyLine5specA {
                     @include basicLadderLine;
                     height: 400px;
                     margin: 638px 0 0 205px;
-                } 
-                .result__ladder_lineR1 {
-                    @include basicLadderLine;
-                    height: 78px;
-                    margin: 76px 0 80px 205px;
                 }
-                .result__ladder_lineR2a {
-                    @include basicLadderLine;
-                    height: 158px;
-                    margin: 116px 0 160px 205px;
-                }
-                .result__ladder_lineR2b {
-                    @include basicLadderLine;
-                    height: 158px;
-                    margin: 116px 0 160px 205px;
-                }
-                .result__ladder_lineR2c {
-                    @include basicLadderLine;
-                    height: 158px;
-                    margin: 116px 0 160px 205px;
-                }
-                .result__ladder_lineR3a {
-                    @include basicLadderLine;
-                    height: 238px;
-                    margin: 196px 0 160px 205px;
-                }
-                .result__ladder_lineR3b {
-                    @include basicLadderLine;
-                    height: 318px;
-                    margin: 196px 0 160px 205px;
-                }
-                .result__ladder_lineR3c {
-                    @include basicLadderLine;
-                    height: 318px;
-                    margin: 196px 0 320px 205px;
-                }
-                .result__ladder_lineR3d{
-                    @include basicLadderLine;
-                    height: 240px;
-                    margin: 318px 0 80px 205px;
-                }
-                .result__ladder_lineR4a {
-                    @include basicLadderLine;
-                    height: 478px;
-                    margin: 356px 0 0 205px;
-                }
-                .result__ladder_lineR4b {
-                    @include basicLadderLine;
-                    height: 398px;
-                    margin: 356px 0 0 205px;
-                }
-                .result__ladder_lineR5c {
-                    @include basicLadderLine;
-                    height: 638px;
-                    margin: 356px 0 0 205px;
-                }
-                .result__ladder_lineR5d {
-                    @include basicLadderLine;
-                    height: 598px;
-                    margin: 356px 0 0 205px;
-                }
-                .result__ladder_lineR6c {
-                    @include basicLadderLine;
-                    height: 720px;
-                    margin: 676px 0 0 245px;
-                }
-                .result__ladder_lineR6d {
-                    @include basicLadderLine;
-                    height: 640px;
-                    margin: 676px 0 0 245px;
+                $lines:( (R1, 78px, 76px 0 80px 205px), (R2a, 158px, 116px 0 160px 205px), (R2b, 158px, 116px 0 160px 205px), (R2c, 158px, 116px 0 160px 205px), (R3a, 238px, 196px 0 160px 205px), (R3b, 318px, 196px 0 160px 205px), (R3c, 318px, 196px 0 320px 205px), (R3d, 240px, 318px 0 80px 205px), (R4a, 478px, 356px 0 0 205px), (R4b, 398px, 356px 0 0 205px), (R5c, 638px, 356px 0 0 205px), (R5d, 598px, 356px 0 0 205px), (R6c, 720px, 676px 0 0 245px), (R6d, 650px, 676px 0 0 245px));
+                @each $line-name,
+                $height-val,
+                $margin-val in $lines {
+                    .result__ladder_line#{$line-name} {
+                        @include basicLadderLine;
+                        height: $height-val;
+                        margin: $margin-val;
+                    }
                 }
             }
         }
-        .result__ladder_round{
+        .result__ladder_round {
             height: 1260px;
-            .result__ladder_rect{
+            .result__ladder_rect {
                 margin: 40px 10px;
-                @include ladderRect;                
+                @include ladderRect;
             }
-            .result__ladder_rectR2{
-                @include ladderRectR2; 
-            }
-            .result__ladder_rectR2a{
-                @include ladderRectR2;
-            }
-            .result__ladder_rectR2b{
-                @include ladderRectR2;
-            }
-            .result__ladder_rectR2e{
-                @include ladderRectR2;
-            }
-            .result__ladder_rectR3{
+            .result__ladder_rectR3 {
                 @include ladderRectR3;
             }
-            .result__ladder_rectR3c{
-                    @include ladderRectR3;
+            .result__ladder_rectR3c {
+                @include ladderRectR3;
             }
-            .result__ladder_rectR4{
-                @include ladderRect;
-                margin: 320px 10px 600px 10px;
+            $classNames: (R2, R2a, R2b, R2e, RaL2, RaL2a, RaL2b);
+            @each $val in $classNames {
+                .result__ladder_rect#{$val} {
+                    @include ladderRectR2;
+                }
             }
-            .result__ladder_rectR4a{
-                @include ladderRect;
-                margin: 320px 10px 560px 10px;
-            }
-            .result__ladder_rectR4b{
-                @include ladderRect;
-                margin: 240px 10px 50px 10px;
-            }
-            .result__ladder_rectR5{
-                @include ladderRect;
-                margin: 640px 10px 1240px 10px;
-            }
-            .result__ladder_rectR5a{
-                @include ladderRect;
-                margin: 680px 10px 1240px 10px;
-            }
-            .result__ladder_rectR5b{
-                @include ladderRect;
-                margin: 760px 10px 1240px 10px;
-            }
-            .result__ladder_rectR5c{
-                @include ladderRect;
-                margin: 600px 10px 1240px 10px;
-            }
-            .result__ladder_rectR5d{
-                @include ladderRect;
-                margin: 600px 10px 1160px 10px;
-            }
-            .result__ladder_rectR5e{
-                @include ladderRect;
-                margin: 640px 10px 1080px 10px;
-            }
-            .result__ladder_rectR6{
-                @include ladderRect;
-                margin: 1280px 10px 20px 10px;
-            }
-            .result__ladder_rectRaL2{
-                @include ladderRectR2;
-            }
-            .result__ladder_rectRaL2a{
-                @include ladderRectR2;
-            }
-            .result__ladder_rectRaL2b{
-                @include ladderRectR2;
-            }
-            .result__ladder_rectRaL3{
-                @include ladderRect;
-                margin: 160px 10px 200px 10px;
-            }
-            .result__ladder_rectRaL4{
-                @include ladderRect;
-                margin: 320px 10px 360px 10px;
-            }
-            .result__ladder_rectRaL4a{
-                @include ladderRect;
-                margin: 320px 10px 440px 10px;
-            }
-            .result__ladder_rectRaL4b{
-                @include ladderRect;
-                margin: 320px 10px 280px 10px;
-            }
-            .result__ladder_rectRaL5{
-                @include ladderRect;
-                margin: 640px 10px 400px 10px;
-            }
-            .result__ladder_rect3a{
-                @include ladderRect;
-                margin: 160px 10px 20px 10px;
-            }
-            .result__ladder_rect4a{
-                @include ladderRect;
-                margin: 280px 10px 20px 10px;
-            }
-            .result__ladder_rect4b{
-                @include ladderRect;
-                margin: 320px 10px 20px 10px;
-            }
-            .result__ladder_rect5a{
-                @include ladderRect;
-                margin: 520px 10px 20px 10px;
-            }
-            .result__ladder_rect5b{
-                @include ladderRect;
-                margin: 640px 10px 20px 10px;
-            }
-            $margins: (
-            6a: 1000px 10px 20px 10px,
-            6b: 1040px 10px 20px 10px, 
-            6c: 960px 10px 20px 10px,
-            6d: 1200px 10px 20px 10px,
-            6e: 1280px 10px 20px 10px
-            );
-            @each $margin-name, $margin-val in $margins {
+            $margins: ( R4: 320px 10px 600px 10px, R4a: 320px 10px 560px 10px, R4b: 240px 10px 50px 10px, R5: 640px 10px 1240px 10px, R5a: 680px 10px 1240px 10px, R5b: 760px 10px 1240px 10px, R5c: 600px 10px 1240px 10px, R5d: 600px 10px 1160px 10px, R5e: 640px 10px 1080px 10px, R6: 1280px 10px 20px 10px, RaL3: 160px 10px 200px 10px, RaL4: 320px 10px 360px 10px, RaL4a: 320px 10px 440px 10px, RaL4b: 320px 10px 280px 10px, RaL5: 640px 10px 400px 10px, 3a: 160px 10px 20px 10px, 4a: 280px 10px 20px 10px, 4b: 320px 10px 20px 10px, 5a: 520px 10px 20px 10px, 5b: 640px 10px 20px 10px, 6a: 1000px 10px 20px 10px, 6b: 1040px 10px 20px 10px, 6c: 960px 10px 20px 10px, 6d: 1200px 10px 20px 10px, 6e: 1280px 10px 20px 10px);
+            @each $margin-name,
+            $margin-val in $margins {
                 .result__ladder_rect#{$margin-name} {
                     @include ladderRect;
                     margin: $margin-val;
                 }
             }
-
         }
     }
 }
-
-
