@@ -418,7 +418,6 @@ var showIt = exports.showIt = {
             for (var _i14 = 0; _i14 < amount; _i14++) {
                 where.append("<div class=\"result__ladder_lineR" + round + postfix + "\"></div>");
             }
-            console.log("zwykła");
         }
     },
     drawSpecLines: function drawSpecLines(where, amount, decision, round, postfix1, postfix2, postfix3) {
@@ -438,53 +437,42 @@ var showIt = exports.showIt = {
         var lastElemIsLucky = isLucky.length - 1;
         var decision = isLucky[lastElemIsLucky].indexOf(" Lucky Team");
         if (numberOfTeams < 7) {
-            this.drawLines(where, amount, decision, round, "a", "a"); // all ok                                 
+            this.drawLines(where, amount, decision, round, "a", "a");
         } else if (numberOfTeams > 6 && numberOfTeams < 33) {
             if (numberOfTeams === 7 || numberOfTeams === 8) {
-                // all ok
                 this.drawLines(where, amount, decision, round, "b", "a");
             } else if (numberOfTeams === 9 || numberOfTeams === 10) {
-                // all ok 
                 this.drawLines(where, amount, decision, round, "b", "a");
             } else if (numberOfTeams === 11 || numberOfTeams === 12) {
-                // all ok
                 this.drawLines(where, amount, decision, round, "b", "b");
                 _domElems.domElems.line_container4.find("div").css({ "height": "478px" });
             } else if (numberOfTeams === 13 || numberOfTeams === 14) {
-                this.drawSpecLines(where, amount, decision, round, "b", "b", "d"); // all ok 
+                this.drawSpecLines(where, amount, decision, round, "b", "b", "d");
             } else if (numberOfTeams === 15 || numberOfTeams === 16) {
-                // all ok
                 this.drawLines(where, amount, decision, round, "c", "b");
             } else if (numberOfTeams === 17 || numberOfTeams === 18) {
-                // all ok
                 this.drawLines(where, amount, decision, round, "c", "d");
             } else if (numberOfTeams === 19 || numberOfTeams === 20) {
-                // all ok
                 this.drawLines(where, amount, decision, round, "c", "b");
                 _domElems.domElems.line_container6.find("div").css({ "height": "800px" });
             } else if (numberOfTeams === 21 || numberOfTeams === 22) {
-                // all ok
                 this.drawSpecLines(where, amount, decision, round, "c", "b", "d");
                 _domElems.domElems.line_container5.find("div").css({ "height": "638px" });
             } else if (numberOfTeams === 23 || numberOfTeams === 24) {
-                // all ok 
                 this.drawLines(where, amount, decision, round, "c", "b");
                 _domElems.domElems.line_container6.find("div").css({ "height": "680" });
             } else if (numberOfTeams === 25 || numberOfTeams === 26) {
-                // all ok 
                 this.drawLines(where, amount, decision, round, "c", "d");
                 _domElems.domElems.line_container6.find("div").css({ "height": "1200", "margin-top": "638px" });
             } else if (numberOfTeams === 27 || numberOfTeams === 28) {
-                // all ok 
                 this.drawLines(where, amount, decision, round, "c", "b");
                 _domElems.domElems.line_container6.find("div").css({ "height": "1120" });
             } else if (numberOfTeams === 29 || numberOfTeams === 30) {
-                // all ok
                 this.drawSpecLines(where, amount, decision, round, "c", "b", "d");
                 _domElems.domElems.line_container5.find("div").css({ "height": "640" });
                 _domElems.domElems.line_container6.find("div").css({ "height": "1280" });
             } else if (numberOfTeams === 31 || numberOfTeams === 32) {
-                this.drawLines(where, amount, decision, round, "c", "b"); // R1,2,3 ok
+                this.drawLines(where, amount, decision, round, "c", "b");
                 _domElems.domElems.line_container6.find("div").css({ "height": "1280" });
             }
         }
@@ -830,7 +818,7 @@ exports.showSheduleLeague = showSheduleLeague;
 
 var _domElems = __webpack_require__(0);
 
-var _basicFunctions = __webpack_require__(1);
+var _showIt = __webpack_require__(3);
 
 function showSheduleLeague(readyShedule) {
     for (var i = 0; i < readyShedule.length; i++) {
@@ -839,13 +827,13 @@ function showSheduleLeague(readyShedule) {
         console.log("showSheduleLeague");
 
         if (roundCounter <= 8) {
-            _basicFunctions.basicFunctions.showHeader(_domElems.domElems.sheduleOnScreenA, roundCounter);
+            _showIt.showIt.showHeader(_domElems.domElems.sheduleOnScreenA, roundCounter);
         } else if (8 <= roundCounter && roundCounter <= 16) {
-            _basicFunctions.basicFunctions.showHeader(_domElems.domElems.sheduleOnScreenB, roundCounter);
+            _showIt.showIt.showHeader(_domElems.domElems.sheduleOnScreenB, roundCounter);
         } else if (17 <= roundCounter && roundCounter <= 24) {
-            _basicFunctions.basicFunctions.showHeader(_domElems.domElems.sheduleOnScreenC, roundCounter);
+            _showIt.showIt.showHeader(_domElems.domElems.sheduleOnScreenC, roundCounter);
         } else {
-            _basicFunctions.basicFunctions.showHeader(_domElems.domElems.sheduleOnScreenD, roundCounter);
+            _showIt.showIt.showHeader(_domElems.domElems.sheduleOnScreenD, roundCounter);
         }
 
         for (var j = 0; j < readyShedule[i].length; j++) {
@@ -853,19 +841,19 @@ function showSheduleLeague(readyShedule) {
             var pairOnScreen = newPair.join(" ___ - ___ ");
 
             if (roundCounter <= 8) {
-                _basicFunctions.basicFunctions.showMatch(_domElems.domElems.sheduleOnScreenA, pairOnScreen);
+                _showIt.showIt.showMatch(_domElems.domElems.sheduleOnScreenA, pairOnScreen);
             } else if (8 <= roundCounter && roundCounter <= 16) {
                 gameCounter = _domElems.domElems.sheduleOnScreenA.find('li').length + 1;
                 _domElems.domElems.sheduleOnScreenB.attr('start', "" + gameCounter);
-                _basicFunctions.basicFunctions.showMatch(_domElems.domElems.sheduleOnScreenB, pairOnScreen);
+                _showIt.showIt.showMatch(_domElems.domElems.sheduleOnScreenB, pairOnScreen);
             } else if (17 <= roundCounter && roundCounter <= 24) {
                 gameCounter = _domElems.domElems.sheduleOnScreenB.find('li').length * 2 + 1;
                 _domElems.domElems.sheduleOnScreenC.attr('start', "" + gameCounter);
-                _basicFunctions.basicFunctions.showMatch(_domElems.domElems.sheduleOnScreenC, pairOnScreen);
+                _showIt.showIt.showMatch(_domElems.domElems.sheduleOnScreenC, pairOnScreen);
             } else {
                 gameCounter = _domElems.domElems.sheduleOnScreenC.find('li').length * 3 + 1;
                 _domElems.domElems.sheduleOnScreenD.attr('start', "" + gameCounter);
-                _basicFunctions.basicFunctions.showMatch(_domElems.domElems.sheduleOnScreenD, pairOnScreen);
+                _showIt.showIt.showMatch(_domElems.domElems.sheduleOnScreenD, pairOnScreen);
             }
         }
     }
@@ -1039,7 +1027,12 @@ function showSheduleCup(sheduleArray, numberOfTeams) {
                     _showIt.showIt.showLines(_domElems.domElems.line_container6, _amount7, 6, sheduleArray[4], numberOfTeams);
                     _showIt.showIt.specialLine(_domElems.domElems.line_container5, 1, "spec");
                     _domElems.domElems.line_container5.find("div.result__ladder_luckyLine5spec").css({ "margin-top": "370px" });
-                } else if (numberOfTeams > 24 && numberOfTeams < 29) {
+                } else if (numberOfTeams === 25 || numberOfTeams === 26) {
+                    _showIt.showIt.showChampRect(_domElems.domElems.ladder_round6, 6, "d");
+                    _showIt.showIt.showLines(_domElems.domElems.line_container6, _amount7, 6, sheduleArray[4], numberOfTeams);
+                    _showIt.showIt.specialLine(_domElems.domElems.line_container5, 1, "specA");
+                    _domElems.domElems.line_container5.find("div.result__ladder_luckyLine5specA").css({ "height": "400px" });
+                } else if (numberOfTeams === 27 || numberOfTeams === 28) {
                     _showIt.showIt.showChampRect(_domElems.domElems.ladder_round6, 6, "d");
                     _showIt.showIt.showLines(_domElems.domElems.line_container6, _amount7, 6, sheduleArray[4], numberOfTeams);
                     _showIt.showIt.specialLine(_domElems.domElems.line_container5, 1, "specA");

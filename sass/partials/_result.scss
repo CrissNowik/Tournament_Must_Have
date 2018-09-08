@@ -8,417 +8,262 @@
     }
     .result__lader {
         display: none;
+        .result__lines_container{
+            position: absolute;
+            z-index: -1;
+            .result__ladder_lines{
+                width: 205px;
+                float: left;
+                .result__ladder_luckyLine2a{
+                    @include luckyLineR2;
+                }
+                .result__ladder_luckyLine2b{
+                    @include luckyLineR2;
+                }
+                .result__ladder_luckyLine2d{
+                    @include luckyLineR2;
+                }
+                .result__ladder_luckyLine3a{
+                    @include luckyLineR35;
+                    margin: 240px 0 80px 205px;
+                } 
+                .result__ladder_luckyLine3b{
+                    @include luckyLineR35;
+                    margin: 318px 0 80px 205px;
+                }
+                .result__ladder_luckyLine3c{
+                    @include luckyLineR35;
+                    margin: 0 0 80px 205px;
+                }
+                .result__ladder_luckyLine3d{
+                    @include luckyLineR35;
+                    margin: -78px 0 0 205px;
+                } 
+                .result__ladder_luckyLine5a{
+                    @include luckyLineR35;
+                    margin: 396px 0 0 205px;
+                } 
+                .result__ladder_luckyLine5b{
+                    @include luckyLineR35;
+                    margin: 476px 0 0 205px;
+                } 
+                .result__ladder_luckyLine5spec{
+                    width: 140px;
+                    border-right: 1px solid #000;
+                    border-bottom: 1px solid #000;
+                    border-top: none;
+                    border-left: none;
+                    border-radius: 5px;
+                    position: relative;
+                    height: 270px;
+                    margin: 330px 0 0 205px;
+                } 
+                .result__ladder_luckyLine5specA{
+                    @include basicLadderLine;
+                    height: 400px;
+                    margin: 638px 0 0 205px;
+                } 
+                .result__ladder_lineR1 {
+                    @include basicLadderLine;
+                    height: 78px;
+                    margin: 76px 0 80px 205px;
+                }
+                .result__ladder_lineR2a {
+                    @include basicLadderLine;
+                    height: 158px;
+                    margin: 116px 0 160px 205px;
+                }
+                .result__ladder_lineR2b {
+                    @include basicLadderLine;
+                    height: 158px;
+                    margin: 116px 0 160px 205px;
+                }
+                .result__ladder_lineR2c {
+                    @include basicLadderLine;
+                    height: 158px;
+                    margin: 116px 0 160px 205px;
+                }
+                .result__ladder_lineR3a {
+                    @include basicLadderLine;
+                    height: 238px;
+                    margin: 196px 0 160px 205px;
+                }
+                .result__ladder_lineR3b {
+                    @include basicLadderLine;
+                    height: 318px;
+                    margin: 196px 0 160px 205px;
+                }
+                .result__ladder_lineR3c {
+                    @include basicLadderLine;
+                    height: 318px;
+                    margin: 196px 0 320px 205px;
+                }
+                .result__ladder_lineR3d{
+                    @include basicLadderLine;
+                    height: 240px;
+                    margin: 318px 0 80px 205px;
+                }
+                .result__ladder_lineR4a {
+                    @include basicLadderLine;
+                    height: 478px;
+                    margin: 356px 0 0 205px;
+                }
+                .result__ladder_lineR4b {
+                    @include basicLadderLine;
+                    height: 398px;
+                    margin: 356px 0 0 205px;
+                }
+                .result__ladder_lineR5c {
+                    @include basicLadderLine;
+                    height: 638px;
+                    margin: 356px 0 0 205px;
+                }
+                .result__ladder_lineR5d {
+                    @include basicLadderLine;
+                    height: 598px;
+                    margin: 356px 0 0 205px;
+                }
+                .result__ladder_lineR6c {
+                    @include basicLadderLine;
+                    height: 720px;
+                    margin: 676px 0 0 245px;
+                }
+                .result__ladder_lineR6d {
+                    @include basicLadderLine;
+                    height: 640px;
+                    margin: 676px 0 0 245px;
+                }
+            }
+        }
         .result__ladder_round{
+            height: 1260px;
             .result__ladder_rect{
                 margin: 40px 10px;
                 @include ladderRect;                
             }
+            .result__ladder_rectR2{
+                @include ladderRectR2; 
+            }
+            .result__ladder_rectR2a{
+                @include ladderRectR2;
+            }
+            .result__ladder_rectR2b{
+                @include ladderRectR2;
+            }
+            .result__ladder_rectR2e{
+                @include ladderRectR2;
+            }
+            .result__ladder_rectR3{
+                @include ladderRectR3;
+            }
+            .result__ladder_rectR3c{
+                    @include ladderRectR3;
+            }
+            .result__ladder_rectR4{
+                @include ladderRect;
+                margin: 320px 10px 600px 10px;
+            }
+            .result__ladder_rectR4a{
+                @include ladderRect;
+                margin: 320px 10px 560px 10px;
+            }
+            .result__ladder_rectR4b{
+                @include ladderRect;
+                margin: 240px 10px 50px 10px;
+            }
+            .result__ladder_rectR5{
+                @include ladderRect;
+                margin: 640px 10px 1240px 10px;
+            }
+            .result__ladder_rectR5a{
+                @include ladderRect;
+                margin: 680px 10px 1240px 10px;
+            }
+            .result__ladder_rectR5b{
+                @include ladderRect;
+                margin: 760px 10px 1240px 10px;
+            }
+            .result__ladder_rectR5c{
+                @include ladderRect;
+                margin: 600px 10px 1240px 10px;
+            }
+            .result__ladder_rectR5d{
+                @include ladderRect;
+                margin: 600px 10px 1160px 10px;
+            }
+            .result__ladder_rectR5e{
+                @include ladderRect;
+                margin: 640px 10px 1080px 10px;
+            }
+            .result__ladder_rectR6{
+                @include ladderRect;
+                margin: 1280px 10px 20px 10px;
+            }
+            .result__ladder_rectRaL2{
+                @include ladderRectR2;
+            }
+            .result__ladder_rectRaL2a{
+                @include ladderRectR2;
+            }
+            .result__ladder_rectRaL2b{
+                @include ladderRectR2;
+            }
+            .result__ladder_rectRaL3{
+                @include ladderRect;
+                margin: 160px 10px 200px 10px;
+            }
+            .result__ladder_rectRaL4{
+                @include ladderRect;
+                margin: 320px 10px 360px 10px;
+            }
+            .result__ladder_rectRaL4a{
+                @include ladderRect;
+                margin: 320px 10px 440px 10px;
+            }
+            .result__ladder_rectRaL4b{
+                @include ladderRect;
+                margin: 320px 10px 280px 10px;
+            }
+            .result__ladder_rectRaL5{
+                @include ladderRect;
+                margin: 640px 10px 400px 10px;
+            }
+            .result__ladder_rect3a{
+                @include ladderRect;
+                margin: 160px 10px 20px 10px;
+            }
+            .result__ladder_rect4a{
+                @include ladderRect;
+                margin: 280px 10px 20px 10px;
+            }
+            .result__ladder_rect4b{
+                @include ladderRect;
+                margin: 320px 10px 20px 10px;
+            }
+            .result__ladder_rect5a{
+                @include ladderRect;
+                margin: 520px 10px 20px 10px;
+            }
+            .result__ladder_rect5b{
+                @include ladderRect;
+                margin: 640px 10px 20px 10px;
+            }
+            $margins: (
+            6a: 1000px 10px 20px 10px,
+            6b: 1040px 10px 20px 10px, 
+            6c: 960px 10px 20px 10px,
+            6d: 1200px 10px 20px 10px,
+            6e: 1280px 10px 20px 10px
+            );
+            @each $margin-name, $margin-val in $margins {
+                .result__ladder_rect#{$margin-name} {
+                    @include ladderRect;
+                    margin: $margin-val;
+                }
+            }
+
         }
     }
 }
 
-// @for $i from 1 through 4 {
-//     .result__ladder_rectR#{$i+1}{
-//         @include ladderRect;
-//         margin: $i*40px 10px 120px 10px;
-//     }
-// }
-
-.result__ladder_rectR2{
-    @include ladderRect;
-        margin: 80px 10px 120px 10px;
-}
-.result__ladder_rectR2a{
-    @include ladderRect;
-        margin: 80px 10px 120px 10px;
-}
-
-.result__ladder_rectR2b{
-    @include ladderRect;
-        margin: 80px 10px 120px 10px;
-}
-.result__ladder_rectR2e{
-    @include ladderRect;
-        margin: 80px 10px 120px 10px;
-}
-
-.result__ladder_rectR3{
-    @include ladderRect;
-        margin: 160px 10px 280px 10px;
-    }
-
-.result__ladder_rectR3c{
-    @include ladderRect;
-        margin: 160px 10px 280px 10px;
-    }
-.result__ladder_rectR4{
-    @include ladderRect;
-        margin: 320px 10px 600px 10px;
-    }
-.result__ladder_rectR4a{
-    @include ladderRect;
-        margin: 320px 10px 560px 10px;
-    }
-.result__ladder_rectR4b{
-    @include ladderRect;
-        margin: 240px 10px 50px 10px;
-    }
-.result__ladder_rectR5{
-    @include ladderRect;
-        margin: 640px 10px 1240px 10px;
-    }
-.result__ladder_rectR5a{
-    @include ladderRect;
-        margin: 680px 10px 1240px 10px;
-    }
-.result__ladder_rectR5b{
-    @include ladderRect;
-        margin: 760px 10px 1240px 10px;
-    }
-.result__ladder_rectR5c{
-    @include ladderRect;
-        margin: 600px 10px 1240px 10px;
-    }
-.result__ladder_rectR5d{
-    @include ladderRect;
-        margin: 600px 10px 1160px 10px;
-    }
-.result__ladder_rectR5e{
-    @include ladderRect;
-        margin: 640px 10px 1080px 10px;
-    }
-.result__ladder_rectR6{
-    @include ladderRect;
-       margin: 1280px 10px 20px 10px;
-    }
-
-.result__ladder_rectRaL2{
-    @include ladderRect;
-        margin: 80px 10px 120px 10px;
-}
-.result__ladder_rectRaL2a{
-    @include ladderRect;
-        margin: 80px 10px 120px 10px;
-}
-.result__ladder_rectRaL2b{
-    @include ladderRect;
-        margin: 80px 10px 120px 10px;
-}
-.result__ladder_rectRaL3{
-    @include ladderRect;
-        margin: 160px 10px 200px 10px;
-}
-.result__ladder_rectRaL4{
-    @include ladderRect;
-        margin: 320px 10px 360px 10px;
-}
-.result__ladder_rectRaL4a{
-    @include ladderRect;
-        margin: 320px 10px 440px 10px;
-}
-.result__ladder_rectRaL4b{
-    @include ladderRect;
-        margin: 320px 10px 280px 10px;
-}
-.result__ladder_rectRaL5{
-    @include ladderRect;
-        margin: 640px 10px 400px 10px;
-}
-
-
-.result__ladder_rect3a{
-    @include ladderRect;
-    margin: 160px 10px 20px 10px;
-}
-.result__ladder_rect4a{
-    @include ladderRect;
-    margin: 280px 10px 20px 10px;
-}
-.result__ladder_rect4b{
-    @include ladderRect;
-    margin: 320px 10px 20px 10px;
-}
-.result__ladder_rect5a{
-    @include ladderRect;
-    margin: 520px  10px 20px 10px;
-}
-.result__ladder_rect5b{
-    @include ladderRect;
-    margin: 640px  10px 20px 10px;
-}
-
-.result__ladder_rect6a{
-    @include ladderRect;
-    margin: 1000px  10px 20px 10px;
-}
-.result__ladder_rect6b{
-    @include ladderRect;
-    margin: 1040px  10px 20px 10px;
-}
-.result__ladder_rect6c{
-    @include ladderRect;
-    margin: 960px  10px 20px 10px;
-}
-.result__ladder_rect6d{
-    @include ladderRect;
-    margin: 1200px  10px 20px 10px;
-}
-.result__ladder_rect6e{
-    @include ladderRect;
-    margin: 1280px  10px 20px 10px;
-}
-
-.result__lines_container{
-    position: absolute;
-    z-index: -1;
-    .result__ladder_lines{
-        width: 205px;
-        float: left;
-        .result__ladder_luckyLine2a{
-            width: 140px;
-            height: 78px;
-            margin: 76px 0 80px 205px;
-            border-top: 1px solid #000;
-            border-right: none;
-            border-bottom: none;
-            border-left: none;
-            border-radius: 5px;
-            position: relative;
-        }
-        .result__ladder_luckyLine2b{
-            width: 140px;
-            height: 78px;
-            margin: 76px 0 80px 205px;
-            border-top: 1px solid #000;
-            border-right: none;
-            border-bottom: none;
-            border-left: none;
-            border-radius: 5px;
-            position: relative;
-        }
-        .result__ladder_luckyLine2d{
-            width: 140px;
-            height: 78px;
-            margin: 76px 0 80px 205px;
-            border-top: 1px solid #000;
-            border-right: none;
-            border-bottom: none;
-            border-left: none;
-            border-radius: 5px;
-            position: relative;
-        }
-        .result__ladder_luckyLine3a{
-            width: 140px;
-            height: 78px;
-            margin: 240px 0 80px 205px;
-            border-top: 1px solid #000;
-            border-right: none;
-            border-bottom: none;
-            border-left: none;
-            border-radius: 5px;
-            position: relative;
-        } 
-        .result__ladder_luckyLine3b{
-            width: 140px;
-            height: 78px;
-            margin: 318px 0 80px 205px;
-            border-top: 1px solid #000;
-            border-right: none;
-            border-bottom: none;
-            border-left: none;
-            border-radius: 5px;
-            position: relative;
-        }
-        .result__ladder_luckyLine3c{
-            width: 140px;
-            height: 78px;
-            margin: 0 0 80px 205px;
-            border-top: 1px solid #000;
-            border-right: none;
-            border-bottom: none;
-            border-left: none;
-            border-radius: 5px;
-            position: relative;
-        }
-        .result__ladder_luckyLine3d{
-            width: 140px;
-            height: 78px;
-            margin: -78px 0 0 205px;
-            border-top: 1px solid #000;
-            border-right: none;
-            border-bottom: none;
-            border-left: none;
-            border-radius: 5px;
-            position: relative;
-        } 
-        .result__ladder_luckyLine5a{
-            width: 140px;
-            height: 78px;
-            margin: 396px 0 0 205px;
-            border-top: 1px solid #000;
-            border-right: none;
-            border-bottom: none;
-            border-left: none;
-            border-radius: 5px;
-            position: relative;
-        } 
-        .result__ladder_luckyLine5b{
-            width: 140px;
-            height: 78px;
-            margin: 476px 0 0 205px;
-            border-top: 1px solid #000;
-            border-right: none;
-            border-bottom: none;
-            border-left: none;
-            border-radius: 5px;
-            position: relative;
-        } 
-        .result__ladder_luckyLine5spec{
-            width: 140px;
-            height: 270px;
-            margin: 330px 0 0 205px;
-            border-bottom: 1px solid #000;
-            border-right: 1px solid #000;
-            border-top: none;
-            border-left: none;
-            border-radius: 5px;
-            position: relative;
-        } 
-        .result__ladder_luckyLine5specA{
-            width: 140px;
-            height: 400px;
-            margin: 638px 0 0 205px;
-            border: 1px solid #000;
-            border-left: none;
-            border-radius: 5px;
-            position: relative;
-        } 
-        .result__ladder_lineR1 {
-            width: 140px;
-            height: 78px;
-            margin: 76px 0 80px 205px;
-            border: 1px solid #000;
-            border-left: none;
-            border-radius: 5px;
-            position: relative;
-        }
-        .result__ladder_lineR2a {
-            width: 140px;
-            height: 158px;
-            margin: 116px 0 160px 205px;
-            border: 1px solid #000;
-            border-left: none;
-            border-radius: 5px;
-            position: relative;
-        }
-        .result__ladder_lineR2b {
-            width: 140px;
-            height: 158px;
-            margin: 116px 0 160px 205px;
-            border: 1px solid #000;
-            border-left: none;
-            border-radius: 5px;
-            position: relative;
-        }
-        .result__ladder_lineR2c {
-            width: 140px;
-            height: 158px;
-            margin: 116px 0 160px 205px;
-            border: 1px solid #000;
-            border-left: none;
-            border-radius: 5px;
-            position: relative;
-        }
-        .result__ladder_lineR3a {
-            width: 140px;
-            height: 238px;
-            margin: 196px 0 160px 205px;
-            border: 1px solid #000;
-            border-left: none;
-            border-radius: 5px;
-            position: relative;
-        }
-        .result__ladder_lineR3b {
-            width: 140px;
-            height: 318px;
-            margin: 196px 0 160px 205px;
-            border: 1px solid #000;
-            border-left: none;
-            border-radius: 5px;
-            position: relative;
-        }
-        .result__ladder_lineR3c {
-            width: 140px;
-            height: 318px;
-            margin: 196px 0 320px 205px;
-            border: 1px solid #000;
-            border-left: none;
-            border-radius: 5px;
-            position: relative;
-        }
-        .result__ladder_lineR3d{
-            width: 140px;
-            height: 240px;
-            margin: 318px 0 80px 205px;
-            border: 1px solid #000;
-            border-left: none;
-            border-radius: 5px;
-            position: relative;
-        }
-        .result__ladder_lineR4a {
-            width: 140px;
-            height: 478px;
-            margin: 356px 0 0 205px;
-            border: 1px solid #000;
-            border-left: none;
-            border-radius: 5px;
-            position: relative;
-        }
-        .result__ladder_lineR4b {
-            width: 140px;
-            height: 398px;
-            margin: 356px 0 0 205px;
-            border: 1px solid #000;
-            border-left: none;
-            border-radius: 5px;
-            position: relative;
-        }
-        .result__ladder_lineR5c {
-            width: 140px;
-            height: 638px;
-            margin: 356px 0 0 205px;
-            border: 1px solid #000;
-            border-left: none;
-            border-radius: 5px;
-            position: relative;
-        }
-        .result__ladder_lineR5d {
-            width: 140px;
-            height: 598px;
-            margin: 356px 0 0 205px;
-            border: 1px solid #000;
-            border-left: none;
-            border-radius: 5px;
-            position: relative;
-        }
-        .result__ladder_lineR6c {
-            width: 140px;
-            height: 720px;
-            margin: 676px 0 0 245px;
-            border: 1px solid #000;
-            border-left: none;
-            border-radius: 5px;
-            position: relative;
-        }
-        .result__ladder_lineR6d {
-            width: 140px;
-            height: 640px;
-            margin: 676px 0 0 245px;
-            border: 1px solid #000;
-            border-left: none;
-            border-radius: 5px;
-            position: relative;
-        }
-    }
-}
 

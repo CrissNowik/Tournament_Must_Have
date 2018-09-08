@@ -22,3 +22,45 @@
     background-color: white;
     position: relative;
   }
+
+  @mixin ladderRectR2{
+    @include ladderRect;
+    margin: 80px 10px 120px 10px;
+  }
+  @mixin ladderRectR3{
+    @include ladderRect;
+    margin: 160px 10px 280px 10px;
+  }
+
+  @mixin basicLadderLine {
+    width: 140px;
+    border: 1px solid #000;
+    border-left: none;
+    border-radius: 5px;
+    position: relative;
+  }
+
+  @mixin luckyLineR2{
+    width: 140px;
+    height: 78px;
+    margin: 76px 0 80px 205px;
+    border-top: 1px solid #000;
+    border-right: none;
+    border-bottom: none;
+    border-left: none;
+    border-radius: 5px;
+    position: relative;
+  }
+  
+  @mixin luckyLineR35{
+    width: 140px;
+    height: 78px;
+    border-top: 1px solid #000;
+    border-right: none;
+    border-bottom: none;
+    border-left: none;
+    border-radius: 5px;
+    position: relative;
+  }
+
+  

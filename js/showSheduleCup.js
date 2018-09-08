@@ -153,7 +153,12 @@ export function showSheduleCup(sheduleArray, numberOfTeams) {
                     showIt.showLines(domElems.line_container6, amount, 6, sheduleArray[4], numberOfTeams);
                     showIt.specialLine(domElems.line_container5, 1, "spec");
                     domElems.line_container5.find("div.result__ladder_luckyLine5spec").css({"margin-top": "370px"});
-                } else if (numberOfTeams > 24 && numberOfTeams < 29){
+                } else if (numberOfTeams === 25 || numberOfTeams === 26){
+                    showIt.showChampRect(domElems.ladder_round6, 6, "d");
+                    showIt.showLines(domElems.line_container6, amount, 6, sheduleArray[4], numberOfTeams);
+                    showIt.specialLine(domElems.line_container5, 1, "specA");
+                    domElems.line_container5.find("div.result__ladder_luckyLine5specA").css({"height": "400px"});
+                } else if (numberOfTeams === 27 || numberOfTeams === 28) {
                     showIt.showChampRect(domElems.ladder_round6, 6, "d");
                     showIt.showLines(domElems.line_container6, amount, 6, sheduleArray[4], numberOfTeams);
                     showIt.specialLine(domElems.line_container5, 1, "specA");

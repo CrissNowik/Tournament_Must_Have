@@ -158,8 +158,7 @@ export let showIt = {
         } else {  
                 for (let i = 0; i < amount; i++) {                                      
                     where.append(`<div class="result__ladder_lineR${round}${postfix}"></div>`);  
-            } 
-            console.log("zwykła");                                                                    
+            }                                                                  
         }     
     },
     drawSpecLines: function(where, amount, decision, round, postfix1, postfix2, postfix3){
@@ -179,55 +178,55 @@ export let showIt = {
         let lastElemIsLucky = isLucky.length-1;
         let decision = isLucky[lastElemIsLucky].indexOf(" Lucky Team");  
         if (numberOfTeams < 7) {
-            this.drawLines(where, amount, decision, round, "a", "a");                           // all ok                                 
+            this.drawLines(where, amount, decision, round, "a", "a");                                                            
         } 
         else if (numberOfTeams > 6 && numberOfTeams < 33) {
-            if (numberOfTeams === 7 || numberOfTeams === 8) {                                   // all ok
+            if (numberOfTeams === 7 || numberOfTeams === 8) {                                   
                 this.drawLines(where, amount, decision, round, "b", "a");
             } 
-            else if (numberOfTeams === 9 || numberOfTeams === 10){                              // all ok 
+            else if (numberOfTeams === 9 || numberOfTeams === 10){                               
                 this.drawLines(where, amount, decision, round, "b", "a");
             }
-            else if (numberOfTeams === 11 || numberOfTeams === 12) {                            // all ok
+            else if (numberOfTeams === 11 || numberOfTeams === 12) {                            
                 this.drawLines(where, amount, decision, round, "b", "b");
                 domElems.line_container4.find("div").css({"height": "478px"});
             } 
             else if (numberOfTeams === 13 || numberOfTeams === 14) {    
-                this.drawSpecLines(where, amount, decision, round, "b", "b", "d");              // all ok 
+                this.drawSpecLines(where, amount, decision, round, "b", "b", "d");               
             }
-            else if (numberOfTeams === 15 || numberOfTeams === 16) {                            // all ok
+            else if (numberOfTeams === 15 || numberOfTeams === 16) {                            
                 this.drawLines(where, amount, decision, round, "c", "b");
             }
-            else if (numberOfTeams === 17 || numberOfTeams === 18) {                            // all ok
+            else if (numberOfTeams === 17 || numberOfTeams === 18) {                            
                 this.drawLines(where, amount, decision, round, "c", "d");
             }
-            else if (numberOfTeams === 19 || numberOfTeams === 20) {                            // all ok
+            else if (numberOfTeams === 19 || numberOfTeams === 20) {                            
                 this.drawLines(where, amount, decision, round, "c", "b");
                 domElems.line_container6.find("div").css({"height": "800px"});
             }
-            else if (numberOfTeams === 21 || numberOfTeams === 22) {                             // all ok
+            else if (numberOfTeams === 21 || numberOfTeams === 22) {                             
                 this.drawSpecLines(where, amount, decision, round, "c", "b", "d");
                 domElems.line_container5.find("div").css({"height": "638px"});
             }
-            else if (numberOfTeams === 23 || numberOfTeams === 24) {                            // all ok 
+            else if (numberOfTeams === 23 || numberOfTeams === 24) {                             
                 this.drawLines(where, amount, decision, round, "c", "b");
                 domElems.line_container6.find("div").css({"height": "680"});
             }
-            else if (numberOfTeams === 25 || numberOfTeams === 26) {                            // all ok 
+            else if (numberOfTeams === 25 || numberOfTeams === 26) {                             
                 this.drawLines(where, amount, decision, round, "c", "d");
                 domElems.line_container6.find("div").css({"height": "1200", "margin-top": "638px"});
             }
-            else if (numberOfTeams === 27 || numberOfTeams === 28) {                             // all ok 
+            else if (numberOfTeams === 27 || numberOfTeams === 28) {                              
                 this.drawLines(where, amount, decision, round, "c", "b");
                 domElems.line_container6.find("div").css({"height": "1120"});
             }
-            else if (numberOfTeams === 29 || numberOfTeams === 30) {                            // all ok
+            else if (numberOfTeams === 29 || numberOfTeams === 30) {                            
                 this.drawSpecLines(where, amount, decision, round, "c", "b", "d");
                 domElems.line_container5.find("div").css({"height": "640"});
                 domElems.line_container6.find("div").css({"height": "1280"});
             }   
             else if (numberOfTeams === 31 || numberOfTeams === 32) {
-                this.drawLines(where, amount, decision, round, "c", "b");                        // R1,2,3 ok
+                this.drawLines(where, amount, decision, round, "c", "b");                   
                 domElems.line_container6.find("div").css({"height": "1280"});
             }
         } 
