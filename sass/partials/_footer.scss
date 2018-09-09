@@ -1,5 +1,32 @@
-.footer {
-    display: block;
-    float: right;
+@import "modules/mixins";
 
+.footer {
+    @include center;
+    flex-direction: column;
+    height: 10%;
+    width: 100%;
+    margin-top: 5%;
+    .footer__info{
+        font-size: 16px;
+        color: #fff;
+        font-family: $font-set;
+        margin-bottom: 0;
+    }
+    .footer__links{
+        display: flex;
+        justify-content: center;
+        align-content: space-between;
+        font-size: 16px;
+        color: #fff;
+        font-family: $font-set;
+        margin-top: 0;
+        .footer__link{
+            list-style: none;
+            margin: 10px;
+            a {
+                text-decoration: underline;
+                color: #fff;
+            }
+        }
+    }
 }

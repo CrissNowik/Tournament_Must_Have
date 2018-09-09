@@ -1,13 +1,11 @@
 .header{
-    display: flex;
+    @include center;
     flex-direction: column;
-    justify-content: center;
-    align-items: center;
     height: 20%;
 
     .header__title{
         display: flex;
-        font-family: "webfontregular", serif, 'Times New Roman', Times, serif;
+        font-family: $font-set;
         font-size: 80px;
         color: #fff;
     }
@@ -17,6 +15,7 @@
         background-color: transparent;
         display: flex;
         transform: rotate(-45deg);
-        padding: 2%;
+        margin: 2%;
+        border: 2px solid #fff;
     }
 }

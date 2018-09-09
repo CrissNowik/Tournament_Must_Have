@@ -3,12 +3,26 @@
 "modules/mixins",
 "modules/colors";
 
-.nav__confirm{
-    background-color: $color-btn-confirm;
-    border: 2px solid #fff;
-    border-radius: 2px;
-    color: #fff;
-    font-family: 'Quantico-Bold';
-    font-size:  15px;
-    transform: skew(-20deg);
-} 
+.nav{
+    @include center;
+    height: 60%;
+    margin-top: 1%;
+    .nav__confirm{
+        height: 300px;
+        width: 300px;
+        transform: rotate(45deg);
+        background-color: $color_btn_confirm;
+        border: 2px solid #fff;
+        border-radius: 2px;
+        color: #fff;
+        font-family: $font-set;
+        font-size:  60px;
+        cursor: pointer;
+       &:hover{
+           background-color: $color_btn_confirm_hover;
+       }
+        .nav__confirm_txt{
+            transform: rotate(-45deg);
+        }
+    } 
+}
