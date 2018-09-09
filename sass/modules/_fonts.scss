@@ -1,6 +1,10 @@
 @font-face {
-    font-family: 'Quantico-Bold';
-    src: url('../../fonts/Quantico-Bold.otf') format('otf');
+    font-family: 'webfontregular';
+    src: url('../../fonts/colleges-webfont.woff2') format('woff2'),
+         url('../../fonts/colleges-webfont.woff') format('woff');
     font-weight: normal;
     font-style: normal;
+
+    // Matthew Welch License - College v1.00
+
 }

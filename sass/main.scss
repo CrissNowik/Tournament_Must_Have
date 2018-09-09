@@ -11,7 +11,9 @@
 "partials/footer";
 
 body{
-    background: $color-bg-main;
+    background-image: url('../res/background.jpeg');
+    background-size: cover;
+    background-position: center;
 }
 
 

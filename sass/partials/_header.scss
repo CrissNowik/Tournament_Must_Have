@@ -1,0 +1,22 @@
+.header{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 20%;
+
+    .header__title{
+        display: flex;
+        font-family: "webfontregular", serif, 'Times New Roman', Times, serif;
+        font-size: 80px;
+        color: #fff;
+    }
+    .header__logo{
+        width: 150px;
+        height: 150px;
+        background-color: transparent;
+        display: flex;
+        transform: rotate(-45deg);
+        padding: 2%;
+    }
+}

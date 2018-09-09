@@ -119,115 +119,11 @@ var domElems = exports.domElems = {
 Object.defineProperty(exports, "__esModule", {
     value: true
 });
-exports.basicFunctions = undefined;
-
-var _domElems = __webpack_require__(0);
-
-var _globalVariables = __webpack_require__(2);
-
-var _leagueGenerator = __webpack_require__(5);
-
-var _cupGenerator = __webpack_require__(7);
-
-var _showSheduleLeague = __webpack_require__(9);
-
-var _showSheduleCup = __webpack_require__(10);
-
-var _showIt = __webpack_require__(3);
-
-var basicFunctions = exports.basicFunctions = {
-    gettingTeams: function gettingTeams() {
-        var newTeam = _domElems.domElems.teamInput.val();
-        var selectedTournamentType = $('#collector__select :selected').val();
-        if (_domElems.domElems.teamList.children().length > 1) {
-            // generator validation
-            _domElems.domElems.collectorAlertB.hide();
-        }
-        if (_domElems.domElems.teamList.children().length > 30) {
-            // number of teams validation
-            _domElems.domElems.collectorAlertD.show();
-            _domElems.domElems.teamInput.attr('disabled', true);
-        }
-        if (_domElems.domElems.teamList.children().length !== 3 && //cup caution about Lucky team
-        _domElems.domElems.teamList.children().length !== 7 && _domElems.domElems.teamList.children().length !== 15 && _domElems.domElems.teamList.children().length !== 31 && selectedTournamentType === 'Cup') {
-            _domElems.domElems.cupCaution.show();
-        } else {
-            _domElems.domElems.cupCaution.hide();
-        }
-        if (newTeam != "" && newTeam.length < 26) {
-            // input content validation
-            var counter = _globalVariables.globalVariables.dataCounter++;
-            _showIt.showIt.showAndHide(_domElems.domElems.collectorAlertA, _domElems.domElems.teamList);
-            _showIt.showIt.showAndHide(_domElems.domElems.collectorAlertC, _domElems.domElems.teamList);
-            _domElems.domElems.teamList.append("<li class=\"collector__listItem\" id=\"collector__listItem\" data-nr=\"" + counter + "\"> " + newTeam + "<button class=\"collector__del\" type=\"button\">X</button></li>");
-            _domElems.domElems.teamInput.val("");
-        } else if (newTeam === "") {
-            _domElems.domElems.collectorAlertA.show();
-        } else {
-            _domElems.domElems.collectorAlertC.show();
-        }
-    },
-    gettingTeamNames: function gettingTeamNames(teamList, numberOfTeams) {
-        var teamNamesList = [];
-
-        for (var i = 0; i < numberOfTeams; i++) {
-            teamNamesList.push(teamList[i].firstChild.wholeText);
-        }
-        return teamNamesList;
-    },
-    shuffle: function shuffle(teamList) {
-        teamList.sort(function (a, b) {
-            return 0.5 - Math.random();
-        });
-    },
-    pairing: function pairing(teamNamesList, numberOfTeams) {
-        var pairsReadyToShow = [];
-        var rep = Math.ceil(numberOfTeams / 2);
-
-        if (numberOfTeams % 2 === 0) {
-            for (var i = 0; i < rep; i++) {
-                var array = teamNamesList.slice(0, 2);
-                teamNamesList.splice(0, 2);
-                pairsReadyToShow.push(array);
-            }
-        } else {
-            var teams = teamNamesList;
-            teams.push(_globalVariables.globalVariables.lucky);
-            for (var _i = 0; _i < rep; _i++) {
-                var _array = teams.slice(0, 2);
-                teams.splice(0, 2);
-                pairsReadyToShow.push(_array);
-            }
-        }
-        return pairsReadyToShow;
-    },
-    choosingTournamentType: function choosingTournamentType(tournamentType) {
-        var teamList = _domElems.domElems.teamList.children();
-        var numberOfCompetitors = teamList.length;
-
-        if (tournamentType === 'League') {
-            var readySheduleLeague = (0, _leagueGenerator.leagueGenerator)(teamList);
-            (0, _showSheduleLeague.showSheduleLeague)(readySheduleLeague);
-        } else if (tournamentType === 'Cup') {
-            if (numberOfCompetitors < 5) {
-                // 2 rounds
-                var sheduleToShowUp = (0, _cupGenerator.cupGenerator)(teamList);
-                (0, _showSheduleCup.showSheduleCup)(sheduleToShowUp, numberOfCompetitors);
-            } else if (numberOfCompetitors > 4 && numberOfCompetitors < 9) {
-                // 3 rounds
-                var _sheduleToShowUp = (0, _cupGenerator.cupGenerator)(teamList);
-                (0, _showSheduleCup.showSheduleCup)(_sheduleToShowUp, numberOfCompetitors);
-            } else if (numberOfCompetitors > 8 && numberOfCompetitors < 17) {
-                // 4 rounds
-                var _sheduleToShowUp2 = (0, _cupGenerator.cupGenerator)(teamList);
-                (0, _showSheduleCup.showSheduleCup)(_sheduleToShowUp2, numberOfCompetitors);
-            } else {
-                // 5 rounds
-                var _sheduleToShowUp3 = (0, _cupGenerator.cupGenerator)(teamList);
-                (0, _showSheduleCup.showSheduleCup)(_sheduleToShowUp3, numberOfCompetitors);
-            }
-        }
-    }
+var globalVariables = exports.globalVariables = {
+    dataCounter: 0,
+    idCharArr: ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P"],
+    empty: "  . . . . . . . . . . . . . . ",
+    lucky: " Lucky Team"
 };
 
 /***/ }),
@@ -240,26 +136,9 @@ var basicFunctions = exports.basicFunctions = {
 Object.defineProperty(exports, "__esModule", {
     value: true
 });
-var globalVariables = exports.globalVariables = {
-    dataCounter: 0,
-    idCharArr: ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P"],
-    empty: "  . . . . . . . . . . . . . . ",
-    lucky: " Lucky Team"
-};
-
-/***/ }),
-/* 3 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-    value: true
-});
 exports.showIt = undefined;
 
-var _globalVariables = __webpack_require__(2);
+var _globalVariables = __webpack_require__(1);
 
 var _domElems = __webpack_require__(0);
 
@@ -485,6 +364,127 @@ var showIt = exports.showIt = {
 };
 
 /***/ }),
+/* 3 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+exports.basicFunctions = undefined;
+
+var _domElems = __webpack_require__(0);
+
+var _globalVariables = __webpack_require__(1);
+
+var _leagueGenerator = __webpack_require__(5);
+
+var _cupGenerator = __webpack_require__(7);
+
+var _showSheduleLeague = __webpack_require__(9);
+
+var _showSheduleCup = __webpack_require__(10);
+
+var _showIt = __webpack_require__(2);
+
+var basicFunctions = exports.basicFunctions = {
+    gettingTeams: function gettingTeams() {
+        var newTeam = _domElems.domElems.teamInput.val();
+        var selectedTournamentType = $('#collector__select :selected').val();
+        if (_domElems.domElems.teamList.children().length > 1) {
+            // generator validation
+            _domElems.domElems.collectorAlertB.hide();
+        }
+        if (_domElems.domElems.teamList.children().length > 30) {
+            // number of teams validation
+            _domElems.domElems.collectorAlertD.show();
+            _domElems.domElems.teamInput.attr('disabled', true);
+        }
+        if (_domElems.domElems.teamList.children().length !== 3 && //cup caution about Lucky team
+        _domElems.domElems.teamList.children().length !== 7 && _domElems.domElems.teamList.children().length !== 15 && _domElems.domElems.teamList.children().length !== 31 && selectedTournamentType === 'Cup') {
+            _domElems.domElems.cupCaution.show();
+        } else {
+            _domElems.domElems.cupCaution.hide();
+        }
+        if (newTeam != "" && newTeam.length < 26) {
+            // input content validation
+            var counter = _globalVariables.globalVariables.dataCounter++;
+            _showIt.showIt.showAndHide(_domElems.domElems.collectorAlertA, _domElems.domElems.teamList);
+            _showIt.showIt.showAndHide(_domElems.domElems.collectorAlertC, _domElems.domElems.teamList);
+            _domElems.domElems.teamList.append("<li class=\"collector__listItem\" id=\"collector__listItem\" data-nr=\"" + counter + "\"> " + newTeam + "<button class=\"collector__del\" type=\"button\">X</button></li>");
+            _domElems.domElems.teamInput.val("");
+        } else if (newTeam === "") {
+            _domElems.domElems.collectorAlertA.show();
+        } else {
+            _domElems.domElems.collectorAlertC.show();
+        }
+    },
+    gettingTeamNames: function gettingTeamNames(teamList, numberOfTeams) {
+        var teamNamesList = [];
+
+        for (var i = 0; i < numberOfTeams; i++) {
+            teamNamesList.push(teamList[i].firstChild.wholeText);
+        }
+        return teamNamesList;
+    },
+    shuffle: function shuffle(teamList) {
+        teamList.sort(function (a, b) {
+            return 0.5 - Math.random();
+        });
+    },
+    pairing: function pairing(teamNamesList, numberOfTeams) {
+        var pairsReadyToShow = [];
+        var rep = Math.ceil(numberOfTeams / 2);
+
+        if (numberOfTeams % 2 === 0) {
+            for (var i = 0; i < rep; i++) {
+                var array = teamNamesList.slice(0, 2);
+                teamNamesList.splice(0, 2);
+                pairsReadyToShow.push(array);
+            }
+        } else {
+            var teams = teamNamesList;
+            teams.push(_globalVariables.globalVariables.lucky);
+            for (var _i = 0; _i < rep; _i++) {
+                var _array = teams.slice(0, 2);
+                teams.splice(0, 2);
+                pairsReadyToShow.push(_array);
+            }
+        }
+        return pairsReadyToShow;
+    },
+    choosingTournamentType: function choosingTournamentType(tournamentType) {
+        var teamList = _domElems.domElems.teamList.children();
+        var numberOfCompetitors = teamList.length;
+
+        if (tournamentType === 'League') {
+            var readySheduleLeague = (0, _leagueGenerator.leagueGenerator)(teamList);
+            (0, _showSheduleLeague.showSheduleLeague)(readySheduleLeague);
+        } else if (tournamentType === 'Cup') {
+            if (numberOfCompetitors < 5) {
+                // 2 rounds
+                var sheduleToShowUp = (0, _cupGenerator.cupGenerator)(teamList);
+                (0, _showSheduleCup.showSheduleCup)(sheduleToShowUp, numberOfCompetitors);
+            } else if (numberOfCompetitors > 4 && numberOfCompetitors < 9) {
+                // 3 rounds
+                var _sheduleToShowUp = (0, _cupGenerator.cupGenerator)(teamList);
+                (0, _showSheduleCup.showSheduleCup)(_sheduleToShowUp, numberOfCompetitors);
+            } else if (numberOfCompetitors > 8 && numberOfCompetitors < 17) {
+                // 4 rounds
+                var _sheduleToShowUp2 = (0, _cupGenerator.cupGenerator)(teamList);
+                (0, _showSheduleCup.showSheduleCup)(_sheduleToShowUp2, numberOfCompetitors);
+            } else {
+                // 5 rounds
+                var _sheduleToShowUp3 = (0, _cupGenerator.cupGenerator)(teamList);
+                (0, _showSheduleCup.showSheduleCup)(_sheduleToShowUp3, numberOfCompetitors);
+            }
+        }
+    }
+};
+
+/***/ }),
 /* 4 */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -493,9 +493,9 @@ var showIt = exports.showIt = {
 
 var _domElems = __webpack_require__(0);
 
-var _basicFunctions = __webpack_require__(1);
+var _basicFunctions = __webpack_require__(3);
 
-var _showIt = __webpack_require__(3);
+var _showIt = __webpack_require__(2);
 
 $(document).ready(function () {
 
@@ -561,7 +561,7 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.leagueGenerator = leagueGenerator;
 
-var _basicFunctions = __webpack_require__(1);
+var _basicFunctions = __webpack_require__(3);
 
 var _roundrobin = __webpack_require__(6);
 
@@ -630,7 +630,7 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.cupGenerator = cupGenerator;
 
-var _basicFunctions = __webpack_require__(1);
+var _basicFunctions = __webpack_require__(3);
 
 var _cupPairGenerators = __webpack_require__(8);
 
@@ -746,7 +746,7 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.cupPairGenerators = undefined;
 
-var _globalVariables = __webpack_require__(2);
+var _globalVariables = __webpack_require__(1);
 
 var TWOEMPTY = [_globalVariables.globalVariables.empty, _globalVariables.globalVariables.empty];
 var EMPTYANDLUCKY = [_globalVariables.globalVariables.empty, _globalVariables.globalVariables.lucky];
@@ -818,7 +818,7 @@ exports.showSheduleLeague = showSheduleLeague;
 
 var _domElems = __webpack_require__(0);
 
-var _showIt = __webpack_require__(3);
+var _showIt = __webpack_require__(2);
 
 function showSheduleLeague(readyShedule) {
     for (var i = 0; i < readyShedule.length; i++) {
@@ -873,9 +873,9 @@ exports.showSheduleCup = showSheduleCup;
 
 var _domElems = __webpack_require__(0);
 
-var _globalVariables = __webpack_require__(2);
+var _globalVariables = __webpack_require__(1);
 
-var _showIt = __webpack_require__(3);
+var _showIt = __webpack_require__(2);
 
 function showSheduleCup(sheduleArray, numberOfTeams) {
     var roundCounter = 1;
