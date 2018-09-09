@@ -1,4 +1,6 @@
-@import "modules/mixins";
+@import "modules/fonts",
+"modules/mixins",
+"modules/colors";
 
 .footer {
     @include center;
@@ -6,13 +8,15 @@
     height: 10%;
     width: 100%;
     margin-top: 5%;
-    .footer__info{
+
+    .footer__info {
         font-size: 16px;
         color: #fff;
         font-family: $font-set;
         margin-bottom: 0;
     }
-    .footer__links{
+
+    .footer__links {
         display: flex;
         justify-content: center;
         align-content: space-between;
@@ -20,9 +24,11 @@
         color: #fff;
         font-family: $font-set;
         margin-top: 0;
-        .footer__link{
+
+        .footer__link {
             list-style: none;
             margin: 10px;
+
             a {
                 text-decoration: underline;
                 color: #fff;

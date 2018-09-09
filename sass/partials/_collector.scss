@@ -1,13 +1,94 @@
+@import
+"modules/fonts",
+"modules/mixins",
+"modules/colors";
+
 .collector {
     display: none;
-}
-
-.collector__show{
-
-    .collector__alert{
-        display: none;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    height: 60%;
+    margin-top: 1%;
+    .collector__form{
+        display: flex;
+        flex-direction: row;
+        .collector__left{
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            margin-right: 20px;
+            .collector__select{
+                @include collector_inputs;
+                width: 308px;
+                margin-bottom: 30px;
+                &:hover{
+                    background-color: $color_btn_confirm_hover;
+                }
+            }
+            .collector__input {
+                @include collector_inputs;
+                width: 300px;
+                &:hover{
+                    background-color: $color_btn_confirm_hover;
+                }
+            }
+        }
+        .collector__right{
+            .collector__add{
+                @include collector_btn;
+            }
+            .collector__generate{
+                @include collector_btn;
+            }
+        }
+       
     }
-    .collector__caution{
-        display: none;
+    .collector__show{
+
+        .collector__alert{
+           @include collector_alerts;
+            color: $color_alert;
+            border: 3px solid $color_alert;
+        }
+        .collector__caution{
+           @include collector_alerts;
+            color: $color_caution;
+            border: 3px solid $color_caution;
+        }
+        .collector__list{
+            font-size:  25px;
+            color: $color_txt;
+            font-family: $font-set;
+            display: flex;
+            flex-direction: column;
+            .collector__listItem{
+                padding: 5px;
+                width: 320px;
+                .collector__del{
+                    @include center;
+                    margin-left: 5px;
+                    float: right;
+                    height: 30px;
+                    width: 30px;
+                    transform: rotate(45deg);
+                    background-color: $color_btn_neg;
+                    border: 2px solid #fff;
+                    color: #fff;
+                    font-family: $font-set;
+                    font-size:  25px;
+                    padding: 0;
+                    cursor: pointer;
+                    &:hover{
+                        background-color: $color_btn_neg_hover;
+                    }
+                    p{
+                        position: fixed;
+                        transform: rotate(-45deg);
+                        margin:0;
+                    }
+                }
+            }
+        }
     }
 }

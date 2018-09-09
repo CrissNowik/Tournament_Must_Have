@@ -145,7 +145,7 @@ var _domElems = __webpack_require__(0);
 var showIt = exports.showIt = {
     showAndHide: function showAndHide(toHide, toShow) {
         toHide.hide();
-        toShow.show();
+        toShow.show().css({ "display": "flex" });
     },
     showHeader: function showHeader(where, roundCounter) {
         where.append("<ul class=\"result__listItem--roundHeader\">Round nr " + roundCounter + "</ul>");
@@ -413,7 +413,7 @@ var basicFunctions = exports.basicFunctions = {
             var counter = _globalVariables.globalVariables.dataCounter++;
             _showIt.showIt.showAndHide(_domElems.domElems.collectorAlertA, _domElems.domElems.teamList);
             _showIt.showIt.showAndHide(_domElems.domElems.collectorAlertC, _domElems.domElems.teamList);
-            _domElems.domElems.teamList.append("<li class=\"collector__listItem\" id=\"collector__listItem\" data-nr=\"" + counter + "\"> " + newTeam + "<button class=\"collector__del\" type=\"button\">X</button></li>");
+            _domElems.domElems.teamList.append("<li class=\"collector__listItem\" id=\"collector__listItem\" data-nr=\"" + counter + "\"> " + newTeam + "<button class=\"collector__del\" type=\"button\"><p>X</p></button></li>");
             _domElems.domElems.teamInput.val("");
         } else if (newTeam === "") {
             _domElems.domElems.collectorAlertA.show();

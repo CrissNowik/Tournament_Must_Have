@@ -1,67 +1,113 @@
+@import "modules/fonts",
+"modules/colors";
+
 @mixin center {
-    display: flex;
-    align-items: center;
-    justify-content: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+@mixin reset {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-size: 16px;
+  font-family: Arial, sans-serif;
+}
+
+@mixin ladderRect {
+  width: 160px;
+  height: 38px;
+  border: 1px solid #000;
+  border-radius: 5px;
+  list-style-type: none;
+  z-index: 2;
+  background-color: white;
+  position: relative;
+}
+
+@mixin ladderRectR2 {
+  @include ladderRect;
+  margin: 80px 10px 120px 10px;
+}
+
+@mixin ladderRectR3 {
+  @include ladderRect;
+  margin: 160px 10px 280px 10px;
+}
+
+@mixin basicLadderLine {
+  width: 140px;
+  border: 1px solid #000;
+  border-left: none;
+  border-radius: 5px;
+  position: relative;
+}
+
+@mixin luckyLineR2 {
+  width: 140px;
+  height: 78px;
+  margin: 76px 0 80px 205px;
+  border-top: 1px solid #000;
+  border-right: none;
+  border-bottom: none;
+  border-left: none;
+  border-radius: 5px;
+  position: relative;
+}
+
+@mixin luckyLineR35 {
+  width: 140px;
+  height: 78px;
+  border-top: 1px solid #000;
+  border-right: none;
+  border-bottom: none;
+  border-left: none;
+  border-radius: 5px;
+  position: relative;
+}
+
+@mixin collector_btn {
+  height: 100px;
+  width: 100px;
+  transform: rotate(45deg);
+  background-color: $color_btn_confirm;
+  border: 2px solid #fff;
+  color: #fff;
+  font-family: $font-set;
+  font-size: 25px;
+  margin: 20px;
+  cursor: pointer;
+
+  &:hover {
+    background-color: $color_btn_confirm_hover;
   }
 
-  @mixin reset {
-        margin: 0;
-        padding: 0;
-        box-sizing: border-box;
-        font-size: 16px;
-        font-family: Arial, sans-serif;
-      }
+  p {
+    transform: rotate(-45deg);
+  }
+}
 
-  @mixin ladderRect {
-    width: 160px;
-    height: 38px;
-    border: 1px solid #000;
-    border-radius: 5px;
-    list-style-type: none;
-    z-index: 2;
-    background-color: white;
-    position: relative;
-  }
+@mixin collector_inputs {
+  font-family: $font-set;
+  font-size: 25px;
+  color: $color_txt;
+  padding: 2px;
+  border: 2px solid $color_btn_confirm;
+  background-color: $color_btn_confirm;
+  border: 2px solid #fff;
+}
 
-  @mixin ladderRectR2{
-    @include ladderRect;
-    margin: 80px 10px 120px 10px;
-  }
-  @mixin ladderRectR3{
-    @include ladderRect;
-    margin: 160px 10px 280px 10px;
-  }
+@mixin collector_alerts {
+  display: none;
+  background-color: #fff;
+  font-family: $font-set;
+  text-align: center;
+  font-size: 20px;
+}
 
-  @mixin basicLadderLine {
-    width: 140px;
-    border: 1px solid #000;
-    border-left: none;
-    border-radius: 5px;
-    position: relative;
-  }
-
-  @mixin luckyLineR2{
-    width: 140px;
-    height: 78px;
-    margin: 76px 0 80px 205px;
-    border-top: 1px solid #000;
-    border-right: none;
-    border-bottom: none;
-    border-left: none;
-    border-radius: 5px;
-    position: relative;
-  }
-  
-  @mixin luckyLineR35{
-    width: 140px;
-    height: 78px;
-    border-top: 1px solid #000;
-    border-right: none;
-    border-bottom: none;
-    border-left: none;
-    border-radius: 5px;
-    position: relative;
-  }
-  
-$font-set:  "webfontregular", serif, 'Times New Roman', Times, serif;
-  
+$font-set: "webfontregular",
+serif,
+'Times New Roman',
+Times,
+serif;

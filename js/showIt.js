@@ -4,7 +4,7 @@ import { domElems } from "./domElems";
 export let showIt = {
     showAndHide: function (toHide, toShow) {
         toHide.hide();
-        toShow.show();
+        toShow.show().css({"display": "flex"});
     },
     showHeader: function (where, roundCounter) {
         where.append(`<ul class="result__listItem--roundHeader">Round nr ${roundCounter}</ul>`)

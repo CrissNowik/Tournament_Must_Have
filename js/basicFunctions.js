@@ -33,7 +33,7 @@ export let basicFunctions = {
                 showIt.showAndHide(domElems.collectorAlertA, domElems.teamList);
                 showIt.showAndHide(domElems.collectorAlertC, domElems.teamList);
                 domElems.teamList.append(
-                    `<li class="collector__listItem" id="collector__listItem" data-nr="${counter}"> ${newTeam}<button class="collector__del" type="button">X</button></li>`);
+                    `<li class="collector__listItem" id="collector__listItem" data-nr="${counter}"> ${newTeam}<button class="collector__del" type="button"><p>X</p></button></li>`);
                 domElems.teamInput.val("");
             } else if (newTeam === ""){
                 domElems.collectorAlertA.show();
