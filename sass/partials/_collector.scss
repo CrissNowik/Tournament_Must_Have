@@ -1,5 +1,4 @@
-@import
-"modules/fonts",
+@import "modules/fonts",
 "modules/mixins",
 "modules/colors";
 
@@ -10,62 +9,82 @@
     flex-direction: column;
     height: 60%;
     margin-top: 1%;
-    .collector__form{
+
+    .collector__form {
         display: flex;
         flex-direction: row;
-        .collector__left{
+
+        .collector__left {
             display: flex;
             flex-direction: column;
             justify-content: center;
             margin-right: 20px;
-            .collector__select{
+
+            .collector__select {
                 @include collector_inputs;
                 width: 308px;
                 margin-bottom: 30px;
-                &:hover{
+
+                &:hover {
                     background-color: $color_btn_confirm_hover;
                 }
             }
+
             .collector__input {
                 @include collector_inputs;
                 width: 300px;
-                &:hover{
+
+                &:hover {
                     background-color: $color_btn_confirm_hover;
                 }
             }
         }
-        .collector__right{
-            .collector__add{
+
+        .collector__right {
+            .collector__add {
                 @include collector_btn;
             }
-            .collector__generate{
+
+            .collector__generate {
                 @include collector_btn;
             }
         }
-       
     }
-    .collector__show{
 
-        .collector__alert{
-           @include collector_alerts;
+    .collector__show {
+        @include center;
+        flex-direction: column;
+
+        .collector__alert {
+            @include collector_alerts;
             color: $color_alert;
             border: 3px solid $color_alert;
         }
-        .collector__caution{
-           @include collector_alerts;
+
+        .collector__caution {
+            @include collector_alerts;
             color: $color_caution;
             border: 3px solid $color_caution;
         }
-        .collector__list{
-            font-size:  25px;
-            color: $color_txt;
-            font-family: $font-set;
+
+        .collector__list {
             display: flex;
             flex-direction: column;
-            .collector__listItem{
+            background-color: rgba(0, 172, 70, 0.4);
+            border: 2px solid #fff;
+            padding: 3px;
+
+            .collector__listItem {
+                font-size: 25px;
+                color: $color_txt;
+                font-family: $font-set;
                 padding: 5px;
                 width: 320px;
-                .collector__del{
+                margin: 4px;
+                border-bottom: 1px solid #fff;
+                list-style-position: inside;
+
+                .collector__del {
                     @include center;
                     margin-left: 5px;
                     float: right;
@@ -76,16 +95,18 @@
                     border: 2px solid #fff;
                     color: #fff;
                     font-family: $font-set;
-                    font-size:  25px;
+                    font-size: 25px;
                     padding: 0;
                     cursor: pointer;
-                    &:hover{
+
+                    &:hover {
                         background-color: $color_btn_neg_hover;
                     }
-                    p{
+
+                    p {
                         position: fixed;
                         transform: rotate(-45deg);
-                        margin:0;
+                        margin: 0;
                     }
                 }
             }
