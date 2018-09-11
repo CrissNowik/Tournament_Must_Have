@@ -396,6 +396,7 @@ var basicFunctions = exports.basicFunctions = {
         if (_domElems.domElems.teamList.children().length > 1) {
             // generator validation
             _domElems.domElems.collectorAlertB.hide();
+            _domElems.domElems.teamList.css({ "display": "flex" });
         }
         if (_domElems.domElems.teamList.children().length > 30) {
             // number of teams validation

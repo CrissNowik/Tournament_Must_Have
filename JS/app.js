@@ -58,4 +58,4 @@ $(document).ready(function () {
             domElems.collectorAlertB.show();
         }
     });
-});
+}); 

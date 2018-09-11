@@ -68,7 +68,7 @@
         }
 
         .collector__list {
-            display: flex;
+            display: none;
             flex-direction: column;
             background-color: rgba(0, 172, 70, 0.4);
             border: 2px solid #fff;
@@ -79,7 +79,7 @@
                 color: $color_txt;
                 font-family: $font-set;
                 padding: 5px;
-                width: 320px;
+                width: 360px;
                 margin: 4px;
                 border-bottom: 1px solid #fff;
                 list-style-position: inside;

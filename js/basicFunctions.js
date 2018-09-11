@@ -12,6 +12,7 @@ export let basicFunctions = {
             let selectedTournamentType = $('#collector__select :selected').val();
             if (domElems.teamList.children().length > 1){ // generator validation
                 domElems.collectorAlertB.hide();
+                domElems.teamList.css({"display":"flex"});
             }
             if (domElems.teamList.children().length > 30){ // number of teams validation
                 domElems.collectorAlertD.show();
