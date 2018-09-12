@@ -8,6 +8,7 @@
         font-family: $font-set;
         font-size: 20px;
         color: $color_txt;
+        text-align: center;
         .result__listItem--roundHeader{
             font-weight: bolder;
             text-decoration-line: underline;
@@ -46,7 +47,7 @@
                     }
                 }
                 .result__ladder_luckyLine5spec {
-                    width: 140px;
+                    width: 120px;
                     border-right: 3px solid #000;
                     border-bottom: 3px solid #000;
                     border-top: none;
@@ -91,7 +92,7 @@
                     @include ladderRectR2;
                 }
             }
-            $margins: ( R4: 320px 10px 600px 10px, R4a: 320px 10px 560px 10px, R4b: 240px 10px 50px 10px, R5: 640px 10px 1240px 10px, R5a: 680px 10px 1240px 10px, R5b: 760px 10px 1240px 10px, R5c: 600px 10px 1240px 10px, R5d: 600px 10px 1160px 10px, R5e: 640px 10px 1080px 10px, R6: 1280px 10px 20px 10px, RaL3: 160px 10px 200px 10px, RaL4: 320px 10px 360px 10px, RaL4a: 320px 10px 440px 10px, RaL4b: 320px 10px 280px 10px, RaL5: 640px 10px 400px 10px, 3a: 160px 10px 20px 10px, 4a: 280px 10px 20px 10px, 4b: 320px 10px 20px 10px, 5a: 520px 10px 20px 10px, 5b: 640px 10px 20px 10px, 6a: 1000px 10px 20px 100px, 6b: 1040px 10px 20px 100px, 6c: 960px 10px 20px 100px, 6d: 1200px 10px 20px 100px, 6e: 1280px 10px 20px 100px);
+            $margins: ( R4: 320px 10px 600px 10px, R4a: 320px 10px 560px 10px, R4b: 240px 10px 50px 10px, R5: 640px 10px 1240px 10px, R5a: 680px 10px 1240px 10px, R5b: 760px 10px 1240px 10px, R5c: 600px 10px 1240px 10px, R5d: 600px 10px 1160px 10px, R5e: 640px 10px 1080px 10px, R6: 1280px 10px 20px 10px, RaL3: 160px 10px 200px 10px, RaL4: 320px 10px 360px 10px, RaL4a: 320px 10px 440px 10px, RaL4b: 320px 10px 280px 10px, RaL5: 640px 10px 400px 10px, 3a: 160px 10px 20px 10px, 4a: 280px 10px 20px 10px, 4b: 320px 10px 20px 10px, 5a: 520px 10px 20px 10px, 5b: 640px 10px 20px 10px, 6a: 1000px 10px 20px 10px, 6b: 1040px 10px 20px 10px, 6c: 960px 10px 20px 10px, 6d: 1200px 10px 20px 10px, 6e: 1280px 10px 20px 10px);
             @each $margin-name,
             $margin-val in $margins {
                 .result__ladder_rect#{$margin-name} {
