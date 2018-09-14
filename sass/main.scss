@@ -11,14 +11,15 @@
 "partials/footer";
 
 body{
+    @include reset;
     background-image: url('../res/background.jpeg');
     background-size: cover;
     background-position: center;
 }
 
 
-ol {
-    display: block; 
-    float: left;
-}
+// ol {
+//     display: block; 
+//     float: left;
+// }
 
