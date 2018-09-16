@@ -13,7 +13,7 @@ export let showIt = {
         where.append(`<ul class="result__listItem--roundHeader">Champion:</ul><li class="result__champ">${globalVariables.empty}</li>`);
     },
     showMatch: function(where, pairOnScreen){
-        where.append(`<li class="result__listItem">${pairOnScreen}</li>`);
+        where.append(`<li class="result__listItem"><p class="result__listItemTxt">${pairOnScreen}</p></li>`);
     },
     showLadderRectR1: function (where, idLeft, idRight, teamOne, teamTwo){
         where.append(`<li class="result__ladder_rect">${idLeft}${teamOne}</li><li class="result__ladder_rect">${idRight}${teamTwo}</li>`);
@@ -199,10 +199,11 @@ export let showIt = {
             }
             else if (numberOfTeams === 17 || numberOfTeams === 18) {                            
                 this.drawLines(where, amount, decision, round, "c", "d");
+                domElems.line_container6.find("div").css({"height": "714px", "margin-top": "660px"});
             }
             else if (numberOfTeams === 19 || numberOfTeams === 20) {                            
                 this.drawLines(where, amount, decision, round, "c", "b");
-                domElems.line_container6.find("div").css({"height": "800px"});
+                domElems.line_container6.find("div").css({"height": "794px", "margin-top": "660px"});
             }
             else if (numberOfTeams === 21 || numberOfTeams === 22) {                             
                 this.drawSpecLines(where, amount, decision, round, "c", "b", "d");
@@ -210,24 +211,25 @@ export let showIt = {
             }
             else if (numberOfTeams === 23 || numberOfTeams === 24) {                             
                 this.drawLines(where, amount, decision, round, "c", "b");
-                domElems.line_container6.find("div").css({"height": "680"});
+                domElems.line_container6.find("div").css({"height": "674px", "margin-top": "660px"});
             }
             else if (numberOfTeams === 25 || numberOfTeams === 26) {                             
                 this.drawLines(where, amount, decision, round, "c", "d");
-                domElems.line_container6.find("div").css({"height": "1200", "margin-top": "638px"});
+                domElems.line_container6.find("div").css({"height": "1194px", "margin-top": "620px"});
             }
             else if (numberOfTeams === 27 || numberOfTeams === 28) {                              
                 this.drawLines(where, amount, decision, round, "c", "b");
-                domElems.line_container6.find("div").css({"height": "1120"});
+                domElems.line_container6.find("div").css({"height": "1114px", "margin-top": "660px"});
             }
             else if (numberOfTeams === 29 || numberOfTeams === 30) {                            
                 this.drawSpecLines(where, amount, decision, round, "c", "b", "d");
-                domElems.line_container5.find("div").css({"height": "640"});
-                domElems.line_container6.find("div").css({"height": "1280"});
+                domElems.line_container5.find("div").css({"height": "640px", "margin-left": "-166px"});               
+                domElems.line_container6.find("div").css({"height": "1280px"});
             }   
             else if (numberOfTeams === 31 || numberOfTeams === 32) {
-                this.drawLines(where, amount, decision, round, "c", "b");                   
-                domElems.line_container6.find("div").css({"height": "1280"});
+                this.drawLines(where, amount, decision, round, "c", "b"); 
+                domElems.line_container5.find("div").css({"margin-left": "-166px"});                
+                domElems.line_container6.find("div").css({"height": "1274px", "margin-top": "660px"});
             }
         } 
     },

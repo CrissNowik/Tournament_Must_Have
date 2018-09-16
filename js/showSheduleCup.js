@@ -6,7 +6,8 @@ export function showSheduleCup(sheduleArray, numberOfTeams) {
     let roundCounter = 1;
     let pairOnScreen = "";
     console.log("do pokazania: ",sheduleArray);
-    
+    domElems.resultList.addClass("container"); 
+    domElems.sheduleOnScreenA.addClass("col-12");    
     domElems.sheduleOnScreenB.css('display', 'none');    
     domElems.sheduleOnScreenC.css('display', 'none');
     domElems.sheduleOnScreenD.css('display', 'none');
@@ -152,7 +153,11 @@ export function showSheduleCup(sheduleArray, numberOfTeams) {
                     showIt.showChampRect(domElems.ladder_round6, 6, "c");
                     showIt.showLines(domElems.line_container6, amount, 6, sheduleArray[4], numberOfTeams);
                     showIt.specialLine(domElems.line_container5, 1, "spec");
-                    domElems.line_container5.find("div.result__ladder_luckyLine5spec").css({"margin-top": "370px"});
+                    if (numberOfTeams === 21 || numberOfTeams === 22) {
+                        domElems.line_container5.find("div.result__ladder_luckyLine5spec").css({"margin-top": "333px"});
+                    } else if(numberOfTeams === 23 || numberOfTeams === 24){
+                        domElems.line_container5.find("div.result__ladder_luckyLine5spec").css({"margin-top": "373px"});
+                    }
                 } else if (numberOfTeams === 25 || numberOfTeams === 26){
                     showIt.showChampRect(domElems.ladder_round6, 6, "d");
                     showIt.showLines(domElems.line_container6, amount, 6, sheduleArray[4], numberOfTeams);
@@ -167,7 +172,7 @@ export function showSheduleCup(sheduleArray, numberOfTeams) {
                     showIt.showChampRect(domElems.ladder_round6, 6, "e");
                     showIt.showLines(domElems.line_container6, amount, 6, sheduleArray[4], numberOfTeams);
                     showIt.specialLine(domElems.line_container5, 1, "specA")
-                    domElems.line_container5.find("div.result__ladder_luckyLine5specA").css({"height": "640"});
+                    domElems.line_container5.find("div.result__ladder_luckyLine5specA").css({"height": "640", "margin-left": "-166px"});
                 }
             }
         } 

@@ -1,6 +1,6 @@
 .container {
     width: 100%;
-    max-width: 1548px;
+    max-width: 1366px;
     margin: 0 auto;
   
     .row {
@@ -15,8 +15,8 @@
           width: (100%/12) * $i;
           float: left;
           min-height: 1px;
-          padding: 12px;
-          border: 1px solid #fff;
+          // padding: 10px;
+          // border: 1px solid #fff;
         }
       }
     }

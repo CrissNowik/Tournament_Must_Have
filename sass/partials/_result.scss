@@ -2,39 +2,42 @@
 .result {
     display: none;
     justify-content: center;
+    align-items: center;
+    flex-direction: column;
         .result__list{
             margin: 0;
             background-color: rgba($color: #fff, $alpha: 0.5);
             font-family: $font-set;
             font-size: 20px;
             color: $color_txt;
-            padding: 10px;
             list-style-position: inside;
-            .result__listItem--roundHeader{
+            .result__list_o{
+                padding: 0;
                 text-align: center;
-                font-weight: bolder;
-                text-decoration-line: underline;
-                margin: 15px 0 5px 0;
-            }
-            .result__listItem{
-                text-align: center;
-                min-width: 420px;
-            }
+                .result__listItem--roundHeader{
+                    text-align: center;
+                    font-weight: bolder;
+                    text-decoration-line: underline;
+                    margin: 15px 0 5px 0;
+                }
+                .result__listItem{
+                    
+                    .result__listItemTxt{
+                        display: inline;
+                        color: $color_txt;
+                        margin: 0;
+                    }
+                }
+            }  
         }
- 
     .result__champ {
         list-style-type: none;
         text-align: center;
     }
     .result__lader {
         display: none;     
-        .result__lines_container {
-            position: absolute;
-            z-index: -1;
-            background-color: rgba($color: #fff, $alpha: 0.5);
+        background-color: rgba($color: #fff, $alpha: 0.5);
             .result__ladder_lines {
-                width: 205px;
-                float: left;
                 .result__ladder_luckyLine2a {
                     @include luckyLineR2;
                 }
@@ -45,12 +48,12 @@
                     @include luckyLineR2;
                 }
                 $luckyLines:( 
-                3a: 240px 0 80px 100px, 
-                3b: 318px 0 80px 100px, 
-                3c: 0 0 80px 100px, 
-                3d: -78px 0 0 100px, 
-                5a: 396px 0 0 100px, 
-                5b: 476px 0 0 100px);
+                3b: 318px 0 80px 0, 
+                3a: 240px 0 80px 0, 
+                3c: 0 0 80px 0, 
+                3d: -78px 0 0 0, 
+                5a: 396px 0 0 -196px, 
+                5b: 476px 0 0 -196px);
                 @each $line-name,
                 $margin-val in $luckyLines {
                     .result__ladder_luckyLine#{$line-name} {
@@ -60,34 +63,34 @@
                 }
                 .result__ladder_luckyLine5spec {
                     width: 120px;
-                    border-right: 3px solid #000;
-                    border-bottom: 3px solid #000;
+                    border-right: 3px solid $color_btn_confirm_hover;
+                    border-bottom: 3px solid $color_btn_confirm_hover;
                     border-top: none;
                     border-left: none;
                     position: relative;
-                    height: 270px;
-                    margin: 330px 0 0 100px;
+                    height: 261px;
+                    margin: 333px 0 0 -196px;
                 }
                 .result__ladder_luckyLine5specA {
                     @include basicLadderLine;
                     height: 400px;
-                    margin: 638px 0 0 100px;
+                    margin: 634px 0 0 -196px; //nie tykać
                 }
-                $lines:( 
-                    (R1, 78px, 76px 0 80px 100px), 
-                    (R2a, 158px, 116px 0 160px 100px), 
-                    (R2b, 158px, 116px 0 160px 100px), 
-                    (R2c, 158px, 116px 0 160px 100px), 
-                    (R3a, 238px, 196px 0 160px 100px), 
-                    (R3b, 318px, 196px 0 160px 100px), 
-                    (R3c, 318px, 196px 0 320px 100px), 
-                    (R3d, 240px, 318px 0 80px 100px), 
-                    (R4a, 478px, 356px 0 0 100px), 
-                    (R4b, 398px, 356px 0 0 100px), 
-                    (R5c, 638px, 356px 0 0 100px), 
-                    (R5d, 598px, 356px 0 0 100px), 
-                    (R6c, 720px, 676px 0 0 100px), 
-                    (R6d, 650px, 676px 0 0 100px));
+                $lines:(  
+                    (R1, 74px, 60px 0 80px 0), 
+                    (R2a, 154px, 100px 0 160px 0), 
+                    (R2b, 154px, 100px 0 160px 0), 
+                    (R2c, 154px, 100px 0 160px 0),
+                    (R3a, 238px, 180px 0 160px 0), 
+                    (R3b, 314px, 180px 0 160px 0), 
+                    (R3c, 314px, 180px 0 320px 0), 
+                    (R3d, 240px, 318px 0 80px 0), 
+                    (R4a, 478px, 340px 0 0 0), 
+                    (R4b, 398px, 340px 0 0 0), 
+                    (R5c, 638px, 340px 0 0 -196px), //nie tykać
+                    (R5d, 598px, 340px 0 0 -196px), // nie tykać
+                    (R6c, 720px, 640px 0 0 -196px), 
+                    (R6d, 644px, 660px 0 0 -196px));
                 @each $line-name,
                 $height-val,
                 $margin-val in $lines {
@@ -98,59 +101,62 @@
                     }
                 }
             }
-        }
-        .result__ladder_round {
-            max-height: 1px;
-            padding: 0;
-            .result__ladder_rect {
-                margin: 40px 10px;
-                @include ladderRect;
+            #ladder_round1{
+                padding-left: 112px;
             }
-            .result__ladder_rectR3 {
-                @include ladderRectR3;
-            }
-            .result__ladder_rectR3c {
-                @include ladderRectR3;
-            }
-            $classNames: (R2, R2a, R2b, R2e, RaL2, RaL2a, RaL2b);
-            @each $val in $classNames {
-                .result__ladder_rect#{$val} {
-                    @include ladderRectR2;
-                }
-            }
-            $margins: ( 
-                R4: 320px 10px 600px 10px, 
-                R4a: 320px 10px 560px 10px, 
-                R4b: 240px 10px 50px 10px, 
-                R5: 640px 10px 1240px 10px, 
-                R5a: 680px 10px 1240px 10px, 
-                R5b: 760px 10px 1240px 10px, 
-                R5c: 600px 10px 1240px 10px, 
-                R5d: 600px 10px 1160px 10px, 
-                R5e: 640px 10px 1080px 10px, 
-                R6: 1280px 10px 20px 10px, 
-                RaL3: 160px 10px 200px 10px, 
-                RaL4: 320px 10px 360px 10px, 
-                RaL4a: 320px 10px 440px 10px, 
-                RaL4b: 320px 10px 280px 10px, 
-                RaL5: 640px 10px 400px 10px, 
-                3a: 160px 10px 20px 10px, 
-                4a: 280px 10px 20px 10px, 
-                4b: 320px 10px 20px 10px, 
-                5a: 520px 10px 20px 10px, 
-                5b: 640px 10px 20px 10px, 
-                6a: 1000px 10px 20px 10px, 
-                6b: 1040px 10px 20px 10px, 
-                6c: 960px 10px 20px 10px, 
-                6d: 1200px 10px 20px 10px, 
-                6e: 1280px 10px 20px 10px);
-            @each $margin-name,
-            $margin-val in $margins {
-                .result__ladder_rect#{$margin-name} {
+            .result__ladder_round {
+                margin: 0;
+                padding: 0;
+                .result__ladder_rect {
+                    margin: 40px 0 10px 0;
                     @include ladderRect;
-                    margin: $margin-val;
+                    border-left: 3px solid $color_btn_confirm_hover;
+                }
+                .result__ladder_rectR3 {
+                    @include ladderRectR3;
+                }
+                .result__ladder_rectR3c {
+                    @include ladderRectR3;
+                }
+                $classNames: (R2, R2a, R2b, R2e, RaL2, RaL2a, RaL2b);
+                @each $val in $classNames {
+                    .result__ladder_rect#{$val} {
+                        @include ladderRectR2;
+                    }
+                }
+                $margins: ( 
+                    R4: 320px 0 600px -3px, 
+                    R4a: 320px 0 560px -3px, 
+                    R4b: 240px 0 50px -3px, 
+                    R5: 640px -30px 1240px 30px, 
+                    R5a: 680px 0 1240px 30px, 
+                    R5b: 760px 0 1240px 30px, 
+                    R5c: 600px 0 1240px 30px, 
+                    R5d: 600px 0 1160px 30px, 
+                    R5e: 640px 0 1080px 30px, 
+                    R6: 1280px 0 20px -3px, 
+                    RaL3: 160px 0 200px -3px, 
+                    RaL4: 320px 0 360px -3px, 
+                    RaL4a: 320px 0 440px -3px, 
+                    RaL4b: 320px 0 280px -3px, 
+                    RaL5: 640px 0 400px 30px, 
+                    3a: 160px 0 20px -3px, 
+                    4a: 280px 0 20px -3px, 
+                    4b: 320px 0 20px -3px, 
+                    5a: 520px 0 20px -3px, 
+                    5b: 640px 0 20px 30px, 
+                    6a: 1000px 0 20px 30px, 
+                    6b: 1040px 0 20px 30px, 
+                    6c: 960px 0 20px 30px, 
+                    6d: 1200px 0 20px 30px, 
+                    6e: 1280px 0 20px 60px);
+                @each $margin-name,
+                $margin-val in $margins {
+                    .result__ladder_rect#{$margin-name} {
+                        @include ladderRect;
+                        margin: $margin-val;
+                    }
                 }
             }
         }
-    }
-}
+    }   

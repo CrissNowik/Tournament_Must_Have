@@ -89,6 +89,7 @@ var domElems = exports.domElems = {
     collectorAlertB: $('#alertTwo'),
     collectorAlertC: $('#alertThree'),
     collectorAlertD: $('#alertFour'),
+    resultList: $('#result_list'),
     sheduleOnScreenA: $('#result__listA'),
     sheduleOnScreenB: $('#result__listB'),
     sheduleOnScreenC: $('#result__listC'),
@@ -154,7 +155,7 @@ var showIt = exports.showIt = {
         where.append("<ul class=\"result__listItem--roundHeader\">Champion:</ul><li class=\"result__champ\">" + _globalVariables.globalVariables.empty + "</li>");
     },
     showMatch: function showMatch(where, pairOnScreen) {
-        where.append("<li class=\"result__listItem\">" + pairOnScreen + "</li>");
+        where.append("<li class=\"result__listItem\"><p class=\"result__listItemTxt\">" + pairOnScreen + "</p></li>");
     },
     showLadderRectR1: function showLadderRectR1(where, idLeft, idRight, teamOne, teamTwo) {
         where.append("<li class=\"result__ladder_rect\">" + idLeft + teamOne + "</li><li class=\"result__ladder_rect\">" + idRight + teamTwo + "</li>");
@@ -331,28 +332,30 @@ var showIt = exports.showIt = {
                 this.drawLines(where, amount, decision, round, "c", "b");
             } else if (numberOfTeams === 17 || numberOfTeams === 18) {
                 this.drawLines(where, amount, decision, round, "c", "d");
+                _domElems.domElems.line_container6.find("div").css({ "height": "714px", "margin-top": "660px" });
             } else if (numberOfTeams === 19 || numberOfTeams === 20) {
                 this.drawLines(where, amount, decision, round, "c", "b");
-                _domElems.domElems.line_container6.find("div").css({ "height": "800px" });
+                _domElems.domElems.line_container6.find("div").css({ "height": "794px", "margin-top": "660px" });
             } else if (numberOfTeams === 21 || numberOfTeams === 22) {
                 this.drawSpecLines(where, amount, decision, round, "c", "b", "d");
                 _domElems.domElems.line_container5.find("div").css({ "height": "638px" });
             } else if (numberOfTeams === 23 || numberOfTeams === 24) {
                 this.drawLines(where, amount, decision, round, "c", "b");
-                _domElems.domElems.line_container6.find("div").css({ "height": "680" });
+                _domElems.domElems.line_container6.find("div").css({ "height": "674px", "margin-top": "660px" });
             } else if (numberOfTeams === 25 || numberOfTeams === 26) {
                 this.drawLines(where, amount, decision, round, "c", "d");
-                _domElems.domElems.line_container6.find("div").css({ "height": "1200", "margin-top": "638px" });
+                _domElems.domElems.line_container6.find("div").css({ "height": "1194px", "margin-top": "620px" });
             } else if (numberOfTeams === 27 || numberOfTeams === 28) {
                 this.drawLines(where, amount, decision, round, "c", "b");
-                _domElems.domElems.line_container6.find("div").css({ "height": "1120" });
+                _domElems.domElems.line_container6.find("div").css({ "height": "1114px", "margin-top": "660px" });
             } else if (numberOfTeams === 29 || numberOfTeams === 30) {
                 this.drawSpecLines(where, amount, decision, round, "c", "b", "d");
-                _domElems.domElems.line_container5.find("div").css({ "height": "640" });
-                _domElems.domElems.line_container6.find("div").css({ "height": "1280" });
+                _domElems.domElems.line_container5.find("div").css({ "height": "640px", "margin-left": "-166px" });
+                _domElems.domElems.line_container6.find("div").css({ "height": "1280px" });
             } else if (numberOfTeams === 31 || numberOfTeams === 32) {
                 this.drawLines(where, amount, decision, round, "c", "b");
-                _domElems.domElems.line_container6.find("div").css({ "height": "1280" });
+                _domElems.domElems.line_container5.find("div").css({ "margin-left": "-166px" });
+                _domElems.domElems.line_container6.find("div").css({ "height": "1274px", "margin-top": "660px" });
             }
         }
     },
@@ -882,7 +885,8 @@ function showSheduleCup(sheduleArray, numberOfTeams) {
     var roundCounter = 1;
     var pairOnScreen = "";
     console.log("do pokazania: ", sheduleArray);
-
+    _domElems.domElems.resultList.addClass("container");
+    _domElems.domElems.sheduleOnScreenA.addClass("col-12");
     _domElems.domElems.sheduleOnScreenB.css('display', 'none');
     _domElems.domElems.sheduleOnScreenC.css('display', 'none');
     _domElems.domElems.sheduleOnScreenD.css('display', 'none');
@@ -1027,7 +1031,11 @@ function showSheduleCup(sheduleArray, numberOfTeams) {
                     _showIt.showIt.showChampRect(_domElems.domElems.ladder_round6, 6, "c");
                     _showIt.showIt.showLines(_domElems.domElems.line_container6, _amount7, 6, sheduleArray[4], numberOfTeams);
                     _showIt.showIt.specialLine(_domElems.domElems.line_container5, 1, "spec");
-                    _domElems.domElems.line_container5.find("div.result__ladder_luckyLine5spec").css({ "margin-top": "370px" });
+                    if (numberOfTeams === 21 || numberOfTeams === 22) {
+                        _domElems.domElems.line_container5.find("div.result__ladder_luckyLine5spec").css({ "margin-top": "333px" });
+                    } else if (numberOfTeams === 23 || numberOfTeams === 24) {
+                        _domElems.domElems.line_container5.find("div.result__ladder_luckyLine5spec").css({ "margin-top": "373px" });
+                    }
                 } else if (numberOfTeams === 25 || numberOfTeams === 26) {
                     _showIt.showIt.showChampRect(_domElems.domElems.ladder_round6, 6, "d");
                     _showIt.showIt.showLines(_domElems.domElems.line_container6, _amount7, 6, sheduleArray[4], numberOfTeams);
@@ -1042,7 +1050,7 @@ function showSheduleCup(sheduleArray, numberOfTeams) {
                     _showIt.showIt.showChampRect(_domElems.domElems.ladder_round6, 6, "e");
                     _showIt.showIt.showLines(_domElems.domElems.line_container6, _amount7, 6, sheduleArray[4], numberOfTeams);
                     _showIt.showIt.specialLine(_domElems.domElems.line_container5, 1, "specA");
-                    _domElems.domElems.line_container5.find("div.result__ladder_luckyLine5specA").css({ "height": "640" });
+                    _domElems.domElems.line_container5.find("div.result__ladder_luckyLine5specA").css({ "height": "640", "margin-left": "-166px" });
                 }
             }
         }
