@@ -37,6 +37,7 @@
     .result__lader {
         display: none;     
         background-color: rgba($color: #fff, $alpha: 0.5);
+        max-height: 2600px;
             .result__ladder_lines {
                 .result__ladder_luckyLine2a {
                     @include luckyLineR2;
@@ -74,7 +75,7 @@
                 .result__ladder_luckyLine5specA {
                     @include basicLadderLine;
                     height: 400px;
-                    margin: 634px 0 0 -196px; //nie tykać
+                    margin: 634px 0 0 -196px; 
                 }
                 $lines:(  
                     (R1, 74px, 60px 0 80px 0), 
@@ -87,8 +88,8 @@
                     (R3d, 240px, 318px 0 80px 0), 
                     (R4a, 478px, 340px 0 0 0), 
                     (R4b, 398px, 340px 0 0 0), 
-                    (R5c, 638px, 340px 0 0 -196px), //nie tykać
-                    (R5d, 598px, 340px 0 0 -196px), // nie tykać
+                    (R5c, 638px, 340px 0 0 -196px), 
+                    (R5d, 598px, 340px 0 0 -196px), 
                     (R6c, 720px, 640px 0 0 -196px), 
                     (R6d, 644px, 660px 0 0 -196px));
                 @each $line-name,
@@ -107,6 +108,7 @@
             .result__ladder_round {
                 margin: 0;
                 padding: 0;
+                overflow:visible;
                 .result__ladder_rect {
                     margin: 40px 0 10px 0;
                     @include ladderRect;
@@ -125,15 +127,15 @@
                     }
                 }
                 $margins: ( 
-                    R4: 320px 0 600px -3px, 
-                    R4a: 320px 0 560px -3px, 
+                    R4: 320px 0 600px -3px,  // here is the problem
+                    R4a: 320px 0 560px -3px, // here is the problem 
                     R4b: 240px 0 50px -3px, 
-                    R5: 640px -30px 1240px 30px, 
-                    R5a: 680px 0 1240px 30px, 
-                    R5b: 760px 0 1240px 30px, 
-                    R5c: 600px 0 1240px 30px, 
-                    R5d: 600px 0 1160px 30px, 
-                    R5e: 640px 0 1080px 30px, 
+                    R5: 640px -30px 1240px 30px, // here is the problem
+                    R5a: 680px 0 1240px 30px, // here is the problem
+                    R5b: 760px 0 1240px 30px, // here is the problem
+                    R5c: 600px 0 1240px 30px, // here is the problem
+                    R5d: 600px 0 1160px 30px, // here is the problem
+                    R5e: 640px 0 1080px 30px, // here is the problem
                     R6: 1280px 0 20px -3px, 
                     RaL3: 160px 0 200px -3px, 
                     RaL4: 320px 0 360px -3px, 

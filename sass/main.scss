@@ -10,12 +10,17 @@
 "partials/header",
 "partials/footer";
 
-body{
+html{
     @include reset;
-    background-image: url('../res/background.jpeg');
-    background-size: cover;
-    background-position: center;
+    body{
+        background-image: url('../res/background.jpeg');
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+        height: 100%;
+    }
 }
+
 
 
 // ol {
