@@ -6,7 +6,7 @@
 .nav{
     @include center;
     height: 60%;
-    margin-top: 1%;
+    margin-top: 50px;
     .nav__confirm{
         height: 300px;
         width: 300px;
@@ -16,13 +16,15 @@
         border-radius: 2px;
         color: #fff;
         font-family: $font-set;
-        font-size:  60px;
+        font-size:  40px;
         cursor: pointer;
+        padding: 0;
        &:hover{
            background-color: $color_btn_confirm_hover;
        }
         .nav__confirm_txt{
             transform: rotate(-45deg);
+            margin: 0;
         }
     } 
 }

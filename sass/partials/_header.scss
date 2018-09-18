@@ -8,6 +8,7 @@
         font-family: $font-set;
         font-size: 80px;
         color: #fff;
+        margin: 30px;
     }
     .header__logo{
         width: 150px;
@@ -15,7 +16,7 @@
         background-color: transparent;
         display: flex;
         transform: rotate(-45deg);
-        margin: 2%;
+        margin: 50px;
         border: 2px solid #fff;
     }
 }

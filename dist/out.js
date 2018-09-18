@@ -590,8 +590,7 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.roundrobin = roundrobin;
 var DUMMY = -1;
-// returns an array of round representations (array of player pairs).
-// http://en.wikipedia.org/wiki/Round-robin_tournament#Scheduling_algorithm
+
 function roundrobin(n, ps) {
   // n = num players
   var rs = []; // rs = round array
@@ -832,12 +831,21 @@ function showSheduleLeague(readyShedule) {
 
         if (roundCounter <= 8) {
             _showIt.showIt.showHeader(_domElems.domElems.sheduleOnScreenA, roundCounter);
+            _domElems.domElems.sheduleOnScreenA.addClass("col-12");
         } else if (8 <= roundCounter && roundCounter <= 16) {
             _showIt.showIt.showHeader(_domElems.domElems.sheduleOnScreenB, roundCounter);
+            _domElems.domElems.sheduleOnScreenA.removeClass("col-12").addClass("col-6");
+            _domElems.domElems.sheduleOnScreenB.addClass("col-6");
         } else if (17 <= roundCounter && roundCounter <= 24) {
             _showIt.showIt.showHeader(_domElems.domElems.sheduleOnScreenC, roundCounter);
+            _domElems.domElems.sheduleOnScreenA.removeClass("col-12 col-6").addClass("col-4");
+            _domElems.domElems.sheduleOnScreenB.removeClass("col-6").addClass("col-4");
+            _domElems.domElems.sheduleOnScreenC.addClass("col-4");
         } else {
             _showIt.showIt.showHeader(_domElems.domElems.sheduleOnScreenD, roundCounter);
+            _domElems.domElems.sheduleOnScreenA.removeClass("col-12 col-6 col-4");
+            _domElems.domElems.sheduleOnScreenB.removeClass("col-6 col-4");
+            _domElems.domElems.sheduleOnScreenC.removeClass("col-4");
         }
 
         for (var j = 0; j < readyShedule[i].length; j++) {

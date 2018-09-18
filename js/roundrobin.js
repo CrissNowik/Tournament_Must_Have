@@ -1,6 +1,5 @@
 const DUMMY = -1;
-// returns an array of round representations (array of player pairs).
-// http://en.wikipedia.org/wiki/Round-robin_tournament#Scheduling_algorithm
+
 export function roundrobin (n, ps) {  // n = num players
   var rs = [];                  // rs = round array
   if (!ps) {
