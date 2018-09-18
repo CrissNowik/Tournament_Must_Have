@@ -29,7 +29,7 @@ export let basicFunctions = {
             } else {
                 domElems.cupCaution.hide();
             }
-            if (newTeam != "" && newTeam.length < 26) { // input content validation
+            if (newTeam != "" && newTeam.length < 22) { // input content validation
                 let counter = globalVariables.dataCounter++;
                 showIt.showAndHide(domElems.collectorAlertA, domElems.teamList);
                 showIt.showAndHide(domElems.collectorAlertC, domElems.teamList);

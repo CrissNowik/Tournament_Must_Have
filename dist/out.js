@@ -412,7 +412,7 @@ var basicFunctions = exports.basicFunctions = {
         } else {
             _domElems.domElems.cupCaution.hide();
         }
-        if (newTeam != "" && newTeam.length < 26) {
+        if (newTeam != "" && newTeam.length < 22) {
             // input content validation
             var counter = _globalVariables.globalVariables.dataCounter++;
             _showIt.showIt.showAndHide(_domElems.domElems.collectorAlertA, _domElems.domElems.teamList);
