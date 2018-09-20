@@ -1063,6 +1063,27 @@ function showSheduleCup(sheduleArray, numberOfTeams) {
             }
         }
     }
+    /**
+    * cutBottomMargins - function for cutting bottom margins of the rectangles which are last in column
+    *                      it give us more consistent look of the website
+    *
+    * @param {number} round - ladder round number
+    * @param {string} container - name of the last rectangle where margin bottom will be cut
+    */
+
+    var ulR3 = $('#ladder_round3')[0].lastElementChild.className;
+    var ulR4 = $('#ladder_round4')[0].lastElementChild.className;
+    var ulR5 = $('#ladder_round5')[0].lastElementChild.className;
+
+    function cutBottomMargins(round, container) {
+        if (container === "result__ladder_rectR4" || container === "result__ladder_rectR4a" || container === "result__ladder_rectR5" || container === "result__ladder_rectR5a" || container === "result__ladder_rectR5b" || container === "result__ladder_rectR5c" || container === "result__ladder_rectR5d" || container === "result__ladder_rectR5e" || container === "result__ladder_rectR3" || container === "result__ladder_rectR3c") {
+            var R3 = $("#ladder_round" + round + " :nth-last-child(1)");
+            R3.css("margin-bottom", "20px");
+        }
+    };
+    cutBottomMargins(3, ulR3);
+    cutBottomMargins(4, ulR4);
+    cutBottomMargins(5, ulR5);
 };
 
 /***/ })
