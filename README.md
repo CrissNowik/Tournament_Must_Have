@@ -1,15 +1,17 @@
-# Tournament_Must_Have
+# Tournament_Must_Have 
+(https://github.com/CrissNowik/Tournament_Must_Have/blob/master/res/logo.jpeg?raw=true)
 
 Description:
 =============
 I'm glad that you want to use my userful web app which help you in organising and creating competion plans in sport events. Now creating plans of games will be easier than ever.
+
 Features:
+=========
 *  "round-robin" game system (Berger table),
 *  "tournament" game system (Cup formula, KO system),
 *  cup visualisation - tournament ladder, 
 *  PDF download of tournament ladder and game shedule
-
-It's obvious that "Tournament_Must_Have" app is fully responsive and works properly on mobile devices.
+*  RWD 
 
 Inspiration:
 ============
@@ -31,6 +33,7 @@ Demo:
 Copyright:
 ==========
 CrissNowik
+
 Check my [LinkedIn] profile ;-)
 
 
