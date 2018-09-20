@@ -1,6 +1,6 @@
 # Tournament_Must_Have 
-(https://github.com/CrissNowik/Tournament_Must_Have/blob/master/res/logo.jpeg?raw=true)
 
+![alt text](https://github.com/CrissNowik/Tournament_Must_Have/blob/master/res/logo.jpeg?raw=true "Logo")
 Description:
 =============
 I'm glad that you want to use my userful web app which help you in organising and creating competion plans in sport events. Now creating plans of games will be easier than ever.
