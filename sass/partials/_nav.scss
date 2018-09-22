@@ -32,6 +32,11 @@
 @media screen and (max-width : 900px) {
     .nav{
         margin: 20px 0 50px 0;
+        .nav__confirm{
+            height: 250px;
+            width: 250px;
+            font-size: 35px;
+        }
     }
 }
 

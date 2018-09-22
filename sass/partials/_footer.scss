@@ -35,11 +35,30 @@
     }
 }
 @media screen and (max-width : 900px) {
-
+    .footer{
+        .footer__info{
+            font-size: 16px;
+            margin: 10px;
+        }
+    }
 }
 
 @media screen and (max-width : 660px) {
-
+    .footer{
+        .footer__info{
+            font-size: 16px;
+            margin: 10px;
+        }
+        .footer__links{
+            font-size: 12px;
+            display: list-item;
+            list-style: none;
+            padding: 0;
+            .footer__link{
+                margin: 3px;
+            }
+        }
+    }
 }
 
 @media screen and (max-width : 360px) {
