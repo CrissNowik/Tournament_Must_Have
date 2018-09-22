@@ -34,6 +34,14 @@
         }
     }
 }
+@media screen and (max-width : 900px) {
+
+}
+
+@media screen and (max-width : 660px) {
+
+}
+
 @media screen and (max-width : 360px) {
     .footer{
         .footer__info{
@@ -42,8 +50,9 @@
         }
         .footer__links{
             font-size: 12px;
-            display: flex;
-            flex-direction: column;
+            display: list-item;
+            list-style: none;
+            padding: 0;
             .footer__link{
                 margin: 3px;
             }

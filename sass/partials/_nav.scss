@@ -29,15 +29,30 @@
     } 
 }
 
+@media screen and (max-width : 900px) {
+    .nav{
+        margin: 20px 0 50px 0;
+    }
+}
+
+@media screen and (max-width : 660px) {
+    .nav{
+        margin: 20px 0 50px 0;
+        .nav__confirm{
+            height: 200px;
+            width: 200px;
+            font-size: 30px;
+        }
+    }
+}
+
 @media screen and (max-width : 360px) {
     .nav{
+        margin: 20px 0 50px 0;
         .nav__confirm{
             height: 150px;
             width: 150px;
             font-size:  20px;
-        }
-        .nav__confirm_txt{
-            color: #fff;
         }
     }
 }
