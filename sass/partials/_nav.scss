@@ -28,3 +28,16 @@
         }
     } 
 }
+
+@media screen and (max-width : 360px) {
+    .nav{
+        .nav__confirm{
+            height: 150px;
+            width: 150px;
+            font-size:  20px;
+        }
+        .nav__confirm_txt{
+            color: #fff;
+        }
+    }
+}
