@@ -115,12 +115,19 @@
     }
 }
 
-@media screen and (max-width : 900px) {
-
-}
-
 @media screen and (max-width : 660px) {
-
+    .collector__form {
+        flex-wrap: wrap;
+        .collector__left{
+            width: 100%;
+            @include center;
+            margin-bottom: 20px;
+        }
+        .collector__right{
+            width: 100%;
+            @include center;
+        }
+    }
 }
 
 @media screen and (max-width : 360px) {
