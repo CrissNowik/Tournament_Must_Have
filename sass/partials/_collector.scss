@@ -131,5 +131,39 @@
 }
 
 @media screen and (max-width : 360px) {
+    .collector{
+        .collector__form{
+            .collector__right{
+                    .collector__add {
+                        height: 70px;
+                        width: 70px;
+                        font-size: 15px;
+                        @include center;
+                    }
+        
+                    .collector__generate {
+                        height: 70px;
+                        width: 70px;
+                        font-size: 15px;
+                        @include center;
+                    }
+                }
+            }
+        .collector__show {
+            .collector__list{
+                padding: 0;
+                margin: 2px;
+                .collector__listItem{
+                    width: 345px;
+                    margin: 2px;
+                    .collector__del{                    
+                        height: 25px;
+                        width: 25px;
+                        font-size: 15px;
+                    }
+                }
+            }
+        }
 
+    }
 }
