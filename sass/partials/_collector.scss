@@ -154,12 +154,14 @@
                 padding: 0;
                 margin: 2px;
                 .collector__listItem{
-                    width: 345px;
+                    width: 330px;
                     margin: 2px;
+                    font-size: 16px;
                     .collector__del{                    
                         height: 25px;
                         width: 25px;
                         font-size: 15px;
+                        margin-right: 10px;
                     }
                 }
             }
