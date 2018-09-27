@@ -13,7 +13,6 @@
             list-style-position: inside;
             .result__list_o{
                 padding: 0;
-                text-align: center;
                 .result__listItem--roundHeader{
                     text-align: center;
                     font-weight: bolder;
@@ -21,7 +20,8 @@
                     margin: 15px 0 5px 0;
                 }
                 .result__listItem{
-                    
+                    font-size: 15px;
+                    padding-left: 5px;
                     .result__listItemTxt{
                         display: inline;
                         color: $color_txt;
@@ -162,3 +162,69 @@
             }
         }
     }   
+
+    @media screen and (max-width : 1400px) {
+        .result {
+            .result__list {
+                flex-wrap: wrap;
+                .result__list_o {
+                width: 50%;
+                text-align: center;
+                }
+            }
+         }
+    }
+
+    @media screen and (max-width : 920px) {
+        .result {
+            .result__list {
+                flex-wrap: wrap;
+                .result__list_o {
+                width: 100%;
+                text-align: center;
+                    .result__listItem{
+                        font-size: 20px;
+                        .result__listItemTxt{
+                            display: inline;
+                            color: $color_txt;
+                            margin: 0;
+                        }
+                    }
+                }
+            }
+         }
+    }
+    @media screen and (max-width : 610px) {
+        .result {
+            .result__list {
+                flex-wrap: wrap;
+                .result__list_o {
+                width: 100%;
+                text-align: center;
+                    .result__listItem{
+                        font-size: 14px;
+                        .result__listItemTxt{
+                            display: inline;
+                            color: $color_txt;
+                            margin: 0;
+                        }
+                    }
+                }
+            }
+         }
+    }
+
+    @media screen and (max-width : 360px) {
+        .result {
+            .result__list {
+                flex-wrap: wrap;
+                .result__list_o {
+                width: 100%;
+                font-size: 13px;
+                }
+            }
+         }
+    }
+
+    
+
