@@ -4,9 +4,9 @@
     justify-content: center;
     align-items: center;
     flex-direction: column;
+    background-color: rgba($color: #fff, $alpha: 0.5);
         .result__list{
             margin: 0;
-            background-color: rgba($color: #fff, $alpha: 0.5);
             font-family: $font-set;
             font-size: 20px;
             color: $color_txt;
@@ -20,6 +20,7 @@
                     margin: 15px 0 5px 0;
                 }
                 .result__listItem{
+                    text-align: center;
                     font-size: 15px;
                     padding-left: 5px;
                     .result__listItemTxt{
@@ -36,7 +37,6 @@
     }
     .result__lader {
         display: none;     
-        background-color: rgba($color: #fff, $alpha: 0.5);
         max-height: 2600px;
             .result__ladder_lines {
                 .result__ladder_luckyLine2a {
@@ -165,20 +165,27 @@
 
     @media screen and (max-width : 1400px) {
         .result {
+            background-color: transparent;
             .result__list {
                 flex-wrap: wrap;
+                background-color: rgba($color: #fff, $alpha: 0.5);
                 .result__list_o {
                 width: 50%;
                 text-align: center;
                 }
             }
          }
+         .col-1{
+            background-color: rgba($color: #fff, $alpha: 0.5);  
+         }
     }
 
     @media screen and (max-width : 920px) {
         .result {
+            background-color: transparent;
             .result__list {
                 flex-wrap: wrap;
+                background-color: rgba($color: #fff, $alpha: 0.5);
                 .result__list_o {
                 width: 100%;
                 text-align: center;
@@ -193,11 +200,16 @@
                 }
             }
          }
+         .col-1{
+            background-color: rgba($color: #fff, $alpha: 0.5);  
+         }
     }
     @media screen and (max-width : 610px) {
         .result {
+            background-color: transparent;
             .result__list {
                 flex-wrap: wrap;
+                background-color: rgba($color: #fff, $alpha: 0.5);
                 .result__list_o {
                 width: 100%;
                 text-align: center;
@@ -212,17 +224,33 @@
                 }
             }
          }
+         .col-1{
+            background-color: rgba($color: #fff, $alpha: 0.5);  
+         }
     }
 
     @media screen and (max-width : 360px) {
         .result {
+            background-color: transparent;
             .result__list {
+                background-color: rgba($color: #fff, $alpha: 0.5); 
                 flex-wrap: wrap;
                 .result__list_o {
                 width: 100%;
                 font-size: 13px;
+                    .result__listItem{
+                        .result__listItemTxt{
+                            display: inline;
+                            color: $color_txt;
+                            margin: 0;
+                            font-size: 12px;
+                        }
+                    }
                 }
             }
+         }
+         .col-1{
+            background-color: rgba($color: #fff, $alpha: 0.5);  
          }
     }
 
