@@ -485,6 +485,11 @@ var basicFunctions = exports.basicFunctions = {
                 (0, _showSheduleCup.showSheduleCup)(_sheduleToShowUp3, numberOfCompetitors);
             }
         }
+    },
+    generatePDF: function generatePDF(params) {
+        var doc = new jsPDF();
+        doc.fromHTML($('#header').get(0), 20, 20, { 'width': 500 });
+        doc.save("Testowy PDF21");
     }
 };
 
@@ -550,6 +555,13 @@ $(document).ready(function () {
         } else {
             _domElems.domElems.collectorAlertB.show();
         }
+    });
+    var btnPDF = $('#generatePDF');
+    btnPDF.on('click', function (e) {
+        console.log("test pdfa");
+
+        e.preventDefault();
+        _basicFunctions.basicFunctions.generatePDF();
     });
 });
 

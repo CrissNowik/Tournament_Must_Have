@@ -9,6 +9,8 @@
 			<title>Tournament Must-Have</title>
 		<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.0/css/all.css" integrity="sha384-lKuwvrZot6UHsBSfcMvOkWwlCMgc0TaWr+30HWe3a4ltaBwTZhyTEggF5tJv8tbt" crossorigin="anonymous">
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+		<script src="js/jspdf.min.js"></script>
+		<script src="js/html2canvas.min.js"></script>
 		<link rel="stylesheet" href="css/main.css">
 	</head>
 	<body>
@@ -19,6 +21,9 @@
 		<nav class="nav container" id="nav">
 			<button type="button" class="nav__confirm" id="nav__confirm">
 				<p class="nav__confirm_txt">Create new <br/> contest</p>	 
+			</button>
+			<button type="button" id="generatePDF">
+				<p class="">Generate PDF</p>	 
 			</button>
 		</nav> 
 		<section class="collector container" id="collector">

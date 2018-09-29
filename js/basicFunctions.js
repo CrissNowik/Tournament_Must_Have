@@ -98,5 +98,10 @@ export let basicFunctions = {
                 showSheduleCup(sheduleToShowUp, numberOfCompetitors);
             }
         }
+    },
+    generatePDF: function (params) {
+        let doc = new jsPDF();
+        doc.fromHTML($('#header').get(0), 20, 20, {'width': 500});
+        doc.save("Testowy PDF21");
     }
 }

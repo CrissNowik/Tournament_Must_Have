@@ -1,12 +1,9 @@
 Tournament_Must_Have 
 ====================
 
-<!-- ![alt text](https://github.com/CrissNowik/Tournament_Must_Have/blob/master/res/logo.jpeg?raw-true "Logo") -->
-
-
 Description:
 -------------
-I'm glad that you want to use my userful web app which help you in organising and creating competion plans in sport events. Now creating plans of games will be easier than ever.
+I'm glad that you want to use my userful web app which help you in organising and creating competition plans in sport events. Now creating plans of games will be easier than ever.
 
 Features:
 ---------
@@ -18,13 +15,14 @@ Features:
 
 Inspiration:
 ------------
-When you organise or manage sport event - football league, voleyball tournament or some sport games between more than two teams or contestants there is always one, main problem - how to fast, fairly and smart create plan of competition. Doing it with paper, pencil and table tenis balls for draw ;-) is unefficient and burdened with the risk of confusion. So this web app is yours Tournament_Must_Have!
+When you organise or manage sport event - football league, voleyball tournament or some sport games between more than two teams or contestants there is always one, main problem - how to fast, fairly and smart create plan of competition, print it and distribute among competitors in order to have efficient course of the event. Doing it with paper, pencil and table tenis balls for draw ;-) is useless and burdened with the risk of confusion. So... just use Tournament_Must_Have and create your own tournaments as easy as snap fingers! 
 
 Technology stack:
 -------------
 * HTML5,
 * CSS + SASS,
 * Java Script (ES6),
+* jsPDF library,
 * jQuery,
 * Gulp,
 * Webpack

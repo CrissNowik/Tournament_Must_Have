@@ -58,6 +58,13 @@ $(document).ready(function () {
             domElems.collectorAlertB.show();
         }
     });
+    let btnPDF = $('#generatePDF');
+    btnPDF.on('click', function(e){
+        console.log("test pdfa");
+        
+        e.preventDefault();
+        basicFunctions.generatePDF();
+    })
 
     
 }); 
