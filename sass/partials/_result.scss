@@ -8,12 +8,12 @@
         .result__list{
             margin: 0;
             font-family: $font-set;
-            font-size: 20px;
             color: $color_txt;
             list-style-position: inside;
             .result__list_o{
                 padding: 0;
                 .result__listItem--roundHeader{
+                    font-size: 20px;
                     text-align: center;
                     font-weight: bolder;
                     text-decoration-line: underline;
@@ -167,11 +167,28 @@
         .result {
             background-color: transparent;
             .result__list {
-                flex-wrap: wrap;
                 background-color: rgba($color: #fff, $alpha: 0.5);
                 .result__list_o {
-                width: 50%;
-                text-align: center;
+                    text-align: center;
+                    min-width: 312px;
+                }
+            }
+         }
+         .col-1{
+            background-color: rgba($color: #fff, $alpha: 0.5);  
+         }
+    }
+    @media screen and (max-width : 1240px) {
+        .result {
+            background-color: transparent;
+            .result__list {
+                display: flex;
+                flex-wrap: wrap;
+                justify-content: center;
+                background-color: rgba($color: #fff, $alpha: 0.5);
+                .result__list_o {
+                    text-align: center;
+                    min-width: 312px;
                 }
             }
          }
@@ -187,10 +204,10 @@
                 flex-wrap: wrap;
                 background-color: rgba($color: #fff, $alpha: 0.5);
                 .result__list_o {
-                width: 100%;
                 text-align: center;
+                min-width: 312px;
                     .result__listItem{
-                        font-size: 20px;
+                        font-size: 15px;
                         .result__listItemTxt{
                             display: inline;
                             color: $color_txt;

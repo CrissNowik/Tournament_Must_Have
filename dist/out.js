@@ -486,10 +486,18 @@ var basicFunctions = exports.basicFunctions = {
             }
         }
     },
-    generatePDF: function generatePDF(params) {
-        var doc = new jsPDF();
-        doc.fromHTML($('#header').get(0), 20, 20, { 'width': 500 });
-        doc.save("Testowy PDF21");
+    generatePDF: function generatePDF() {
+        var element = document.getElementById('header');
+
+        html2canvas(element).then(function (canvas) {
+
+            var imgData = canvas.toDataURL('image/png');
+            var doc = new jsPDF();
+            doc.text(20, 20, 'Created by Tournament Must Have tool by CrissNowik');
+            doc.addImage(imgData, 'PNG', 20, 30);
+
+            doc.save('Game_Plan.pdf');
+        });
     }
 };
 
