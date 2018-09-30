@@ -76,6 +76,7 @@ Object.defineProperty(exports, "__esModule", {
 //DOM elements store
 //
 var domElems = exports.domElems = {
+    logo: $('#header__logo'),
     naviScreen: $('#nav'),
     btnConfirm: $('#nav__confirm'),
     collector: $('#collector'),
@@ -487,14 +488,15 @@ var basicFunctions = exports.basicFunctions = {
         }
     },
     generatePDF: function generatePDF() {
-        var element = document.getElementById('header');
+        var element = document.getElementById('result__lader');
 
         html2canvas(element).then(function (canvas) {
 
             var imgData = canvas.toDataURL('image/png');
             var doc = new jsPDF();
-            doc.text(20, 20, 'Created by Tournament Must Have tool by CrissNowik');
-            doc.addImage(imgData, 'PNG', 20, 30);
+            doc.setFontSize(8);
+            doc.text(10, 10, 'Created by Tournament Must Have tool by CrissNowik');
+            doc.addImage(imgData, 'PNG', 10, 20, 150, 300);
 
             doc.save('Game_Plan.pdf');
         });

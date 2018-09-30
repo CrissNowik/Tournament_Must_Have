@@ -100,14 +100,15 @@ export let basicFunctions = {
         }
     },
     generatePDF: function () {
-        let element = document.getElementById('header');
+        let element = document.getElementById('result__lader');
         
         html2canvas(element).then(function(canvas){
                             
                             var imgData = canvas.toDataURL('image/png');         
                             var doc = new jsPDF(); 
-                            doc.text(20,20, 'Created by Tournament Must Have tool by CrissNowik')
-                            doc.addImage(imgData, 'PNG', 20, 30);
+                            doc.setFontSize(8);
+                            doc.text(10,10, 'Created by Tournament Must Have tool by CrissNowik')
+                            doc.addImage(imgData, 'PNG', 10, 20, 150, 300);
                         
                             doc.save('Game_Plan.pdf');
         });
