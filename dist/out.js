@@ -496,7 +496,7 @@ var basicFunctions = exports.basicFunctions = {
             var doc = new jsPDF();
             doc.setFontSize(8);
             doc.text(10, 10, 'Created by Tournament Must Have tool by CrissNowik');
-            doc.addImage(imgData, 'PNG', 10, 20, 150, 300);
+            doc.addImage(imgData, 'PNG', 10, 10);
 
             doc.save('Game_Plan.pdf');
         });
