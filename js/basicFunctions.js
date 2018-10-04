@@ -105,7 +105,7 @@ export let basicFunctions = {
         html2canvas(element).then(function(canvas){
                             
                             var imgData = canvas.toDataURL('image/png');         
-                            var doc = new jsPDF(); 
+                            var doc = new jsPDF("portrait", "mm", "a3"); 
                             doc.setFontSize(8);
                             doc.text(10,10, 'Created by Tournament Must Have tool by CrissNowik')
                             doc.addImage(imgData, 'PNG', 10, 10);

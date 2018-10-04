@@ -7,20 +7,22 @@
     justify-content: center;
     align-items: center;
     flex-direction: column;
-    background-color: rgba($color: #fff, $alpha: 0.5);
     .result__btn{
         display: flex;
         @include center;
         .result__btnPDF{
             @include collector_btn;
+            height: 130px;
+            width: 130px;
             font-size: 18px;   
         }
     }
         .result__list{
-            margin: 0;
+            margin: 10px 0 10px 0;
             font-family: $font-set;
             color: $color_txt;
             list-style-position: inside;
+            background-color: rgba($color: #fff, $alpha: 0.5);
             .result__list_o{
                 padding: 0;
                 .result__listItem--roundHeader{
@@ -82,6 +84,7 @@
                     position: relative;
                     height: 261px;
                     margin: 333px 0 0 -196px;
+                    @include double_line_for_ladder_spec;
                 }
                 .result__ladder_luckyLine5specA {
                     @include basicLadderLine;
@@ -185,13 +188,9 @@
                 }
             }
          }
-         .col-1{
-            background-color: rgba($color: #fff, $alpha: 0.5);  
-         }
     }
     @media screen and (max-width : 1240px) {
         .result {
-            background-color: transparent;
             .result__list {
                 display: flex;
                 flex-wrap: wrap;
@@ -203,14 +202,10 @@
                 }
             }
          }
-         .col-1{
-            background-color: rgba($color: #fff, $alpha: 0.5);  
-         }
     }
 
     @media screen and (max-width : 920px) {
         .result {
-            background-color: transparent;
             .result__list {
                 flex-wrap: wrap;
                 background-color: rgba($color: #fff, $alpha: 0.5);
@@ -228,13 +223,9 @@
                 }
             }
          }
-         .col-1{
-            background-color: rgba($color: #fff, $alpha: 0.5);  
-         }
     }
     @media screen and (max-width : 610px) {
         .result {
-            background-color: transparent;
             .result__list {
                 flex-wrap: wrap;
                 background-color: rgba($color: #fff, $alpha: 0.5);
@@ -252,14 +243,10 @@
                 }
             }
          }
-         .col-1{
-            background-color: rgba($color: #fff, $alpha: 0.5);  
-         }
     }
 
     @media screen and (max-width : 360px) {
         .result {
-            background-color: transparent;
             .result__list {
                 background-color: rgba($color: #fff, $alpha: 0.5); 
                 flex-wrap: wrap;
@@ -276,9 +263,6 @@
                     }
                 }
             }
-         }
-         .col-1{
-            background-color: rgba($color: #fff, $alpha: 0.5);  
          }
     }
 
