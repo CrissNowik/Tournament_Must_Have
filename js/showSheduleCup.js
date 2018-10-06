@@ -12,6 +12,7 @@ export function showSheduleCup(sheduleArray, numberOfTeams) {
     domElems.sheduleOnScreenC.css('display', 'none');
     domElems.sheduleOnScreenD.css('display', 'none');
     domElems.cupLadder.css('display', 'flex');
+    domElems.btnPDFLadderSection.css('display', 'flex');
 
 
     function showingTwoFirstRoundsCup() {

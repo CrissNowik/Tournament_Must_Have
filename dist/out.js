@@ -83,6 +83,9 @@ var domElems = exports.domElems = {
     teamInput: $('#collector__input'),
     btnAdd: $('#collector__add'),
     btnGenerate: $('#collector__generate'),
+    btnPDFLadder: $('#generatePDFladder'),
+    btnPDFShedule: $('#generatePDFplan'),
+    btnPDFLadderSection: $('#btnPDFLadderSection'),
     teamList: $('#collector__list'),
     teamOnList: $('#collector__listItem'),
     result: $('#result'),
@@ -921,6 +924,7 @@ function showSheduleCup(sheduleArray, numberOfTeams) {
     _domElems.domElems.sheduleOnScreenC.css('display', 'none');
     _domElems.domElems.sheduleOnScreenD.css('display', 'none');
     _domElems.domElems.cupLadder.css('display', 'flex');
+    _domElems.domElems.btnPDFLadderSection.css('display', 'flex');
 
     function showingTwoFirstRoundsCup() {
         var repsR1 = sheduleArray[0].length;

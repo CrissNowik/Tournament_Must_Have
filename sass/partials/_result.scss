@@ -1,4 +1,5 @@
-@import "modules/mixins";
+@import
+"modules/mixins";
 
 
 
@@ -7,6 +8,7 @@
     justify-content: center;
     align-items: center;
     flex-direction: column;
+    background-color: rgba($color: #fff, $alpha: 0.5);
     .result__btn{
         display: flex;
         @include center;
@@ -17,12 +19,15 @@
             font-size: 18px;   
         }
     }
+    #btnPDFLadderSection{
+        display: none;
+    }
         .result__list{
             margin: 10px 0 10px 0;
             font-family: $font-set;
             color: $color_txt;
             list-style-position: inside;
-            background-color: rgba($color: #fff, $alpha: 0.5);
+           
             .result__list_o{
                 padding: 0;
                 .result__listItem--roundHeader{
