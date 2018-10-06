@@ -58,13 +58,17 @@ $(document).ready(function () {
             domElems.collectorAlertB.show();
         }
     });
-    let btnPDF = $('#generatePDF');
-    btnPDF.on('click', function(e){
-        console.log("test pdfa");
+    // let btnPDF = $('#generatePDF');
+    domElems.btnPDFLadder.on('click', function(e){
+        console.log("drabinka");
         
         e.preventDefault();
         basicFunctions.generatePDF();
-    })
-
-    
+    });
+    domElems.btnPDFShedule.on('click', function(e){
+        console.log("terminarz");
+        
+        e.preventDefault();
+        basicFunctions.generatePDF();
+    });    
 }); 

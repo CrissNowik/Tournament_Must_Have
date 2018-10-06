@@ -569,9 +569,15 @@ $(document).ready(function () {
             _domElems.domElems.collectorAlertB.show();
         }
     });
-    var btnPDF = $('#generatePDF');
-    btnPDF.on('click', function (e) {
-        console.log("test pdfa");
+    // let btnPDF = $('#generatePDF');
+    _domElems.domElems.btnPDFLadder.on('click', function (e) {
+        console.log("drabinka");
+
+        e.preventDefault();
+        _basicFunctions.basicFunctions.generatePDF();
+    });
+    _domElems.domElems.btnPDFShedule.on('click', function (e) {
+        console.log("terminarz");
 
         e.preventDefault();
         _basicFunctions.basicFunctions.generatePDF();
