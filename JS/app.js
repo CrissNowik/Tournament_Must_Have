@@ -1,6 +1,7 @@
 import { domElems } from "./domElems";
 import { basicFunctions } from "./basicFunctions";
 import { showIt } from "./showIt";
+import { leagueGenerator } from "./leagueGenerator";
 
 
 $(document).ready(function () {
@@ -58,17 +59,4 @@ $(document).ready(function () {
             domElems.collectorAlertB.show();
         }
     });
-    // let btnPDF = $('#generatePDF');
-    domElems.btnPDFLadder.on('click', function(e){
-        console.log("drabinka");
-        
-        e.preventDefault();
-        basicFunctions.generatePDF();
-    });
-    domElems.btnPDFShedule.on('click', function(e){
-        console.log("terminarz");
-        
-        e.preventDefault();
-        basicFunctions.generatePDF();
-    });    
 }); 

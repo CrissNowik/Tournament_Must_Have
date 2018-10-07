@@ -470,6 +470,11 @@ var basicFunctions = exports.basicFunctions = {
         if (tournamentType === 'League') {
             var readySheduleLeague = (0, _leagueGenerator.leagueGenerator)(teamList);
             (0, _showSheduleLeague.showSheduleLeague)(readySheduleLeague);
+            _domElems.domElems.btnPDFShedule.on('click', function (e) {
+                e.preventDefault();
+                console.log("terminarz", readySheduleLeague);
+                basicFunctions.generatePdfShedule(readySheduleLeague);
+            });
         } else if (tournamentType === 'Cup') {
             if (numberOfCompetitors < 5) {
                 // 2 rounds
@@ -490,20 +495,59 @@ var basicFunctions = exports.basicFunctions = {
             }
         }
     },
-    generatePDF: function generatePDF() {
-        var element = document.getElementById('result__lader');
+    generatePdfShedule: function generatePdfShedule(readyShedule) {
+        // TO DO
+        // - skalowanie terminarza w zależności od ilości zespołów (max 3 rundy przy 32 teamach)
+        // - stworzenie kilku kolumn z kolejnymi rundami  (patrz linie 129 - 131)
+        // - odpowiednia szerokość kolumn w przypadku długich nazw 
+        // - uzależnienie tworzenia kolumn od ilości meczy - ifowanie
+        // - numerowanie kumulatywne spotkań w rundach 
+        // - przechodzenie na następną stronę w razie dużej ilości meczy 
 
-        html2canvas(element).then(function (canvas) {
+        console.log("readyShedule", readyShedule);
+        var final = [];
+        for (var i = 0; i < readyShedule.length; i++) {
+            var roundCounter = 1 + i;
+            var gameCounter = 0;
+            final.push("Round " + roundCounter);
+            for (var j = 0; j < readyShedule[i].length; j++) {
+                var newPair = readyShedule[i][j];
+                var pairOnScreen = newPair.join(" ___ - ___ ");
+                final.push(pairOnScreen);
+            }
+        }
+        console.log("final ", final);
+        var doc = new jsPDF();
+        doc.setFontSize(8);
+        doc.text(10, 10, 'Created by Tournament Must Have tool by CrissNowik');
+        doc.setFontSize(12);
+        doc.text(final, 10, 20);
+        doc.text(final, 30, 20);
+        doc.text(final, 50, 20);
+        doc.addPage();
 
-            var imgData = canvas.toDataURL('image/png');
-            var doc = new jsPDF("portrait", "mm", "a3");
-            doc.setFontSize(8);
-            doc.text(10, 10, 'Created by Tournament Must Have tool by CrissNowik');
-            doc.addImage(imgData, 'PNG', 10, 10);
-
-            doc.save('Game_Plan.pdf');
-        });
+        doc.save('Game_Plan.pdf');
     }
+
+    /*wywołanie do generatePdfLadder: */
+
+    // domElems.btnPDFLadder.on('click', function(e){
+    //     console.log("drabinka");
+    //     let element = document.getElementById('result__lader');
+    //     e.preventDefault();
+    //     basicFunctions.generatePdfLadder(element);
+    // });
+    // generatePdfLadder: function (element) {
+
+    //     html2canvas(element).then(function(canvas){         
+    //         var imgData = canvas.toDataURL('image/png');         
+    //         var doc = new jsPDF(); 
+    //         doc.setFontSize(8);
+    //         doc.text(10,10, 'Created by Tournament Must Have tool by CrissNowik')
+    //         doc.addImage(imgData, 'PNG', 10, 15);
+    //         doc.save('Game_Plan.pdf');
+    //     });
+    // }      
 };
 
 /***/ }),
@@ -518,6 +562,8 @@ var _domElems = __webpack_require__(0);
 var _basicFunctions = __webpack_require__(3);
 
 var _showIt = __webpack_require__(2);
+
+var _leagueGenerator = __webpack_require__(5);
 
 $(document).ready(function () {
 
@@ -568,19 +614,6 @@ $(document).ready(function () {
         } else {
             _domElems.domElems.collectorAlertB.show();
         }
-    });
-    // let btnPDF = $('#generatePDF');
-    _domElems.domElems.btnPDFLadder.on('click', function (e) {
-        console.log("drabinka");
-
-        e.preventDefault();
-        _basicFunctions.basicFunctions.generatePDF();
-    });
-    _domElems.domElems.btnPDFShedule.on('click', function (e) {
-        console.log("terminarz");
-
-        e.preventDefault();
-        _basicFunctions.basicFunctions.generatePDF();
     });
 });
 
@@ -858,7 +891,7 @@ function showSheduleLeague(readyShedule) {
     for (var i = 0; i < readyShedule.length; i++) {
         var roundCounter = 1 + i;
         var gameCounter = 0;
-        console.log("showSheduleLeague");
+        console.log("showSheduleLeague", readyShedule);
 
         if (roundCounter <= 8) {
             _showIt.showIt.showHeader(_domElems.domElems.sheduleOnScreenA, roundCounter);

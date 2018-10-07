@@ -83,10 +83,16 @@ export let basicFunctions = {
         if (tournamentType === 'League') {
             let readySheduleLeague = leagueGenerator(teamList);
             showSheduleLeague(readySheduleLeague);
+            domElems.btnPDFShedule.on('click', function(e){
+                e.preventDefault();
+                console.log("terminarz", readySheduleLeague);
+                basicFunctions.generatePdfShedule(readySheduleLeague);
+            });    
         } else if (tournamentType === 'Cup') {
             if (numberOfCompetitors<5) { // 2 rounds
                 let sheduleToShowUp = cupGenerator(teamList);
                 showSheduleCup(sheduleToShowUp, numberOfCompetitors);
+                
             } else if (numberOfCompetitors > 4 && numberOfCompetitors < 9 ) { // 3 rounds
                 let sheduleToShowUp = cupGenerator(teamList);
                 showSheduleCup(sheduleToShowUp, numberOfCompetitors);
@@ -99,18 +105,59 @@ export let basicFunctions = {
             }
         }
     },
-    generatePDF: function () {
-        let element = document.getElementById('result__lader');
-        
-        html2canvas(element).then(function(canvas){
-                            
-                            var imgData = canvas.toDataURL('image/png');         
-                            var doc = new jsPDF("portrait", "mm", "a3"); 
-                            doc.setFontSize(8);
-                            doc.text(10,10, 'Created by Tournament Must Have tool by CrissNowik')
-                            doc.addImage(imgData, 'PNG', 10, 10);
-                        
-                            doc.save('Game_Plan.pdf');
-        });
+    generatePdfShedule: function (readyShedule) {    
+        // TO DO
+        // - skalowanie terminarza w zależności od ilości zespołów (max 3 rundy przy 32 teamach)
+        // - stworzenie kilku kolumn z kolejnymi rundami  (patrz linie 129 - 131)
+        // - odpowiednia szerokość kolumn w przypadku długich nazw 
+        // - uzależnienie tworzenia kolumn od ilości meczy - ifowanie
+        // - numerowanie kumulatywne spotkań w rundach 
+        // - przechodzenie na następną stronę w razie dużej ilości meczy 
+
+        console.log("readyShedule", readyShedule);
+        let final = [];
+        for (let i = 0; i < readyShedule.length; i++) {
+            let roundCounter = 1 + i;
+            let gameCounter = 0;
+            final.push("Round " + roundCounter);
+            for (let j = 0; j < readyShedule[i].length; j++) {
+                let newPair = readyShedule[i][j];
+                let pairOnScreen = newPair.join(" ___ - ___ ");
+                final.push(pairOnScreen);
+            }
+            
+        }
+        console.log("final ", final);
+            var doc = new jsPDF(); 
+            doc.setFontSize(8);
+            doc.text(10, 10, 'Created by Tournament Must Have tool by CrissNowik');
+            doc.setFontSize(12);
+            doc.text(final, 10, 20);
+            doc.text(final, 30, 20);
+            doc.text(final, 50, 20);
+            doc.addPage()
+            
+            doc.save('Game_Plan.pdf');
     }
+
+    
+    /*wywołanie do generatePdfLadder: */
+
+    // domElems.btnPDFLadder.on('click', function(e){
+    //     console.log("drabinka");
+    //     let element = document.getElementById('result__lader');
+    //     e.preventDefault();
+    //     basicFunctions.generatePdfLadder(element);
+    // });
+    // generatePdfLadder: function (element) {
+        
+    //     html2canvas(element).then(function(canvas){         
+    //         var imgData = canvas.toDataURL('image/png');         
+    //         var doc = new jsPDF(); 
+    //         doc.setFontSize(8);
+    //         doc.text(10,10, 'Created by Tournament Must Have tool by CrissNowik')
+    //         doc.addImage(imgData, 'PNG', 10, 15);
+    //         doc.save('Game_Plan.pdf');
+    //     });
+    // }      
 }
