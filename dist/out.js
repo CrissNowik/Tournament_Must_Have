@@ -1139,12 +1139,9 @@ exports.generatePdfShedule = generatePdfShedule;
 function generatePdfShedule(readyShedule) {
     // TO DO
     // - skalowanie terminarza w zależności od ilości zespołów (max 3 rundy przy 32 teamach)
-    // 
-    // 
     // - uzależnienie tworzenia kolumn od ilości meczy - ifowanie
-    // 
     // - przechodzenie na następną stronę w razie dużej ilości meczy 
-    // - polskie znaki w pdf
+    // - polskie znaki w pdf - grubsza zabawa, może warto wykorzystać window.print???? https://stackoverflow.com/questions/44875121/html-to-pdf-using-js-with-utf-8-support#
 
     console.log("readyShedule", readyShedule);
     var final = [];
