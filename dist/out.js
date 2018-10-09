@@ -498,21 +498,23 @@ var basicFunctions = exports.basicFunctions = {
     generatePdfShedule: function generatePdfShedule(readyShedule) {
         // TO DO
         // - skalowanie terminarza w zależności od ilości zespołów (max 3 rundy przy 32 teamach)
-        // - stworzenie kilku kolumn z kolejnymi rundami  (patrz linie 129 - 131)
-        // - odpowiednia szerokość kolumn w przypadku długich nazw 
+        // 
+        // 
         // - uzależnienie tworzenia kolumn od ilości meczy - ifowanie
         // - numerowanie kumulatywne spotkań w rundach 
         // - przechodzenie na następną stronę w razie dużej ilości meczy 
+        // - polskie znaki w pdf
 
         console.log("readyShedule", readyShedule);
         var final = [];
+        var gameCounter = 0;
         for (var i = 0; i < readyShedule.length; i++) {
             var roundCounter = 1 + i;
-            var gameCounter = 0;
             final.push("Round " + roundCounter);
             for (var j = 0; j < readyShedule[i].length; j++) {
                 var newPair = readyShedule[i][j];
-                var pairOnScreen = newPair.join(" ___ - ___ ");
+                gameCounter += 1;
+                var pairOnScreen = gameCounter + ". " + newPair.join(" ___ - ___ ");
                 final.push(pairOnScreen);
             }
         }
@@ -520,10 +522,9 @@ var basicFunctions = exports.basicFunctions = {
         var doc = new jsPDF();
         doc.setFontSize(8);
         doc.text(10, 10, 'Created by Tournament Must Have tool by CrissNowik');
-        doc.setFontSize(12);
+        doc.setFontSize(11);
         doc.text(final, 10, 20);
-        doc.text(final, 30, 20);
-        doc.text(final, 50, 20);
+        doc.text(final, 110, 20);
         doc.addPage();
 
         doc.save('Game_Plan.pdf');
