@@ -1,7 +1,6 @@
 import { domElems } from "./domElems";
 import { basicFunctions } from "./basicFunctions";
 import { showIt } from "./showIt";
-import { leagueGenerator } from "./leagueGenerator";
 
 
 $(document).ready(function () {

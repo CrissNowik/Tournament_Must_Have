@@ -396,6 +396,8 @@ var _showSheduleCup = __webpack_require__(10);
 
 var _showIt = __webpack_require__(2);
 
+var _generatePdfShedule = __webpack_require__(18);
+
 var basicFunctions = exports.basicFunctions = {
     gettingTeams: function gettingTeams() {
         var newTeam = _domElems.domElems.teamInput.val();
@@ -473,7 +475,7 @@ var basicFunctions = exports.basicFunctions = {
             _domElems.domElems.btnPDFShedule.on('click', function (e) {
                 e.preventDefault();
                 console.log("terminarz", readySheduleLeague);
-                basicFunctions.generatePdfShedule(readySheduleLeague);
+                (0, _generatePdfShedule.generatePdfShedule)(readySheduleLeague);
             });
         } else if (tournamentType === 'Cup') {
             if (numberOfCompetitors < 5) {
@@ -494,40 +496,6 @@ var basicFunctions = exports.basicFunctions = {
                 (0, _showSheduleCup.showSheduleCup)(_sheduleToShowUp3, numberOfCompetitors);
             }
         }
-    },
-    generatePdfShedule: function generatePdfShedule(readyShedule) {
-        // TO DO
-        // - skalowanie terminarza w zależności od ilości zespołów (max 3 rundy przy 32 teamach)
-        // 
-        // 
-        // - uzależnienie tworzenia kolumn od ilości meczy - ifowanie
-        // - numerowanie kumulatywne spotkań w rundach 
-        // - przechodzenie na następną stronę w razie dużej ilości meczy 
-        // - polskie znaki w pdf
-
-        console.log("readyShedule", readyShedule);
-        var final = [];
-        var gameCounter = 0;
-        for (var i = 0; i < readyShedule.length; i++) {
-            var roundCounter = 1 + i;
-            final.push("Round " + roundCounter);
-            for (var j = 0; j < readyShedule[i].length; j++) {
-                var newPair = readyShedule[i][j];
-                gameCounter += 1;
-                var pairOnScreen = gameCounter + ". " + newPair.join(" ___ - ___ ");
-                final.push(pairOnScreen);
-            }
-        }
-        console.log("final ", final);
-        var doc = new jsPDF();
-        doc.setFontSize(8);
-        doc.text(10, 10, 'Created by Tournament Must Have tool by CrissNowik');
-        doc.setFontSize(11);
-        doc.text(final, 10, 20);
-        doc.text(final, 110, 20);
-        doc.addPage();
-
-        doc.save('Game_Plan.pdf');
     }
 
     /*wywołanie do generatePdfLadder: */
@@ -563,8 +531,6 @@ var _domElems = __webpack_require__(0);
 var _basicFunctions = __webpack_require__(3);
 
 var _showIt = __webpack_require__(2);
-
-var _leagueGenerator = __webpack_require__(5);
 
 $(document).ready(function () {
 
@@ -1151,6 +1117,60 @@ function showSheduleCup(sheduleArray, numberOfTeams) {
     cutBottomMargins(4, ulR4);
     cutBottomMargins(5, ulR5);
 };
+
+/***/ }),
+/* 11 */,
+/* 12 */,
+/* 13 */,
+/* 14 */,
+/* 15 */,
+/* 16 */,
+/* 17 */,
+/* 18 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+exports.generatePdfShedule = generatePdfShedule;
+function generatePdfShedule(readyShedule) {
+    // TO DO
+    // - skalowanie terminarza w zależności od ilości zespołów (max 3 rundy przy 32 teamach)
+    // 
+    // 
+    // - uzależnienie tworzenia kolumn od ilości meczy - ifowanie
+    // 
+    // - przechodzenie na następną stronę w razie dużej ilości meczy 
+    // - polskie znaki w pdf
+
+    console.log("readyShedule", readyShedule);
+    var final = [];
+    var gameCounter = 0;
+    for (var i = 0; i < readyShedule.length; i++) {
+        var roundCounter = 1 + i;
+        final.push(" ");
+        final.push("Round " + roundCounter);
+        for (var j = 0; j < readyShedule[i].length; j++) {
+            var newPair = readyShedule[i][j];
+            gameCounter += 1;
+            var pairOnScreen = gameCounter + ". " + newPair.join(" ___ - ___ ");
+            final.push(pairOnScreen);
+        }
+    }
+    console.log("final ", final);
+    var doc = new jsPDF();
+    doc.setFontSize(8);
+    doc.text(10, 10, 'Created by Tournament Must Have tool by CrissNowik');
+    doc.setFontSize(11);
+    doc.text(final, 10, 20);
+    doc.text(final, 110, 20);
+    doc.addPage();
+
+    doc.save('Game_Plan.pdf');
+}
 
 /***/ })
 /******/ ]);

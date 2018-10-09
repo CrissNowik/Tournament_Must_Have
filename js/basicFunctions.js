@@ -5,6 +5,7 @@ import { cupGenerator } from "./cupGenerator";
 import { showSheduleLeague } from "./showSheduleLeague";
 import { showSheduleCup } from "./showSheduleCup";
 import { showIt } from "./showIt";
+import { generatePdfShedule } from "./generatePdfShedule";
 
 export let basicFunctions = {
     gettingTeams: function () {
@@ -86,7 +87,7 @@ export let basicFunctions = {
             domElems.btnPDFShedule.on('click', function(e){
                 e.preventDefault();
                 console.log("terminarz", readySheduleLeague);
-                basicFunctions.generatePdfShedule(readySheduleLeague);
+                generatePdfShedule(readySheduleLeague);
             });    
         } else if (tournamentType === 'Cup') {
             if (numberOfCompetitors<5) { // 2 rounds
@@ -104,43 +105,8 @@ export let basicFunctions = {
                 showSheduleCup(sheduleToShowUp, numberOfCompetitors);
             }
         }
-    },
-    generatePdfShedule: function (readyShedule) {    
-        // TO DO
-        // - skalowanie terminarza w zależności od ilości zespołów (max 3 rundy przy 32 teamach)
-        // 
-        // 
-        // - uzależnienie tworzenia kolumn od ilości meczy - ifowanie
-        // - numerowanie kumulatywne spotkań w rundach 
-        // - przechodzenie na następną stronę w razie dużej ilości meczy 
-        // - polskie znaki w pdf
-
-        console.log("readyShedule", readyShedule);
-        let final = [];
-        let gameCounter = 0;
-        for (let i = 0; i < readyShedule.length; i++) {
-            let roundCounter = 1 + i;
-            final.push("Round " + roundCounter);
-            for (let j = 0; j < readyShedule[i].length; j++) {
-                let newPair = readyShedule[i][j];
-                gameCounter += 1;
-                let pairOnScreen = gameCounter + ". " + newPair.join(" ___ - ___ ");
-                final.push(pairOnScreen);              
-            }
-        }
-        console.log("final ", final);
-            var doc = new jsPDF(); 
-            doc.setFontSize(8);
-            doc.text(10, 10, 'Created by Tournament Must Have tool by CrissNowik');
-            doc.setFontSize(11);
-            doc.text(final, 10, 20);
-            doc.text(final, 110, 20);
-            doc.addPage()
-            
-            doc.save('Game_Plan.pdf');
     }
-
-
+    
     /*wywołanie do generatePdfLadder: */
 
     // domElems.btnPDFLadder.on('click', function(e){
