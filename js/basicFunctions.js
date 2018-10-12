@@ -87,7 +87,8 @@ export let basicFunctions = {
             domElems.btnPDFShedule.on('click', function(e){
                 e.preventDefault();
                 console.log("terminarz", readySheduleLeague);
-                generatePdfShedule(readySheduleLeague);
+                // generatePdfShedule(readySheduleLeague);
+                window.print();
             });    
         } else if (tournamentType === 'Cup') {
             if (numberOfCompetitors<5) { // 2 rounds

@@ -29,4 +29,5 @@ export function generatePdfShedule (readyShedule) {
         doc.addPage()
         
         doc.save('Game_Plan.pdf');
+    
 }
