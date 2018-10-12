@@ -5,7 +5,6 @@ export function showSheduleLeague(readyShedule) {
        for (let i = 0; i < readyShedule.length; i++) {
            let roundCounter = 1 + i;
            let gameCounter = 0;
-            console.log("showSheduleLeague", readyShedule);
             
            if (roundCounter<=8) {
                 showIt.showHeader(domElems.sheduleOnScreenA, roundCounter);

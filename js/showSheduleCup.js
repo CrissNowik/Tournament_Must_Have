@@ -5,7 +5,6 @@ import { showIt } from "./showIt";
 export function showSheduleCup(sheduleArray, numberOfTeams) {
     let roundCounter = 1;
     let pairOnScreen = "";
-    console.log("do pokazania: ",sheduleArray);
     domElems.resultList.addClass("container"); 
     domElems.sheduleOnScreenA.addClass("col-12");    
     domElems.sheduleOnScreenB.css('display', 'none');    

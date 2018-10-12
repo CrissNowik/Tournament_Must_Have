@@ -1,15 +1,15 @@
-export function generatePdfShedule (element) {    
+export function generatePdfLadder(element) {
     //TO DO 
     // - rozwiązanie błędu z className, który blokuje generowanie pdf przy małej liczbie graczy
-    // - problem z numeracją i rozwaleniem na stronie całego terminarza
-
+    // - skalowanie proporcjonalne do ilości zespołów 
+    // 
+      
         html2canvas(element).then(function(canvas){         
             var imgData = canvas.toDataURL('image/png');         
             var doc = new jsPDF(); 
             doc.setFontSize(8);
             doc.text(10,10, 'Created by Tournament Must Have tool by CrissNowik')
             doc.addImage(imgData, 'PNG', 10, 15);
-            doc.save('Game_Plan.pdf');
+            doc.save('Game_Ladder.pdf');
         });    
-    
 }

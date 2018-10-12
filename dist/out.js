@@ -83,8 +83,8 @@ var domElems = exports.domElems = {
     teamInput: $('#collector__input'),
     btnAdd: $('#collector__add'),
     btnGenerate: $('#collector__generate'),
-    btnPDFLadder: $('#generatePDFladder'),
     btnPDFShedule: $('#generatePDFplan'),
+    btnPDFLadder: $('#generatePDFladder'),
     btnPDFLadderSection: $('#btnPDFLadderSection'),
     teamList: $('#collector__list'),
     teamOnList: $('#collector__listItem'),
@@ -297,7 +297,6 @@ var showIt = exports.showIt = {
                 where.append("<div class=\"result__ladder_lineR" + round + postfix + "\"></div>");
             }
             where.append("<div class=\"result__ladder_luckyLine" + round + postfixL + "\"></div>");
-            console.log("specka");
         } else {
             for (var _i14 = 0; _i14 < amount; _i14++) {
                 where.append("<div class=\"result__ladder_lineR" + round + postfix + "\"></div>");
@@ -396,7 +395,9 @@ var _showSheduleCup = __webpack_require__(10);
 
 var _showIt = __webpack_require__(2);
 
-var _generatePdfShedule = __webpack_require__(18);
+var _generatePdfShedule = __webpack_require__(11);
+
+var _generatePdfLadder = __webpack_require__(12);
 
 var basicFunctions = exports.basicFunctions = {
     gettingTeams: function gettingTeams() {
@@ -474,8 +475,6 @@ var basicFunctions = exports.basicFunctions = {
             (0, _showSheduleLeague.showSheduleLeague)(readySheduleLeague);
             _domElems.domElems.btnPDFShedule.on('click', function (e) {
                 e.preventDefault();
-                console.log("terminarz", readySheduleLeague);
-                // generatePdfShedule(readySheduleLeague);
                 window.print();
             });
         } else if (tournamentType === 'Cup') {
@@ -483,42 +482,48 @@ var basicFunctions = exports.basicFunctions = {
                 // 2 rounds
                 var sheduleToShowUp = (0, _cupGenerator.cupGenerator)(teamList);
                 (0, _showSheduleCup.showSheduleCup)(sheduleToShowUp, numberOfCompetitors);
+                PDFSheduleCall();
+                PDFLadderCall();
             } else if (numberOfCompetitors > 4 && numberOfCompetitors < 9) {
                 // 3 rounds
                 var _sheduleToShowUp = (0, _cupGenerator.cupGenerator)(teamList);
                 (0, _showSheduleCup.showSheduleCup)(_sheduleToShowUp, numberOfCompetitors);
+                PDFSheduleCall();
+                PDFLadderCall();
             } else if (numberOfCompetitors > 8 && numberOfCompetitors < 17) {
                 // 4 rounds
                 var _sheduleToShowUp2 = (0, _cupGenerator.cupGenerator)(teamList);
                 (0, _showSheduleCup.showSheduleCup)(_sheduleToShowUp2, numberOfCompetitors);
+                PDFSheduleCall();
+                PDFLadderCall();
             } else {
                 // 5 rounds
                 var _sheduleToShowUp3 = (0, _cupGenerator.cupGenerator)(teamList);
                 (0, _showSheduleCup.showSheduleCup)(_sheduleToShowUp3, numberOfCompetitors);
+                PDFSheduleCall();
+                PDFLadderCall();
             }
         }
     }
-
-    /*wywołanie do generatePdfLadder: */
-
-    // domElems.btnPDFLadder.on('click', function(e){
-    //     console.log("drabinka");
-    //     let element = document.getElementById('result__lader');
-    //     e.preventDefault();
-    //     basicFunctions.generatePdfLadder(element);
-    // });
-    // generatePdfLadder: function (element) {
-
-    //     html2canvas(element).then(function(canvas){         
-    //         var imgData = canvas.toDataURL('image/png');         
-    //         var doc = new jsPDF(); 
-    //         doc.setFontSize(8);
-    //         doc.text(10,10, 'Created by Tournament Must Have tool by CrissNowik')
-    //         doc.addImage(imgData, 'PNG', 10, 15);
-    //         doc.save('Game_Plan.pdf');
-    //     });
-    // }      
 };
+
+function PDFSheduleCall() {
+    _domElems.domElems.btnPDFShedule.on('click', function (e) {
+        console.log("terminarz CUP");
+        var element = document.getElementById('result_list');
+        e.preventDefault();
+        (0, _generatePdfShedule.generatePdfShedule)(element);
+    });
+}
+
+function PDFLadderCall() {
+    _domElems.domElems.btnPDFLadder.on('click', function (e) {
+        console.log("drabinka CUP");
+        var element = document.getElementById('result__lader');
+        e.preventDefault();
+        (0, _generatePdfLadder.generatePdfLadder)(element);
+    });
+}
 
 /***/ }),
 /* 4 */
@@ -859,7 +864,6 @@ function showSheduleLeague(readyShedule) {
     for (var i = 0; i < readyShedule.length; i++) {
         var roundCounter = 1 + i;
         var gameCounter = 0;
-        console.log("showSheduleLeague", readyShedule);
 
         if (roundCounter <= 8) {
             _showIt.showIt.showHeader(_domElems.domElems.sheduleOnScreenA, roundCounter);
@@ -924,7 +928,6 @@ var _showIt = __webpack_require__(2);
 function showSheduleCup(sheduleArray, numberOfTeams) {
     var roundCounter = 1;
     var pairOnScreen = "";
-    console.log("do pokazania: ", sheduleArray);
     _domElems.domElems.resultList.addClass("container");
     _domElems.domElems.sheduleOnScreenA.addClass("col-12");
     _domElems.domElems.sheduleOnScreenB.css('display', 'none');
@@ -1120,14 +1123,7 @@ function showSheduleCup(sheduleArray, numberOfTeams) {
 };
 
 /***/ }),
-/* 11 */,
-/* 12 */,
-/* 13 */,
-/* 14 */,
-/* 15 */,
-/* 16 */,
-/* 17 */,
-/* 18 */
+/* 11 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1137,37 +1133,46 @@ Object.defineProperty(exports, "__esModule", {
     value: true
 });
 exports.generatePdfShedule = generatePdfShedule;
-function generatePdfShedule(readyShedule) {
-    // TO DO
-    // - skalowanie terminarza w zależności od ilości zespołów (max 3 rundy przy 32 teamach)
-    // - uzależnienie tworzenia kolumn od ilości meczy - ifowanie
-    // - przechodzenie na następną stronę w razie dużej ilości meczy 
-    // - polskie znaki w pdf - grubsza zabawa, może warto wykorzystać window.print???? https://stackoverflow.com/questions/44875121/html-to-pdf-using-js-with-utf-8-support#
+function generatePdfShedule(element) {
+    //TO DO 
+    // - rozwiązanie błędu z className, który blokuje generowanie pdf przy małej liczbie graczy
+    // - problem z numeracją i rozwaleniem na stronie całego terminarza
 
-    console.log("readyShedule", readyShedule);
-    var final = [];
-    var gameCounter = 0;
-    for (var i = 0; i < readyShedule.length; i++) {
-        var roundCounter = 1 + i;
-        final.push(" ");
-        final.push("Round " + roundCounter);
-        for (var j = 0; j < readyShedule[i].length; j++) {
-            var newPair = readyShedule[i][j];
-            gameCounter += 1;
-            var pairOnScreen = gameCounter + ". " + newPair.join(" ___ - ___ ");
-            final.push(pairOnScreen);
-        }
-    }
-    console.log("final ", final);
-    var doc = new jsPDF();
-    doc.setFontSize(8);
-    doc.text(10, 10, 'Created by Tournament Must Have tool by CrissNowik');
-    doc.setFontSize(11);
-    doc.text(final, 10, 20);
-    doc.text(final, 110, 20);
-    doc.addPage();
+    html2canvas(element).then(function (canvas) {
+        var imgData = canvas.toDataURL('image/png');
+        var doc = new jsPDF();
+        doc.setFontSize(8);
+        doc.text(10, 10, 'Created by Tournament Must Have tool by CrissNowik');
+        doc.addImage(imgData, 'PNG', 10, 15);
+        doc.save('Game_Plan.pdf');
+    });
+}
 
-    doc.save('Game_Plan.pdf');
+/***/ }),
+/* 12 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+exports.generatePdfLadder = generatePdfLadder;
+function generatePdfLadder(element) {
+    //TO DO 
+    // - rozwiązanie błędu z className, który blokuje generowanie pdf przy małej liczbie graczy
+    // - skalowanie proporcjonalne do ilości zespołów 
+    // 
+
+    html2canvas(element).then(function (canvas) {
+        var imgData = canvas.toDataURL('image/png');
+        var doc = new jsPDF();
+        doc.setFontSize(8);
+        doc.text(10, 10, 'Created by Tournament Must Have tool by CrissNowik');
+        doc.addImage(imgData, 'PNG', 10, 15);
+        doc.save('Game_Ladder.pdf');
+    });
 }
 
 /***/ })

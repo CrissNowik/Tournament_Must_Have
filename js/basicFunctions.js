@@ -6,6 +6,7 @@ import { showSheduleLeague } from "./showSheduleLeague";
 import { showSheduleCup } from "./showSheduleCup";
 import { showIt } from "./showIt";
 import { generatePdfShedule } from "./generatePdfShedule";
+import { generatePdfLadder } from "./generatePdfLadder";
 
 export let basicFunctions = {
     gettingTeams: function () {
@@ -86,45 +87,49 @@ export let basicFunctions = {
             showSheduleLeague(readySheduleLeague);
             domElems.btnPDFShedule.on('click', function(e){
                 e.preventDefault();
-                console.log("terminarz", readySheduleLeague);
-                // generatePdfShedule(readySheduleLeague);
                 window.print();
             });    
         } else if (tournamentType === 'Cup') {
             if (numberOfCompetitors<5) { // 2 rounds
                 let sheduleToShowUp = cupGenerator(teamList);
                 showSheduleCup(sheduleToShowUp, numberOfCompetitors);
-                
+                PDFSheduleCall();
+                PDFLadderCall();
             } else if (numberOfCompetitors > 4 && numberOfCompetitors < 9 ) { // 3 rounds
                 let sheduleToShowUp = cupGenerator(teamList);
                 showSheduleCup(sheduleToShowUp, numberOfCompetitors);
+                PDFSheduleCall();
+                PDFLadderCall();
             } else if (numberOfCompetitors > 8 && numberOfCompetitors < 17) { // 4 rounds
                 let sheduleToShowUp = cupGenerator(teamList);
-                showSheduleCup(sheduleToShowUp, numberOfCompetitors); 
+                showSheduleCup(sheduleToShowUp, numberOfCompetitors);
+                PDFSheduleCall();
+                PDFLadderCall();
             } else { // 5 rounds
                 let sheduleToShowUp = cupGenerator(teamList);
                 showSheduleCup(sheduleToShowUp, numberOfCompetitors);
+                PDFSheduleCall();
+                PDFLadderCall();
             }
         }
-    }
-    
-    /*wywołanie do generatePdfLadder: */
-
-    // domElems.btnPDFLadder.on('click', function(e){
-    //     console.log("drabinka");
-    //     let element = document.getElementById('result__lader');
-    //     e.preventDefault();
-    //     basicFunctions.generatePdfLadder(element);
-    // });
-    // generatePdfLadder: function (element) {
-        
-    //     html2canvas(element).then(function(canvas){         
-    //         var imgData = canvas.toDataURL('image/png');         
-    //         var doc = new jsPDF(); 
-    //         doc.setFontSize(8);
-    //         doc.text(10,10, 'Created by Tournament Must Have tool by CrissNowik')
-    //         doc.addImage(imgData, 'PNG', 10, 15);
-    //         doc.save('Game_Plan.pdf');
-    //     });
-    // }      
+    }     
 }
+
+function PDFSheduleCall() {
+    domElems.btnPDFShedule.on('click', function(e){
+        console.log("terminarz CUP");
+        let element = document.getElementById('result_list');
+        e.preventDefault();
+        generatePdfShedule(element);
+    });
+}
+
+function PDFLadderCall() {
+    domElems.btnPDFLadder.on('click', function(e){
+        console.log("drabinka CUP");
+        let element = document.getElementById('result__lader');
+        e.preventDefault();
+        generatePdfLadder(element);
+    });
+}
+

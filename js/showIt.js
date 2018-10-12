@@ -152,8 +152,7 @@ export let showIt = {
             for (let i = 0; i < amount-1; i++) {
                 where.append(`<div class="result__ladder_lineR${round}${postfix}"></div>`); 
             }                                                                      
-            where.append(`<div class="result__ladder_luckyLine${round}${postfixL}"></div>`); 
-            console.log("specka");
+            where.append(`<div class="result__ladder_luckyLine${round}${postfixL}"></div>`);
              
         } else {  
                 for (let i = 0; i < amount; i++) {                                      
