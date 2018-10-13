@@ -117,7 +117,6 @@ export let basicFunctions = {
 
 function PDFSheduleCall() {
     domElems.btnPDFShedule.on('click', function(e){
-        console.log("terminarz CUP");
         let element = document.getElementById('result_list');
         e.preventDefault();
         generatePdfShedule(element);
@@ -126,7 +125,6 @@ function PDFSheduleCall() {
 
 function PDFLadderCall() {
     domElems.btnPDFLadder.on('click', function(e){
-        console.log("drabinka CUP");
         let element = document.getElementById('result__lader');
         e.preventDefault();
         generatePdfLadder(element);

@@ -495,7 +495,6 @@ var basicFunctions = exports.basicFunctions = {
 
 function PDFSheduleCall() {
     _domElems.domElems.btnPDFShedule.on('click', function (e) {
-        console.log("terminarz CUP");
         var element = document.getElementById('result_list');
         e.preventDefault();
         (0, _generatePdfShedule.generatePdfShedule)(element);
@@ -504,7 +503,6 @@ function PDFSheduleCall() {
 
 function PDFLadderCall() {
     _domElems.domElems.btnPDFLadder.on('click', function (e) {
-        console.log("drabinka CUP");
         var element = document.getElementById('result__lader');
         e.preventDefault();
         (0, _generatePdfLadder.generatePdfLadder)(element);
@@ -1166,6 +1164,9 @@ function generatePdfLadder(element) {
         doc.save('Game_Ladder.pdf');
     });
 }
+
+// doc.addImage(imgData, 'PNG', -20, 15);          - 3-4
+// doc.addImage(imgData, 'PNG', 10, 15, 200, 100); - 5-6
 
 /***/ })
 /******/ ]);
