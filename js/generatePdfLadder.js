@@ -1,6 +1,5 @@
 export function generatePdfLadder(element) {
     //TO DO 
-    // - rozwiązanie błędu z className, który blokuje generowanie pdf przy małej liczbie graczy
     // - skalowanie proporcjonalne do ilości zespołów 
     // 
       

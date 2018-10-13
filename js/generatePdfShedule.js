@@ -1,6 +1,5 @@
 export function generatePdfShedule (element) {    
     //TO DO 
-    // - rozwiązanie błędu z className, który blokuje generowanie pdf przy małej liczbie graczy
     // - problem z numeracją i rozwaleniem na stronie całego terminarza
 
         html2canvas(element).then(function(canvas){         

@@ -1107,19 +1107,29 @@ function showSheduleCup(sheduleArray, numberOfTeams) {
     * @param {string} container - name of the last rectangle where margin bottom will be cut
     */
 
-    var ulR3 = $('#ladder_round3')[0].lastElementChild.className;
-    var ulR4 = $('#ladder_round4')[0].lastElementChild.className;
-    var ulR5 = $('#ladder_round5')[0].lastElementChild.className;
-
     function cutBottomMargins(round, container) {
         if (container === "result__ladder_rectR4" || container === "result__ladder_rectR4a" || container === "result__ladder_rectR5" || container === "result__ladder_rectR5a" || container === "result__ladder_rectR5b" || container === "result__ladder_rectR5c" || container === "result__ladder_rectR5d" || container === "result__ladder_rectR5e" || container === "result__ladder_rectR3" || container === "result__ladder_rectR3c") {
-            var R3 = $("#ladder_round" + round + " :nth-last-child(1)");
-            R3.css("margin-bottom", "20px");
+            var rectangle = $("#ladder_round" + round + " :nth-last-child(1)");
+            rectangle.css("margin-bottom", "20px");
         }
     };
-    cutBottomMargins(3, ulR3);
-    cutBottomMargins(4, ulR4);
-    cutBottomMargins(5, ulR5);
+
+    if (numberOfTeams < 7) {
+        var ulR3 = $('#ladder_round3')[0].lastElementChild.className;
+        cutBottomMargins(3, ulR3);
+    } else if (numberOfTeams > 6 && numberOfTeams < 17) {
+        var _ulR = $('#ladder_round3')[0].lastElementChild.className;
+        var ulR4 = $('#ladder_round4')[0].lastElementChild.className;
+        cutBottomMargins(3, _ulR);
+        cutBottomMargins(4, ulR4);
+    } else if (numberOfTeams > 16) {
+        var _ulR2 = $('#ladder_round3')[0].lastElementChild.className;
+        var _ulR3 = $('#ladder_round4')[0].lastElementChild.className;
+        var ulR5 = $('#ladder_round5')[0].lastElementChild.className;
+        cutBottomMargins(3, _ulR2);
+        cutBottomMargins(4, _ulR3);
+        cutBottomMargins(5, ulR5);
+    }
 };
 
 /***/ }),
@@ -1135,7 +1145,6 @@ Object.defineProperty(exports, "__esModule", {
 exports.generatePdfShedule = generatePdfShedule;
 function generatePdfShedule(element) {
     //TO DO 
-    // - rozwiązanie błędu z className, który blokuje generowanie pdf przy małej liczbie graczy
     // - problem z numeracją i rozwaleniem na stronie całego terminarza
 
     html2canvas(element).then(function (canvas) {
@@ -1161,7 +1170,6 @@ Object.defineProperty(exports, "__esModule", {
 exports.generatePdfLadder = generatePdfLadder;
 function generatePdfLadder(element) {
     //TO DO 
-    // - rozwiązanie błędu z className, który blokuje generowanie pdf przy małej liczbie graczy
     // - skalowanie proporcjonalne do ilości zespołów 
     // 
 

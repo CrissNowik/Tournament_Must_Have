@@ -184,11 +184,7 @@ export function showSheduleCup(sheduleArray, numberOfTeams) {
  *
  * @param {number} round - ladder round number
  * @param {string} container - name of the last rectangle where margin bottom will be cut
- */
-
-    let ulR3 = $('#ladder_round3')[0].lastElementChild.className;
-    let ulR4 = $('#ladder_round4')[0].lastElementChild.className;
-    let ulR5 = $('#ladder_round5')[0].lastElementChild.className;
+ */ 
 
     function cutBottomMargins(round, container) {
         if (container ===  "result__ladder_rectR4" || 
@@ -200,13 +196,28 @@ export function showSheduleCup(sheduleArray, numberOfTeams) {
             container ===  "result__ladder_rectR5d"|| 
             container ===  "result__ladder_rectR5e"|| 
             container ===  "result__ladder_rectR3" || 
-            container ===  "result__ladder_rectR3c")
-            {  
-            let R3 =  $(`#ladder_round${round} :nth-last-child(1)`);
-                R3.css("margin-bottom", "20px");
+            container ===  "result__ladder_rectR3c"
+            ) 
+        {  
+            let rectangle =  $(`#ladder_round${round} :nth-last-child(1)`);
+            rectangle.css("margin-bottom", "20px");
         }
     };
-    cutBottomMargins(3, ulR3);
-    cutBottomMargins(4, ulR4);
-    cutBottomMargins(5, ulR5);
+
+    if (numberOfTeams < 7) {
+        let ulR3 = $('#ladder_round3')[0].lastElementChild.className;
+        cutBottomMargins(3, ulR3);
+    } else if (numberOfTeams > 6 && numberOfTeams < 17 ) {
+        let ulR3 = $('#ladder_round3')[0].lastElementChild.className;
+        let ulR4 = $('#ladder_round4')[0].lastElementChild.className;
+        cutBottomMargins(3, ulR3);
+        cutBottomMargins(4, ulR4);
+    } else if (numberOfTeams > 16){
+        let ulR3 = $('#ladder_round3')[0].lastElementChild.className;
+        let ulR4 = $('#ladder_round4')[0].lastElementChild.className;
+        let ulR5 = $('#ladder_round5')[0].lastElementChild.className;
+        cutBottomMargins(3, ulR3);
+        cutBottomMargins(4, ulR4);
+        cutBottomMargins(5, ulR5);
+    }
 };
