@@ -46,36 +46,30 @@ export let showIt = {
                 }
                 where.append(`<li class="result__ladder_rectRaL${roundNumber}a"></li>`);
                 where.append(`<li class="result__ladder_rectR${roundNumber}"></li>`);
-                console.log(`${roundNumber}`,"showLadderRect + + a")
             } else {
                 for (let i = 0; i < howMany-2; i++) {                                          
                     where.append(`<li class="result__ladder_rectR${roundNumber}"></li>`);
                 }
                 where.append(`<li class="result__ladder_rectRaL${roundNumber}"></li>`);
                 where.append(`<li class="result__ladder_rectR${roundNumber}"></li>`);
-                console.log(`${roundNumber}`,"showLadderRect + +")
             }
         } else if (decisionBef === -1 && decision === -1) {
             if (numberOfTeams === 13 || numberOfTeams === 14) {
                 for (let i = 0; i < howMany; i++) {                                            
                     where.append(`<li class="result__ladder_rectR${roundNumber}a"></li>`);
                     }
-                    console.log(`${roundNumber}`,"showLadderRect - - a")
             } else if (numberOfTeams === 25 || numberOfTeams === 26) {
                 for (let i = 0; i < howMany; i++) {                                            
                     where.append(`<li class="result__ladder_rectR${roundNumber}d"></li>`);
                     }
-                    console.log(`${roundNumber}`,"showLadderRect - - d")
             } else if (numberOfTeams === 27 || numberOfTeams === 28) {
                 for (let i = 0; i < howMany; i++) {                                            
                     where.append(`<li class="result__ladder_rectR${roundNumber}e"></li>`);
                     }
-                    console.log(`${roundNumber}`,"showLadderRect - - e")
             } else {
                 for (let i = 0; i < howMany; i++) {                                            
                     where.append(`<li class="result__ladder_rectR${roundNumber}"></li>`);
                     }
-                    console.log(`${roundNumber}`,"showLadderRect - -")
             }
            
         } else if (decisionBef !== -1 && decision === -1){
@@ -85,42 +79,36 @@ export let showIt = {
                 }
                 where.append(`<li class="result__ladder_rectRaL${roundNumber}a"></li>`);
                 where.append(`<li class="result__ladder_rectR${roundNumber}"></li>`);
-                console.log(`${roundNumber}`,"showLadderRect + - a")
             } else if (numberOfTeams === 17 || numberOfTeams === 18) {
                 for (let i = 0; i < howMany-2; i++) {
                     where.append(`<li class="result__ladder_rectR${roundNumber}"></li>`);
                 }
                 where.append(`<li class="result__ladder_rectRaL${roundNumber}"></li>`);
                 where.append(`<li class="result__ladder_rectR${roundNumber}a"></li>`);
-                console.log(`${roundNumber}`,"showLadderRect + - a")
             } else if (numberOfTeams === 19 || numberOfTeams === 20){
                 for (let i = 0; i < howMany-2; i++) {
                     where.append(`<li class="result__ladder_rectR${roundNumber}"></li>`);
                 }
                 where.append(`<li class="result__ladder_rectRaL${roundNumber}"></li>`);
                 where.append(`<li class="result__ladder_rectR${roundNumber}b"></li>`);
-                console.log(`${roundNumber}`,"showLadderRect + - b")
             } else if (numberOfTeams === 21 || numberOfTeams === 22){
                 for (let i = 0; i < howMany-2; i++) {
                     where.append(`<li class="result__ladder_rectR${roundNumber}"></li>`);
                 }
                 where.append(`<li class="result__ladder_rectRaL${roundNumber}"></li>`);
                 where.append(`<li class="result__ladder_rectR${roundNumber}c"></li>`);
-                console.log(`${roundNumber}`,"showLadderRect + - b")
             } else if (numberOfTeams === 27 || numberOfTeams === 28){
                 for (let i = 0; i < howMany-2; i++) {
                     where.append(`<li class="result__ladder_rectR${roundNumber}"></li>`);
                 }
                 where.append(`<li class="result__ladder_rectRaL${roundNumber}a"></li>`);
                 where.append(`<li class="result__ladder_rectR${roundNumber}b"></li>`);
-                console.log(`${roundNumber}`,"showLadderRect + - ab")
             } else {
                 for (let i = 0; i < howMany-2; i++) {
                     where.append(`<li class="result__ladder_rectR${roundNumber}"></li>`);
                 }
                 where.append(`<li class="result__ladder_rectRaL${roundNumber}"></li>`);
                 where.append(`<li class="result__ladder_rectR${roundNumber}"></li>`);
-                console.log(`${roundNumber}`,"showLadderRect + -")
             }
             
         } else if (decisionBef === -1 && decision !== -1){
@@ -130,12 +118,10 @@ export let showIt = {
                 }
                 where.append(`<li class="result__ladder_rectR${roundNumber}a"></li>`);
                 where.append(`<li class="result__ladder_rectR${roundNumber}"></li>`);
-                console.log(`${roundNumber}`,"showLadderRect - +")
             } else {
                 for (let i = 0; i < howMany; i++) {                                             
                     where.append(`<li class="result__ladder_rectR${roundNumber}"></li>`);
                 }
-                console.log(`${roundNumber}`,"showLadderRect - +")
             }
         }
     },

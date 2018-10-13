@@ -192,36 +192,30 @@ var showIt = exports.showIt = {
                 }
                 where.append("<li class=\"result__ladder_rectRaL" + roundNumber + "a\"></li>");
                 where.append("<li class=\"result__ladder_rectR" + roundNumber + "\"></li>");
-                console.log("" + roundNumber, "showLadderRect + + a");
             } else {
                 for (var _i = 0; _i < howMany - 2; _i++) {
                     where.append("<li class=\"result__ladder_rectR" + roundNumber + "\"></li>");
                 }
                 where.append("<li class=\"result__ladder_rectRaL" + roundNumber + "\"></li>");
                 where.append("<li class=\"result__ladder_rectR" + roundNumber + "\"></li>");
-                console.log("" + roundNumber, "showLadderRect + +");
             }
         } else if (decisionBef === -1 && decision === -1) {
             if (numberOfTeams === 13 || numberOfTeams === 14) {
                 for (var _i2 = 0; _i2 < howMany; _i2++) {
                     where.append("<li class=\"result__ladder_rectR" + roundNumber + "a\"></li>");
                 }
-                console.log("" + roundNumber, "showLadderRect - - a");
             } else if (numberOfTeams === 25 || numberOfTeams === 26) {
                 for (var _i3 = 0; _i3 < howMany; _i3++) {
                     where.append("<li class=\"result__ladder_rectR" + roundNumber + "d\"></li>");
                 }
-                console.log("" + roundNumber, "showLadderRect - - d");
             } else if (numberOfTeams === 27 || numberOfTeams === 28) {
                 for (var _i4 = 0; _i4 < howMany; _i4++) {
                     where.append("<li class=\"result__ladder_rectR" + roundNumber + "e\"></li>");
                 }
-                console.log("" + roundNumber, "showLadderRect - - e");
             } else {
                 for (var _i5 = 0; _i5 < howMany; _i5++) {
                     where.append("<li class=\"result__ladder_rectR" + roundNumber + "\"></li>");
                 }
-                console.log("" + roundNumber, "showLadderRect - -");
             }
         } else if (decisionBef !== -1 && decision === -1) {
             if (numberOfTeams === 11 || numberOfTeams === 12) {
@@ -230,42 +224,36 @@ var showIt = exports.showIt = {
                 }
                 where.append("<li class=\"result__ladder_rectRaL" + roundNumber + "a\"></li>");
                 where.append("<li class=\"result__ladder_rectR" + roundNumber + "\"></li>");
-                console.log("" + roundNumber, "showLadderRect + - a");
             } else if (numberOfTeams === 17 || numberOfTeams === 18) {
                 for (var _i7 = 0; _i7 < howMany - 2; _i7++) {
                     where.append("<li class=\"result__ladder_rectR" + roundNumber + "\"></li>");
                 }
                 where.append("<li class=\"result__ladder_rectRaL" + roundNumber + "\"></li>");
                 where.append("<li class=\"result__ladder_rectR" + roundNumber + "a\"></li>");
-                console.log("" + roundNumber, "showLadderRect + - a");
             } else if (numberOfTeams === 19 || numberOfTeams === 20) {
                 for (var _i8 = 0; _i8 < howMany - 2; _i8++) {
                     where.append("<li class=\"result__ladder_rectR" + roundNumber + "\"></li>");
                 }
                 where.append("<li class=\"result__ladder_rectRaL" + roundNumber + "\"></li>");
                 where.append("<li class=\"result__ladder_rectR" + roundNumber + "b\"></li>");
-                console.log("" + roundNumber, "showLadderRect + - b");
             } else if (numberOfTeams === 21 || numberOfTeams === 22) {
                 for (var _i9 = 0; _i9 < howMany - 2; _i9++) {
                     where.append("<li class=\"result__ladder_rectR" + roundNumber + "\"></li>");
                 }
                 where.append("<li class=\"result__ladder_rectRaL" + roundNumber + "\"></li>");
                 where.append("<li class=\"result__ladder_rectR" + roundNumber + "c\"></li>");
-                console.log("" + roundNumber, "showLadderRect + - b");
             } else if (numberOfTeams === 27 || numberOfTeams === 28) {
                 for (var _i10 = 0; _i10 < howMany - 2; _i10++) {
                     where.append("<li class=\"result__ladder_rectR" + roundNumber + "\"></li>");
                 }
                 where.append("<li class=\"result__ladder_rectRaL" + roundNumber + "a\"></li>");
                 where.append("<li class=\"result__ladder_rectR" + roundNumber + "b\"></li>");
-                console.log("" + roundNumber, "showLadderRect + - ab");
             } else {
                 for (var _i11 = 0; _i11 < howMany - 2; _i11++) {
                     where.append("<li class=\"result__ladder_rectR" + roundNumber + "\"></li>");
                 }
                 where.append("<li class=\"result__ladder_rectRaL" + roundNumber + "\"></li>");
                 where.append("<li class=\"result__ladder_rectR" + roundNumber + "\"></li>");
-                console.log("" + roundNumber, "showLadderRect + -");
             }
         } else if (decisionBef === -1 && decision !== -1) {
             if (numberOfTeams === 21 || numberOfTeams === 22) {
@@ -274,12 +262,10 @@ var showIt = exports.showIt = {
                 }
                 where.append("<li class=\"result__ladder_rectR" + roundNumber + "a\"></li>");
                 where.append("<li class=\"result__ladder_rectR" + roundNumber + "\"></li>");
-                console.log("" + roundNumber, "showLadderRect - +");
             } else {
                 for (var _i13 = 0; _i13 < howMany; _i13++) {
                     where.append("<li class=\"result__ladder_rectR" + roundNumber + "\"></li>");
                 }
-                console.log("" + roundNumber, "showLadderRect - +");
             }
         }
     },
@@ -1168,14 +1154,15 @@ exports.generatePdfLadder = generatePdfLadder;
 function generatePdfLadder(element) {
     //TO DO 
     // - skalowanie proporcjonalne do ilości zespołów 
-    // 
+
+    console.log("element ", element);
 
     html2canvas(element).then(function (canvas) {
         var imgData = canvas.toDataURL('image/png');
         var doc = new jsPDF();
         doc.setFontSize(8);
         doc.text(10, 10, 'Created by Tournament Must Have tool by CrissNowik');
-        doc.addImage(imgData, 'PNG', 10, 15);
+        doc.addImage(imgData, 'PNG', -20, 15);
         doc.save('Game_Ladder.pdf');
     });
 }
