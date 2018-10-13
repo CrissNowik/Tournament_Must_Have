@@ -8,7 +8,7 @@ export  function cupGenerator(teamList) {
             let pairsReadyToShowR1, pairsReadyToShowR2, pairsReadyToShowR3, pairsReadyToShowR4, pairsReadyToShowR5;
             pairsReadyToShowR1 = pairsReadyToShowR2 = pairsReadyToShowR3 = pairsReadyToShowR4 = pairsReadyToShowR5 = [];
 
-            basicFunctions.shuffle(teamNamesList); // shuffling teams
+            basicFunctions.shuffle(teamNamesList);
 
  // 2 rounds
             if (numberOfTeams<5) {
