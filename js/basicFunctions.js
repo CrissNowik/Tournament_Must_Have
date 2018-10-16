@@ -94,22 +94,22 @@ export let basicFunctions = {
                 let sheduleToShowUp = cupGenerator(teamList);
                 showSheduleCup(sheduleToShowUp, numberOfCompetitors);
                 PDFSheduleCall();
-                PDFLadderCall();
+                PDFLadderCall(numberOfCompetitors);
             } else if (numberOfCompetitors > 4 && numberOfCompetitors < 9 ) { // 3 rounds
                 let sheduleToShowUp = cupGenerator(teamList);
                 showSheduleCup(sheduleToShowUp, numberOfCompetitors);
                 PDFSheduleCall();
-                PDFLadderCall();
+                PDFLadderCall(numberOfCompetitors);
             } else if (numberOfCompetitors > 8 && numberOfCompetitors < 17) { // 4 rounds
                 let sheduleToShowUp = cupGenerator(teamList);
                 showSheduleCup(sheduleToShowUp, numberOfCompetitors);
                 PDFSheduleCall();
-                PDFLadderCall();
+                PDFLadderCall(numberOfCompetitors);
             } else { // 5 rounds
                 let sheduleToShowUp = cupGenerator(teamList);
                 showSheduleCup(sheduleToShowUp, numberOfCompetitors);
                 PDFSheduleCall();
-                PDFLadderCall();
+                PDFLadderCall(numberOfCompetitors);
             }
         }
     }     
@@ -123,11 +123,11 @@ function PDFSheduleCall() {
     });
 }
 
-function PDFLadderCall() {
+function PDFLadderCall(numberOfCompetitors) {
     domElems.btnPDFLadder.on('click', function(e){
         let element = document.getElementById('result__lader');
         e.preventDefault();
-        generatePdfLadder(element);
+        generatePdfLadder(element, numberOfCompetitors);
     });
 }
 

@@ -469,25 +469,25 @@ var basicFunctions = exports.basicFunctions = {
                 var sheduleToShowUp = (0, _cupGenerator.cupGenerator)(teamList);
                 (0, _showSheduleCup.showSheduleCup)(sheduleToShowUp, numberOfCompetitors);
                 PDFSheduleCall();
-                PDFLadderCall();
+                PDFLadderCall(numberOfCompetitors);
             } else if (numberOfCompetitors > 4 && numberOfCompetitors < 9) {
                 // 3 rounds
                 var _sheduleToShowUp = (0, _cupGenerator.cupGenerator)(teamList);
                 (0, _showSheduleCup.showSheduleCup)(_sheduleToShowUp, numberOfCompetitors);
                 PDFSheduleCall();
-                PDFLadderCall();
+                PDFLadderCall(numberOfCompetitors);
             } else if (numberOfCompetitors > 8 && numberOfCompetitors < 17) {
                 // 4 rounds
                 var _sheduleToShowUp2 = (0, _cupGenerator.cupGenerator)(teamList);
                 (0, _showSheduleCup.showSheduleCup)(_sheduleToShowUp2, numberOfCompetitors);
                 PDFSheduleCall();
-                PDFLadderCall();
+                PDFLadderCall(numberOfCompetitors);
             } else {
                 // 5 rounds
                 var _sheduleToShowUp3 = (0, _cupGenerator.cupGenerator)(teamList);
                 (0, _showSheduleCup.showSheduleCup)(_sheduleToShowUp3, numberOfCompetitors);
                 PDFSheduleCall();
-                PDFLadderCall();
+                PDFLadderCall(numberOfCompetitors);
             }
         }
     }
@@ -501,11 +501,11 @@ function PDFSheduleCall() {
     });
 }
 
-function PDFLadderCall() {
+function PDFLadderCall(numberOfCompetitors) {
     _domElems.domElems.btnPDFLadder.on('click', function (e) {
         var element = document.getElementById('result__lader');
         e.preventDefault();
-        (0, _generatePdfLadder.generatePdfLadder)(element);
+        (0, _generatePdfLadder.generatePdfLadder)(element, numberOfCompetitors);
     });
 }
 
@@ -1149,24 +1149,55 @@ Object.defineProperty(exports, "__esModule", {
     value: true
 });
 exports.generatePdfLadder = generatePdfLadder;
-function generatePdfLadder(element) {
-    //TO DO 
-    // - skalowanie proporcjonalne do ilości zespołów 
-
-    console.log("element ", element);
-
-    html2canvas(element).then(function (canvas) {
-        var imgData = canvas.toDataURL('image/png');
-        var doc = new jsPDF();
-        doc.setFontSize(8);
-        doc.text(10, 10, 'Created by Tournament Must Have tool by CrissNowik');
-        doc.addImage(imgData, 'PNG', -20, 15);
-        doc.save('Game_Ladder.pdf');
-    });
+function generatePdfLadder(element, numberOfCompetitors) {
+    if (numberOfCompetitors < 17) {
+        html2canvas(element).then(function (canvas) {
+            var imgData = canvas.toDataURL('image/png');
+            var doc = new jsPDF();
+            doc.setFontSize(8);
+            doc.text(10, 10, 'Created by Tournament Must Have tool by CrissNowik');
+            if (numberOfCompetitors < 5) {
+                doc.addImage(imgData, 'PNG', -20, 15); //- 3,4 
+            } else if (numberOfCompetitors === 5 || numberOfCompetitors === 6) {
+                doc.addImage(imgData, 'PNG', 10, 15, 250, 120); //- 5,6
+            } else if (numberOfCompetitors === 7 || numberOfCompetitors === 8) {
+                doc.addImage(imgData, 'PNG', 10, 15, 250, 140); //-7,8
+            } else if (numberOfCompetitors > 8 && numberOfCompetitors < 13) {
+                doc.addImage(imgData, 'PNG', -10, 15, 250, 160); //- 9,10,11,12
+            } else if (numberOfCompetitors === 13 || numberOfCompetitors === 14) {
+                doc.addImage(imgData, 'PNG', -10, 15, 240, 180); //- 13,14
+            } else if (numberOfCompetitors === 15 || numberOfCompetitors === 16) {
+                doc.addImage(imgData, 'PNG', -10, 15, 240, 200); //- 15,16 
+            }
+            doc.save('Game_Ladder.pdf');
+        });
+    } else {
+        html2canvas(element).then(function (canvas) {
+            var imgData = canvas.toDataURL('image/png');
+            var doc = new jsPDF('portrait', 'mm', 'a3');
+            doc.setFontSize(8);
+            doc.text(10, 10, 'Created by Tournament Must Have tool by CrissNowik');
+            if (numberOfCompetitors === 17 || numberOfCompetitors === 18) {
+                doc.addImage(imgData, 'PNG', -10, 15, 300, 260); // 17-18
+            } else if (numberOfCompetitors === 19 || numberOfCompetitors === 20) {
+                doc.addImage(imgData, 'PNG', -10, 15, 300, 280); // 19-20
+            } else if (numberOfCompetitors === 21 || numberOfCompetitors === 22) {
+                doc.addImage(imgData, 'PNG', -10, 15, 300, 300); // 21-22
+            } else if (numberOfCompetitors === 23 || numberOfCompetitors === 24) {
+                doc.addImage(imgData, 'PNG', -10, 15, 300, 320); // 23-24
+            } else if (numberOfCompetitors === 25 || numberOfCompetitors === 26) {
+                doc.addImage(imgData, 'PNG', -10, 15, 300, 340); // 25-26
+            } else if (numberOfCompetitors === 27 || numberOfCompetitors === 28) {
+                doc.addImage(imgData, 'PNG', -10, 15, 300, 360); // 27-28
+            } else if (numberOfCompetitors === 29 || numberOfCompetitors === 30) {
+                doc.addImage(imgData, 'PNG', -10, 15, 300, 390); // 29-30
+            } else if (numberOfCompetitors === 31 || numberOfCompetitors === 32) {
+                doc.addImage(imgData, 'PNG', -10, 12, 300, 410); // 31-32
+            }
+            doc.save('Game_Ladder.pdf');
+        });
+    }
 }
-
-// doc.addImage(imgData, 'PNG', -20, 15);          - 3-4
-// doc.addImage(imgData, 'PNG', 10, 15, 200, 100); - 5-6
 
 /***/ })
 /******/ ]);
