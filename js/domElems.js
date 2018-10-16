@@ -1,5 +1,3 @@
-    //DOM elements store
-    //
 export let domElems = {
         logo: $('#header__logo'),
         naviScreen: $('#nav'),

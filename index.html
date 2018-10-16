@@ -1,93 +1,104 @@
-<!DOCTYPE html> 
+<!DOCTYPE html>
 <html lang="pl">
-	<head>
-		<meta charset="UTF-8">
-		<meta http-equiv="X-UA-Compatible" content="IE=edge">
-		<meta name="description" content="This web app will help everyone in organizing and managing division of participants in sport events - leagues and tournaments.">
-		<meta name="keywords" content="football, soccer, tournament, turniej, piłka nożna, volleyball, siatkówka, martial arts, league, round-robin, cup, brackets, ladder, tournament ladder, cup ladder, competition, games, olimpic games, sport, hobby, fun">
-		<meta name="viewport" content="initial-scale=1">
-			<title>Tournament Must-Have</title>
-		<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.0/css/all.css" integrity="sha384-lKuwvrZot6UHsBSfcMvOkWwlCMgc0TaWr+30HWe3a4ltaBwTZhyTEggF5tJv8tbt" crossorigin="anonymous">
-		<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-		<script src="js/jspdf.min.js"></script>
-		<script src="js/html2canvas.min.js"></script>
-		<link rel="stylesheet" href="css/main.css">
-	</head>
-	<body>
-		<header class="header container">
-					<img class="header__logo" id="header__logo" src="res/logo.jpeg" alt="TMH logo">
-					<h1 class="header__title" id="header">Tournament Must Have</h1>
-		</header>
-		<nav class="nav container" id="nav">
-			<button type="button" class="nav__confirm" id="nav__confirm">
-				<p class="nav__confirm_txt">Create new <br/> contest</p>	 
-			</button>
-		</nav> 
-		<section class="collector container" id="collector">
-			<form class="collector__form">
-				<div class="collector__left">
-					<select class="collector__select" name="Choose tournament type" id="collector__select" required>
-							<option value="League">League (round-robin)</option>
-							<option value="Cup">Cup (knock-out)</option>
-						</select>
-						<input class="collector__input" id="collector__input" type="text" placeholder="Team name here" ></input>
-				</div>
-				<div class="collector__right">
-					<button class="collector__add" id="collector__add" type="button"><p>Add</p></button>
-					<button class="collector__generate" id="collector__generate" type="button"><p>Create</p></button>
-				</div>
-				
-			</form>
-			<div class="collector__show">
-				<p class="collector__alert"id="alertOne">First write team name.</p>
-				<p class="collector__alert" id="alertTwo">You need at least 3 teams.</p>
-				<p class="collector__alert" id="alertThree">Team name - max 21 chars.</p>
-				<p class="collector__alert" id="alertFour">Max number of teams is 32.</p>
-				<p class="collector__caution" id="alertCup">Feel free to set any number of competitors between 3-32.</br>Just remember that cup formula performs the best with 4, 8, 16, 32 competitors - in other cases Lucky Team will occur.</p>	
-				<ol class="collector__list" id="collector__list">
-				</ol>
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="description" content="This web app will help everyone in organizing and managing division of participants in sport events - leagues and tournaments.">
+	<meta name="keywords" content="football, soccer, tournament, turniej, piłka nożna, volleyball, siatkówka, martial arts, league, round-robin, cup, brackets, ladder, tournament ladder, cup ladder, competition, games, olimpic games, sport, hobby, fun">
+	<meta name="viewport" content="initial-scale=1">
+	<title>Tournament Must-Have</title>
+	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.0/css/all.css" integrity="sha384-lKuwvrZot6UHsBSfcMvOkWwlCMgc0TaWr+30HWe3a4ltaBwTZhyTEggF5tJv8tbt"
+	 crossorigin="anonymous">
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+	<script src="js/jspdf.min.js"></script>
+	<script src="js/html2canvas.min.js"></script>
+	<link rel="stylesheet" href="css/main.css">
+</head>
+
+<body>
+	<header class="header container">
+		<img class="header__logo" id="header__logo" src="res/logo.jpeg" alt="TMH logo">
+		<h1 class="header__title" id="header">Tournament Must Have</h1>
+	</header>
+	<nav class="nav container" id="nav">
+		<button type="button" class="nav__confirm" id="nav__confirm">
+			<p class="nav__confirm_txt">Create new <br /> contest</p>
+		</button>
+	</nav>
+	<section class="collector container" id="collector">
+		<form class="collector__form">
+			<div class="collector__left">
+				<select class="collector__select" name="Choose tournament type" id="collector__select" required>
+					<option value="League">League (round-robin)</option>
+					<option value="Cup">Cup (knock-out)</option>
+				</select>
+				<input class="collector__input" id="collector__input" type="text" placeholder="Team name here"></input>
 			</div>
-		</section>
-		<section class="result container" id="result">
-			<div class="result__btn row">
-				<button type="button" class="result__btnPDF"id="generatePDFplan">
-						<p>Download<br>PDF with shedule</p>	 
+			<div class="collector__right">
+				<button class="collector__add" id="collector__add" type="button">
+					<p>Add</p>
 				</button>
-			</div>	
-			<div class="result__list row" id="result_list">
-				<ol class="result__list_o col-3" id="result__listA"></ol>
-				<ol class="result__list_o col-3" id="result__listB"></ol>
-				<ol class="result__list_o col-3" id="result__listC"></ol>
-				<ol class="result__list_o col-3" id="result__listD"></ol>
+				<button class="collector__generate" id="collector__generate" type="button">
+					<p>Create</p>
+				</button>
 			</div>
-			<div class="result__btn row" id="btnPDFLadderSection">
-					<button type="button" class="result__btnPDF"id="generatePDFladder">
-						<p>Download<br>PDF with ladder</p>	 
-					</button>
-				</div>
-			<div class="result__lader container" id="result__lader">
-					<ul class="result__ladder_round col-1" id="ladder_round1"></ul>
-					<div class="result__ladder_lines col-1" id="line_contR1"></div>
-					<ul class="result__ladder_round col-1" id="ladder_round2"></ul>
-					<div class="result__ladder_lines col-1" id="line_contR2"></div>
-					<ul class="result__ladder_round col-1" id="ladder_round3"></ul>
-					<div class="result__ladder_lines col-1" id="line_contR3"></div>
-					<ul class="result__ladder_round col-1" id="ladder_round4"></ul>
-					<div class="result__ladder_lines col-1" id="line_contR4"></div>
-					<ul class="result__ladder_round col-1" id="ladder_round5"></ul>
-					<div class="result__ladder_lines col-1" id="line_contR5"></div>
-					<ul class="result__ladder_round col-1" id="ladder_round6"></ul>
-					<div class="result__ladder_lines col-1" id="line_contR6"></div>			
-			</div>
-		</section>
-		<footer class="footer container">
-			<p class="footer__info">Use for fun and sport!</p> 
-				<ul class="footer__links">
-					<li class="footer__link"><i class="fab fa-github-square"></i> Check my <a href="https://github.com/CrissNowik" target="_blank">Github</a> </li>
-					<li class="footer__link"><i class="fab fa-linkedin"></i> Look at my <a href="https://www.linkedin.com/in/krzysztof-nowicki-0a5a9a164/" target="_blank">LinkedIn</a></li>
-					<li class="footer__link"><i class="fas fa-envelope"></i> <a href="mailto:krzysztof11nowicki@gmail.com">Write to me</a></li>
-				</ul>
-		</footer>
-		<script src="dist/out.js" type="text/javascript"></script>
-	</body>
+
+		</form>
+		<div class="collector__show">
+			<p class="collector__alert" id="alertOne">First write team name.</p>
+			<p class="collector__alert" id="alertTwo">You need at least 3 teams.</p>
+			<p class="collector__alert" id="alertThree">Team name - max 21 chars.</p>
+			<p class="collector__alert" id="alertFour">Max number of teams is 32.</p>
+			<p class="collector__caution" id="alertCup">Feel free to set any number of competitors between 3-32.</br>Just
+				remember that cup formula performs the best with 4, 8, 16, 32 competitors - in other cases Lucky Team will occur.</p>
+			<ol class="collector__list" id="collector__list">
+			</ol>
+		</div>
+	</section>
+	<section class="result container" id="result">
+		<div class="result__btn row">
+			<button type="button" class="result__btnPDF" id="generatePDFplan">
+				<p>Download<br>PDF with shedule</p>
+			</button>
+		</div>
+		<div class="result__list row" id="result_list">
+			<ol class="result__list_o col-3" id="result__listA"></ol>
+			<ol class="result__list_o col-3" id="result__listB"></ol>
+			<ol class="result__list_o col-3" id="result__listC"></ol>
+			<ol class="result__list_o col-3" id="result__listD"></ol>
+		</div>
+		<div class="result__btn row" id="btnPDFLadderSection">
+			<button type="button" class="result__btnPDF" id="generatePDFladder">
+				<p>Download<br>PDF with ladder</p>
+			</button>
+		</div>
+		<div class="result__lader container" id="result__lader">
+			<ul class="result__ladder_round col-1" id="ladder_round1"></ul>
+			<div class="result__ladder_lines col-1" id="line_contR1"></div>
+			<ul class="result__ladder_round col-1" id="ladder_round2"></ul>
+			<div class="result__ladder_lines col-1" id="line_contR2"></div>
+			<ul class="result__ladder_round col-1" id="ladder_round3"></ul>
+			<div class="result__ladder_lines col-1" id="line_contR3"></div>
+			<ul class="result__ladder_round col-1" id="ladder_round4"></ul>
+			<div class="result__ladder_lines col-1" id="line_contR4"></div>
+			<ul class="result__ladder_round col-1" id="ladder_round5"></ul>
+			<div class="result__ladder_lines col-1" id="line_contR5"></div>
+			<ul class="result__ladder_round col-1" id="ladder_round6"></ul>
+			<div class="result__ladder_lines col-1" id="line_contR6"></div>
+		</div>
+	</section>
+	<footer class="footer container">
+		<p class="footer__info">Use for fun and sport!</p>
+		<ul class="footer__links">
+			<li class="footer__link"><i class="fab fa-github-square"></i> Check my <a href="https://github.com/CrissNowik"
+				 target="_blank">Github</a> </li>
+			<li class="footer__link"><i class="fab fa-linkedin"></i> Look at my <a href="https://www.linkedin.com/in/krzysztof-nowicki-0a5a9a164/"
+				 target="_blank">LinkedIn</a></li>
+			<li class="footer__link"><i class="fas fa-envelope"></i> <a href="mailto:krzysztof11nowicki@gmail.com">Write to me</a></li>
+		</ul>
+	</footer>
+	<script src="dist/out.js" type="text/javascript"></script>
+</body>
+
 </html>

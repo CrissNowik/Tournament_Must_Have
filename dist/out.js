@@ -71,47 +71,45 @@
 
 
 Object.defineProperty(exports, "__esModule", {
-    value: true
+        value: true
 });
-//DOM elements store
-//
 var domElems = exports.domElems = {
-    logo: $('#header__logo'),
-    naviScreen: $('#nav'),
-    btnConfirm: $('#nav__confirm'),
-    collector: $('#collector'),
-    teamInput: $('#collector__input'),
-    btnAdd: $('#collector__add'),
-    btnGenerate: $('#collector__generate'),
-    btnPDFShedule: $('#generatePDFplan'),
-    btnPDFLadder: $('#generatePDFladder'),
-    btnPDFLadderSection: $('#btnPDFLadderSection'),
-    teamList: $('#collector__list'),
-    teamOnList: $('#collector__listItem'),
-    result: $('#result'),
-    collectorAlertA: $('#alertOne'),
-    collectorAlertB: $('#alertTwo'),
-    collectorAlertC: $('#alertThree'),
-    collectorAlertD: $('#alertFour'),
-    resultList: $('#result_list'),
-    sheduleOnScreenA: $('#result__listA'),
-    sheduleOnScreenB: $('#result__listB'),
-    sheduleOnScreenC: $('#result__listC'),
-    sheduleOnScreenD: $('#result__listD'),
-    cupCaution: $('#alertCup'),
-    cupLadder: $('#result__lader'),
-    ladder_round1: $('#ladder_round1'),
-    ladder_round2: $('#ladder_round2'),
-    ladder_round3: $('#ladder_round3'),
-    ladder_round4: $('#ladder_round4'),
-    ladder_round5: $('#ladder_round5'),
-    ladder_round6: $('#ladder_round6'),
-    line_container1: $('#line_contR1'),
-    line_container2: $('#line_contR2'),
-    line_container3: $('#line_contR3'),
-    line_container4: $('#line_contR4'),
-    line_container5: $('#line_contR5'),
-    line_container6: $('#line_contR6')
+        logo: $('#header__logo'),
+        naviScreen: $('#nav'),
+        btnConfirm: $('#nav__confirm'),
+        collector: $('#collector'),
+        teamInput: $('#collector__input'),
+        btnAdd: $('#collector__add'),
+        btnGenerate: $('#collector__generate'),
+        btnPDFShedule: $('#generatePDFplan'),
+        btnPDFLadder: $('#generatePDFladder'),
+        btnPDFLadderSection: $('#btnPDFLadderSection'),
+        teamList: $('#collector__list'),
+        teamOnList: $('#collector__listItem'),
+        result: $('#result'),
+        collectorAlertA: $('#alertOne'),
+        collectorAlertB: $('#alertTwo'),
+        collectorAlertC: $('#alertThree'),
+        collectorAlertD: $('#alertFour'),
+        resultList: $('#result_list'),
+        sheduleOnScreenA: $('#result__listA'),
+        sheduleOnScreenB: $('#result__listB'),
+        sheduleOnScreenC: $('#result__listC'),
+        sheduleOnScreenD: $('#result__listD'),
+        cupCaution: $('#alertCup'),
+        cupLadder: $('#result__lader'),
+        ladder_round1: $('#ladder_round1'),
+        ladder_round2: $('#ladder_round2'),
+        ladder_round3: $('#ladder_round3'),
+        ladder_round4: $('#ladder_round4'),
+        ladder_round5: $('#ladder_round5'),
+        ladder_round6: $('#ladder_round6'),
+        line_container1: $('#line_contR1'),
+        line_container2: $('#line_contR2'),
+        line_container3: $('#line_contR3'),
+        line_container4: $('#line_contR4'),
+        line_container5: $('#line_contR5'),
+        line_container6: $('#line_contR6')
 };
 
 /***/ }),
@@ -150,7 +148,9 @@ var _domElems = __webpack_require__(0);
 var showIt = exports.showIt = {
     showAndHide: function showAndHide(toHide, toShow) {
         toHide.hide();
-        toShow.show().css({ "display": "flex" });
+        toShow.show().css({
+            "display": "flex"
+        });
     },
     showHeader: function showHeader(where, roundCounter) {
         where.append("<ul class=\"result__listItem--roundHeader\">Round nr " + roundCounter + "</ul>");
@@ -165,20 +165,20 @@ var showIt = exports.showIt = {
         where.append("<li class=\"result__ladder_rect\">" + idLeft + teamOne + "</li><li class=\"result__ladder_rect\">" + idRight + teamTwo + "</li>");
     },
     /**
-    * showLadderRect - main function of drawing rectangles in ladder
-    * ---------------
-    * params:
-    *    where - <domElem> where created rectangle should be placed
-    *    roundNumber - <number> used in creating proper class name for sass
-    *    howMany - <number>how many rectangles function should create
-    *    isLucky - <array> represents teams in current round, useful for state if there is lucky team
-    *    luckyBefore - <array> represents teams in round before, useful for state if round before was lucky team
-    *    numberOfTeams - <number> represents how many teams starts competition - useful for "special" cases
-    * ---------------
-    * how it works:
-    *    1. check if there was lucky team round before and in current round
-    *    2. create ladder rectangles with correct classes for suitable case 
-    */
+     * showLadderRect - main function of drawing rectangles in ladder
+     * ---------------
+     * params:
+     *    where - <domElem> where created rectangle should be placed
+     *    roundNumber - <number> used in creating proper class name for sass
+     *    howMany - <number>how many rectangles function should create
+     *    isLucky - <array> represents teams in current round, useful for state if there is lucky team
+     *    luckyBefore - <array> represents teams in round before, useful for state if round before was lucky team
+     *    numberOfTeams - <number> represents how many teams starts competition - useful for "special" cases
+     * ---------------
+     * how it works:
+     *    1. check if there was lucky team round before and in current round
+     *    2. create ladder rectangles with correct classes for suitable case 
+     */
 
     showLadderRect: function showLadderRect(where, roundNumber, howMany, isLucky, luckyBefore, numberOfTeams) {
         var lastElemIsLucky = isLucky.length - 1;
@@ -314,37 +314,66 @@ var showIt = exports.showIt = {
                 this.drawLines(where, amount, decision, round, "b", "a");
             } else if (numberOfTeams === 11 || numberOfTeams === 12) {
                 this.drawLines(where, amount, decision, round, "b", "b");
-                _domElems.domElems.line_container4.find("div").css({ "height": "478px" });
+                _domElems.domElems.line_container4.find("div").css({
+                    "height": "478px"
+                });
             } else if (numberOfTeams === 13 || numberOfTeams === 14) {
                 this.drawSpecLines(where, amount, decision, round, "b", "b", "d");
             } else if (numberOfTeams === 15 || numberOfTeams === 16) {
                 this.drawLines(where, amount, decision, round, "c", "b");
             } else if (numberOfTeams === 17 || numberOfTeams === 18) {
                 this.drawLines(where, amount, decision, round, "c", "d");
-                _domElems.domElems.line_container6.find("div").css({ "height": "714px", "margin-top": "660px" });
+                _domElems.domElems.line_container6.find("div").css({
+                    "height": "714px",
+                    "margin-top": "660px"
+                });
             } else if (numberOfTeams === 19 || numberOfTeams === 20) {
                 this.drawLines(where, amount, decision, round, "c", "b");
-                _domElems.domElems.line_container6.find("div").css({ "height": "794px", "margin-top": "660px" });
+                _domElems.domElems.line_container6.find("div").css({
+                    "height": "794px",
+                    "margin-top": "660px"
+                });
             } else if (numberOfTeams === 21 || numberOfTeams === 22) {
                 this.drawSpecLines(where, amount, decision, round, "c", "b", "d");
-                _domElems.domElems.line_container5.find("div").css({ "height": "638px" });
+                _domElems.domElems.line_container5.find("div").css({
+                    "height": "638px"
+                });
             } else if (numberOfTeams === 23 || numberOfTeams === 24) {
                 this.drawLines(where, amount, decision, round, "c", "b");
-                _domElems.domElems.line_container6.find("div").css({ "height": "674px", "margin-top": "660px" });
+                _domElems.domElems.line_container6.find("div").css({
+                    "height": "674px",
+                    "margin-top": "660px"
+                });
             } else if (numberOfTeams === 25 || numberOfTeams === 26) {
                 this.drawLines(where, amount, decision, round, "c", "d");
-                _domElems.domElems.line_container6.find("div").css({ "height": "1194px", "margin-top": "620px" });
+                _domElems.domElems.line_container6.find("div").css({
+                    "height": "1194px",
+                    "margin-top": "620px"
+                });
             } else if (numberOfTeams === 27 || numberOfTeams === 28) {
                 this.drawLines(where, amount, decision, round, "c", "b");
-                _domElems.domElems.line_container6.find("div").css({ "height": "1114px", "margin-top": "660px" });
+                _domElems.domElems.line_container6.find("div").css({
+                    "height": "1114px",
+                    "margin-top": "660px"
+                });
             } else if (numberOfTeams === 29 || numberOfTeams === 30) {
                 this.drawSpecLines(where, amount, decision, round, "c", "b", "d");
-                _domElems.domElems.line_container5.find("div").css({ "height": "640px", "margin-left": "-166px" });
-                _domElems.domElems.line_container6.find("div").css({ "height": "1280px" });
+                _domElems.domElems.line_container5.find("div").css({
+                    "height": "640px",
+                    "margin-left": "-166px"
+                });
+                _domElems.domElems.line_container6.find("div").css({
+                    "height": "1280px"
+                });
             } else if (numberOfTeams === 31 || numberOfTeams === 32) {
                 this.drawLines(where, amount, decision, round, "c", "b");
-                _domElems.domElems.line_container5.find("div").css({ "margin-left": "-166px" });
-                _domElems.domElems.line_container6.find("div").css({ "height": "1274px", "margin-top": "660px" });
+                _domElems.domElems.line_container5.find("div").css({
+                    "margin-left": "-166px"
+                });
+                _domElems.domElems.line_container6.find("div").css({
+                    "height": "1274px",
+                    "margin-top": "660px"
+                });
             }
         }
     },
@@ -588,7 +617,7 @@ $(document).ready(function () {
 
 
 Object.defineProperty(exports, "__esModule", {
-            value: true
+    value: true
 });
 exports.leagueGenerator = leagueGenerator;
 
@@ -597,12 +626,12 @@ var _basicFunctions = __webpack_require__(3);
 var _roundrobin = __webpack_require__(6);
 
 function leagueGenerator(teamList) {
-            var numberOfTeams = teamList.length;
-            var teamNamesList = _basicFunctions.basicFunctions.gettingTeamNames(teamList, numberOfTeams);
-            _basicFunctions.basicFunctions.shuffle(teamNamesList); // shuffling teams
-            var readyShedule = (0, _roundrobin.roundrobin)(numberOfTeams, teamNamesList);
+    var numberOfTeams = teamList.length;
+    var teamNamesList = _basicFunctions.basicFunctions.gettingTeamNames(teamList, numberOfTeams);
+    _basicFunctions.basicFunctions.shuffle(teamNamesList); // shuffling teams
+    var readyShedule = (0, _roundrobin.roundrobin)(numberOfTeams, teamNamesList);
 
-            return readyShedule;
+    return readyShedule;
 };
 
 /***/ }),
@@ -1066,36 +1095,47 @@ function showSheduleCup(sheduleArray, numberOfTeams) {
                     _showIt.showIt.showLines(_domElems.domElems.line_container6, _amount7, 6, sheduleArray[4], numberOfTeams);
                     _showIt.showIt.specialLine(_domElems.domElems.line_container5, 1, "spec");
                     if (numberOfTeams === 21 || numberOfTeams === 22) {
-                        _domElems.domElems.line_container5.find("div.result__ladder_luckyLine5spec").css({ "margin-top": "333px" });
+                        _domElems.domElems.line_container5.find("div.result__ladder_luckyLine5spec").css({
+                            "margin-top": "333px"
+                        });
                     } else if (numberOfTeams === 23 || numberOfTeams === 24) {
-                        _domElems.domElems.line_container5.find("div.result__ladder_luckyLine5spec").css({ "margin-top": "373px" });
+                        _domElems.domElems.line_container5.find("div.result__ladder_luckyLine5spec").css({
+                            "margin-top": "373px"
+                        });
                     }
                 } else if (numberOfTeams === 25 || numberOfTeams === 26) {
                     _showIt.showIt.showChampRect(_domElems.domElems.ladder_round6, 6, "d");
                     _showIt.showIt.showLines(_domElems.domElems.line_container6, _amount7, 6, sheduleArray[4], numberOfTeams);
                     _showIt.showIt.specialLine(_domElems.domElems.line_container5, 1, "specA");
-                    _domElems.domElems.line_container5.find("div.result__ladder_luckyLine5specA").css({ "height": "400px" });
+                    _domElems.domElems.line_container5.find("div.result__ladder_luckyLine5specA").css({
+                        "height": "400px"
+                    });
                 } else if (numberOfTeams === 27 || numberOfTeams === 28) {
                     _showIt.showIt.showChampRect(_domElems.domElems.ladder_round6, 6, "d");
                     _showIt.showIt.showLines(_domElems.domElems.line_container6, _amount7, 6, sheduleArray[4], numberOfTeams);
                     _showIt.showIt.specialLine(_domElems.domElems.line_container5, 1, "specA");
-                    _domElems.domElems.line_container5.find("div.result__ladder_luckyLine5specA").css({ "height": "480px" });
+                    _domElems.domElems.line_container5.find("div.result__ladder_luckyLine5specA").css({
+                        "height": "480px"
+                    });
                 } else {
                     _showIt.showIt.showChampRect(_domElems.domElems.ladder_round6, 6, "e");
                     _showIt.showIt.showLines(_domElems.domElems.line_container6, _amount7, 6, sheduleArray[4], numberOfTeams);
                     _showIt.showIt.specialLine(_domElems.domElems.line_container5, 1, "specA");
-                    _domElems.domElems.line_container5.find("div.result__ladder_luckyLine5specA").css({ "height": "640", "margin-left": "-166px" });
+                    _domElems.domElems.line_container5.find("div.result__ladder_luckyLine5specA").css({
+                        "height": "640",
+                        "margin-left": "-166px"
+                    });
                 }
             }
         }
     }
     /**
-    * cutBottomMargins - function for cutting bottom margins of the rectangles which are last in column
-    *                      it give us more consistent look of the website
-    *
-    * @param {number} round - ladder round number
-    * @param {string} container - name of the last rectangle where margin bottom will be cut
-    */
+     * cutBottomMargins - function for cutting bottom margins of the rectangles which are last in column
+     *                      it give us more consistent look of the website
+     *
+     * @param {number} round - ladder round number
+     * @param {string} container - name of the last rectangle where margin bottom will be cut
+     */
 
     function cutBottomMargins(round, container) {
         if (container === "result__ladder_rectR4" || container === "result__ladder_rectR4a" || container === "result__ladder_rectR5" || container === "result__ladder_rectR5a" || container === "result__ladder_rectR5b" || container === "result__ladder_rectR5c" || container === "result__ladder_rectR5d" || container === "result__ladder_rectR5e" || container === "result__ladder_rectR3" || container === "result__ladder_rectR3c") {

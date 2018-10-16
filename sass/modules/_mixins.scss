@@ -2,33 +2,33 @@
 "modules/colors";
 
 @mixin double_line_for_rect_all {
-  -webkit-box-shadow: 1px 0px 0px 1px rgba(255,255,255,1);
-  -moz-box-shadow: 1px 0px 0px 1px rgba(255,255,255,1);
-  box-shadow: 1px 0px 0px 1px rgba(255,255,255,1);
+  -webkit-box-shadow: 1px 0px 0px 1px rgba(255, 255, 255, 1);
+  -moz-box-shadow: 1px 0px 0px 1px rgba(255, 255, 255, 1);
+  box-shadow: 1px 0px 0px 1px rgba(255, 255, 255, 1);
 }
 
 @mixin double_line_for_rect {
-  -webkit-box-shadow: 1px 0px 0px 1px rgba(255,255,255,1);
-  -moz-box-shadow: 1px 0px 0px 1px rgba(255,255,255,1);
-  box-shadow: 1px 0px 0px 1px rgba(255,255,255,1);
+  -webkit-box-shadow: 1px 0px 0px 1px rgba(255, 255, 255, 1);
+  -moz-box-shadow: 1px 0px 0px 1px rgba(255, 255, 255, 1);
+  box-shadow: 1px 0px 0px 1px rgba(255, 255, 255, 1);
 }
 
 @mixin double_line_for_ladder_in {
-  -webkit-box-shadow: inset -1px 0px 0px 1px rgba(255,255,255,1);
-  -moz-box-shadow: inset -1px 0px 0px 1px rgba(255,255,255,1);
-  box-shadow: inset -1px 0px 0px 1px rgba(255,255,255,1);
+  -webkit-box-shadow: inset -1px 0px 0px 1px rgba(255, 255, 255, 1);
+  -moz-box-shadow: inset -1px 0px 0px 1px rgba(255, 255, 255, 1);
+  box-shadow: inset -1px 0px 0px 1px rgba(255, 255, 255, 1);
 }
 
 @mixin double_line_for_ladder_lucky {
-  -webkit-box-shadow: 0px -1px 0px 0px rgba(255,255,255,1);
-  -moz-box-shadow: 0px -1px 0px 0px rgba(255,255,255,1);
-  box-shadow: 0px -1px 0px 0px rgba(255,255,255,1);
+  -webkit-box-shadow: 0px -1px 0px 0px rgba(255, 255, 255, 1);
+  -moz-box-shadow: 0px -1px 0px 0px rgba(255, 255, 255, 1);
+  box-shadow: 0px -1px 0px 0px rgba(255, 255, 255, 1);
 }
 
 @mixin double_line_for_ladder_spec {
-  -webkit-box-shadow: inset -1px -1px 0px 1px rgba(255,255,255,1);
-  -moz-box-shadow: inset -1px -1px 0px 1px rgba(255,255,255,1);
-  box-shadow: inset -1px -1px 0px 1px rgba(255,255,255,1);
+  -webkit-box-shadow: inset -1px -1px 0px 1px rgba(255, 255, 255, 1);
+  -moz-box-shadow: inset -1px -1px 0px 1px rgba(255, 255, 255, 1);
+  box-shadow: inset -1px -1px 0px 1px rgba(255, 255, 255, 1);
 }
 
 @mixin center {
@@ -144,4 +144,3 @@ $font-set: "sports_worldregular",
 sans-serif,
 'Arial-Bold',
 serif;
-

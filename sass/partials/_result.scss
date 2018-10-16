@@ -1,5 +1,4 @@
-@import
-"modules/mixins";
+@import "modules/mixins";
 
 
 
@@ -9,267 +8,301 @@
     align-items: center;
     flex-direction: column;
     background-color: rgba($color: #fff, $alpha: 0.5);
-    .result__btn{
+
+    .result__btn {
         display: flex;
         @include center;
-        .result__btnPDF{
+
+        .result__btnPDF {
             @include collector_btn;
             height: 130px;
             width: 130px;
-            font-size: 18px;   
+            font-size: 18px;
         }
     }
-    #btnPDFLadderSection{
+
+    #btnPDFLadderSection {
         display: none;
     }
-        .result__list{
-            margin: 10px 0 10px 0;
-            font-family: $font-set;
-            color: $color_txt;
-            list-style-position: inside;
-           
-            .result__list_o{
-                padding: 0;
-                .result__listItem--roundHeader{
-                    font-size: 20px;
-                    text-align: center;
-                    font-weight: bolder;
-                    text-decoration-line: underline;
-                    margin: 15px 0 5px 0;
+
+    .result__list {
+        margin: 10px 0 10px 0;
+        font-family: $font-set;
+        color: $color_txt;
+        list-style-position: inside;
+
+        .result__list_o {
+            padding: 0;
+
+            .result__listItem--roundHeader {
+                font-size: 20px;
+                text-align: center;
+                font-weight: bolder;
+                text-decoration-line: underline;
+                margin: 15px 0 5px 0;
+            }
+
+            .result__listItem {
+                text-align: center;
+                font-size: 15px;
+                padding-left: 5px;
+
+                .result__listItemTxt {
+                    display: inline;
+                    color: $color_txt;
+                    margin: 0;
                 }
-                .result__listItem{
-                    text-align: center;
+            }
+        }
+    }
+
+    .result__champ {
+        list-style-type: none;
+        text-align: center;
+    }
+
+    .result__lader {
+        display: none;
+        max-height: 2600px;
+
+        .result__ladder_lines {
+            .result__ladder_luckyLine2a {
+                @include luckyLineR2;
+            }
+
+            .result__ladder_luckyLine2b {
+                @include luckyLineR2;
+            }
+
+            .result__ladder_luckyLine2d {
+                @include luckyLineR2;
+            }
+
+            $luckyLines:(3b: 318px 0 80px 0,
+            3a: 240px 0 80px 0,
+            3c: 0 0 80px 0,
+            3d: -78px 0 0 0,
+            5a: 396px 0 0 -196px,
+            5b: 476px 0 0 -196px);
+
+            @each $line-name,
+            $margin-val in $luckyLines {
+                .result__ladder_luckyLine#{$line-name} {
+                    @include luckyLineR35;
+                    margin: $margin-val;
+                }
+            }
+
+            .result__ladder_luckyLine5spec {
+                width: 120px;
+                border-right: 3px solid $color_btn_confirm_hover;
+                border-bottom: 3px solid $color_btn_confirm_hover;
+                border-top: none;
+                border-left: none;
+                position: relative;
+                height: 261px;
+                margin: 333px 0 0 -196px;
+                @include double_line_for_ladder_spec;
+            }
+
+            .result__ladder_luckyLine5specA {
+                @include basicLadderLine;
+                height: 400px;
+                margin: 634px 0 0 -196px;
+            }
+
+            $lines:((R1, 74px, 60px 0 80px 0),
+            (R2a, 154px, 100px 0 160px 0),
+            (R2b, 154px, 100px 0 160px 0),
+            (R2c, 154px, 100px 0 160px 0),
+            (R3a, 238px, 180px 0 160px 0),
+            (R3b, 314px, 180px 0 160px 0),
+            (R3c, 314px, 180px 0 320px 0),
+            (R3d, 240px, 318px 0 80px 0),
+            (R4a, 478px, 340px 0 0 0),
+            (R4b, 398px, 340px 0 0 0),
+            (R5c, 638px, 340px 0 0 -196px),
+            (R5d, 598px, 340px 0 0 -196px),
+            (R6c, 720px, 640px 0 0 -196px),
+            (R6d, 644px, 660px 0 0 -196px));
+
+            @each $line-name,
+            $height-val,
+            $margin-val in $lines {
+                .result__ladder_line#{$line-name} {
+                    @include basicLadderLine;
+                    height: $height-val;
+                    margin: $margin-val;
+                }
+            }
+        }
+
+        #ladder_round1 {
+            padding-left: 112px;
+        }
+
+        .result__ladder_round {
+            margin: 0;
+            padding: 0;
+            overflow: visible;
+
+            .result__ladder_rect {
+                margin: 40px 0 10px 0;
+                @include ladderRect;
+                border-left: 3px solid $color_btn_confirm_hover;
+            }
+
+            .result__ladder_rectR3 {
+                @include ladderRectR3;
+            }
+
+            .result__ladder_rectR3c {
+                @include ladderRectR3;
+            }
+
+            $classNames: (R2, R2a, R2b, R2e, RaL2, RaL2a, RaL2b);
+
+            @each $val in $classNames {
+                .result__ladder_rect#{$val} {
+                    @include ladderRectR2;
+                }
+            }
+
+            $margins: (R4: 320px 0 600px -3px,
+            R4a: 320px 0 560px -3px,
+            R4b: 240px 0 50px -3px,
+            R5: 640px -30px 1240px 30px,
+            R5a: 680px 0 1240px 30px,
+            R5b: 760px 0 1240px 30px,
+            R5c: 600px 0 1240px 30px,
+            R5d: 600px 0 1160px 30px,
+            R5e: 640px 0 1080px 30px,
+            R6: 1280px 0 20px -3px,
+            RaL3: 160px 0 200px -3px,
+            RaL4: 320px 0 360px -3px,
+            RaL4a: 320px 0 440px -3px,
+            RaL4b: 320px 0 280px -3px,
+            RaL5: 640px 0 400px 30px,
+            3a: 160px 0 20px -3px,
+            4a: 280px 0 20px -3px,
+            4b: 320px 0 20px -3px,
+            5a: 520px 0 20px -3px,
+            5b: 640px 0 20px 30px,
+            6a: 1000px 0 20px 30px,
+            6b: 1040px 0 20px 30px,
+            6c: 960px 0 20px 30px,
+            6d: 1200px 0 20px 30px,
+            6e: 1280px 0 20px 60px);
+
+            @each $margin-name,
+            $margin-val in $margins {
+                .result__ladder_rect#{$margin-name} {
+                    @include ladderRect;
+                    margin: $margin-val;
+                }
+            }
+        }
+    }
+}
+
+@media screen and (max-width : 1400px) {
+    .result {
+        background-color: transparent;
+
+        .result__list {
+            background-color: rgba($color: #fff, $alpha: 0.5);
+
+            .result__list_o {
+                text-align: center;
+                min-width: 312px;
+            }
+        }
+    }
+}
+
+@media screen and (max-width : 1240px) {
+    .result {
+        .result__list {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            background-color: rgba($color: #fff, $alpha: 0.5);
+
+            .result__list_o {
+                text-align: center;
+                min-width: 312px;
+            }
+        }
+    }
+}
+
+@media screen and (max-width : 920px) {
+    .result {
+        .result__list {
+            flex-wrap: wrap;
+            background-color: rgba($color: #fff, $alpha: 0.5);
+
+            .result__list_o {
+                text-align: center;
+                min-width: 312px;
+
+                .result__listItem {
                     font-size: 15px;
-                    padding-left: 5px;
-                    .result__listItemTxt{
+
+                    .result__listItemTxt {
                         display: inline;
                         color: $color_txt;
                         margin: 0;
                     }
                 }
-            }  
-        }
-    .result__champ {
-        list-style-type: none;
-        text-align: center;
-    }
-    .result__lader {
-        display: none;     
-        max-height: 2600px;
-            .result__ladder_lines {
-                .result__ladder_luckyLine2a {
-                    @include luckyLineR2;
-                }
-                .result__ladder_luckyLine2b {
-                    @include luckyLineR2;
-                }
-                .result__ladder_luckyLine2d {
-                    @include luckyLineR2;
-                }
-                $luckyLines:( 
-                3b: 318px 0 80px 0, 
-                3a: 240px 0 80px 0, 
-                3c: 0 0 80px 0, 
-                3d: -78px 0 0 0, 
-                5a: 396px 0 0 -196px, 
-                5b: 476px 0 0 -196px);
-                @each $line-name,
-                $margin-val in $luckyLines {
-                    .result__ladder_luckyLine#{$line-name} {
-                        @include luckyLineR35;
-                        margin: $margin-val;
-                    }
-                }
-                .result__ladder_luckyLine5spec {
-                    width: 120px;
-                    border-right: 3px solid $color_btn_confirm_hover;
-                    border-bottom: 3px solid $color_btn_confirm_hover;
-                    border-top: none;
-                    border-left: none;
-                    position: relative;
-                    height: 261px;
-                    margin: 333px 0 0 -196px;
-                    @include double_line_for_ladder_spec;
-                }
-                .result__ladder_luckyLine5specA {
-                    @include basicLadderLine;
-                    height: 400px;
-                    margin: 634px 0 0 -196px; 
-                }
-                $lines:(  
-                    (R1, 74px, 60px 0 80px 0), 
-                    (R2a, 154px, 100px 0 160px 0), 
-                    (R2b, 154px, 100px 0 160px 0), 
-                    (R2c, 154px, 100px 0 160px 0),
-                    (R3a, 238px, 180px 0 160px 0), 
-                    (R3b, 314px, 180px 0 160px 0), 
-                    (R3c, 314px, 180px 0 320px 0), 
-                    (R3d, 240px, 318px 0 80px 0), 
-                    (R4a, 478px, 340px 0 0 0), 
-                    (R4b, 398px, 340px 0 0 0), 
-                    (R5c, 638px, 340px 0 0 -196px), 
-                    (R5d, 598px, 340px 0 0 -196px), 
-                    (R6c, 720px, 640px 0 0 -196px), 
-                    (R6d, 644px, 660px 0 0 -196px));
-                @each $line-name,
-                $height-val,
-                $margin-val in $lines {
-                    .result__ladder_line#{$line-name} {
-                        @include basicLadderLine;
-                        height: $height-val;
-                        margin: $margin-val;
-                    }
-                }
-            }
-            #ladder_round1{
-                padding-left: 112px;
-            }
-            .result__ladder_round {
-                margin: 0;
-                padding: 0;
-                overflow:visible;
-                .result__ladder_rect {
-                    margin: 40px 0 10px 0;
-                    @include ladderRect;
-                    border-left: 3px solid $color_btn_confirm_hover;
-                }
-                .result__ladder_rectR3 {
-                    @include ladderRectR3;
-                }
-                .result__ladder_rectR3c {
-                    @include ladderRectR3;
-                }
-                $classNames: (R2, R2a, R2b, R2e, RaL2, RaL2a, RaL2b);
-                @each $val in $classNames {
-                    .result__ladder_rect#{$val} {
-                        @include ladderRectR2;
-                    }
-                }
-                $margins: ( 
-                    R4: 320px 0 600px -3px,  
-                    R4a: 320px 0 560px -3px,  
-                    R4b: 240px 0 50px -3px, 
-                    R5: 640px -30px 1240px 30px, 
-                    R5a: 680px 0 1240px 30px, 
-                    R5b: 760px 0 1240px 30px, 
-                    R5c: 600px 0 1240px 30px, 
-                    R5d: 600px 0 1160px 30px, 
-                    R5e: 640px 0 1080px 30px, 
-                    R6: 1280px 0 20px -3px, 
-                    RaL3: 160px 0 200px -3px, 
-                    RaL4: 320px 0 360px -3px, 
-                    RaL4a: 320px 0 440px -3px, 
-                    RaL4b: 320px 0 280px -3px, 
-                    RaL5: 640px 0 400px 30px, 
-                    3a: 160px 0 20px -3px, 
-                    4a: 280px 0 20px -3px, 
-                    4b: 320px 0 20px -3px, 
-                    5a: 520px 0 20px -3px, 
-                    5b: 640px 0 20px 30px, 
-                    6a: 1000px 0 20px 30px, 
-                    6b: 1040px 0 20px 30px, 
-                    6c: 960px 0 20px 30px, 
-                    6d: 1200px 0 20px 30px, 
-                    6e: 1280px 0 20px 60px);
-                @each $margin-name,
-                $margin-val in $margins {
-                    .result__ladder_rect#{$margin-name} {
-                        @include ladderRect;
-                        margin: $margin-val;
-                    }
-                }
             }
         }
-    }   
+    }
+}
 
-    @media screen and (max-width : 1400px) {
-        .result {
-            background-color: transparent;
-            .result__list {
-                background-color: rgba($color: #fff, $alpha: 0.5);
-                .result__list_o {
-                    text-align: center;
-                    min-width: 312px;
-                }
-            }
-         }
-    }
-    @media screen and (max-width : 1240px) {
-        .result {
-            .result__list {
-                display: flex;
-                flex-wrap: wrap;
-                justify-content: center;
-                background-color: rgba($color: #fff, $alpha: 0.5);
-                .result__list_o {
-                    text-align: center;
-                    min-width: 312px;
-                }
-            }
-         }
-    }
+@media screen and (max-width : 610px) {
+    .result {
+        .result__list {
+            flex-wrap: wrap;
+            background-color: rgba($color: #fff, $alpha: 0.5);
 
-    @media screen and (max-width : 920px) {
-        .result {
-            .result__list {
-                flex-wrap: wrap;
-                background-color: rgba($color: #fff, $alpha: 0.5);
-                .result__list_o {
-                text-align: center;
-                min-width: 312px;
-                    .result__listItem{
-                        font-size: 15px;
-                        .result__listItemTxt{
-                            display: inline;
-                            color: $color_txt;
-                            margin: 0;
-                        }
-                    }
-                }
-            }
-         }
-    }
-    @media screen and (max-width : 610px) {
-        .result {
-            .result__list {
-                flex-wrap: wrap;
-                background-color: rgba($color: #fff, $alpha: 0.5);
-                .result__list_o {
+            .result__list_o {
                 width: 100%;
                 text-align: center;
-                    .result__listItem{
-                        font-size: 14px;
-                        .result__listItemTxt{
-                            display: inline;
-                            color: $color_txt;
-                            margin: 0;
-                        }
+
+                .result__listItem {
+                    font-size: 14px;
+
+                    .result__listItemTxt {
+                        display: inline;
+                        color: $color_txt;
+                        margin: 0;
                     }
                 }
             }
-         }
+        }
     }
+}
 
-    @media screen and (max-width : 360px) {
-        .result {
-            .result__list {
-                background-color: rgba($color: #fff, $alpha: 0.5); 
-                flex-wrap: wrap;
-                .result__list_o {
+@media screen and (max-width : 360px) {
+    .result {
+        .result__list {
+            background-color: rgba($color: #fff, $alpha: 0.5);
+            flex-wrap: wrap;
+
+            .result__list_o {
                 width: 100%;
                 font-size: 13px;
-                    .result__listItem{
-                        .result__listItemTxt{
-                            display: inline;
-                            color: $color_txt;
-                            margin: 0;
-                            font-size: 12px;
-                        }
+
+                .result__listItem {
+                    .result__listItemTxt {
+                        display: inline;
+                        color: $color_txt;
+                        margin: 0;
+                        font-size: 12px;
                     }
                 }
             }
-         }
+        }
     }
-
-    
-
+}

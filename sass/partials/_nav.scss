@@ -1,13 +1,13 @@
-@import
-"modules/fonts",
+@import "modules/fonts",
 "modules/mixins",
 "modules/colors";
 
-.nav{
+.nav {
     @include center;
     height: 60%;
     margin-top: 50px;
-    .nav__confirm{
+
+    .nav__confirm {
         height: 300px;
         width: 300px;
         transform: rotate(45deg);
@@ -16,23 +16,26 @@
         border-radius: 2px;
         color: #fff;
         font-family: $font-set;
-        font-size:  40px;
+        font-size: 40px;
         cursor: pointer;
         padding: 0;
-       &:hover{
-           background-color: $color_btn_confirm_hover;
-       }
-        .nav__confirm_txt{
+
+        &:hover {
+            background-color: $color_btn_confirm_hover;
+        }
+
+        .nav__confirm_txt {
             transform: rotate(-45deg);
             margin: 0;
         }
-    } 
+    }
 }
 
 @media screen and (max-width : 900px) {
-    .nav{
+    .nav {
         margin: 20px 0 50px 0;
-        .nav__confirm{
+
+        .nav__confirm {
             height: 250px;
             width: 250px;
             font-size: 35px;
@@ -41,9 +44,10 @@
 }
 
 @media screen and (max-width : 660px) {
-    .nav{
+    .nav {
         margin: 20px 0 50px 0;
-        .nav__confirm{
+
+        .nav__confirm {
             height: 200px;
             width: 200px;
             font-size: 30px;
@@ -52,12 +56,13 @@
 }
 
 @media screen and (max-width : 360px) {
-    .nav{
+    .nav {
         margin: 20px 0 50px 0;
-        .nav__confirm{
+
+        .nav__confirm {
             height: 150px;
             width: 150px;
-            font-size:  20px;
+            font-size: 20px;
         }
     }
 }

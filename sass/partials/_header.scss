@@ -1,12 +1,12 @@
 @import "modules/colors";
 
 
-.header{
+.header {
     @include center;
     flex-direction: column;
     height: 20%;
 
-    .header__title{
+    .header__title {
         display: flex;
         font-family: $font-set;
         font-size: 80px;
@@ -14,7 +14,8 @@
         margin: 30px;
         text-align: center;
     }
-    .header__logo{
+
+    .header__logo {
         width: 150px;
         height: 150px;
         background-color: transparent;
@@ -25,41 +26,45 @@
         cursor: pointer;
     }
 }
+
 @media screen and (max-width : 900px) {
     .header {
-        .header__title{
-           font-size: 60px;
+        .header__title {
+            font-size: 60px;
         }
-        .header__logo{
+
+        .header__logo {
             width: 130px;
             height: 130px;
             margin: 25px;
         }
-      }
+    }
 }
 
 @media screen and (max-width : 660px) {
     .header {
-        .header__title{
-           font-size: 45px;
+        .header__title {
+            font-size: 45px;
         }
-        .header__logo{
+
+        .header__logo {
             width: 120px;
             height: 120px;
             margin: 25px;
         }
-      }
+    }
 }
 
 @media screen and (max-width : 360px) {
-  .header {
-    .header__title{
-       font-size: 40px;
+    .header {
+        .header__title {
+            font-size: 40px;
+        }
+
+        .header__logo {
+            width: 100px;
+            height: 100px;
+            margin: 25px;
+        }
     }
-    .header__logo{
-        width: 100px;
-        height: 100px;
-        margin: 25px;
-    }
-  }
 }

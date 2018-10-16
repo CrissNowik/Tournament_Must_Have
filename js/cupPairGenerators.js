@@ -35,7 +35,7 @@ export let cupPairGenerators = {
             } else {
                 for (let i = 0; i < howMuchEmpty; i++) {
                     pairsReadyToShowR3.push(TWOEMPTY);
-                } 
+                }
             }
         }
         return pairsReadyToShowR3;
@@ -43,7 +43,7 @@ export let cupPairGenerators = {
     generatingPairsPuRound: function (lucky) {
         let pairsReadyToShowOneBeforeLastRound = [];
         if (lucky === true) {
-            pairsReadyToShowOneBeforeLastRound = [TWOEMPTY, EMPTYANDLUCKY];                  
+            pairsReadyToShowOneBeforeLastRound = [TWOEMPTY, EMPTYANDLUCKY];
         } else {
             pairsReadyToShowOneBeforeLastRound = [TWOEMPTY, TWOEMPTY];
         }

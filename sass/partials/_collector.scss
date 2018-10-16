@@ -118,12 +118,14 @@
 @media screen and (max-width : 660px) {
     .collector__form {
         flex-wrap: wrap;
-        .collector__left{
+
+        .collector__left {
             width: 100%;
             @include center;
             margin-bottom: 20px;
         }
-        .collector__right{
+
+        .collector__right {
             width: 100%;
             @include center;
         }
@@ -131,33 +133,36 @@
 }
 
 @media screen and (max-width : 360px) {
-    .collector{
-        .collector__form{
-            .collector__right{
-                    .collector__add {
-                        height: 70px;
-                        width: 70px;
-                        font-size: 15px;
-                        @include center;
-                    }
-        
-                    .collector__generate {
-                        height: 70px;
-                        width: 70px;
-                        font-size: 15px;
-                        @include center;
-                    }
+    .collector {
+        .collector__form {
+            .collector__right {
+                .collector__add {
+                    height: 70px;
+                    width: 70px;
+                    font-size: 15px;
+                    @include center;
+                }
+
+                .collector__generate {
+                    height: 70px;
+                    width: 70px;
+                    font-size: 15px;
+                    @include center;
                 }
             }
+        }
+
         .collector__show {
-            .collector__list{
+            .collector__list {
                 padding: 0;
                 margin: 2px;
-                .collector__listItem{
+
+                .collector__listItem {
                     width: 330px;
                     margin: 2px;
                     font-size: 16px;
-                    .collector__del{                    
+
+                    .collector__del {
                         height: 25px;
                         width: 25px;
                         font-size: 15px;
