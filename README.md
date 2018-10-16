@@ -11,7 +11,7 @@ Features:
 *  "tournament" game system (Cup formula, KO system),
 *  cup visualisation - tournament ladder, 
 *  PDF download of tournament ladder and game shedule
-*  RWD 
+*  RWD (as much as it was possible considering content)
 
 Inspiration:
 ------------
@@ -23,6 +23,7 @@ Technology stack:
 * CSS + SASS,
 * Java Script (ES6),
 * jsPDF library,
+* html2canvas library
 * jQuery,
 * Gulp,
 * Webpack
