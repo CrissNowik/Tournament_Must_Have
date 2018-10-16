@@ -524,6 +524,12 @@ var _showIt = __webpack_require__(2);
 
 $(document).ready(function () {
 
+    //refresh website
+    _domElems.domElems.logo.on('click', function (e) {
+        e.preventDefault();
+        location.reload(true);
+    });
+
     // removing teams from list
     _domElems.domElems.teamList.on('click', 'li#collector__listItem>button.collector__del', function (e) {
         e.preventDefault();

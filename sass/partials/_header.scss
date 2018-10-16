@@ -1,3 +1,6 @@
+@import "modules/colors";
+
+
 .header{
     @include center;
     flex-direction: column;
@@ -19,6 +22,7 @@
         transform: rotate(-45deg);
         margin: 50px;
         border: 2px solid #fff;
+        cursor: pointer;
     }
 }
 @media screen and (max-width : 900px) {

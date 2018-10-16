@@ -4,6 +4,12 @@ import { showIt } from "./showIt";
 
 
 $(document).ready(function () {
+
+    //refresh website
+    domElems.logo.on('click', e => {
+        e.preventDefault();
+        location.reload(true);
+    })
    
     // removing teams from list
     domElems.teamList.on('click', 'li#collector__listItem>button.collector__del', function (e) {
