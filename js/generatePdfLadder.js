@@ -21,6 +21,7 @@ export function generatePdfLadder(element, numberOfCompetitors) {
             doc.save('Game_Ladder.pdf');
         });
     } else {
+        alert("We advise you to print this ladder on A3 paper format - it will look much better than resized to A4.");
         html2canvas(element).then(function (canvas) {
             var imgData = canvas.toDataURL('image/png');
             var doc = new jsPDF('portrait', 'mm', 'a3');
