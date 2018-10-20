@@ -1,7 +1,9 @@
 @font-face {
     font-family: 'sports_worldregular';
-    src: url('../../fonts/sports_world-regular-SportsWorld.woff2') format('woff2'),
-         url('../../fonts/sports_world-regular-SportsWorld.woff') format('woff');
+    src: url('./sass/modules/fonts/sports_world-regular-SportsWorld.woff2') format('woff2'),
+         url('./sass/modules/fonts/sports_world-regular-SportsWorld.woff') format('woff');
+    // src: url('../../fonts/sports_world-regular-SportsWorld.woff2') format('woff2'),
+    //      url('../../fonts/sports_world-regular-SportsWorld.woff') format('woff');
     font-weight: normal;
     font-style: normal;
 
