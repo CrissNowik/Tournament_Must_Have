@@ -10,7 +10,7 @@ Features:
 *  "round-robin" game system (Berger table),
 *  "tournament" game system (Cup formula, KO system),
 *  cup visualisation - tournament ladder, 
-*  PDF download of tournament ladder and game shedule
+*  PDF download of tournament ladder and game shedule,
 *  RWD (as much as it was possible considering content)
 
 Inspiration:
