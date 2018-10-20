@@ -44,4 +44,4 @@ Thanks to:
 Eirik Albrigtsen for his roundrobin algorythm https://github.com/clux/roundrobin
 
 [LinkedIn]: <https://www.linkedin.com/in/krzysztof-nowicki-0a5a9a164/>
-[Do some tournament!]: <http://tmh.cba.pl/>
+[Do some tournament!]: <https://crissnowik.github.io/Tournament_Must_Have/>
